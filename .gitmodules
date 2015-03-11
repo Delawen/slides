@@ -1,9 +1,6 @@
 [submodule "stylesheets"]
 	path = stylesheets
 	url = https://github.com/Delawen/stylesheets.git
-[submodule "reveal.js"]
-	path = reveal
-	url = https://github.com/hakimel/reveal.js.git
 [submodule "siglibre"]
 	path = siglibre
 	url = https://github.com/Delawen/siglibre.git
@@ -25,3 +22,6 @@
 [submodule "geopackage-presentation"]
 	path = geopackage-presentation
 	url = https://github.com/Delawen/geopackage-presentation.git
+[submodule "reveal"]
+	path = reveal
+	url = https://github.com/hakimel/reveal.js.git
