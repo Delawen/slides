@@ -2,7 +2,7 @@
 	path = stylesheets
 	url = https://github.com/Delawen/stylesheets.git
 [submodule "reveal.js"]
-	path = reveal.js
+	path = reveal
 	url = https://github.com/hakimel/reveal.js.git
 [submodule "siglibre"]
 	path = siglibre
