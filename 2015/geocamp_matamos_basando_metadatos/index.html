@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Matamos basándonos en los metadatos</title>
+
+		<meta name="description" content="La importancia de la privacidad en los metadatos">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">Matamos basándonos en los metadatos</header>
+<div class="slides">
+<section data-background-size="contain">
+<div style="height:100%">
+    <h2>Matamos basándonos en los Metadatos</h2>
+    <img style="border:none;box-shadow:none;max-height:60%;" src="imagenes/matamos_metadatos.png">
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+</div>
+</section>
+<section>
+    <h2>Quién soy yo y por qué hablo de esto</h2>
+    <div>Formo parte de la manada de</div>
+    <div><a href="https://geocat.net">GeoCat bv</a></div>
+    <div><a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <img class="clean" src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+</section>
+<section>
+  <section data-background="imagenes/cats_boxes.png">
+  </section>
+  <section data-background="imagenes/metagato.png">
+  </section>
+  <section data-background="imagenes/surprise_cat.gif">
+  </section>
+</section>
+<section>
+  <section data-background="http://share.gifyoutube.com/v1z9a5.gif">
+  </section>
+  <section>
+    <h2>Por qué importan los metadatos</h2>
+    <p><ul style="text-align:justify">
+      <li>(metadato) Saben que llamaste a un teléfono erótico a las 2:24am y hablaste durante 18 minutos.</li> 
+      <li>(dato) Pero no saben de qué hablaste.</li>
+    </ul></p>
+    <p><a href="https://twitter.com/pinkflawd/status/417649515131596801">Fuente</a></p>
+  </section>
+  <section>
+    <h2>Por qué importan los metadatos</h2>
+    <p><ul style="text-align:justify">
+      <li>(metadato) Saben que llamaste al teléfono de atención al suicida desde el puente Golden Gate.</li> 
+      <li>(dato) Pero no saben de qué hablaste.</li>
+    </ul></p>
+    <p><a href="https://twitter.com/pinkflawd/status/417649515131596801">Fuente</a></p>
+  </section>
+  <section>
+    <h2>Por qué importan los metadatos</h2>
+    <p><ul style="text-align:justify">
+      <li>(metadato) Saben que llamaste a un laboratorio de análisis de VIH.</li> 
+      <li>(metadato) Saben que llamaste inmediatamente después a tu médico.</li> 
+      <li>(metadato) Saben que llamaste inmediatamente después a tu seguro médico.</li> 
+      <li>(dato) Pero no saben de qué hablaste.</li>
+    </ul></p>
+    <p><a href="https://twitter.com/pinkflawd/status/417649515131596801">Fuente</a></p>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/military_strategy.gif">
+  </section>
+  <section data-background="imagenes/matamos_metadatos.png">
+  </section>
+  <section data-background="imagenes/cat_drone.gif">
+  </section>
+  <section data-background="imagenes/cat-google-glasses-filming.png">
+  </section>
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="geocat" />
+				</div>
+			</footer>
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
