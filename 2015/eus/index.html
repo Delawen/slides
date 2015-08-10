@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>IDEs y Publicación de información espacial</title>
+
+		<meta name="description" content="En esta sesión se introducirá brevemente cómo es la arquitectura de un SIG y dónde encontrar software adecuado según las necesidades en cada caso. Con esta breve explicación, el alumno será capaz de encontrar fácilmente la información para montar su propio servidor SIG al terminar el curso. Se mencionará especialmente el proyecto OsGeo Live.
+
+A continuación se hará un ejemplo rápido de cómo montar un SIG fácilmente con herramientas online ya disponibles. Para ello se hará uso de datos libres y de servicios online gratuitos, de forma que el alumno será capaz de construir su propio SIG usando un sencillo servidor web tipo Apache.">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">IDEs y Publicación de información espacial</header>
+
+<div class="slides">
+<section data-background-size="contain">
+<div style="height:100%">
+    <h2>IDEs y Publicación de información espacial</h2>
+    <h4>Cómo publicar datos geográficos en internet</h4>
+    <img style="border:none;box-shadow:none;max-height:60%;" src="images/map.png">
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a> (<a href="https://twitter.com/geocat_bv">@GeoCat bv</a>)</h3>
+</div>
+</section>
+<section>
+      <h2>Quién soy yo y por qué hablo de esto</h2>
+      <img class="quienessomos clean"/>
+</section>
+<section>
+	<section>
+		<h2>¿Qué es un SIG?</h2> 
+		<img class="clean" src="images/sig_overview.png"/>
+		<p class="fragment"><a href="http://www.idee.es/web/guest/centros-de-descarga">IDE</a>  (SDI)</p>
+	</section>
+	<section>
+		<h2>Software GIS</h2> 
+		<div class="fragment">
+			<p><strong>Servidores de Mapas</strong></p>
+	  		<p><a href="http://geoserver.org/">GeoServer</a></p>
+	  		<p><a href="http://wiki.openstreetmap.org/wiki/TileMill">TileMill</a></p>
+		</div>
+		<div class="fragment">
+			<p><strong>Catálogo/GeoPortales</strong></p>
+	  		<p><a href="http://geonetwork-opensource.org/">GeoNetwork</a></p>
+		</div>
+		<div class="fragment">
+			<p><strong>Software GIS</strong></p>
+	  		<p><a href="http://www.qgis.org/es/site/">qGIS</a></p>
+  			<p><a href="http://www.gvsig.com/es">gvSIG</a></p>
+		</div>
+		<div class="fragment">
+			<p><strong>Procesamiento</strong></p>
+	  		<p><a href="http://www.zoo-project.org/">Zoo</a></p>
+		</div>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Toca ensuciarse</h2> 
+		<img class="clean" src="images/sig_overview2.png"/>
+	</section>
+	<section>
+		<h2>Fuentes de datos</h2> 
+		<p><strong><a href="http://www.openstreetmap.org/">OSM</a></strong> con <a href="http://overpass-turbo.eu/">OverPass Turbo</a></p>
+		<p><strong><a href="http://opendata.euskadi.eus/">OpenData Euskadi</a></strong></p>
+	</section>
+	<section>
+		<h2>OSM: fuentes</h2>
+		<a href="http://overpass-turbo.eu/">OverPass Turbo</a>
+		<div style="text-align:left">
+			<p>node</p>
+			<p>&nbsp;&nbsp;[amenity=drinking_water]</p>
+			<p>&nbsp;&nbsp;({{bbox}});</p>
+			<p>out;</p>
+		</div>
+		<a href="data/drinking_water.geojson">drinking_water.geojson</a>
+	</section>
+	<section>
+		<h2>OpenData Euskadi</h2>
+		<p>
+			<a href="http://turismo.euskadi.eus/es/todo-en-los-mapas/?lang=es">Visor</a>
+		</p>
+		<p>
+			<a href="data/vias_verdes.kml">vias_verdes.kml</a>
+		</p>
+		<p>
+			<a href="data/vias_verdes.kml">espacios_naturales.kml</a>
+		</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Trabajando con <a href="https://cartodb.com/">CartoDB</a></h2> 
+		<p>BaseMap</p>
+		<p>Category</p>
+		<p>Cluster</p>
+		<p>Heat Map</p>
+		<p>...</p>
+	</section>
+</section>
+<section>
+    <h2>Eso es todo</h2>
+    <div>¿Preguntas, sugerencias,...?</div>
+    <div><a href="https://twitter.com/geocat_bv"><img class="clean geocatherd"/></a></div>
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="geocat" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>
