@@ -43,7 +43,7 @@ A continuación se hará un ejemplo rápido de cómo montar un SIG fácilmente c
     <h2>IDEs y Publicación de información espacial</h2>
     <h4>Cómo publicar datos geográficos en internet</h4>
     <img style="border:none;box-shadow:none;max-height:60%;" src="images/map.png">
-    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a> (<a href="https://twitter.com/geocat_bv">@GeoCat bv</a>)</h3>
+    <h3><a target="_blank" href="https://twitter.com/delawen">María Arias de Reyna</a> (<a target="_blank" href="https://twitter.com/geocat_bv">@GeoCat bv</a>)</h3>
 </div>
 </section>
 <section>
@@ -54,27 +54,36 @@ A continuación se hará un ejemplo rápido de cómo montar un SIG fácilmente c
 	<section>
 		<h2>¿Qué es un SIG?</h2> 
 		<img class="clean" src="images/sig_overview.png"/>
-		<p class="fragment"><a href="http://www.idee.es/web/guest/centros-de-descarga">IDE</a>  (SDI)</p>
+		<p class="fragment"><a target="_blank" href="http://www.idee.es/web/guest/centros-de-descarga">IDE</a>  (SDI)</p>
 	</section>
 	<section>
-		<h2>Software GIS</h2> 
+		<h2>¿Cómo empiezo con los mapas?</h2> 
+		<p class="fragment"><a target="_blank" href="http://www.osgeo.org/">OsGeo</a>  (la comunidad GIS)</p>
+		<p class="fragment"><a target="_blank" href="http://geoinquietos.drupalgardens.com/">GeoInquietos</a>  (grupos locales)</p>
+		<p class="fragment"><a target="_blank" href="http://geotalleres.github.io/">GeoTalleres</a>  (geoinquietos en acción)</p>
+	</section>
+	<section>
+		<h2>Selección Software GIS</h2> 
 		<div class="fragment">
 			<p><strong>Servidores de Mapas</strong></p>
-	  		<p><a href="http://geoserver.org/">GeoServer</a></p>
-	  		<p><a href="http://wiki.openstreetmap.org/wiki/TileMill">TileMill</a></p>
+	  		<p><a target="_blank" href="http://geoserver.org/">GeoServer</a></p>
+	  		<p><a target="_blank" href="http://wiki.openstreetmap.org/wiki/TileMill">TileMill (CartoCSS)</a></p>
 		</div>
 		<div class="fragment">
 			<p><strong>Catálogo/GeoPortales</strong></p>
-	  		<p><a href="http://geonetwork-opensource.org/">GeoNetwork</a></p>
+	  		<p><a target="_blank" href="http://geonetwork-opensource.org/">GeoNetwork</a></p>
 		</div>
 		<div class="fragment">
-			<p><strong>Software GIS</strong></p>
-	  		<p><a href="http://www.qgis.org/es/site/">qGIS</a></p>
-  			<p><a href="http://www.gvsig.com/es">gvSIG</a></p>
+			<p><strong>Escritorio</strong></p>
+	  		<p><a target="_blank" href="http://www.qgis.org/es/site/">qGIS</a></p>
+  			<p><a target="_blank" href="http://www.gvsig.com/es">gvSIG</a></p>
 		</div>
 		<div class="fragment">
 			<p><strong>Procesamiento</strong></p>
-	  		<p><a href="http://www.zoo-project.org/">Zoo</a></p>
+	  		<p><a target="_blank" href="http://www.zoo-project.org/">Zoo</a></p>
+		</div>
+		<div class="fragment">
+			<p><strong>OsGeo</strong> <a target="_blank" href="http://live.osgeo.org/es/">Live "DVD"</a></p>
 		</div>
 	</section>
 </section>
@@ -85,36 +94,37 @@ A continuación se hará un ejemplo rápido de cómo montar un SIG fácilmente c
 	</section>
 	<section>
 		<h2>Fuentes de datos</h2> 
-		<p><strong><a href="http://www.openstreetmap.org/">OSM</a></strong> con <a href="http://overpass-turbo.eu/">OverPass Turbo</a></p>
-		<p><strong><a href="http://opendata.euskadi.eus/">OpenData Euskadi</a></strong></p>
+		<p><strong><a target="_blank" href="http://www.openstreetmap.org/">OSM</a></strong> con <a target="_blank" href="http://overpass-turbo.eu/">OverPass Turbo</a></p>
+		<p><strong><a target="_blank" href="http://opendata.euskadi.eus/">OpenData Euskadi</a></strong></p>
+		<p style="margin-top:5%"><strong>Nunca usar GMaps para proyectos serios. No es libre.</strong></p>	
 	</section>
 	<section>
 		<h2>OSM: fuentes</h2>
-		<a href="http://overpass-turbo.eu/">OverPass Turbo</a>
+		<a target="_blank" href="http://overpass-turbo.eu/">OverPass Turbo</a>
 		<div style="text-align:left">
 			<p>node</p>
 			<p>&nbsp;&nbsp;[amenity=drinking_water]</p>
 			<p>&nbsp;&nbsp;({{bbox}});</p>
 			<p>out;</p>
 		</div>
-		<a href="data/drinking_water.geojson">drinking_water.geojson</a>
+		<a target="_blank" href="data/drinking_water.geojson">drinking_water.geojson</a>
 	</section>
 	<section>
 		<h2>OpenData Euskadi</h2>
 		<p>
-			<a href="http://turismo.euskadi.eus/es/todo-en-los-mapas/?lang=es">Visor</a>
+			<a target="_blank" href="http://turismo.euskadi.eus/es/todo-en-los-mapas/?lang=es">Visor</a>
 		</p>
 		<p>
-			<a href="data/vias_verdes.kml">vias_verdes.kml</a>
+			<a target="_blank" href="data/vias_verdes.kml">vias_verdes.kml</a>
 		</p>
 		<p>
-			<a href="data/vias_verdes.kml">espacios_naturales.kml</a>
+			<a target="_blank" href="data/vias_verdes.kml">espacios_naturales.kml</a>
 		</p>
 	</section>
 </section>
 <section>
 	<section>
-		<h2>Trabajando con <a href="https://cartodb.com/">CartoDB</a></h2> 
+		<h2>Trabajando con <a target="_blank" href="https://cartodb.com/">CartoDB</a></h2> 
 		<p>BaseMap</p>
 		<p>Category</p>
 		<p>Cluster</p>
@@ -124,9 +134,8 @@ A continuación se hará un ejemplo rápido de cómo montar un SIG fácilmente c
 </section>
 <section>
     <h2>Eso es todo</h2>
-    <div>¿Preguntas, sugerencias,...?</div>
-    <div><a href="https://twitter.com/geocat_bv"><img class="clean geocatherd"/></a></div>
-    <div><a href="bibliografía.txt">Bibliografía</a></div>
+    <div><a target="_blank" href="https://twitter.com/geocat_bv"><img class="clean geocatherd"/></a></div>
+    <div><a target="_blank" href="bibliografía.txt">Bibliografía</a> y <a target="_blank" href="http://geotalleres.github.io/geotalleres/">GeoTalleres</a></div>
 </section>
 </div>
 
