@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>	
+		<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
+		<meta charset="utf-8">
+
+		<title>GeoNetwork</title>
+
+		<meta name="description" content="GeoNetwork estado del arte">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">GeoNetwork: el catálogo de datos espaciales libre</header>
+			<div class="slides">
+<section>
+	<div><a href="http://twitter.com/delawen">María Arias de Reyna - GeoCat</a></div>
+	<div>presentan</div>
+	<img style="height:30%" src="images/gnlogo.png" class="clean"/>
+	<div><img class="clean" src="images/roar.gif"/></div>
+</section>
+<section>
+    <h2>Quién soy yo y por qué me atrevo a hablar de esto</h2>
+    <div style="float:left;max-width:49%">
+	<p>Pertenezco a la manada de <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
+      <img style="max-width:800px;max-height:200px;margin:0px" class="clean geocatherd">
+      <img style="max-width:800px;max-height:200px;margin:0px" class="clean lotsofcats"></div>
+    <div>
+      <img class="quienessomos clean">
+    </div>
+</section>
+<section>
+	<h2>Portal de Datos Geográfico</h2>
+	<div>
+		<p>GeoNetwork cataloga e indexa los metadatos</p>
+		<p>Edición directa e importación</p>
+		<img style="max-height:400px" class="clean" src="images/ui.png"/>
+		<p>Permite búsqueda simple y avanzada</p>
+	</div>
+</section>
+<section>
+	<h2>¿Metadatos?</h2>
+	<div>
+		<p>Un metadato es el dato que describe a otro dato</p>
+		<img style="max-height:400px" class="clean" src="images/metagato.jpg"/>
+		<img style="max-height:400px" class="clean" src="images/metagato2.jpg"/>
+		<p>Machine-readable</p>
+	</div>
+</section>
+<section>
+		<h2>Motor de Búsqueda del Catálogo</h2>
+		<p>Como portal de datos geográficos, GeoNetwork tiene un potente motor de búsqueda de metadatos.</p>
+		<img style="max-height:400px" class="clean" src="images/catsearching.gif"/>
+		<p>Todos los datos se guardan en una base de datos, pero para buscar se usa un índice <a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/schemaPlugins/index.html?highlight=lucene#creating-the-index-fields-xsl-to-index-content-from-the-metadata-record">Lucene</a></p>
+</section>
+<section>
+		<h2>Importar y Exportar metadatos</h2>
+		<p>OGC pide: CSW-t</p>
+		<p>Modo Asíncrono: Harvesting</p>
+		<p>Servicios de GeoNetwork</p>
+		<p>Interfaz gráfica (editor)</p>
+		<video autoplay="yes" loop="yes" src="images/import"></video>
+</section>
+<section>
+	<h2>Editor</h2>
+	<div>
+		<p>Basado en esquemas XML</p>
+		<p>Validación por XSD y schematron</p>
+		<p>Wizards</p>
+		<p>Permite la edición directa de XML</p>
+	</div>
+</section>
+<section>
+	<section>
+		<h2>CSW</h2>
+		<p>GeoNetwork implementa la versión <a href="http://portal.opengeospatial.org/files/?artifact_id=20555">2.0.2</a></p>
+		<img style="max-height:400px" src="images/workinghard.gif"/>
+		<p>http(s)://___/srv/$language/csw</p>
+	</section>
+	<section>
+		<h2>CSW</h2>
+		<p>GetCapabilities: descripción general del servicio</p>
+		<img src="images/catbox.gif"/>
+		<p>DescribeRecord: información del modelo de datos</p>
+		<p>GetRecordById: entradas por identificador</p>
+		<p>GetRecords: búsqueda usando filtros CQL o OGC</p>
+		<p>Transaction: creación, edición y borrado de registros</p>
+	</section>
+</section>
+<section>
+		<h2>Exportar</h2>
+		<p>RDF</p>
+		<p>MEF</p>
+		<p>PDF</p>
+		<p>XML</p>
+		<p>¡JSON-ld!</p>
+</section>
+<section>
+		<h2>Roles y Privilegios</h2>
+		<p>GeoNetwork tiene cuatro tipos de usuarios</p>
+		<video autoplay="yes" loop="yes" src="images/autentication"/></video>
+		<p>Registered User</p>
+		<p>Editor</p>
+		<p>Reviewer</p>
+		<p>Administrator</p>
+		<p>Los roles se definen por grupo</p>
+</section>
+<section>
+	<section>
+		<h2>Ejemplo de Uso: Cobweb</h2>
+		<p>Proyecto europeo</p>
+		<a href="https://dyfi.cobwebproject.eu/geonetwork" target="cobweb">
+			<img src="../../stylesheets/images/cobweb.png"/>
+		</a>
+	</section>
+	<section>
+		<h2>Ejemplo de Uso: Cobweb</h2>
+		<p>Citizen Science</p>
+		<p>Redes de sensores</p>
+		<img src="images/citizenscience.gif"/>
+		<p>Crowd Data</p>
+		<p>Smart Rural</p>
+		<p>Smart city</p>
+	</section>
+	<section>
+		<h2>Ejemplo de Uso: Cobweb</h2>
+		<p>Centrado en reservas de la biosfera</p>
+		<p>Inundaciones, especies protegidas, cambio climático,...</p>
+		<p>Gales, Alemania y Grecia</p>
+		<img src="images/infinitecat.gif"/>
+		<p>Puente entre científicos y la ciudadanía</p>
+		<p>Programas especiales para escolares</p>
+	</section>
+</section>
+<section>
+    <h2>Eso es todo</h2>
+    <div>Preguntas, sugerencias, colaboraciones,...</div>
+    <div><a href="https://twitter.com/geocat_bv"><img class="clean" src="images/busycats.gif"/></a></div>    
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="geocat" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>
