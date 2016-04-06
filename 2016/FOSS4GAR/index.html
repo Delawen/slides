@@ -8,7 +8,7 @@
 
 		<title>GeoNetwork</title>
 
-		<meta name="description" content="GeoNetwork estado del arte">
+		<meta name="description" content="GeoNetwork: el catálogo de datos espaciales libre">
 		<meta name="author" content="María Arias de Reyna Domínguez">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -38,38 +38,40 @@
 			<header class="universal">GeoNetwork: el catálogo de datos espaciales libre</header>
 			<div class="slides">
 <section>
-	<div><a href="http://twitter.com/delawen">María Arias de Reyna - GeoCat</a></div>
+	<div><a href="http://twitter.com/delawen">María Arias de Reyna</a> - <a href="https://geocat.net">GeoCat</a></div>
 	<div>presentan</div>
-	<img style="height:30%" src="images/gnlogo.png" class="clean"/>
-	<div><img class="clean" src="images/roar.gif"/></div>
+	<a href="http://geonetwork-opensource.org"><img style="height:30%" src="images/gnlogo.png"/title="GeoNetwork"></a>
+	<div><img class="clean" title="Roar!" src="images/roar.gif"/></div>
 </section>
 <section>
     <h2>Quién soy yo y por qué me atrevo a hablar de esto</h2>
     <div style="float:left;max-width:49%">
 	<p>Pertenezco a la manada de <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
-      <img style="max-width:800px;max-height:200px;margin:0px" class="clean geocatherd">
-      <img style="max-width:800px;max-height:200px;margin:0px" class="clean lotsofcats"></div>
+      <img title="GeoCat Herd" style="max-width:800px;max-height:200px;margin:0px" class="clean geocatherd">
+      <img title="GeoCats" style="max-width:800px;max-height:200px;margin:0px" class="clean lotsofcats"></div>
     <div>
-      <img class="quienessomos clean">
+      <img title="GeoCat" class="quienessomos clean">
     </div>
 </section>
 <section>
-	<h2>Portal de Datos Geográfico</h2>
-	<div>
-		<p>GeoNetwork cataloga e indexa los metadatos</p>
-		<p>Edición directa e importación</p>
-		<img style="max-height:400px" class="clean" src="images/ui.png"/>
-		<p>Permite búsqueda simple y avanzada</p>
-	</div>
-</section>
-<section>
-	<h2>¿Metadatos?</h2>
-	<div>
-		<p>Un metadato es el dato que describe a otro dato</p>
-		<img style="max-height:400px" class="clean" src="images/metagato.jpg"/>
-		<img style="max-height:400px" class="clean" src="images/metagato2.jpg"/>
-		<p>Machine-readable</p>
-	</div>
+	<section>
+		<h2>Portal de Datos Geográfico</h2>
+		<div>
+			<p>GeoNetwork cataloga e indexa los metadatos</p>
+			<p>Edición directa e importación</p>
+			<img title="GeoNetwork UI" style="max-height:400px" class="clean" src="images/ui.png"/>
+			<p>Permite búsqueda simple y avanzada</p>
+		</div>
+	</section>
+	<section>
+		<h2>¿Metadatos?</h2>
+		<div>
+			<p>Un metadato es el dato que describe a otro dato</p>
+			<img title="metagato" style="max-height:400px" class="clean" src="images/metagato.jpg"/>
+			<img title="metagato" style="max-height:400px" class="clean" src="images/metagato2.jpg"/>
+			<p>Machine-readable</p>
+		</div>
+	</section>
 </section>
 <section>
 		<h2>Motor de Búsqueda del Catálogo</h2>
@@ -78,28 +80,23 @@
 		<p>Todos los datos se guardan en una base de datos, pero para buscar se usa un índice <a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/schemaPlugins/index.html?highlight=lucene#creating-the-index-fields-xsl-to-index-content-from-the-metadata-record">Lucene</a></p>
 </section>
 <section>
-		<h2>Importar y Exportar metadatos</h2>
-		<p>OGC pide: CSW-t</p>
-		<p>Modo Asíncrono: Harvesting</p>
-		<p>Servicios de GeoNetwork</p>
-		<p>Interfaz gráfica (editor)</p>
-		<video autoplay="yes" loop="yes" src="images/import"></video>
-</section>
-<section>
-	<h2>Editor</h2>
-	<div>
-		<p>Basado en esquemas XML</p>
-		<p>Validación por XSD y schematron</p>
-		<p>Wizards</p>
-		<p>Permite la edición directa de XML</p>
-	</div>
-</section>
-<section>
 	<section>
-		<h2>CSW</h2>
-		<p>GeoNetwork implementa la versión <a href="http://portal.opengeospatial.org/files/?artifact_id=20555">2.0.2</a></p>
-		<img style="max-height:400px" src="images/workinghard.gif"/>
-		<p>http(s)://___/srv/$language/csw</p>
+			<h2>Importar contenido</h2>
+			<p>OGC sugiere: CSW-t (Catalog Web Service)</p>
+			<p>Modo Asíncrono: Harvesting de otras fuentes</p>
+			<video autoplay="yes" loop="yes" src="images/import"></video>
+			<p>Servicios propios de GeoNetwork</p>
+			<p>Interfaz gráfica (editor)</p>
+	</section>
+	<section>
+		<h2>Editor</h2>
+		<div>
+			<p>Basado en esquemas XML</p>
+			<p>Validación por XSD y schematron</p>
+			<img class="clean" src="images/editor.gif"/>
+			<p>Wizards/sugerencias</p>
+			<p>Permite la edición directa de XML</p>
+		</div>
 	</section>
 	<section>
 		<h2>CSW</h2>
@@ -110,22 +107,29 @@
 		<p>GetRecords: búsqueda usando filtros CQL o OGC</p>
 		<p>Transaction: creación, edición y borrado de registros</p>
 	</section>
+	<section>
+		<h2>CSW</h2>
+		<p>GeoNetwork implementa la versión <a href="http://portal.opengeospatial.org/files/?artifact_id=20555">2.0.2</a></p>
+		<img style="max-height:400px" src="images/workinghard.gif"/>
+		<p>http(s)://___/srv/$language/csw(-*)</p>
+	</section>
 </section>
 <section>
 		<h2>Exportar</h2>
-		<p>RDF</p>
-		<p>MEF</p>
-		<p>PDF</p>
 		<p>XML</p>
-		<p>¡JSON-ld!</p>
+		<p>PDF</p>
+		<p>MEF</p>
+		<a href="https://twitter.com/xurxosanz/status/683590405636644864"><img src="images/popurri.jpg"/></a>
+		<p>RDF y JSON-ld</p>
 </section>
 <section>
 		<h2>Roles y Privilegios</h2>
-		<p>GeoNetwork tiene cuatro tipos de usuarios</p>
+		<p>GeoNetwork tiene cinco tipos de usuarios</p>
 		<video autoplay="yes" loop="yes" src="images/autentication"/></video>
 		<p>Registered User</p>
 		<p>Editor</p>
-		<p>Reviewer</p>
+		<p>Reviewer (workflow)</p>
+		<p>User Administrator</p>
 		<p>Administrator</p>
 		<p>Los roles se definen por grupo</p>
 </section>
@@ -157,9 +161,23 @@
 	</section>
 </section>
 <section>
+	<h2>Hacia dónde vamos</h2>
+	<video autoplay="yes" loop="yes" src="images/futurecat.mp4"/></video>
+	<p>Más formatos opendata: json-ld, rdf, <b>schema.org</b></p>
+	<p>Más UIs: mejor accesibilidad</p>
+	<p>Clusterización (SOLR)</p>
+	<p>Sugerencias editor</p>
+</section>
+<section>
+	<h2>Hacia dónde vamos</h2>
+	<p><a href="https://wiki.osgeo.org/wiki/Bolsena_Code_Sprint_2016">Bolsena</a> (Italia), junio 2016</p>
+	<p><img class="clean" style="max-height:80%;max-width:80%" src="images/GeoNetwork_Group_MG_0280.png"/></p>
+</section>
+<section>
     <h2>Eso es todo</h2>
     <div>Preguntas, sugerencias, colaboraciones,...</div>
-    <div><a href="https://twitter.com/geocat_bv"><img class="clean" src="images/busycats.gif"/></a></div>    
+    <div><a href="https://twitter.com/geocat_bv"><img src="images/busycats.gif"/></a></div>    
+    <div>Os esperamos en las <a href="http://geonetwork-opensource.org/community.html">listas de correos</a> de GeoNetwork</div>
 </section>
 </div>
 
