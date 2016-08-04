@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Matamos basándonos en los metadatos</title>
+		<title>GeoNetwork: State of the Art</title>
 
-		<meta name="description" content="La importancia de la privacidad en los metadatos">
+		<meta name="description" content="Current status of GeoNetwork and future developments">
 		<meta name="author" content="María Arias de Reyna Domínguez">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -18,9 +18,7 @@
 		<link rel="stylesheet" href="../../stylesheets/common.css">
 
 		<script>
-		if (window.location.search.indexOf('cobweb') > 0)
-		    document.write('<link rel="stylesheet" href="../../stylesheets/cobweb.css" id="theme">');
-		else if (window.location.search.indexOf('geocat') > 0)
+		if (window.location.search.indexOf('geocat') < 0)
 		    document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
 		else
 			document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
@@ -32,62 +30,44 @@
 
 	<body>
 
-		<div class="reveal">
+<div class="reveal">
 <div style="max-width:200px;position:absolute;bottom:1px;left:1px;z-index:3">
-<a class="twitter-timeline" href="https://twitter.com/search?q=%23bbsvq%20OR%20%40delawen%20OR%20%40metagato" data-widget-id="738785517437915136">Tweets sobre #bbsvq OR @delawen OR @metagato</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            <a class="twitter-timeline"  href="https://twitter.com/search?q=%23geonetwork%20OR%20%23foss4g%20OR%20%40geocat_bv%20OR%20%40delawen" data-widget-id="357506833780445184">Tweets sobre #geonetwork OR #foss4g OR @geocat_bv OR @delawen</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 <div class="slides">
 <section data-background-size="contain" data-background="imagenes/metagato.png">
   <div style="padding-top:20%">
-    <h2 style="text-shadow:3px 3px 3px black;font-size:150%;text-transform:uppercase">Matamos basándonos en los Metadatos</h2>
-    <h3 style="text-shadow:3px 3px 3px black;font-size:110%"><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
-    <h3 style="text-shadow:3px 3px 3px black;font-size:110%"><a href="https://twitter.com/delawen">@delawen</a></h3>
+    <h2 style="text-transform:uppercase">GeoNetwork: State of the Art</h2>
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+    <h3><a href="https://twitter.com/delawen">@delawen</a></h3>
+    <h3><a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
   </div>
 </section>
 <section>
   <section>
-    <h2>Quién soy yo y por qué hablo de esto</h2>
-    <div>Formo parte de la manada de</div>
+    <h2>Who am I and why do I talk about this</h2>
+    <div>I am part of GeoCat's herd</div>
     <div><a href="https://geocat.net">GeoCat bv</a> <a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
-    <img class="clean" style="width:85%" src="imagenes/lotsofcats.png">
-  </section>
-  <section data-background="imagenes/crazycat.gif">
-    <h4 class="fragment" style="position:absolute;top:20%;margin-left:400px;background:white">Domesticando una jauría de metagatos</h4>
-    <h4 class="fragment" style="position:absolute;top:40%;margin-left:400px;background:white">Citizen science y Smart cities, las futuras IDE</h4>    
+    <img class="clean lotsofcats">
+    <div>and a GeoNetwork developer</div>
   </section>
 </section>
 <section>
-  <section data-background="imagenes/cats_boxes.png">
-  </section>
-  <section data-background="imagenes/surprise_cat.gif">
-  </section>
-</section>
-<section>
-  <section data-background="http://share.gifyoutube.com/v1z9a5.gif">
-  </section>
-  <section data-background="imagenes/whymatters.jpg">
-    <p style="position:absolute;bottom:5px;right:5px;font-size:50%"><a href="https://www.eff.org/">Electronic Frontier Foundation</a></p>
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/they_know.png">
-    <a href="http://abstrusegoose.com/553" style="bottom:1px;right:0px;position:absolute;font-size:50%">original</a>
-  </section>
-  <section data-background="imagenes/military_strategy.gif">
-  </section>
-  <section data-background="imagenes/matamos_metadatos.png">
-  </section>
   <section>
-    <a target="_blank" href="http://www.zeit.de/datenschutz/malte-spitz-data-retention">
-       <img class="clean" style="height:100%" src="imagenes/malteSpitz.png"/>
-    </a>
+    <h2>Recent Developments</h2>
   </section>
-  <section data-background="imagenes/cat_drone.gif">
+</section>
+<section>
+  <section>
+    <h2>Current Developments</h2>
   </section>
-  <section data-background="imagenes/lawyercat.jpg">
-  </section>
-  <section data-background="imagenes/gatetes.jpg">
+</section>
+<section>
+  <section>
+    <h2>Future Developments</h2>
+    <p>Improved Scalability -> Following session!</p>
+    <p>Improved Workflow</p>
   </section>
 </section>
 </div>
