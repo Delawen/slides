@@ -27,4 +27,4 @@
 	url = https://github.com/hakimel/reveal.js.git
 [submodule "2017/PaP"]
 	path = 2017/PaP
-	url = git@github.com:Delawen/slides.git
+	url = https://github.com/Delawen/slides.git
