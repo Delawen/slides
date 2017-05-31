@@ -25,6 +25,3 @@
 [submodule "reveal"]
 	path = reveal
 	url = https://github.com/hakimel/reveal.js.git
-[submodule "2017/PaP"]
-	path = 2017/PaP
-	url = https://github.com/Delawen/slides.git
