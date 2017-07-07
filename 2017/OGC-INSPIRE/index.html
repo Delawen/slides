@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>OGC/INSPIRE versus OpenData/LinkedData</title>
+
+		<meta name="description" content="In Europe we have already finished the standarize and make completely interoperable phase on the metadata. So this means you can query metadata on any european SDI the same way. Now we are on the phase of doing the same but with data too. So in a few years, every SDI will have the same formats and protocols so we can use the same queries and algorithms on any SDI. But at the same time we have all this wild open data formats that don't follow strict rules. Or follow strict rules but are de facto standards and can evolve parallel on different regions at the same time. How can we deal with this? Same approach with protocols: OGC versus RDF/Sparql/... Can we make both approaches interoperable? How can we evolve and improve SDI and open data platforms (or are they the same? :) ) so we still have the easiness and freedom to upload whatever we need and at the same time, being able to work on an easy way with that data.">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+		<meta name="author" content="Paul van Genuchten">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+<div class="reveal">
+<header style="position:fixed;top:0px;left:0px;z-index: 3;"><img style="max-height:60px;z-index:3" class="geocat"/></header>
+<header style="position:fixed;top:0px;right:0px;z-index: 3;"><img style="max-height:60px" src="imagenes/foss4g-europe.png"/></header>
+<div class="slides">
+<section data-background="https://pbs.twimg.com/media/C5JLpT2WMAASjaC.jpg">
+  <div style="padding-top:20%">
+    <h2 style="text-transform:uppercase">OGC/INSPIRE versus OpenData/LinkedData</h2>
+    <h3>Benefits of working in a highly standardised community</h3>
+    <h4><a href="https://twitter.com/delawen">María Arias de Reyna</a> and <a href="https://twitter.com/pvangenuchten">Paul van Genuchten</a></h4>
+    <h4>at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h4>
+  </div>
+</section>
+<section>
+  <section>
+    <h2>Who am I and why do I dare talk about this</h2>
+    <div style="float:left;max-width:49%">
+	<p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
+      <img title="GeoCat Herd" style="max-width:800px;max-height:150px;margin:0px" class="clean" src="https://pbs.twimg.com/media/CkbClWVXIAQYY1M.jpg">
+      <img title="GeoCats" style="max-width:800px;max-height:150px;margin:0px" class="clean lotsofcats"></div>
+    <div>
+      <img title="GeoCat" style="max-width:800px;max-height:400px;margin:0px"  class="quienessomos clean">
+    </div>
+  </section>
+</section>
+  <section data-background="https://pbs.twimg.com/media/DAZH_6cXUAEPduY.jpg">
+    <aside class="notes">How do we share data? How do we store data? What format to use? </aside>
+  </section>
+  <section data-background="imagenes/start.png" data-background-size="contain">
+    <aside class="notes">
+      Each community defined its own domain.
+      SOAP vs REST 
+      http://agile2010.dsi.uminho.pt/pen/ShortPapers_PDF/73_DOC.pdf
+    </aside>
+  </section>
+  <section data-background="imagenes/domains.png" data-background-size="contain">
+    <aside class="notes">
+      And those domains sometimes overlap.
+      Cross-domain harmonization. 
+      http://inspire.ec.europa.eu/documents/Network_Services/Linked_Data_&_INSPIRE_v101.pdf
+      
+      <table>
+        <tr>
+          <td>Mandated in INSPIRE</td>
+          <td>Description</td>
+          <td>Linked alignment</td>
+        </tr>
+        <tr>
+          <td>Spatial Objects </td>
+          <td>Features that you can recognise like buildings and roads</td>
+          <td>We can associate other information with these objects</td>
+        </tr>
+        <tr>
+          <td>Unique identifiers</td>
+          <td>Persistent and traceable</td>
+          <td>Required to explicitly link data</td>
+        </tr>
+        <tr>
+          <td>Classification of the objects</td>
+          <td>Explicit type [codelist and enumerations will be mandatory]</td>
+          <td>Ontologies</td>
+        </tr>
+        <tr>
+          <td>All other aspects are also predefined</td>
+          <td>Coord Systems, Network Services Registries etc</td>
+          <td>Mainstream information benefits from economies of scale & reuse</td>
+        </tr>
+      </table>
+    </aside>
+  </section>
+  <section data-background="https://pbs.twimg.com/media/C92e3FuWAAANziI.jpg">
+  <aside class="notes">It is unrealistic to try converge all domains, because...</aside>
+  </section>
+  <section data-background="https://imgs.xkcd.com/comics/standards.png" data-background-size="contain">
+  <aside class="notes">there will always be people who won't join.</aside>
+  </section>
+  <section data-background="https://pbs.twimg.com/media/Cm0oFoDWEAAu1k5.jpg">
+    <aside class="notes">
+    <h2>Interfaces between communities</h2>
+    <h3>Interoperability</h3>
+    <p>Plus if the community is highly standarized</p>
+    But for each transformation, you may lose data (golden cat eyes). So you may have the same data but with less fields or attributes.
+    We have to make sure we don't lose anything important on the transformation. And try to converge in having the same data in all formats, even if the format is different. Same with protocols.
+    </aside>
+  </section>
+  <section data-background="https://pbs.twimg.com/media/DAKYQyRUQAAYdAU.jpg">
+  <aside class="notes"><p>Some universal rules all communities should adopt
+    <ul>
+        <li>Use (resolvable) URI’s to identify things</li>
+        <li>Records in a database (exposed via WFS)</li>
+        <li>Metadata in a catalogue</li>
+        <li>References to codelist items</li>
+        <li>Re-use ontologies and codelists where possible</li>
+     </ul>
+    </p>
+    </aside>
+  </section>
+  <section data-background="imagenes/proxy.png" data-background-size="contain">
+    <aside class="notes">Example of Proxy approach. Initial situation.</aside>
+  </section>
+  <section data-background="imagenes/proxy2.png" data-background-size="contain">
+    <aside class="notes">Example of Proxy approach. Full interaction.</aside>
+  </section>
+  <section>
+    <h2>Use Case 1: Spatial Catalogue to "Open Data" portal</h2>
+    <aside class="notes">The quotes are because a Spatial Catalog may also be "open data".
+    <ul>
+      <li>Requires a transformation from iso19139 to DCAT</li>
+      <li>May need alternative protocols then CSW, eg OAI, RSS Challenges</li>
+      <li>Paginated synchronisation, if the process takes long time, the index may be changed in between</li>
+      <li>If multiple portals are crawled by search engines, you may end up with multiple hits of the same dataset in the search engine, if each portal mints a new URI</li>
+    </ul></aside>
+  </section>
+  <section>
+    <h2>Use Case 2: WFS to search engine</h2>
+    <aside class="notes">
+      <ul>
+        <li>Have a webpage created for every WFS-record (no ajax)</li>
+        <li>Feed the webpages to the search engines with a sitemap or by linking from list pages.</li>
+        <li>Use schema.org microdata to have the search engine crawl the content as structured data</li>
+        <li>Provide value to end-users who are finding your records on the search engines (ability to provide feedback, links to other resources)</li>
+      </ul>
+    </aside>
+  </section>
+  <section>
+    <h2>Available Software</h2>
+    <ul>
+      <li>GeoNetwork </li>
+      <li>WFS harvesting module</li>
+      <li>LDProxy.net</li>
+      <li>Proxy approach</li>
+      <li>New community module for GeoServer?</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Use Case 3: Data and metadata in a Triple Store (RDF store)</h2>
+    <aside class="notes">
+      Link Data strength relies on relationships between objects (semantics).
+      Definition of Triple (subject, predicate, object). Objects and subjects are recursive (can be another triple).
+      Definition of semantic query. eg: Datasets on hydrography, maintained by organisation X, 500m around my current location. 
+    </aside>
+  </section>
+  <section>
+    <h2> Geonetwork as facilitator of RDF</h2>
+    <aside class="notes">TODO</aside>
+  </section>
+  <section>
+    <h2>Feature catalog metadata as a facilitator to RDF</h2>
+    <aside class="notes">  //TODO Redo with less wording.
+      ISO19110 is a TC211 standard to describe the data model of a dataset.
+      Current adoption is quite low.
+      We’re promoting it as a facilitator from Geo to RDF
+      Indicate the featuretype each record represents 
+      For each column describe a label and a link to a concept in an ontology   
+      </aside>
+  </section>
+  <section>
+    <h2>Relevant software</h2>
+      <aside class="notes">  //TODO Redo with less wording. Software is not so relevant, but the concept
+      GeoNetwork -> converts metadata to various formats and exposes in various protocols
+      LDproxy -> provides RDFa, json-ld services on WFS 
+      Virtuoso -> triplestore that can ingest several types of data and expose as sparql
+      Laundromat -> ingests RDF data and exposes in various API’s
+      CKAN -> ingest as iso19139, expose as datapackage </aside>
+  </section>
+  <section>
+    <h2>This is it!</h2>
+     <aside class="notes"> //TODO conclusions </aside>
+  </section>
+</div>
+
+
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>
