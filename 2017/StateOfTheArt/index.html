@@ -31,11 +31,11 @@
 	<body>
 
 <div class="reveal">
-<header style="float:left"><img style="max-height:60px" class="geocat"/></header>
-<header style="float:right"><img style="max-height:60px" src="../OGC-INSPIRE/imagenes/foss4g-europe.png"/></header>
+<header style="position:fixed;top:0px;left:0px;z-index: 3;"><img style="max-height:60px;z-index:3" class="geocat"/></header>
+<header style="position:fixed;top:0px;right:0px;z-index: 3;"><img style="max-height:60px" src="../OGC-INSPIRE/imagenes/foss4g-europe.png"/></header>
 <div class="slides">
 <section data-background-size="contain">
-  <div style="padding-top:20%">
+  <div style="padding-top:20%;max-height:100%">
     <h2 style="text-transform:uppercase">GeoNetwork: State of the Art</h2>
     <img class="logogn clean"/>
     <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
@@ -65,7 +65,6 @@
     <h2>Quick Overview</h2>
     <div>Mostly developed by europeans</div>
     <img class="clean" src="imagenes/punchcard.png">
-    <img style="position:absolute;top:15%;left:10%;width:100%" class="fragment clean" src="imagenes/cat-gold.jpg">
     <div>on their work time</div>
   </section>
   <section>
@@ -76,42 +75,38 @@
 		src="https://pbs.twimg.com/media/CkbClWVXIAQYY1M.jpg">
     <div>where we try to catch up</div>
   </section>
-  <section>
-    <h2>Quick Overview</h2>
-    <div>Stakeholders Meeting</div>
-    <img class="clean"
-		style="max-height:70%;max-width:70%" 
-		src="imagenes/stakeholders.jpg">
-    <div>where we try to align views and define a rough roadmap</div>
-  </section>
 </section>
 <section>
   <section>
     <h2>Recent Developments</h2>
       <p><a href="https://github.com/geonetwork/core-geonetwork/wiki/WFS-Filters-based-on-WFS-indexing-with-SOLR">WFS Filters based on WFS indexing with SOLR</a></p>
-      <div style="position:relative">
-        <img class="fragment fade-out" data-fragment-index="0" style="position:absolute;left:15%"
-           src="imagenes/wfssolrindex.png"/>
-        <div class="fragment fade-out" data-fragment-index="1">
-          <img class="fragment fade-in" data-fragment-index="0"  style="position:absolute;left:10%"
-           src="imagenes/wfssolrindex2.png"/>
-        </div>
       <p class="fragment" data-fragment-index="1"><a href="https://github.com/geonetwork/core-geonetwork/wiki/Search-engines">Search engines</a>: nojs, sitemap, schema.org,...</p>
       <p class="fragment" data-fragment-index="5"><a href="https://github.com/metadata101">Metadata 101</a></p>
-      <p class="fragment">Several Harvesters fixes!!</p>
+      <p class="fragment" data-fragment-index="6">Several Harvesters fixes!!</p>
       <p class="fragment">CORS support and improved proxy</p>
       <p class="fragment">Events and listeners</p>
       <p class="fragment">Custom Metadata UUID</p>
       <p class="fragment">"Just created" flag</p>
-      <p class="fragment">CRFS security token + <a href="https://vanilla.geocat.net/geonetwork/doc/api/">API</a></p>
+      <p class="fragment"><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CRFS</a> security token + <a href="https://vanilla.geocat.net/geonetwork/doc/api/">API</a></p>
       <p class="fragment">XSS security improvements</p>
       <p class="fragment">New languages!</p>
+    
+    <div class="fragment fade-out" data-fragment-index="6">
+      <img class="fragment fade-in" data-fragment-index="5"  style="position:absolute;left:4px;top:5px"
+       src="imagenes/metadata101.jpg"/>
+    </div>
+    <img class="fragment fade-out" data-fragment-index="0" style="position:absolute;left:15%;top:25%"
+       src="imagenes/wfssolrindex.png"/>
+    <div class="fragment fade-out" data-fragment-index="1">
+      <img class="fragment fade-in" data-fragment-index="0"  style="position:absolute;left:0px;top:25%"
+       src="imagenes/wfssolrindex2.png"/>
+    </div>
   </section>
 </section>
 <section>
   <section>
     <h2>Current Developments</h2>
-      <p>Focus on 3.2.x (and 3.4.x)</p>
+      <p>Focus on 3.2.x (and 3.4.x - develop)</p>
       <img class="clean cat science"/>
       <p class="fragment"><a href="https://github.com/geonetwork/core-geonetwork/pull/1527">Drafted metadata</a></p>
       <p class="fragment"><a href="https://github.com/geonetwork/core-geonetwork/wiki/SOS-support">SOS support</a></p>
