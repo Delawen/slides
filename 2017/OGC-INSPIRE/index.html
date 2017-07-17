@@ -35,9 +35,9 @@
 <header style="position:fixed;top:0px;left:0px;z-index: 3;"><img style="max-height:60px;z-index:3" class="geocat"/></header>
 <header style="position:fixed;top:0px;right:0px;z-index: 3;"><img style="max-height:60px" src="imagenes/foss4g-europe.png"/></header>
 <div class="slides">
-<section data-background="https://pbs.twimg.com/media/C5JLpT2WMAASjaC.jpg">
+<section data-background="imagenes/titulo.jpg">
   <div style="padding-top:20%">
-    <h2 style="text-transform:uppercase">OGC/INSPIRE versus OpenData/LinkedData</h2>
+    <h2 style="text-transform:uppercase;color:white;text-shadow:1px 1px black">OGC/INSPIRE versus OpenData/LinkedData</h2>
     <h3>Benefits of working in a highly standardised community</h3>
     <h4><a href="https://twitter.com/delawen">María Arias de Reyna</a> and <a href="https://twitter.com/pvangenuchten">Paul van Genuchten</a></h4>
     <h4>at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h4>
@@ -48,14 +48,14 @@
     <h2>Who am I and why do I dare talk about this</h2>
     <div style="float:left;max-width:49%">
 	<p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
-      <img title="GeoCat Herd" style="max-width:800px;max-height:150px;margin:0px" class="clean" src="https://pbs.twimg.com/media/CkbClWVXIAQYY1M.jpg">
+      <img title="GeoCat Herd" style="max-width:800px;max-height:150px;margin:0px" class="clean geocatherd" >
       <img title="GeoCats" style="max-width:800px;max-height:150px;margin:0px" class="clean lotsofcats"></div>
     <div>
       <img title="GeoCat" style="max-width:800px;max-height:400px;margin:0px"  class="quienessomos clean">
     </div>
   </section>
 </section>
-  <section data-background="https://pbs.twimg.com/media/DAZH_6cXUAEPduY.jpg">
+  <section data-background="imagenes/thinking.jpg">
     <aside class="notes">How do we share data? How do we store data? What format to use? </aside>
   </section>
   <section data-background="imagenes/start.png" data-background-size="contain">
@@ -63,10 +63,6 @@
       Each community defined its own domain.
       SOAP vs REST 
       http://agile2010.dsi.uminho.pt/pen/ShortPapers_PDF/73_DOC.pdf
-    </aside>
-  </section>
-  <section data-background="imagenes/domains.png" data-background-size="contain">
-    <aside class="notes">
       And those domains sometimes overlap.
       Cross-domain harmonization. 
       http://inspire.ec.europa.eu/documents/Network_Services/Linked_Data_&_INSPIRE_v101.pdf
@@ -100,26 +96,25 @@
       </table>
     </aside>
   </section>
-  <section data-background="https://pbs.twimg.com/media/C92e3FuWAAANziI.jpg">
+  <section data-background="imagenes/unicorn.jpg">
   <aside class="notes">It is unrealistic to try converge all domains, because...</aside>
   </section>
-  <section data-background="https://imgs.xkcd.com/comics/standards.png" data-background-size="contain">
+  <section data-background="imagenes/standards.png" data-background-size="contain">
   <aside class="notes">there will always be people who won't join.</aside>
   </section>
-  <section>
-  Metadata crosswalking implies mappings from popular geospatial metadata schemas to the Dublin Core vocabulary, addition of extra metadata elements and expressing the metadata terms as RDF
-    <aside class="notes">http://svn.aksw.org/projects/GeoKnow/Public/D2.7.1_Geodata.gov.gr_Geospatial_Data_as_Linked_Data.pdf</aside>
-  </section>
-  <section data-background="https://pbs.twimg.com/media/Cm0oFoDWEAAu1k5.jpg">
+  <section data-background="imagenes/conversion.jpg">
     <aside class="notes">
     <h2>Interfaces between communities</h2>
     <h3>Interoperability</h3>
     <p>Plus if the community is highly standarized</p>
     But for each transformation, you may lose data (golden cat eyes). So you may have the same data but with less fields or attributes.
     We have to make sure we don't lose anything important on the transformation. And try to converge in having the same data in all formats, even if the format is different. Same with protocols.
+    
+  Metadata crosswalking implies mappings from popular geospatial metadata schemas to the Dublin Core vocabulary, addition of extra metadata elements and expressing the metadata terms as RDF
+    http://svn.aksw.org/projects/GeoKnow/Public/D2.7.1_Geodata.gov.gr_Geospatial_Data_as_Linked_Data.pdf
     </aside>
   </section>
-  <section data-background="https://pbs.twimg.com/media/DAKYQyRUQAAYdAU.jpg">
+  <section data-background="imagenes/bigsmall.jpg">
   <aside class="notes"><p>Some universal rules all communities should adopt
     <ul>
         <li>Use (resolvable) URI’s to identify things</li>
@@ -131,14 +126,20 @@
     </p>
     </aside>
   </section>
+  <section  data-background="imagenes/gaticos.jpg">
+  <aside class="notes"> Subtetlies
+ <p> multi-lingual
+content is one of INSPIRE objectives. In its schema specifications, attribute 'language' in
+geographical names is given according to ISO 639-3 (i.e., three-letter codes like 'eng', 'ell', or
+'ita'). However, for language-tagged literals in RDF, a two-letter encoding (e.g., 'en', 'el',
+'it') according to ISO 639-1 must be utilized instead. 
+    </p>
+    </aside>
+  </section>
   <section data-background="imagenes/proxy.png" data-background-size="contain">
     <aside class="notes">Example of Proxy approach. Initial situation.</aside>
   </section>
   <section data-background="imagenes/proxy2.png" data-background-size="contain">
-    <aside class="notes">Example of Proxy approach. Full interaction.</aside>
-  </section>
-  <section>
-    <h2>Use Case 1: Spatial Catalogue to "Open Data" portal</h2>
     <aside class="notes">The quotes are because a Spatial Catalog may also be "open data".
     <ul>
       <li>Requires a transformation from iso19139 to DCAT</li>
@@ -149,42 +150,17 @@
     This is really the first DCAT mention in the whole presentation?
     </aside>
   </section>
-  <section>
-    <h2>Use Case 2: WFS to search engine</h2>
+  <section data-background="imagenes/spidercat.png" data-background-size="contain">
     <aside class="notes">
-      <ul>
-        <li>Have a webpage created for every WFS-record (no ajax)</li>
-        <li>Feed the webpages to the search engines with a sitemap or by linking from list pages.</li>
-        <li>Use schema.org microdata to have the search engine crawl the content as structured data</li>
-        <li>Provide value to end-users who are finding your records on the search engines (ability to provide feedback, links to other resources)</li>
-      </ul>
+      crawler-ready. schema.org. json-ld.
     </aside>
   </section>
-  <section>
-    <h2>Available Software</h2>
-    <ul>
-      <li>GeoNetwork </li>
-      <li>WFS harvesting module</li>
-      <li>LDProxy.net</li>
-      <li>Proxy approach</li>
-      <li>New community module for GeoServer?</li>
-    </ul>
-  </section>
-  <section>
-    <h2>Use Case 3: Data and metadata in a Triple Store (RDF store)</h2>
+  <section data-background="imagenes/triplestore.jpg" >
     <aside class="notes">
       Link Data strength relies on relationships between objects (semantics).
       Definition of Triple (subject, predicate, object). Objects and subjects are recursive (can be another triple).
       Definition of semantic query. eg: Datasets on hydrography, maintained by organisation X, 500m around my current location. 
-    </aside>
-  </section>
-  <section>
-    <h2> Geonetwork as facilitator of RDF</h2>
-    <aside class="notes">TODO</aside>
-  </section>
-  <section>
-    <h2>Feature catalog metadata as a facilitator to RDF</h2>
-    <aside class="notes">  //TODO Redo with less wording.
+    
       ISO19110 is a TC211 standard to describe the data model of a dataset.
       Current adoption is quite low.
       We’re promoting it as a facilitator from Geo to RDF
@@ -192,18 +168,16 @@
       For each column describe a label and a link to a concept in an ontology   
       </aside>
   </section>
-  <section>
-    <h2>Relevant software</h2>
-      <aside class="notes">  //TODO Redo with less wording. Software is not so relevant, but the concept
-      GeoNetwork -> converts metadata to various formats and exposes in various protocols
-      LDproxy -> provides RDFa, json-ld services on WFS 
-      Virtuoso -> triplestore that can ingest several types of data and expose as sparql
-      Laundromat -> ingests RDF data and exposes in various API’s
-      CKAN -> ingest as iso19139, expose as datapackage </aside>
+  <section data-background="imagenes/catcomputer.jpg" >
+      <aside class="notes">http://www.opengeospatial.org/standards/geosparql</aside>
+    <h2>GeoNetwork </h2>
+    <h2>LDProxy</h2>
+    <h2>Virtuoso</h2>
+    <h2>GeoSparql</h2>
   </section>
-  <section>
-    <h2>This is it!</h2>
-     <aside class="notes"> //TODO conclusions </aside>
+  <section data-background="imagenes/beercat.jpg" >
+     <h3 style="color:white;text-shadow: 1px 1px black;position:absolute;top:40%;left:40%">maria at geocat·net</h3>
+     <aside class="notes"> Thanks, questions, contact us! </aside>
   </section>
 </div>
 
