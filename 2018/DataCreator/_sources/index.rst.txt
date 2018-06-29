@@ -1,0 +1,29 @@
+.. _index.rst:
+
+GeoNetwork 3 data creator training manual
+=========================================
+
+Welcome to the GeoNetwork 3 data creator training manual by GeoCat. The manual contains hands-on exercises explaining how to install and configure the GeoNetwork system.
+
+This course is an introduction to GeoNetwork 3 node usage from the perspective of a data creator.
+
+Course modules focus on the use and deployment of GeoNetwork opensource from the getting started with metadata management, administration and production deployments.
+
+.. warning::
+This course is based on GeoNetwork 3.4. Newer versions of GeoNetwork are not guaranteed to contain the exact functionality as written, but should be reasonably similar.
+
+
+Modules
+-------
+
+.. toctree::
+    :maxdepth: 2
+
+    introduction/index.rst
+    basic-configuration/index.rst
+    profile-implementation/index.rst
+    map-customization/index.rst
+    metadata-view/index.rst
+    editor-customization/index.rst
+    ckan-integration/index.rst
+    migrate/index.rst

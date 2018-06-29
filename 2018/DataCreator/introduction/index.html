@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Introduction to Metadata and Catalogues &#8212; GeoNetwork 3 data creator training manual v3.4.2 GeoNetwork 3 data creator training manual</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/training.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring the catalog" href="../basic-configuration/index.html" />
+    <link rel="prev" title="GeoNetwork 3 data creator training manual" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GeoNetwork 3 data creator training manual</a>
+        <span class="navbar-text navbar-version pull-left"><b>3.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Metadata and Catalogues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-geonetwork-opensource">Introduction to GeoNetwork opensource</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-configuration/index.html">Configuring the catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#catalog-description">Catalog description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#catalog-server">Catalog Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#intranet-parameters">Intranet parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#proxy-server">Proxy server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#feedback">Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../profile-implementation/index.html">Profile Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../profile-implementation/index.html#create-a-new-profile">Create a new profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile-implementation/index.html#load-the-created-custom-profile">Load the created custom profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../map-customization/index.html">Custom maps and layers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../map-customization/index.html#background-layers">Background layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map-customization/index.html#store-a-map">Store a map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata-view/index.html">Custom metadata views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editor-customization/index.html">Custom Metadata Editor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#fields-with-fieldset">Fields with Fieldset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#multilingual-fields">Multilingual Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#defining-a-view">Defining a view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#defining-a-tab">Defining a tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-section-to-a-tab">Adding a section to a tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-field">Adding a field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-template-based-field">Adding a template based field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-documentation-or-help">Adding documentation or help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-button">Adding a button</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ckan-integration/index.html">Integrate with CKAN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#harvest-to-geonetwork">Harvest to GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#harvest-from-geonetwork">Harvest from GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#making-data-available-as-rdf">Making data available as RDF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../migrate/index.html">Migrate from older versions of GeoNetwork</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migrate/index.html#default-method">Default method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrate/index.html#manual-migration">Manual migration</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Introduction to Metadata and Catalogues</a><ul>
+<li><a class="reference internal" href="#introduction-to-geonetwork-opensource">Introduction to GeoNetwork opensource</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../index.html" title="Previous Chapter: GeoNetwork 3 data creator training manual"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; GeoNetwork 3 ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../basic-configuration/index.html" title="Next Chapter: Configuring the catalog"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Configuring t... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="introduction-to-metadata-and-catalogues">
+<span id="introduction-rst"></span><h1>Introduction to Metadata and Catalogues<a class="headerlink" href="#introduction-to-metadata-and-catalogues" title="Permalink to this headline">¶</a></h1>
+<p>These days the term metadata, also known as ‘data about data’, is used in a variety of contexts. Phone companies use the term for example to annotate phone conversations with additional tags, like which persons are calling for how long. In the spatial domain the term is generally used for documents that describe spatial assets, such as sensor observations, datasets, spatial services, maps, scientific articles and documents.</p>
+<p>Metadata serves 2 main goals; discovery and assessment. Spatial catalogues, but also search engines, are able to ingest metadata and make it queryable, so users are able to discover resources that may be of interest to them. A second goal is assessment. Users are enabled to assess if a dataset is relevent for their use case by checking its metadata. Important attributes for assessment are potential usage or legal constraints (data license), date of modification, data qulity and lineage information.</p>
+<p>In recent decades the ISO Technical Comitee 211 (ISO/TC211) together with Open Geospatial Consortium (OGC)  has set up some standards for stadardising metadata within the spatial domain. These standards are generally refered to as the ISO191* standards. Important examples are ISO19115, ISO19139, ISO19110, ISO19157.</p>
+<p>On top of the encoding standards the stadard “Catalogue Service for the web” (CSW) heas been adopted, which is a standardised protocol to exchange and query metadata over the web. This standard facilitated the development of multiple catalogue clients which nowedays allow to query any spatial catalogue from a  range of GIS clients, such as OpenLayers, ArcGIS and QGIS.</p>
+<p>A typical Catalogue contains options to ‘harvest’ (ingest) metadata from other catalogues, in this way creating a network of catalogues facilitating wider discovery of spatial assets.</p>
+<div class="section" id="introduction-to-geonetwork-opensource">
+<h2>Introduction to GeoNetwork opensource<a class="headerlink" href="#introduction-to-geonetwork-opensource" title="Permalink to this headline">¶</a></h2>
+<p>GeoNetwork opensource is a standard based and decentralised spatial information management system, designed to enable access to geo-referenced databases and cartographic products from a variety of data providers through descriptive metadata, enhancing the spatial information exchange and sharing between organisations and their audience, using the capacities and the power of the Internet.</p>
+<p>The system provides a broad community of users with easy and timely access to available spatial data and thematic maps from multidisciplinary sources, that may in the end support informed decision making.</p>
+<p>The main goal of the software is to increase collaboration within and between organisations for reducing duplication and enhancing information consistency and quality and to improve the accessibility of a wide variety of geographic information along with the associated information, organised and documented in a standard and consistent way.</p>
+<p>Main Features:</p>
+<ul class="simple">
+<li>Instant search on local and distributed geospatial catalogues</li>
+<li>Uploading and downloading of data, documents, PDF’s and any other content</li>
+<li>An interactive Web map viewer that combines Web Map Services from distributed servers around the world</li>
+<li>Online map layout generation and export in PDF format</li>
+<li>Online editing of metadata with a powerful template system, including validation options</li>
+<li>Scheduled harvesting and synchronisation of metadata between distributed catalogues</li>
+<li>Groups and users management</li>
+<li>Fine grained access control</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017 GeoCat BV.<br/>
+      Last updated on Jun 29, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

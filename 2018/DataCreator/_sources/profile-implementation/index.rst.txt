@@ -1,0 +1,154 @@
+.. _data:
+
+Profile Implementation
+######################
+
+Although there are many schema plugins available, sometimes we need to adapt the XSD definition or the validation rules to our use cases. On this section we will learn how to do it on a clean easy way.
+
+Create a new profile
+====================
+
+To create a new profile you should start by selecting an already existing schema plugin. Creating a full schema plugin from scratch is out of scope of this manual.
+
+Choose the schema plugin base
+-----------------------------
+
+The best way to find a schema plugin is visiting the Metadata 101 repository in https://github.com/Metadata101
+
+.. figure:: img/metadata101.png
+
+On that repository, we can find both base ISO schemas and some of the profiles already used by some organizations. We choose the schema that adapts better to our needs and clone it on the schemas folder of GeoNetwork.
+
+On this case, we are going to use ISO19139 to generate IS019139-custom:
+
+.. code-block:: bash
+   :emphasize-lines: 2
+
+   $ cd core-geonetwork
+   $ cp -r schemas/iso19139/ schemas/iso19139-custom
+   $ ls schemas/iso19139-custom
+      doc  pom.xml  src  target
+   $ mv schemas/iso19139-custom/src/main/plugin/iso19139/ schemas/iso19139-custom/src/main/plugin/iso19139-custom
+
+Now we have to make sure the schema is copied on the right repository. To do this we add the following resource in pom.xml:
+
+.. code-block:: xml
+
+    <resource>
+      <directory>${project.basedir}/../schemas/iso19139-custom/src/main/plugin</directory>
+      <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
+    </resource>  
+
+This will make sure the files are correctly copied on the schema plugins folder
+
+Adapt the XSD
+-------------
+
+Even when we are using an ISO schema, sometimes we may want to tweak the definition of that schema to adapt to our needs. 
+
+The xsd is defined on the schemas/iso19139-custom/src/main/plugin/iso19139/schema folder. Different namespaces are defined in different folders, so you will have to search for the element you want to modify on this folder and define the XSD rules that apply to that element. For example, we may want to restrict the options available for a conditional element.
+
+On the following xml extracted from schema/gmd/identification.xsd, we can force a minOccurs 1 in some of the elements that explicitly defines minOccurs as 0. This way we will force the XSD rules to check that there is a minimum of one element of that type on the identification gmd definition.
+
+.. code-block:: xml
+
+  <xs:complexType name="AbstractMD_Identification_Type" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Basic information about data</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="gco:AbstractObject_Type">
+        <xs:sequence>
+          <xs:element name="citation" type="gmd:CI_Citation_PropertyType"/>
+          <xs:element name="abstract" type="gco:CharacterString_PropertyType"/>
+          <xs:element name="purpose" type="gco:CharacterString_PropertyType" minOccurs="0"/>
+          <xs:element name="credit" type="gco:CharacterString_PropertyType" minOccurs="0"
+                      maxOccurs="unbounded"/>
+          <xs:element name="status" type="gmd:MD_ProgressCode_PropertyType" minOccurs="0"
+                      maxOccurs="unbounded"/>
+          <xs:element name="pointOfContact" type="gmd:CI_ResponsibleParty_PropertyType"
+                      minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="resourceMaintenance" type="gmd:MD_MaintenanceInformation_PropertyType"
+                      minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="graphicOverview" type="gmd:MD_BrowseGraphic_PropertyType" minOccurs="0"
+                      maxOccurs="unbounded"/>
+          <xs:element name="resourceFormat" type="gmd:MD_Format_PropertyType" minOccurs="0"
+                      maxOccurs="unbounded"/>
+          <xs:element name="descriptiveKeywords" type="gmd:MD_Keywords_PropertyType" minOccurs="0"
+                      maxOccurs="unbounded"/>
+          <xs:element name="resourceSpecificUsage" type="gmd:MD_Usage_PropertyType" minOccurs="0"
+                      maxOccurs="unbounded"/>
+          <xs:element name="resourceConstraints" type="gmd:MD_Constraints_PropertyType"
+                      minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="aggregationInfo" type="gmd:MD_AggregateInformation_PropertyType"
+                      minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+Although it is adivsable to follow the ISO rules and only make the XSD more strict to still be compliant with the standards, GeoNetwork does not force you to follow a standard. You can create any set of XSD rules and that's what GeoNetwork will use to show, edit and validate your metadata.
+
+
+Adapt the validation rules
+--------------------------
+
+It is very common to adapt the validation rules to make sure you data complies with your specific needs. 
+
+There are two types of validation rules. The most basic set of rules is based on the same XSD we have been modifying on the previous section. GeoNetwork just makes sure that the xml of the metadata is conformant with the XSD definition.
+
+But for more complex rules we have the schematrons. Schematrons allow you to define rules based on the content or conditional rules that depend on other elements. Schematrons are files placed on a folder called "schematrons". You can have disabled schematrons if you add "disabled" to the filename.
+
+A schematron pattern contains a title and a rule. The rule can make some checks on elements and if the test does not pass, it will generate an (internationalized) error message to describe the problem, which will be shown on the metadata editor validation box. 
+
+On the following example, this schematron checks values of density inside the gmd:MD_Medium element: if there is a value for density, it has to have a defined unit for density:
+
+.. code-block:: xml
+
+	<sch:pattern>
+		<sch:title>$loc/strings/M18</sch:title>
+		<sch:rule context="//gmd:MD_Medium">
+			<sch:let name="density" value="gmd:density and not(gmd:densityUnits[@gco:nilReason!='missing' or not(@gco:nilReason)])"/>
+			<sch:assert test="$density = false()"
+				>$loc/strings/alert.M18</sch:assert>
+			<sch:report test="$density = false()"
+				><sch:value-of select="$loc/strings/report.M18"/> <sch:value-of select="gmd:density"/> 
+				<sch:value-of select="gmd:densityUnits/gco:CharacterString"/></sch:report>
+		</sch:rule>
+	</sch:pattern>
+	
+We can add as many patters as we want to the schematron file. 
+
+Sometimes we want to apply a certain set of rules only if some condition apply. For example, we may want to reinforce some specific rules for all metadata that contains a specific keyword. We may add that conditional to each pattern of the schematron file or configure on the admin console what schematron set of rules will be applied on each case:
+
+.. figure:: img/rules.png
+
+
+Load the created custom profile
+===============================
+
+Now we can try our custom iso19139 schema and use it.
+
+Click the ``sign in`` to connect as administrator.
+
+.. figure:: img/signin.png
+
+
+Once connected, the top toolbar should provide a link to the ``Admin console`` and your login details.
+
+.. figure:: img/identified-user.png
+
+
+Go to the ``admin console`` and click on ``metadata and templates``:
+
+
+.. figure:: img/metadata-and-templates.png
+
+Choose all standards and click ``load samples`` and then ``load templates`` in order to load examples:
+
+.. figure:: img/templates.png
+
+
+Go back to the search page to see examples:
+
+.. figure:: img/once-samples-are-loaded.png

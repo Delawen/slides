@@ -1,0 +1,28 @@
+body {
+    font-family: "Open Sans", helvetica, arial, sans-serif, "proxima-nova";
+    line-height: 1.8em;
+    font-size: 16px;
+    color: #666;
+}
+
+.navbar-default {
+    background-color: #0099cc;
+    border-color: #0099cc;
+}
+
+.alert-info {
+    background-color: #5D5A58;
+}
+
+h1 {
+    font-weight: bold;
+    color: #1e1446;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    border-bottom: #dadada solid 3px !important;
+    padding-bottom: 5px;
+    font-weight: 200;
+    color: #1e1446;
+}

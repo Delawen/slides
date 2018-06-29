@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>System configuration &#8212; GeoNetwork 3 data creator training manual v3.4.2 GeoNetwork 3 data creator training manual</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/training.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GeoNetwork 3 data creator training manual</a>
+        <span class="navbar-text navbar-version pull-left"><b>3.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction to Metadata and Catalogues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html#introduction-to-geonetwork-opensource">Introduction to GeoNetwork opensource</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Configuring the catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#catalog-description">Catalog description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#catalog-server">Catalog Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#intranet-parameters">Intranet parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#proxy-server">Proxy server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feedback">Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../profile-implementation/index.html">Profile Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../profile-implementation/index.html#create-a-new-profile">Create a new profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../profile-implementation/index.html#load-the-created-custom-profile">Load the created custom profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../map-customization/index.html">Custom maps and layers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../map-customization/index.html#background-layers">Background layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map-customization/index.html#store-a-map">Store a map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata-view/index.html">Custom metadata views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editor-customization/index.html">Custom Metadata Editor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#fields-with-fieldset">Fields with Fieldset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#multilingual-fields">Multilingual Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#defining-a-view">Defining a view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#defining-a-tab">Defining a tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-section-to-a-tab">Adding a section to a tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-field">Adding a field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-template-based-field">Adding a template based field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-documentation-or-help">Adding documentation or help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-button">Adding a button</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ckan-integration/index.html">Integrate with CKAN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#harvest-to-geonetwork">Harvest to GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#harvest-from-geonetwork">Harvest from GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#making-data-available-as-rdf">Making data available as RDF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../migrate/index.html">Migrate from older versions of GeoNetwork</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migrate/index.html#default-method">Default method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrate/index.html#manual-migration">Manual migration</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">System configuration</a><ul>
+<li><a class="reference internal" href="#catalog-description">Catalog description</a></li>
+<li><a class="reference internal" href="#catalog">Catalog</a></li>
+<li><a class="reference internal" href="#catalog-server">Catalog Server</a></li>
+<li><a class="reference internal" href="#intranet-parameters">Intranet parameters</a></li>
+<li><a class="reference internal" href="#z39-50">Z39.50</a></li>
+<li><a class="reference internal" href="#proxy-server">Proxy server</a></li>
+<li><a class="reference internal" href="#feedback">Feedback</a></li>
+<li><a class="reference internal" href="#removed-metadata">Removed metadata</a></li>
+<li><a class="reference internal" href="#metadata-search-results">Metadata search results</a></li>
+<li><a class="reference internal" href="#catalog-service-for-the-web-csw">Catalog Service for the Web (CSW)</a></li>
+<li><a class="reference internal" href="#shibboleth">Shibboleth</a></li>
+<li><a class="reference internal" href="#user-self-registration">User self-registration</a></li>
+<li><a class="reference internal" href="#system-userfeedback">system/userFeedback</a></li>
+<li><a class="reference internal" href="#link-in-metadata-records">Link in metadata records</a></li>
+<li><a class="reference internal" href="#metadata-rating">Metadata rating</a></li>
+<li><a class="reference internal" href="#download-service">Download Service</a></li>
+<li><a class="reference internal" href="#metadata-xlink">Metadata XLink</a></li>
+<li><a class="reference internal" href="#metadata-update">Metadata update</a></li>
+<li><a class="reference internal" href="#search-statistics">Search Statistics</a></li>
+<li><a class="reference internal" href="#index-optimization">Index optimization</a></li>
+<li><a class="reference internal" href="#open-archive-initiative-oai-pmh-provider">Open Archive Initiative (OAI-PMH) Provider</a></li>
+<li><a class="reference internal" href="#inspire-directive-configuration">INSPIRE Directive configuration</a></li>
+<li><a class="reference internal" href="#inspire-atom-feed">INSPIRE Atom Feed</a></li>
+<li><a class="reference internal" href="#multi-threaded-indexing">Multi-Threaded Indexing</a></li>
+<li><a class="reference internal" href="#multilingual-settings">Multilingual Settings</a></li>
+<li><a class="reference internal" href="#metadata-views">Metadata Views</a></li>
+<li><a class="reference internal" href="#metadata-privileges">Metadata Privileges</a></li>
+<li><a class="reference internal" href="#harvesting">Harvesting</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="system-configuration">
+<span id="id1"></span><h1>System configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Most of the system configuration parameters can be changed by administrator users
+using the web interface in <code class="docutils literal notranslate"><span class="pre">Admin</span> <span class="pre">console</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Settings</span></code>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Configuration of these parameters is critically important
+for the catalog in an operational context. Misunderstanding
+some settings may result in a system that does not function as
+expected. For example, downloads may fail to be correctly processed, or
+metadata harvesting from other servers may not work.</p>
+</div>
+<div class="figure">
+<img alt="../_images/settings.png" src="../_images/settings.png" />
+</div>
+<p>Since the settings form is a long form, the ‘save’ button is repeated between
+the sections and will save all settings.</p>
+<div class="section" id="catalog-description">
+<h2>Catalog description<a class="headerlink" href="#catalog-description" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Catalog came</strong> The name of the node. Information that helps identify the
+catalogue to a human user. The name is displayed on the banner, in the CSW
+GetCapabilities.</li>
+<li><strong>Catalog identifier</strong> A universally unique identifier (uuid) that
+distinguishes your catalog from any other catalog. This a unique
+identifier for your catalogue and its best to leave it as a uuid. It will
+be used by harvester using GeoNetwork protocol to identify the source catalog.</li>
+<li><strong>Organization</strong> The organization the node belongs to. Again, this is
+information that helps identify the catalogue to a human user.</li>
+<li><strong>SVN UUID</strong> Subversion repository attached to the node. This identifier is
+created and/or checked on startup to verify that the database match the SVN repository.
+The repository is used for metadata versionning.</li>
+</ul>
+</div>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Version</strong> The version of the catalog (readonly, version of the database)</li>
+<li><strong>Minor version</strong> The minor version of the catalog (readonly, version of the database)</li>
+</ul>
+</div>
+<div class="section" id="catalog-server">
+<h2>Catalog Server<a class="headerlink" href="#catalog-server" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Host</strong> The node’s name or IP number (without <a class="reference external" href="http://">http://</a>). For example,
+they are used during metadata editing to create resource links and
+when returning the server’s capabilities during a CSW request.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>If your node is publicly accessible from the Internet, you have to use the domain name.</li>
+<li>If your node is hidden inside your private network and you have a firewall or web server
+that redirects incoming requests to the node, you have to enter the public address of
+the firewall or web server. A typical configuration is to have an Apache web server
+on address A that is publicly accessible and redirects the requests to a Tomcat server
+on a private address B. In this case you have to enter A in the host parameter.</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><strong>Port</strong> The server’s port number (usually 80 or 8080). If using HTTP, set it to 80.</li>
+<li><strong>Preferred Protocol</strong> Defined the protocol to access the catalog. The HTTP protocol
+used to access the server. Choosing http means that all communication with the catalog
+will be visible to anyone listening to the protocol. Since this includes usernames
+and passwords this is not secure. Choosing https means that all communication with the catalog
+will be encrypted and thus much harder for a listener to decode.</li>
+<li><strong>Secure Port</strong> The secure port number.</li>
+<li><strong>Log level</strong> Define the logging level of the application. After modification,
+log can be checked in the <code class="docutils literal notranslate"><span class="pre">Statistics</span> <span class="pre">&amp;</span> <span class="pre">status</span></code> section under <code class="docutils literal notranslate"><span class="pre">Activity</span></code>.</li>
+</ul>
+<div class="figure">
+<img alt="../_images/log-view.png" src="../_images/log-view.png" />
+</div>
+</div>
+<div class="section" id="intranet-parameters">
+<h2>Intranet parameters<a class="headerlink" href="#intranet-parameters" title="Permalink to this headline">¶</a></h2>
+<p>A common need for an organisation is to automatically discriminate between anonymous
+internal users that access the node from within an organisation (Intranet) and
+anonymous external users from the Internet. The catalog defines anonymous users
+from inside the organisation as belonging to the group <em>Intranet</em>, while anonymous
+users from outside the organisation are defined by the group <em>All</em>. To automatically
+distinguish users that belong to the Intranet group you need to tell the catalog
+the intranet IP address and netmask.</p>
+<ul class="simple">
+<li><strong>Netmask</strong> The intranet netmask (eg. 255.255.255.0).</li>
+<li><strong>Network*</strong> The intranet address in IP form (eg. 147.109.100.0).</li>
+</ul>
+</div>
+<div class="section" id="z39-50">
+<h2>Z39.50<a class="headerlink" href="#z39-50" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Enable Z39.50 Server</strong> Enable Z39.50 server. Restart the catalog to make this change active.</li>
+<li><strong>Port</strong> Change the Z39.50 listening port. Restart the catalog to make this change active.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="proxy-server">
+<h2>Proxy server<a class="headerlink" href="#proxy-server" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Use proxy</strong> Enable the proxy in case the catalog is behind a proxy and need
+to use it to access remote resources.</li>
+<li><strong>Proxy Host</strong> The proxy IP address or name</li>
+<li><strong>Port</strong> The proxy port</li>
+<li><strong>Proxy username</strong> The username</li>
+<li><strong>Proxy user password</strong> The username password</li>
+<li><strong>*Ignore host list</strong> To bypass specific hosts enter a specific IP address or
+host name such as www.mydomain.com or an address range using wildcards,
+such as 192.168.2.*. Use | to separate the different host values.</li>
+</ul>
+<p>JVM proxy parameters may also be required to properly set the proxy for all remote
+access.</p>
+</div>
+<div class="section" id="feedback">
+<span id="system-config-feedback"></span><h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+<p>Email may be sent by the catalog.</p>
+<ul class="simple">
+<li>you are using the User Self-registration system</li>
+<li>you are using the metadata status workflow (See <span class="xref std std-ref">life-cycle</span>)</li>
+<li>a file uploaded with a metadata record is downloaded and notify privilege is selected</li>
+</ul>
+<p>This section configure the mail server to use.</p>
+<ul class="simple">
+<li><strong>Email</strong> This is the administrator’s email address used to send feedback.</li>
+<li><strong>SMTP host</strong> The mail server name or IP address to use for sending emails.</li>
+<li><strong>SMTP port</strong> The SMTP port.</li>
+<li><strong>Use SSL</strong> Enable SSL mode</li>
+<li><strong>User name</strong> Username if connection is required on the SMTP server</li>
+<li><strong>Password</strong> Username password if connection is required on the SMTP server</li>
+</ul>
+</div>
+<div class="section" id="removed-metadata">
+<h2>Removed metadata<a class="headerlink" href="#removed-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Defines the directory used to store a backup of metadata and data after a delete action. This
+directory is used as a backup directory to allow system administrators to recover metadata and possibly
+related data after erroneous deletion. By default the removed directory
+is created in the GeoNetwork data folder.</p>
+</div>
+<div class="section" id="metadata-search-results">
+<h2>Metadata search results<a class="headerlink" href="#metadata-search-results" title="Permalink to this headline">¶</a></h2>
+<p>Configuration settings in this group determine what the limits are on user interaction with the search results.</p>
+<ul class="simple">
+<li><strong>Maximum Selected Records</strong> The maximum number of search results that a user
+can select and process with the batch operations eg. Set Privileges, Categories etc.
+This parameter avoid to trigger long action which could generate out of memory error.</li>
+</ul>
+</div>
+<div class="section" id="catalog-service-for-the-web-csw">
+<h2>Catalog Service for the Web (CSW)<a class="headerlink" href="#catalog-service-for-the-web-csw" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="csw-configuration.html#csw-configuration"><span class="std std-ref">Configuring CSW</span></a>.</p>
+</div>
+<div class="section" id="shibboleth">
+<h2>Shibboleth<a class="headerlink" href="#shibboleth" title="Permalink to this headline">¶</a></h2>
+<p>See <span class="xref std std-ref">authentication-shibboleth</span>.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Deprecate those useless settings.</p>
+</div>
+</div>
+<div class="section" id="user-self-registration">
+<h2>User self-registration<a class="headerlink" href="#user-self-registration" title="Permalink to this headline">¶</a></h2>
+<p>Enable the self registration form. See <span class="xref std std-ref">user_self_registration</span>.</p>
+</div>
+<div class="section" id="system-userfeedback">
+<h2>system/userFeedback<a class="headerlink" href="#system-userfeedback" title="Permalink to this headline">¶</a></h2>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 3.0.0.</span></p>
+</div>
+</div>
+<div class="section" id="link-in-metadata-records">
+<h2>Link in metadata records<a class="headerlink" href="#link-in-metadata-records" title="Permalink to this headline">¶</a></h2>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 3.0.0: </span>Defined by the formatter.</p>
+</div>
+</div>
+<div class="section" id="metadata-rating">
+<h2>Metadata rating<a class="headerlink" href="#metadata-rating" title="Permalink to this headline">¶</a></h2>
+<p>If enabled, the catalog will calculate user ratings for metadata from this node
+only (not distributed among other GeoNetwork nodes). This only applies to records
+harvested using the GeoNetwork protocol.</p>
+</div>
+<div class="section" id="download-service">
+<h2>Download Service<a class="headerlink" href="#download-service" title="Permalink to this headline">¶</a></h2>
+<p>The metadata editor supports uploading one or more files that can be stored with
+the metadata record. When such a record is displayed in the search results,
+a ‘Download’ button is provided which will allow the user to select which file
+they want to download. This option group determines how that download will occur.</p>
+<ul class="simple">
+<li><strong>Use GeoNetwork simple file download service</strong> Clicking on any file stored
+with the metadata record will deliver that file directly to the user via the browser.</li>
+<li><strong>Use GeoNetwork disclaimer and constraints service</strong> Clicking on any file
+stored with the metadata record will deliver a zip archive to the user
+(via the browser) that contains the data file, the metadata record itself and
+a summary of the resource constraint metadata as an html document. In addition,
+the user will need to provide some details (name, organisation, email and
+optional comment) and view the resource constraints before they can download the zip archive.</li>
+</ul>
+</div>
+<div class="section" id="metadata-xlink">
+<span id="xlink-config"></span><h2>Metadata XLink<a class="headerlink" href="#metadata-xlink" title="Permalink to this headline">¶</a></h2>
+<p>The XLink resolver replaces the content of elements with an attribute &#64;xlink:href
+(except for some elements like srv:operatesOn) with the content obtained from
+the URL content of &#64;xlink:href. The XLink resolver should be enabled if you want
+to harvest metadata fragments or reuse fragments of metadata in your metadata records
+(eg. when using a contact directory).</p>
+<ul class="simple">
+<li><strong>Enable XLink resolution</strong>: Enables/disables the XLink resolver.</li>
+<li><strong>Enable local XLink</strong> Local XLinks are using local://&lt;lang&gt;/&lt;service&gt; URL to
+make references to related sections instead of HTTP URL.
+Local XLinks are usually faster than HTTP XLinks.</li>
+</ul>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">To improve performance the catalog will cache content that is not in the local catalog.
+Clear the cache of XLink from the <code class="docutils literal notranslate"><span class="pre">Admin</span> <span class="pre">console</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Tools</span></code> if the fragments were updated.</p>
+</div>
+<div class="figure">
+<img alt="basic-configuration/img/xlink-cache-clear.png" src="basic-configuration/img/xlink-cache-clear.png" />
+</div>
+</div>
+<div class="section" id="metadata-update">
+<h2>Metadata update<a class="headerlink" href="#metadata-update" title="Permalink to this headline">¶</a></h2>
+<p>For each metadata schema, the catalog has an XSL transformation (<code class="docutils literal notranslate"><span class="pre">update-fixed-info.xsl</span></code>) that it can apply to a metadata
+record belonging to that schema. The aim of this transformation is to allow fixed schema, site and catalog
+information to be applied to a metadata record every time the metadata record is saved in the editor.
+As an example, this transformation is used to build and store the URL of any files
+uploaded and stored with the metadata record in the editor.</p>
+<ul class="simple">
+<li><strong>Automatic Fixes</strong>: Enabled by default. It is recommended you do not use the metadata
+editor when auto-fixing is disabled.  See <a class="reference external" href="http://trac.osgeo.org/geonetwork/ticket/368">http://trac.osgeo.org/geonetwork/ticket/368</a> for more details.</li>
+</ul>
+</div>
+<div class="section" id="search-statistics">
+<span id="search-stats-config"></span><h2>Search Statistics<a class="headerlink" href="#search-statistics" title="Permalink to this headline">¶</a></h2>
+<p>Enables/disables search statistics capture. Search statistics are stored in the database
+and can be queried using the <code class="docutils literal notranslate"><span class="pre">Search</span> <span class="pre">Statistics</span></code> page.</p>
+<p>There is very little compute overhead involved in storing search statistics as they
+are written to the database in a background thread. However database storage for a very busy site must be carefully planned.</p>
+</div>
+<div class="section" id="index-optimization">
+<h2>Index optimization<a class="headerlink" href="#index-optimization" title="Permalink to this headline">¶</a></h2>
+<p>Configuration settings in this group determine when the Lucene Index Optimizer is run.
+By default, this takes place at midnight each day. With recent upgrades to Lucene,
+particularly Lucene 3.6.1, the optimizer is becoming less useful, so this
+configuration group will very likely be removed in future versions.</p>
+</div>
+<div class="section" id="open-archive-initiative-oai-pmh-provider">
+<h2>Open Archive Initiative (OAI-PMH) Provider<a class="headerlink" href="#open-archive-initiative-oai-pmh-provider" title="Permalink to this headline">¶</a></h2>
+<p>Options in this group control the way in which the OAI Server responds to
+OAIPMH harvest requests from remote sites.</p>
+<ul class="simple">
+<li><strong>Datesearch</strong>: OAI Harvesters may request records from GeoNetwork in a date range.
+GeoNetwork can use one of two date fields from the metadata to check for a match
+with this date range. The default choice is <em>Temporal extent</em>, which is the temporal extent
+from the metadata record. The other option, <em>Modification date</em>, uses the modification
+date of the metadata record in the GeoNetwork database. The modification date is
+the last time the metadata record was updated in or harvested by GeoNetwork.</li>
+<li><strong>Resumption Token Timeout</strong>: Metadata records that match an OAI harvest search request
+are usually returned to the harvester in groups with a fixed size (eg. in groups of 10 records).
+With each group a resumption token is included so that the harvester can request
+the next group of records. The resumption token timeout is the time (in seconds)
+that GeoNetwork OAI server will wait for a resumption token to be used.
+If the timeout is exceeded GeoNetwork OAI server will drop the search results and
+refuse to recognize the resumption token. The aim of this feature is to ensure
+that resources in the GeoNetwork OAI server are released.</li>
+<li><strong>Cache size</strong>: The maximum number of concurrent OAI harvests that the GeoNetwork OAI server can support.</li>
+</ul>
+<p>Restart the catalog to take all OAI settings into account.</p>
+</div>
+<div class="section" id="inspire-directive-configuration">
+<h2>INSPIRE Directive configuration<a class="headerlink" href="#inspire-directive-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Enables/disables the INSPIRE support:</p>
+<ul class="simple">
+<li><strong>INSPIRE</strong> Enable indexing of INSPIRE themes and annexes (INSPIRE themes thesaurus MUST be
+added to the list of thesaurus - see <span class="xref std std-ref">anaging-thesaurus</span>).</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>CSW GetCapabilities includes the INSPIRE section (ie. ExtendedCapabilities)</li>
+</ul>
+<blockquote>
+<div><p>that administrator can customize in <code class="docutils literal notranslate"><span class="pre">xml/csw/capabilities_inspire.xml</span></code>
+and response support language extensions. The language provided defines:</p>
+<ul class="simple">
+<li>Natural language fields are returned in the language requested (see <a class="reference internal" href="csw-configuration.html#csw-configuration"><span class="std std-ref">Configuring CSW</span></a>)</li>
+<li>The end-points are returned for the language requested</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>INSPIRE themes are indexed (check that INSPIRE themes thesaurus is available and reindex the catalog)</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><strong>INSPIRE search panel</strong> Add INSPIRE criteria in the advanced search panel (eg. Annex, INSPIRE theme)</li>
+</ul>
+<div class="deprecated">
+<p><span class="versionmodified">Deprecated since version 3.0.0.</span></p>
+</div>
+</div>
+<div class="section" id="inspire-atom-feed">
+<h2>INSPIRE Atom Feed<a class="headerlink" href="#inspire-atom-feed" title="Permalink to this headline">¶</a></h2>
+<p>Allows to define the configuration of Atom Feeds referenced by the metadata to provide services related to the <a class="reference external" href="http://inspire.ec.europa.eu/documents/Network_Services/Technical_Guidance_Download_Services_3.0.pdf">INSPIRE technical guidance for download services</a>:</p>
+<ul>
+<li><p class="first">Select the type of atom feed:</p>
+<ul class="simple">
+<li>Remote: retrieve the atom feeds referenced by the metadata in the online resources.</li>
+<li>Local (to implement in future versions): create the atom feed using the metadata content.</li>
+</ul>
+</li>
+<li><p class="first">Schedule for feed retrieval: the retrieval of the atom feeds can be scheduled to be done periodically.</p>
+</li>
+<li><p class="first">Atom protocol value: value of the protocol in the metadata online resources to identify the atom feed resources (the default value is INSPIRE Atom). GeoNetwork identifies an Atom file from other resources by looking at the protocol value of the onlineresource. Since there is no general accepted value for this protocol, GeoNetwork allows an administrator to set the value to be used as protocol identifying Atom resources:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">transferOptions</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">MD_DigitalTransferOptions</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">onLine</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">CI_OnlineResource</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">linkage</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">URL</span><span class="o">&gt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">geodata</span><span class="o">.</span><span class="n">nationaalgeoregister</span><span class="o">.</span><span class="n">nl</span><span class="o">/</span><span class="n">atom</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">xml</span><span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">URL</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">linkage</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">gmd</span><span class="p">:</span><span class="n">protocol</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span><span class="n">INSPIRE</span> <span class="n">Atom</span><span class="o">&lt;/</span><span class="n">gco</span><span class="p">:</span><span class="n">CharacterString</span><span class="o">&gt;</span>
+          <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">protocol</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">CI_OnlineResource</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">onLine</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">MD_DigitalTransferOptions</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">gmd</span><span class="p">:</span><span class="n">transferOptions</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The following services are available:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/UUID/OpenSearchDescription.xml">http://SERVER/geonetwork/opensearch/eng/UUID/OpenSearchDescription.xml</a></li>
+<li><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/UUID/search?queryParams">http://SERVER/geonetwork/opensearch/eng/UUID/search?queryParams</a></li>
+<li><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/search?queryParams">http://SERVER/geonetwork/opensearch/eng/search?queryParams</a></li>
+<li><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/UUID/describe?queryParams">http://SERVER/geonetwork/opensearch/eng/UUID/describe?queryParams</a></li>
+<li><a class="reference external" href="http://SERVER/geonetwork/opensearch/eng/describe?queryParams">http://SERVER/geonetwork/opensearch/eng/describe?queryParams</a></li>
+</ul>
+<p>In above url’s {UUID} is the fileidentifier of the download service metadata.</p>
+<p>In the  service feed of your download service make sure to add the GeoNetwork OpenSearch endpoint as the OpenSearchDescription for the service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;search&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://SERVER/geonetwork/opensearch/eng/</span><span class="si">{uuid}</span><span class="s2">/OpenSearchDescription.xml&quot;</span>
+<span class="nb">type</span><span class="o">=</span><span class="s2">&quot;application/opensearchdescription+xml&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Open Search document for INSPIRE Download service&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>The INSPIRE Atom/OpenSearch implementation can be verified with the Atom tests in Esdin Test Framework (<a class="reference external" href="http://elfproject.eu/documentation/geotool/etf">http://elfproject.eu/documentation/geotool/etf</a>) or INSPIRE metadata validator (<a class="reference external" href="http://inspire-geoportal.ec.europa.eu/validator2">http://inspire-geoportal.ec.europa.eu/validator2</a>).</p>
+</div>
+<div class="section" id="multi-threaded-indexing">
+<h2>Multi-Threaded Indexing<a class="headerlink" href="#multi-threaded-indexing" title="Permalink to this headline">¶</a></h2>
+<p>Configuration settings in this group determine how many processor threads are allocated to indexing tasks in GeoNetwork. If your machine has many processor cores, you can now determine how many to allocate to GeoNetwork indexing tasks. This can bring dramatic speed improvements on large indexing tasks (eg. changing the privileges on 20,000 records) because GeoNetwork can split the indexing task into a number of pieces and assign them to different processor cores.</p>
+<p><em>Number of processing threads</em> The maximum number of processing threads that can be allocated to an indexing task.</p>
+<p>Note: this option is only available for databases that have been tested. Those databases are PostGIS and Oracle. You should also carefully consider how many connections to the database you allocate in the database configuration as each thread could tie up one database connection for the duration of a long indexing session (for example). See the advanced configuration for more details of how to configure the number of connections in the database connection pool.</p>
+</div>
+<div class="section" id="multilingual-settings">
+<h2>Multilingual Settings<a class="headerlink" href="#multilingual-settings" title="Permalink to this headline">¶</a></h2>
+<p>Options in this group determine how GeoNetwork will search metadata in multiple languages.</p>
+<p><em>Enable auto-detecting search request language:</em> If this option is selected, Geonetwork will analyse the search query and attempt to detect the language that is used before defaulting to the GUI language.</p>
+<p><em>Search results in requested language sorted on top:</em> If this option is selected, a sort clause will be added to each query to ensure that results in the current language are always sorted on top. This is different from increasing priority of the language in that it overrides the relevance of the result.  For example, if a german result has very high relevance but the search language is french then the french results will all come before the german result.</p>
+<p><em>Search only in requested language</em> The options in this section determines how documents are sorted/prioritised relative to the language in the document compared to the search language.</p>
+<ul class="simple">
+<li><em>All documents in all languages (No preferences)</em> - The search language is ignored and will have no effect on the ordering of the results</li>
+<li><em>Prefer documents with translations requested language</em> - Documents with a translation in the search language (anywhere in the document) will be prioritized over documents without any elements in the search language</li>
+<li><em>Prefer documents whose language is the requested language</em> - Documents that are the same language as the search language (ie. the documents that are specified as being in the same language as the search language) are prioritized over documents that are not.</li>
+<li><em>Translations in requested language</em> - The search results will only contain documents that have some translations in the search language.</li>
+<li><em>Document language is the requested language</em> - The search results will contain documents whose metadata language is specified as being the in search language</li>
+</ul>
+</div>
+<div class="section" id="metadata-views">
+<h2>Metadata Views<a class="headerlink" href="#metadata-views" title="Permalink to this headline">¶</a></h2>
+<p>Options in this section enable/disable metadata element groups in the metadata editor/viewer.</p>
+<p><em>Enable simple view</em>: The simple view in the metadata editor/viewer:
+- removes much of the hierarchy from nested metadata records (such as ISO19115/19139)
+- will not let the user add metadata elements that are not already in the metadata record
+It is intended to provide a flat, simple view of the metadata record. A disadvantage of the simple view is that some of the context information supplied by the nesting in the metadata record is lost.
+<em>Enable ISO view</em>: The ISO19115/19139 metadata standard defines three groups of elements:
+- Minimum: those elements that are mandatory
+- Core: the elements that should be present in any metadata record describing a geographic dataset
+- All: all the elements
+<em>Enable INSPIRE view</em>: Enables the metadata element groups defined in the EU INSPIRE directive.
+<em>Enable XML view</em>: This is a raw text edit view of the XML record. You can disable this if (for example), you don’t want inexperienced users to be confused by the XML presentation provided by this view.</p>
+</div>
+<div class="section" id="metadata-privileges">
+<h2>Metadata Privileges<a class="headerlink" href="#metadata-privileges" title="Permalink to this headline">¶</a></h2>
+<p><em>Only set privileges to user’s groups</em>: If enabled then only the groups that the user belongs to will be displayed in the metadata privileges page (unless the user is an Administrator). At the moment this option cannot be disabled and is likely to be deprecated in the next version of GeoNetwork.</p>
+</div>
+<div class="section" id="harvesting">
+<span id="editing-harvested-records"></span><h2>Harvesting<a class="headerlink" href="#harvesting" title="Permalink to this headline">¶</a></h2>
+<p><em>Allow editing on harvested records</em>: Enables/Disables editing of harvested records in the catalogue. By default, harvested records cannot be edited.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017 GeoCat BV.<br/>
+      Last updated on Jun 29, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

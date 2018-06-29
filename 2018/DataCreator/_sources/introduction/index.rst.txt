@@ -1,0 +1,34 @@
+.. _introduction.rst:
+
+Introduction to Metadata and Catalogues
+#######################################
+
+These days the term metadata, also known as 'data about data', is used in a variety of contexts. Phone companies use the term for example to annotate phone conversations with additional tags, like which persons are calling for how long. In the spatial domain the term is generally used for documents that describe spatial assets, such as sensor observations, datasets, spatial services, maps, scientific articles and documents.
+
+Metadata serves 2 main goals; discovery and assessment. Spatial catalogues, but also search engines, are able to ingest metadata and make it queryable, so users are able to discover resources that may be of interest to them. A second goal is assessment. Users are enabled to assess if a dataset is relevent for their use case by checking its metadata. Important attributes for assessment are potential usage or legal constraints (data license), date of modification, data qulity and lineage information.
+
+In recent decades the ISO Technical Comitee 211 (ISO/TC211) together with Open Geospatial Consortium (OGC)  has set up some standards for stadardising metadata within the spatial domain. These standards are generally refered to as the ISO191* standards. Important examples are ISO19115, ISO19139, ISO19110, ISO19157.
+
+On top of the encoding standards the stadard "Catalogue Service for the web" (CSW) heas been adopted, which is a standardised protocol to exchange and query metadata over the web. This standard facilitated the development of multiple catalogue clients which nowedays allow to query any spatial catalogue from a  range of GIS clients, such as OpenLayers, ArcGIS and QGIS.
+
+A typical Catalogue contains options to 'harvest' (ingest) metadata from other catalogues, in this way creating a network of catalogues facilitating wider discovery of spatial assets. 
+
+Introduction to GeoNetwork opensource
+=====================================
+
+GeoNetwork opensource is a standard based and decentralised spatial information management system, designed to enable access to geo-referenced databases and cartographic products from a variety of data providers through descriptive metadata, enhancing the spatial information exchange and sharing between organisations and their audience, using the capacities and the power of the Internet.
+
+The system provides a broad community of users with easy and timely access to available spatial data and thematic maps from multidisciplinary sources, that may in the end support informed decision making.
+
+The main goal of the software is to increase collaboration within and between organisations for reducing duplication and enhancing information consistency and quality and to improve the accessibility of a wide variety of geographic information along with the associated information, organised and documented in a standard and consistent way.
+
+Main Features:
+
+* Instant search on local and distributed geospatial catalogues
+* Uploading and downloading of data, documents, PDF’s and any other content
+* An interactive Web map viewer that combines Web Map Services from distributed servers around the world
+* Online map layout generation and export in PDF format
+* Online editing of metadata with a powerful template system, including validation options
+* Scheduled harvesting and synchronisation of metadata between distributed catalogues
+* Groups and users management
+* Fine grained access control

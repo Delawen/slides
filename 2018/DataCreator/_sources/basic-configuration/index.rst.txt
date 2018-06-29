@@ -1,0 +1,140 @@
+.. _configuring-the-catalog:
+
+Configuring the catalog
+#######################
+
+This section describes the minimal configuration for the catalog. In the administration training are described all the settings in detail.
+
+Click the ``sign in`` to connect as administrator. The default account is username ``admin`` with password ``admin``.
+
+.. figure:: img/signin.png
+
+
+Once connected, the top toolbar should provide a link to the ``Admin console`` and your login details.
+
+.. figure:: img/identified-user.png
+
+Most of the system configuration parameters can be changed by administrator users using the web interface in ``Admin console`` > ``Settings``.
+
+.. important:: Configuration of these parameters is critically important for the catalog in an operational context. Misunderstanding some settings may result in a system that does not function as expected. For example, downloads may fail to be correctly processed, or metadata harvesting from other servers may not work.
+
+.. figure:: img/settings.png
+
+Catalog description
+-------------------
+
+- **Catalog came** The name of the node. Information that helps identify the
+  catalogue to a human user. The name is displayed on the banner, in the CSW
+  GetCapabilities.
+
+- **Catalog identifier** A universally unique identifier (uuid) that
+  distinguishes your catalog from any other catalog. This a unique
+  identifier for your catalogue and its best to leave it as a uuid. It will
+  be used by harvester using GeoNetwork protocol to identify the source catalog.
+
+- **Organization** The organization the node belongs to. Again, this is
+  information that helps identify the catalogue to a human user.
+
+- **SVN UUID** Subversion repository attached to the node. This identifier is
+  created and/or checked on startup to verify that the database match the SVN repository.
+  The repository is used for metadata versionning.
+
+Catalog Server
+--------------
+
+
+- **Host** The node's name or IP number (without http://). For example,
+  they are used during metadata editing to create resource links and
+  when returning the server's capabilities during a CSW request.
+
+ - If your node is publicly accessible from the Internet, you have to use the domain name.
+
+ - If your node is hidden inside your private network and you have a firewall or web server
+   that redirects incoming requests to the node, you have to enter the public address of
+   the firewall or web server. A typical configuration is to have an Apache web server
+   on address A that is publicly accessible and redirects the requests to a Tomcat server
+   on a private address B. In this case you have to enter A in the host parameter.
+
+
+- **Port** The server's port number (usually 80 or 8080). If using HTTP, set it to 80.
+
+- **Preferred Protocol** Defined the protocol to access the catalog. The HTTP protocol
+  used to access the server. Choosing http means that all communication with the catalog
+  will be visible to anyone listening to the protocol. Since this includes usernames
+  and passwords this is not secure. Choosing https means that all communication with the catalog
+  will be encrypted and thus much harder for a listener to decode.
+
+- **Secure Port** The secure port number.
+
+- **Log level** Define the logging level of the application. After modification,
+  log can be checked in the ``Statistics & status`` section under ``Activity``.
+
+.. figure:: img/log-view.png
+
+Intranet parameters
+-------------------
+
+A common need for an organisation is to automatically discriminate between anonymous
+internal users that access the node from within an organisation (Intranet) and
+anonymous external users from the Internet. The catalog defines anonymous users
+from inside the organisation as belonging to the group *Intranet*, while anonymous
+users from outside the organisation are defined by the group *All*. To automatically
+distinguish users that belong to the Intranet group you need to tell the catalog
+the intranet IP address and netmask.
+
+- **Netmask** The intranet netmask (eg. 255.255.255.0).
+
+
+- **Network*** The intranet address in IP form (eg. 147.109.100.0).
+
+Proxy server
+------------
+
+
+- **Use proxy** Enable the proxy in case the catalog is behind a proxy and need
+  to use it to access remote resources.
+
+- **Proxy Host** The proxy IP address or name
+
+- **Port** The proxy port
+
+- **Proxy username** The username
+
+- **Proxy user password** The username password
+
+- ***Ignore host list** To bypass specific hosts enter a specific IP address or
+  host name such as www.mydomain.com or an address range using wildcards,
+  such as 192.168.2.*. Use | to separate the different host values.
+
+
+JVM proxy parameters may also be required to properly set the proxy for all remote
+access.
+
+
+.. _system-config-feedback:
+
+Feedback
+--------
+
+Email may be sent by the catalog.
+
+- you are using the User Self-registration system
+
+- you are using the metadata status workflow
+
+- a file uploaded with a metadata record is downloaded and notify privilege is selected
+
+
+This section configure the mail server to use.
+
+- **Email** This is the administrator's email address used to send feedback.
+
+- **SMTP host** The mail server name or IP address to use for sending emails.
+
+- **SMTP port** The SMTP port.
+
+- **Use SSL** Enable SSL mode
+
+- **User name** Username if connection is required on the SMTP server
+
+- **Password** Username password if connection is required on the SMTP server

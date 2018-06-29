@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Profile Implementation &#8212; GeoNetwork 3 data creator training manual v3.4.2 GeoNetwork 3 data creator training manual</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/training.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Custom maps and layers" href="../map-customization/index.html" />
+    <link rel="prev" title="Configuring the catalog" href="../basic-configuration/index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          GeoNetwork 3 data creator training manual</a>
+        <span class="navbar-text navbar-version pull-left"><b>3.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction to Metadata and Catalogues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html#introduction-to-geonetwork-opensource">Introduction to GeoNetwork opensource</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-configuration/index.html">Configuring the catalog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#catalog-description">Catalog description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#catalog-server">Catalog Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#intranet-parameters">Intranet parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#proxy-server">Proxy server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic-configuration/index.html#feedback">Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Profile Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-profile">Create a new profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-created-custom-profile">Load the created custom profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../map-customization/index.html">Custom maps and layers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../map-customization/index.html#background-layers">Background layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map-customization/index.html#store-a-map">Store a map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../metadata-view/index.html">Custom metadata views</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editor-customization/index.html">Custom Metadata Editor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#fields">Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#fields-with-fieldset">Fields with Fieldset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#multilingual-fields">Multilingual Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#views">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#defining-a-view">Defining a view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#defining-a-tab">Defining a tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-section-to-a-tab">Adding a section to a tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-field">Adding a field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-template-based-field">Adding a template based field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-documentation-or-help">Adding documentation or help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor-customization/index.html#adding-a-button">Adding a button</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ckan-integration/index.html">Integrate with CKAN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#harvest-to-geonetwork">Harvest to GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#harvest-from-geonetwork">Harvest from GeoNetwork</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ckan-integration/index.html#making-data-available-as-rdf">Making data available as RDF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../migrate/index.html">Migrate from older versions of GeoNetwork</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migrate/index.html#default-method">Default method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migrate/index.html#manual-migration">Manual migration</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Profile Implementation</a><ul>
+<li><a class="reference internal" href="#create-a-new-profile">Create a new profile</a><ul>
+<li><a class="reference internal" href="#choose-the-schema-plugin-base">Choose the schema plugin base</a></li>
+<li><a class="reference internal" href="#adapt-the-xsd">Adapt the XSD</a></li>
+<li><a class="reference internal" href="#adapt-the-validation-rules">Adapt the validation rules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#load-the-created-custom-profile">Load the created custom profile</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../basic-configuration/index.html" title="Previous Chapter: Configuring the catalog"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Configuring t...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../map-customization/index.html" title="Next Chapter: Custom maps and layers"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Custom maps a... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="profile-implementation">
+<span id="data"></span><h1>Profile Implementation<a class="headerlink" href="#profile-implementation" title="Permalink to this headline">¶</a></h1>
+<p>Although there are many schema plugins available, sometimes we need to adapt the XSD definition or the validation rules to our use cases. On this section we will learn how to do it on a clean easy way.</p>
+<div class="section" id="create-a-new-profile">
+<h2>Create a new profile<a class="headerlink" href="#create-a-new-profile" title="Permalink to this headline">¶</a></h2>
+<p>To create a new profile you should start by selecting an already existing schema plugin. Creating a full schema plugin from scratch is out of scope of this manual.</p>
+<div class="section" id="choose-the-schema-plugin-base">
+<h3>Choose the schema plugin base<a class="headerlink" href="#choose-the-schema-plugin-base" title="Permalink to this headline">¶</a></h3>
+<p>The best way to find a schema plugin is visiting the Metadata 101 repository in <a class="reference external" href="https://github.com/Metadata101">https://github.com/Metadata101</a></p>
+<div class="figure">
+<img alt="../_images/metadata101.png" src="../_images/metadata101.png" />
+</div>
+<p>On that repository, we can find both base ISO schemas and some of the profiles already used by some organizations. We choose the schema that adapts better to our needs and clone it on the schemas folder of GeoNetwork.</p>
+<p>On this case, we are going to use ISO19139 to generate IS019139-custom:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> core-geonetwork
+<span class="hll">$ cp -r schemas/iso19139/ schemas/iso19139-custom
+</span>$ ls schemas/iso19139-custom
+   doc  pom.xml  src  target
+$ mv schemas/iso19139-custom/src/main/plugin/iso19139/ schemas/iso19139-custom/src/main/plugin/iso19139-custom
+</pre></div>
+</div>
+<p>Now we have to make sure the schema is copied on the right repository. To do this we add the following resource in pom.xml:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;resource&gt;</span>
+  <span class="nt">&lt;directory&gt;</span>${project.basedir}/../schemas/iso19139-custom/src/main/plugin<span class="nt">&lt;/directory&gt;</span>
+  <span class="nt">&lt;targetPath&gt;</span>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins<span class="nt">&lt;/targetPath&gt;</span>
+<span class="nt">&lt;/resource&gt;</span>
+</pre></div>
+</div>
+<p>This will make sure the files are correctly copied on the schema plugins folder</p>
+</div>
+<div class="section" id="adapt-the-xsd">
+<h3>Adapt the XSD<a class="headerlink" href="#adapt-the-xsd" title="Permalink to this headline">¶</a></h3>
+<p>Even when we are using an ISO schema, sometimes we may want to tweak the definition of that schema to adapt to our needs.</p>
+<p>The xsd is defined on the schemas/iso19139-custom/src/main/plugin/iso19139/schema folder. Different namespaces are defined in different folders, so you will have to search for the element you want to modify on this folder and define the XSD rules that apply to that element. For example, we may want to restrict the options available for a conditional element.</p>
+<p>On the following xml extracted from schema/gmd/identification.xsd, we can force a minOccurs 1 in some of the elements that explicitly defines minOccurs as 0. This way we will force the XSD rules to check that there is a minimum of one element of that type on the identification gmd definition.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xs:complexType</span> <span class="na">name=</span><span class="s">&quot;AbstractMD_Identification_Type&quot;</span> <span class="na">abstract=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;xs:annotation&gt;</span>
+    <span class="nt">&lt;xs:documentation&gt;</span>Basic information about data<span class="nt">&lt;/xs:documentation&gt;</span>
+  <span class="nt">&lt;/xs:annotation&gt;</span>
+  <span class="nt">&lt;xs:complexContent&gt;</span>
+    <span class="nt">&lt;xs:extension</span> <span class="na">base=</span><span class="s">&quot;gco:AbstractObject_Type&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;xs:sequence&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;citation&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:CI_Citation_PropertyType&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;abstract&quot;</span> <span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;purpose&quot;</span> <span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;credit&quot;</span> <span class="na">type=</span><span class="s">&quot;gco:CharacterString_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span>
+                    <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;status&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_ProgressCode_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span>
+                    <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;pointOfContact&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:CI_ResponsibleParty_PropertyType&quot;</span>
+                    <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;resourceMaintenance&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_MaintenanceInformation_PropertyType&quot;</span>
+                    <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;graphicOverview&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_BrowseGraphic_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span>
+                    <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;resourceFormat&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_Format_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span>
+                    <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;descriptiveKeywords&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_Keywords_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span>
+                    <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;resourceSpecificUsage&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_Usage_PropertyType&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span>
+                    <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;resourceConstraints&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_Constraints_PropertyType&quot;</span>
+                    <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;aggregationInfo&quot;</span> <span class="na">type=</span><span class="s">&quot;gmd:MD_AggregateInformation_PropertyType&quot;</span>
+                    <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/xs:sequence&gt;</span>
+    <span class="nt">&lt;/xs:extension&gt;</span>
+  <span class="nt">&lt;/xs:complexContent&gt;</span>
+<span class="nt">&lt;/xs:complexType&gt;</span>
+</pre></div>
+</div>
+<p>Although it is adivsable to follow the ISO rules and only make the XSD more strict to still be compliant with the standards, GeoNetwork does not force you to follow a standard. You can create any set of XSD rules and that’s what GeoNetwork will use to show, edit and validate your metadata.</p>
+</div>
+<div class="section" id="adapt-the-validation-rules">
+<h3>Adapt the validation rules<a class="headerlink" href="#adapt-the-validation-rules" title="Permalink to this headline">¶</a></h3>
+<p>It is very common to adapt the validation rules to make sure you data complies with your specific needs.</p>
+<p>There are two types of validation rules. The most basic set of rules is based on the same XSD we have been modifying on the previous section. GeoNetwork just makes sure that the xml of the metadata is conformant with the XSD definition.</p>
+<p>But for more complex rules we have the schematrons. Schematrons allow you to define rules based on the content or conditional rules that depend on other elements. Schematrons are files placed on a folder called “schematrons”. You can have disabled schematrons if you add “disabled” to the filename.</p>
+<p>A schematron pattern contains a title and a rule. The rule can make some checks on elements and if the test does not pass, it will generate an (internationalized) error message to describe the problem, which will be shown on the metadata editor validation box.</p>
+<p>On the following example, this schematron checks values of density inside the gmd:MD_Medium element: if there is a value for density, it has to have a defined unit for density:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;sch:pattern&gt;</span>
+        <span class="nt">&lt;sch:title&gt;</span>$loc/strings/M18<span class="nt">&lt;/sch:title&gt;</span>
+        <span class="nt">&lt;sch:rule</span> <span class="na">context=</span><span class="s">&quot;//gmd:MD_Medium&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;sch:let</span> <span class="na">name=</span><span class="s">&quot;density&quot;</span> <span class="na">value=</span><span class="s">&quot;gmd:density and not(gmd:densityUnits[@gco:nilReason!=&#39;missing&#39; or not(@gco:nilReason)])&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;sch:assert</span> <span class="na">test=</span><span class="s">&quot;$density = false()&quot;</span>
+                        <span class="nt">&gt;</span>$loc/strings/alert.M18<span class="nt">&lt;/sch:assert&gt;</span>
+                <span class="nt">&lt;sch:report</span> <span class="na">test=</span><span class="s">&quot;$density = false()&quot;</span>
+                        <span class="nt">&gt;&lt;sch:value-of</span> <span class="na">select=</span><span class="s">&quot;$loc/strings/report.M18&quot;</span><span class="nt">/&gt;</span> <span class="nt">&lt;sch:value-of</span> <span class="na">select=</span><span class="s">&quot;gmd:density&quot;</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;sch:value-of</span> <span class="na">select=</span><span class="s">&quot;gmd:densityUnits/gco:CharacterString&quot;</span><span class="nt">/&gt;&lt;/sch:report&gt;</span>
+        <span class="nt">&lt;/sch:rule&gt;</span>
+<span class="nt">&lt;/sch:pattern&gt;</span>
+</pre></div>
+</div>
+<p>We can add as many patters as we want to the schematron file.</p>
+<p>Sometimes we want to apply a certain set of rules only if some condition apply. For example, we may want to reinforce some specific rules for all metadata that contains a specific keyword. We may add that conditional to each pattern of the schematron file or configure on the admin console what schematron set of rules will be applied on each case:</p>
+<div class="figure">
+<img alt="../_images/rules.png" src="../_images/rules.png" />
+</div>
+</div>
+</div>
+<div class="section" id="load-the-created-custom-profile">
+<h2>Load the created custom profile<a class="headerlink" href="#load-the-created-custom-profile" title="Permalink to this headline">¶</a></h2>
+<p>Now we can try our custom iso19139 schema and use it.</p>
+<p>Click the <code class="docutils literal notranslate"><span class="pre">sign</span> <span class="pre">in</span></code> to connect as administrator.</p>
+<div class="figure">
+<img alt="../_images/signin1.png" src="../_images/signin1.png" />
+</div>
+<p>Once connected, the top toolbar should provide a link to the <code class="docutils literal notranslate"><span class="pre">Admin</span> <span class="pre">console</span></code> and your login details.</p>
+<div class="figure">
+<img alt="../_images/identified-user1.png" src="../_images/identified-user1.png" />
+</div>
+<p>Go to the <code class="docutils literal notranslate"><span class="pre">admin</span> <span class="pre">console</span></code> and click on <code class="docutils literal notranslate"><span class="pre">metadata</span> <span class="pre">and</span> <span class="pre">templates</span></code>:</p>
+<div class="figure">
+<img alt="../_images/metadata-and-templates.png" src="../_images/metadata-and-templates.png" />
+</div>
+<p>Choose all standards and click <code class="docutils literal notranslate"><span class="pre">load</span> <span class="pre">samples</span></code> and then <code class="docutils literal notranslate"><span class="pre">load</span> <span class="pre">templates</span></code> in order to load examples:</p>
+<div class="figure">
+<img alt="../_images/templates.png" src="../_images/templates.png" />
+</div>
+<p>Go back to the search page to see examples:</p>
+<div class="figure">
+<img alt="../_images/once-samples-are-loaded.png" src="../_images/once-samples-are-loaded.png" />
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017 GeoCat BV.<br/>
+      Last updated on Jun 29, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
