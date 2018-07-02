@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>An Enterprise version of OSGeo Stack to overcome customer challenges</title>
+
+		<meta name="description" content="An Enterprise version of OSGeo Stack to overcome customer challenges">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+<div class="reveal">
+<header style="position:fixed;top:0px;left:0px;z-index: 3;"><img style="max-height:60px;z-index:3" class="geocat"/></header>
+<div class="slides">
+<section data-background-size="contain">
+  <div style="padding-top:20%;max-height:100%">
+    <h2 style="text-transform:uppercase">An Enterprise version of OSGeo Stack to overcome customer challenges</h2>
+    <img class="logogn clean" src="../../stylesheets/images/GeoNetwork.png"/>
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+    <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
+  </div>
+</section>
+<section>
+  <section>
+    <h2>Who am I and why do I dare talk about this</h2>
+    <div style="float:left;max-width:49%">
+	    <p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
+      <img title="GeoCat Herd" style="max-width:800px;max-height:150px;margin:0px" class="clean" src="imagenes/GeoCatHerd.png">
+      <img title="GeoCats" style="max-width:800px;max-height:150px;margin:0px" class="clean lotsofcats"></div>
+    <div>
+      <img title="GeoCat" style="max-width:800px;max-height:400px;margin:0px"  class="quienessomos clean">
+    </div>
+  </section>
+</section>
+</div>
+
+
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>
