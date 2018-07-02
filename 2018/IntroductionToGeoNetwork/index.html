@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GeoNetwork: State of the Art</title>
+
+		<meta name="description" content="Current status of GeoNetwork and future developments">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+<div class="reveal">
+<header style="position:fixed;top:0px;left:0px;z-index: 3;"><img style="max-height:60px;z-index:3" class="geocat"/></header>
+<div class="slides">
+<section data-background-size="contain">
+  <div style="padding-top:20%;max-height:100%">
+    <h2 style="text-transform:uppercase">GeoNetwork Workshop: Introduction to GeoNetwork</h2>
+    <img class="logogn clean" src="../../stylesheets/images/GeoNetwork.png"/>
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+    <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
+  </div>
+</section>
+<section>
+  <section>
+    <h2>Who am I and why do I dare talk about this</h2>
+    <div style="float:left;max-width:49%">
+	<p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
+      <img title="GeoCat Herd" style="max-width:800px;max-height:150px;margin:0px" class="clean" src="imagenes/GeoCatHerd.png">
+      <img title="GeoCats" style="max-width:800px;max-height:150px;margin:0px" class="clean lotsofcats"></div>
+    <div>
+      <img title="GeoCat" style="max-width:800px;max-height:400px;margin:0px"  class="quienessomos clean">
+    </div>
+  </section>
+  <section>
+    <h2>Docker Labs</h2>
+    <div><a href="https://helios.geocat.net/presentations/gn-00-docker-lab/html/workbook/index.html">https://helios.geocat.net/presentations/gn-00-docker-lab/html/workbook/index.html</a></div>
+  </section>
+  <section>
+    <h2>Endpoints</h2>
+    <div>.../geonetwork/srv/eng/csw</div>
+    <div>.../geonetwork/srv/eng/rdf</div>
+    <div>.../geonetwork/srv/eng/rss</div>
+  </section>
+  <section>
+    <h2>Start harvester</h2>
+    <div><a href="http://snig.igeo.pt/geoportal/csw202/discovery?request=GetCapabilities&service=CSW">http://snig.igeo.pt/geoportal/csw202/discovery?request=GetCapabilities&service=CSW</a></div>
+  </section>
+  <section>
+    <h2>Basic GeoNetwork configuration</h2>
+    <div><a href="https://geonetwork-opensource.org/manuals/3.4.x/en/tutorials/introduction/setup/index.html">https://geonetwork-opensource.org/manuals/3.4.x/en/tutorials/introduction/setup/index.html</a></div>
+  </section>
+  <section>
+    <h2>Style Configuration</h2>
+    <div>.../geonetwork/srv/eng/admin.console#/settings/cssstyle</div>
+  </section>
+  <section>
+    <h2>Publish to Map Servers</h2>
+    <div>.../geonetwork/srv/eng/admin.console#/settings/mapservers</div>
+  </section>
+</section>
+</div>
+
+
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>

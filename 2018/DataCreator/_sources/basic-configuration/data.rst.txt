@@ -1,4 +1,0 @@
-.. _data.rst:
-
-Load metadata templates and test data
-=====================================
