@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>OSGeo wants you!</title>
+
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/osgeo.css" id="theme">
+        </head>
+
+<body>
+
+<div class="reveal">
+<header><img src="imagenes/foss4g.png"/></header>
+<div class="slides">
+<section>
+  <section class="front" data-background="imagenes/front.jpg">
+    <div>
+      <h1>OSGeo <strong>needs</strong> you!</h1>
+      <h4><a href="https://twitter.com/delawen">María Arias de Reyna</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h4>
+      <h5>OSGeo President</h5>
+    </div>
+    <p style="position:absolute;top:10px;right:120px;font-size:50%">Photos from <a href="https://www.flickr.com/photos/wocintechchat/">WoCInTechChat</a></p>
+  </section>
+  <section data-background="imagenes/talking.jpg">
+	<quote>We are OSGeo, we are the sum of all contributions</quote>
+	<aside class="notes">
+		Even the smallest contribution matters
+	</aside>
+  </section>
+  <section data-background="imagenes/pair.jpg">
+	<aside class="notes">
+		Join the mailing lists, engage in the conversation. Or, at least, read it.
+	</aside>
+  </section>
+</section>
+<section>
+  <section class="front" >
+    <div>
+      <h1>Users</h1>
+      <h4>No-developers</h4>
+    </div>
+  </section>
+  <section>
+	<aside class="notes">
+		OSGeo Live translations
+	</aside>
+  </section>
+  <section>
+	<aside class="notes">
+		Documentation translations
+	</aside>
+  </section>
+  <section>
+	<aside class="notes">
+		Write new documentation and tutorials
+	</aside>
+  </section>
+  <section>
+	<aside class="notes">
+		Report bugs. But not only report: test and comment on already opened bugs.
+	</aside>
+  </section>
+</section>
+
+<section>
+  <section class="front" data-background="imagenes/developer.jpeg" >
+    <div>
+      <h1>Developers</h1>
+      <h4>Technical</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/coffee.jpg" >
+	<aside class="notes">
+		Check bug reports. Test and comment. Try to understand why it happens. Even submit a patch!
+	</aside>
+  </section>
+  <section data-background="imagenes/group.jpg" >
+	<aside class="notes">
+		Report bugs. But not only report: test and comment on already opened bugs.
+	</aside>
+  </section>
+</section>
+
+<section>
+  <section class="front" data-background="imagenes/academia.jpg" >
+    <div>
+      <h1>Academia</h1>
+      <h4>Both technical and non technical</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/meeting_notepad.jpeg" >
+	<aside class="notes">
+		Evangelize. Talk about open source.
+	</aside>
+  </section>
+  <section data-background="imagenes/meeting_glass_panel.jpeg">
+	<aside class="notes">
+		Generate workshops, talks, training material.
+	</aside>
+  </section>
+</section>
+
+<section>
+  <section class="front" data-background="imagenes/meeting_large.jpg" >
+    <div>
+      <h1>Business</h1>
+      <h4>Who said free meant "gratis"?</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/debugging.jpg" >
+	<aside class="notes">
+		Use open source. Eat your own dog food.
+	</aside>
+  </section>
+  <section data-background="imagenes/meeting_table.jpg" >
+	<aside class="notes">
+		Sell open source. Lobby for open source.
+	</aside>
+  </section>
+  <section data-background="imagenes/meeting2.jpg" >
+	<aside class="notes">
+		Reinvest in open source, either with money or with work force.
+	</aside>
+  </section>
+</section>
+
+</div>
+
+
+
+		</div>
+
+
+<footer><img src="../../stylesheets/images/osgeo/osgeo.png"/></footer>
+
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+	      width: "100%",
+	      height: "100%",
+	      margin: 0,
+	      minScale: 1,
+	      maxScale: 1,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>
