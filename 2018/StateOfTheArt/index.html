@@ -15,23 +15,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="../../reveal/css/reveal.css">
-		<link rel="stylesheet" href="../../stylesheets/common.css">
-
 		<link rel="stylesheet" href="../../stylesheets/osgeo.css" id="theme">
-
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
 	</head>
 
 	<body>
 
 <div class="reveal">
-<header style="position:fixed;top:0px;left:0px;z-index: 3;"><img style="max-height:60px;z-index:3" class="geocat"/></header>
+
+<header><img src="../../stylesheets/images/GeoCat.png"/><img src="imagenes/foss4g.png"/></header>
+
 <div class="slides">
-<section class="front" data-background-size="contain">
+<section class="front" data-background-size="contain" data-background="../../stylesheets/images/GeoNetwork.png">
   <div style="padding-top:10%;">
     <h1>GeoNetwork: State of the Art</h1>
-    <img class="logogn clean" src="../../stylesheets/images/GeoNetwork.png"/>
     <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
     <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
   </div>
@@ -39,13 +35,15 @@
 <section>
   <section>
     <h2>Who am I and why do I dare talk about this</h2>
-    <div style="float:left;max-width:49%">
-	<p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
-      <img title="GeoCat Herd" style="max-width:800px;max-height:150px;margin:0px" class="clean" src="imagenes/GeoCatHerd.png">
-      <img title="GeoCats" style="max-width:800px;max-height:150px;margin:0px" class="clean lotsofcats"></div>
-    <div>
-      <img title="GeoCat" style="max-width:800px;max-height:400px;margin:0px"  class="quienessomos clean">
-    </div>
+    <div style="float:left;max-width:40%;margin-left:20%">
+	    <p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
+        <img title="GeoCat Herd" style="max-height:40vh" class="clean" src="imagenes/GeoCatHerd.png">
+        <br/>
+        <img title="GeoCats" style="max-height:40vh" src="../../stylesheets/images/lotsofcats.png">
+      </div>
+      <div style="float:right;max-width:40%;margin-right:20%">
+        <img title="GeoCat" style="max-height:100%"  src="../../stylesheets/images/quienesSomos.svg">
+      </div>
   </section>
   <section>
     <h2>Quick Overview</h2>
@@ -106,6 +104,8 @@
 </div>
 
 
+<footer><img src="../../stylesheets/images/osgeo/osgeo.png"/></footer>
+
 
 		</div>
 
@@ -121,6 +121,11 @@
 				progress: true,
 				history: true,
 				center: true,
+	      width: "100%",
+	      height: "100%",
+	      margin: 0,
+	      minScale: 1,
+	      maxScale: 1,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
