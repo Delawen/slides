@@ -14,138 +14,153 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../../reveal/css/reveal.css">
-		<link rel="stylesheet" href="../../stylesheets/osgeo.css" id="theme">
-	</head>
+
+      <link rel="stylesheet" href="../../reveal/css/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">
+
+      <script>
+
+	      var url = new URL(window.location.href);
+	      if(url.searchParams.has("print-pdf")) {
+	        var link = document.createElement( 'link' );
+	        link.rel = 'stylesheet';
+	        link.type = 'text/css';
+	        link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+	        document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+      </script>
+  </head>
 
 	<body>
 
 <div class="reveal">
-
-<header><img src="../../stylesheets/images/GeoCat.png"/><img src="imagenes/foss4g.png"/></header>
-
 <div class="slides">
-<section class="front" data-background-size="contain" data-background="../../stylesheets/images/GeoNetwork.png">
-  <div style="padding-top:10%;">
-    <h1>GeoNetwork: State of the Art</h1>
-    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
-    <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
-  </div>
-</section>
 <section>
-  <section>
-    <h2>Who am I and why do I dare talk about this</h2>
-    <div style="float:left;max-width:40%;margin-left:20%">
-	    <p>I work at <a href="https://geocat.net">GeoCat bv</a> (<a href="https://twitter.com/geocat_bv">@geocat_bv</a>)</p>
-        <img title="GeoCat Herd" style="max-height:40vh" class="clean" src="imagenes/GeoCatHerd.png">
-        <br/>
-        <img title="GeoCats" style="max-height:40vh" src="../../stylesheets/images/lotsofcats.png">
-      </div>
-      <div style="float:right;max-width:40%;margin-right:20%">
-        <img title="GeoCat" style="max-height:100%"  src="../../stylesheets/images/quienesSomos.svg">
-      </div>
-  </section>
-  <section>
-    <h2>Quick Overview</h2>
-    <div>Stable usage with slowly increase</div>
-    <img class="clean" src="imagenes/stats.png">
-    <div>no stats from docker</div>
-  </section>
-  <section>
-    <h2>Quick Overview</h2>
-    <div>From 2017 we started using PR much more</div>
-    <img class="clean" src="imagenes/statspr.png">
-    <div>First half of 2018 almost as much as 2017</div>
-  </section>
-  <section>
-    <h2>Quick Overview</h2>
-    <div>Mostly developed by europeans</div>
-    <img class="clean" src="imagenes/punchcard.png">
-    <div>on their work time</div>
-  </section>
-  <section>
-    <h2>Quick Overview</h2>
-    <div><a href="https://github.com/geonetwork/core-geonetwork/wiki/Bolsena-2018">Bolsena Codesprint</a></div>
-    <img class="clean"
-		style="max-height:60vh" 
-		src="https://pbs.twimg.com/media/CkbClWVXIAQYY1M.jpg">
-    <div>where we try to catch up</div>
-  </section>
-</section>
-<section>
-  <section>
-    <h2>Recent Developments</h2>
-    <p>Improve on accesibility</p>
-    <p>Improve on usability</p>
-    <div class="fragment">
-    <p><a href="https://github.com/geonetwork/core-geonetwork/wiki/Userfeedback-proposal">User Feedback (using opendata)</a></p>
-    <img src="imagenes/userfeedback.png" style="height:50vh"/>
+  <section class="front" data-background="imagenes/background.png">
+    <div>
+      <h1>GeoNetwork: State of the Art</h1>
+      <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+      <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
     </div>
-    <p class="fragment">Less hardcoded elements (like gazetteer)</p>
-    <p class="fragment">More audits and bug fixes</p>
-    <p class="fragment">REST API</p>
   </section>
 </section>
 <section>
-  <section>
-    <h2>Incoming Developments</h2>
-    <p style="margin-top: 20%">Elastic Search to replace Lucene!! (4.0.0)</p>
-    <p class="fragment">Looking for sponsors for this</p>
+  <section data-background="imagenes/GeoCatHerd.png">
+    <div>
+      <img style="height:70%" title="GeoCats" src="../../stylesheets/images/quienesSomos.svg">
+    </div>
   </section>
 </section>
 <section>
-  <section>
-    <h2>New way of working</h2>
-      <p style="margin-top: 20%">Focus on master</p>
-      <p>More speed on minor releases (3.x)</p>
-      <p>Path releases really only patches (3.x.y)</p>
+  <section data-background="imagenes/stats.png">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4>Stable usage with slowly increase</h4>
+      <h4>no stats from docker</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/statspr.png">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4>From 2017 we started using PR much more</h4>
+      <h4>First half of 2018 almost as much as 2017</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/punchcard.png">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4>Mostly developed by europeans</h4>
+      <h4>on their work time</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/bolsena.jpg">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4><a href="https://github.com/geonetwork/core-geonetwork/wiki/Bolsena-2018">Bolsena Codesprint</a></h4>
+      <h4>where we try to catch up</h4>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/background3.png">
+    <div>
+      <h2>Recent Developments</h2>
+      <h4>Improve on accesibility</h4>
+      <h4>Improve on usability</h4>
+      <h4 class="fragment">Less hardcoded elements (like gazetteer)</h4>
+      <h4 class="fragment">More audits and bug fixes</h4>
+      <h4 class="fragment">REST API</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/background4.png">
+    <div>
+      <h4><a href="https://github.com/geonetwork/core-geonetwork/wiki/Userfeedback-proposal">User Feedback (using opendata)</a></h4>
+      <img src="imagenes/userfeedback.png" style="height:50vh"/>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/admin.png">
+    <div>
+      <h2>Incoming Developments</h2>
+      <h4>Elastic Search to replace Lucene!! (4.0.0)</h4>
+      <h4>Draft version</h4>
+      <h4>Better administration, statistics, logs</h4>
+    </div>      
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/background2.png">
+    <div>
+      <h2>New way of working</h2>
+      <h4>Focus on master</h4>
+      <h4>More speed on minor releases (3.x)</h4>
+      <h4>Path releases really only patches (3.x.y)</h4>
+    </div>
+  </section>
+  <section data-background="../EnterpriseVersionOfOS/imagenes/ygritte.jpg">
+    <div>
+      <h2>Come and ask about GeoNetwork Enterprise</h2>
+      <h4>Any questions?</h4>
+    </div>
   </section>
 </section>
 </div>
+</div>
+
+<footer><img src="../../stylesheets/images/gc_geocat_logo_text.svg"/></footer>
 
 
-<footer><img src="../../stylesheets/images/osgeo/osgeo.png"/></footer>
+      <script src="../../reveal/lib/js/head.min.js"></script>
+      <script src="../../reveal/js/reveal.js"></script>
 
+      <script>
 
-		</div>
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
 
-		<script src="../../reveal/lib/js/head.min.js"></script>
-		<script src="../../reveal/js/reveal.js"></script>
-
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-	      width: "100%",
-	      height: "100%",
-	      margin: 0,
-	      minScale: 1,
-	      maxScale: 1,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	</body>
+      </script>
+   </body>
 </html>
