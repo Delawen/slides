@@ -41,39 +41,67 @@
 </section>
 <section>
   <section>
-    <h2>Docker Labs</h2>
-    <div><a href="https://helios.geocat.net/presentations/gn-00-docker-lab/html/workbook/index.html">https://helios.geocat.net/presentations/gn-00-docker-lab/html/workbook/index.html</a></div>
+    <img src="imagenes/dockerhub.png">
+    <div>
+      <h4> Go to <a href="https://hub.docker.com/">https://hub.docker.com/</a> and create a user</h4>
+      <h4> Go to <a href="https://labs.play-with-docker.com/">https://labs.play-with-docker.com/</a></h4>
+      <h4> and login with the created user</h4>
+    </div>
   </section>
   <section>
-    <h2>Endpoints</h2>
+    <img src="imagenes/playwithdocker.png">
     <div>
+      <h4> Click on Play</h4>
+      <h4> Add new Instance </h4>
+      <h4> Execute on the console:</h4>
+      <h3>docker run -p8080:8080 geonetwork</h3>
+    </div>
+  </section>
+  <section>
+    <img src="imagenes/console.png">
+    <div>
+      <h4>Locate url and enter:</h4>
+      <h3>http://ip..........-8080.direct.labs.play-with-docker.com/geonetwork/</h3>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/background2.png">
+    <div>
+      <h2>Endpoints</h2>
       <h2>.../geonetwork/srv/eng/csw</h2>
       <h2>.../geonetwork/srv/eng/rdf</h2>
       <h2>.../geonetwork/srv/eng/rss</h2>
     </div>
   </section>
   <section>
+    <img src="imagenes/harvester.png">
     <div>
       <h2>Start harvester to populate with example data</h2>
-      <h4>http://www.fao.org/geonetwork/srv/en/csw</h4>
-      <h4>Warning: very high data usage!</h4>
+      <h4>Login with admin/admin</h4>
+      <h4>Enter Admin Console - Harvesting</h4>
+      <h4>Harvest from - OGC CSW 2.0.2</h4>
+      <h4>Node Name: FAO</h4>
+      <h4>Service URL: http://www.fao.org/geonetwork/srv/en/csw</h4>
+      <h4>Click on Save</h4>
+      <h4>Click on Harvest</h4>
     </div>
   </section>
-  <section>
+  <section data-background="imagenes/admin.png">
     <div>
       <h2>Basic GeoNetwork configuration</h2>
       <a target="_blank" href="first/getting-started/index.html">Introduction</a>
+    </div>
+  </section>
+  <section
+    <div>
+      <h2>Style Configuration</h2>.../geonetwork/srv/eng/admin.console#/settings/cssstyle
     </div>
   </section>
   <section>
     <div>
       <h2>Data Publication</h2>
       <a target="_blank" href="second/index.html">Data Publication</a>
-    </div>
-  </section>
-  <section>
-    <div>
-      <h2>Style Configuration</h2>.../geonetwork/srv/eng/admin.console#/settings/cssstyle
     </div>
   </section>
 </section>
