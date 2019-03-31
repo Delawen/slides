@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Cómo sobrevivir a un apocalipsis zombie de gatitos</title>
+
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css" id="theme">
+		<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">
+
+        <script>
+	        var link = document.createElement( 'link' );
+	        link.rel = 'stylesheet';
+	        link.type = 'text/css';
+	        link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+	        document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+<section>
+  <section data-background="imagenes/portada.png" data-background-size="contain">
+    <div>
+      <h1>Cómo sobrevivir a un apocalipsis zombie de gatitos</h1>
+      <h4><a href="https://twitter.com/delawen">María Arias de Reyna</a></h4>
+      <h4>Presidenta de OSGeo</h4>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/sky.jpg">
+    <div style="height:100%;margin-top:20%;font-weight:bold;">
+        <h3>A long time ago in a conference far,</h3>
+        <h3>far away...</h3>
+	</div>
+	<aside class="notes">
+	</aside>
+  </section>
+  <section data-background="imagenes/sky.jpg">
+    <div style="height:100%;margin-top:20%;font-weight:bold;">
+        <p style="color:white;text-shadow:2px 2px black;font-size:50%">Es el año 2020.</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:55%">Los gatitos son ahora zombies,</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:60%">poniendo en peligro a la humanidad.</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:65%">Un pequeño grupo de geoinquietes</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:70%">se aislaron en una casa fortificada.</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:75%">Pero saben que no sobrevivirán</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:80%">mucho tiempo, tienen que escapar y </p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:90%">luchar contra los gatitos zombies.</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:99%">Por suerte, tienen entre sus filas</p>
+        <p style="color:white;text-shadow:2px 2px black;font-size:100%">a personas que pertenecen a OSGeo…</p>
+	</div>
+	<aside class="notes">
+	</aside>
+  </section>
+  <section data-background="imagenes/kittenapocalypse.jpg" data-background-size="contain">
+	<aside class="notes">
+	</aside>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/escondido.jpg">
+    <p><img class="fragment" src="imagenes/osm.svg"/></p>
+    <p><img class="fragment" src="imagenes/hot.svg"/></p>
+	<aside class="notes">
+	    Lo primero: vamos a recopilar datos de nuestro entorno. El mejor sitio para encontrarlos: en OSM. Es más, si tenemos suerte, puede que incluso haya un equipo de HOTOSM trabajando en nuestra zona.
+	</aside>
+  </section>
+  <section data-background="imagenes/escondido.jpg">
+    <p><img src="imagenes/marble.png"/></p>
+	<aside class="notes">
+	    Podemos también usar Marble para visualizar los datos.
+	</aside>
+  </section>
+  <section data-background="imagenes/guifi.net.png">
+    <p><img src="imagenes/guifi.net_logo.gif"/></p>
+	<aside class="notes">
+	    ¿Se va a caer internet con el apocalipsis zombie? Seguro, pero podemos seguir usando guifi.net
+	</aside>
+  </section>
+  <section data-background="imagenes/catsearching.gif">
+    <p><img class="fragment" src="imagenes/postgis.png"/><a href="https://trac.osgeo.org/geos"><img class="fragment" src="imagenes/geos.png"/></a></p>
+    <p><img class="fragment" src="imagenes/gdal.png"/></p>
+	<aside class="notes">
+	    ¿Dónde guardar y procesar los datos? Suerte que tenemos PostGIS, que por cierto usa GEOS, el port a C++ de JTS. Y podemos usar GDAL para transformar del formato OSM a postGIS.
+	</aside>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/cloud.gif">
+	<aside class="notes">
+	    Pero los datos hay que actualizarlos y hay que coger datos específicos, a ser posible en tiempo real.
+	</aside>
+  </section>
+  <section data-background="imagenes/CIBASS-Spy-cat.jpg" data-background-size="contain">
+    <h2><a href="https://en.wikipedia.org/wiki/Acoustic_Kitty">Accoustic Kitty</a></h2>
+    <h3><a class="fragment" href="https://www.arduino.cc/"><img style="height:100px" src="imagenes/arduino.png"/></a></h3>
+    <h3><a class="fragment" href="https://geopaparazzi.github.io/geopaparazzi/"><img style="height:200px" src="imagenes/geopaparazzi.png"/></a>
+    <a class="fragment" href="http://www.gvsig.com/en/products/gvsig-mobile"><img style="height:200px" src="imagenes/gvsig_mobile.png"/></a></h3>
+	<aside class="notes">
+	    <p>¿Cómo podemos sacar datos del entorno? Pues podemos usar los gatos zombies como sensores. Esto fue un experimento de los años sesenta de la CIA, que nunca llegó a buen puerto porque no fueron capaces de entrenar a los gatos para hacer lo que ellos querían. Pero en nuestro caso, lo que queremos es, precisamente, monitorizar los movimientos de las hordas gatunas.</p>
+	    <p>Como hardware, si tenemos acceso a alguna impresora de microprocesadores, podemos usar arduinos, que es hardware libre.</p>
+	    <p>Pero seguramente a lo único a lo que tendremos acceso es a alguna tienda de móviles, que podremos atracar para instalar GeoPaparazzis que reporten los datos. Si además tenemos acceso a alguna batería solar, cada gatito sensor que fabriquemos tendrá autonomía indefinida.</p>
+	</aside>
+  </section>
+  <section data-background="imagenes/drone.gif">
+    <p><a class="fragment" href="https://www.orfeo-toolbox.org/"><img src="imagenes/orfeo_toolbox.png"/></a></p>
+	<aside class="notes">
+	    Ya tenemos datos sobre el comportamiento de las hordas de gatitos. Pero también nos vendría bien tener algo de información y datos con drones. Si tenemos la suerte de haber conseguido algunos dones que nos envíen información
+	</aside>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/surprise_cat.gif">
+    <p><a class="fragment" href="https://live.osgeo.org/en/index.html"><img src="imagenes/osgeolive.png"/></a></p>
+	<aside class="notes">
+	    Así que les dejamos unos cuantos usb y OSGeo Live
+	</aside>
+  </section>
+  <section data-background="imagenes/escondido.jpg">
+    <p><a href="https://geonetwork-opensource.org"><img src="imagenes/geonetwork.png"/></a><a class="fragment" href="https://openlayers.org/"><img src="imagenes/openlayers.png"/></a></p>
+    <p><img class="fragment" src="imagenes/geonode.png"/><img class="fragment" src="imagenes/pycsw.png"/></p>
+	<aside class="notes">
+	    Vamos a compartir datos con otra gente.
+	</aside>
+  </section>
+</section>
+</div>
+
+
+      <script src="../../reveal/lib/js/head.min.js"></script>
+      <script src="../../reveal/js/reveal.js"></script>
+
+      <script>
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+      </script>
+   
+
+</body></html>
