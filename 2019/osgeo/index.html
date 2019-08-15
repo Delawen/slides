@@ -31,229 +31,147 @@
 <div class="reveal">
 <div class="slides">
 <section>
-  <section data-background="imagenes/portada.png" data-background-size="contain">
-    <div>
-      <h1>Cómo sobrevivir a un apocalipsis zombie de gatitos</h1>
-      <h4><a href="https://twitter.com/delawen">María Arias de Reyna</a></h4>
-      <h4>Presidenta de OSGeo</h4>
+  <section> 
+    <h2>What is Spatial/GeoSpatial</h2>
+      <h5>Big Data</h5>
+      <p class="fragment">(the real one, the one that doesn't fit on a hard disk)</p>
+    <br/>
+      <h5>Open Data hipsters</h5>
+      <p class="fragment">(we already had standard protocols and formats in the nineties)</p>
+    <br/>
+      <h5>Not everything is Visual/Maps</h5>
+      <p class="fragment">(analysis, machine learning,...)</p>
+    <br/>
+      <h5>Earth Observation Services</h5>
+      <img class="fragment" src="imagenes/2006_delawen_truecolor.png"/>
+      <img class="fragment" src="imagenes/2006_delawen_falsocolor.png"/>
+  </section>
+  <section data-background="imagenes/all_data.png">
+  </section>
+  <section data-background="imagenes/overview.svg" data-background-size="contain">
+  </section>
+  <section data-background="imagenes/overview2.svg" data-background-size="contain">
+  </section>
+  <section data-background="imagenes/osgeo.svg" data-background-size="contain">
+    <h2>OSGeo ramifications</h2>
+    <h3>
+      <p>Projects - where it all started - 2006</p>
+      <br/>
+      <p>Events: FOSS4G, codesprints,...</p>
+      <br/>
+      <p>GeoForAll</p>
+      <br/>
+      <p>Open GeoScience</p>
+      <br/>
+      <p>UN Initiative</p>
+      <br/>
+      <p>Chapters</p>
+      <br/>
+      <p>Service Providers</p>
+      <br/>
+    </h3>
+  </section>  
+  <section>
+    <h2>Projects</h2>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Web Mapping</h5>
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/mapserver/" title="MapServer">MapServer</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/mapguide-open-source/" title="MapGuide Open Source">MapGuide Open Source</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/mapfish/" title="mapfish">mapfish</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/deegree/" title="deegree">deegree</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geomajas/" title="Geomajas">Geomajas</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/openlayers/" title="OpenLayers">OpenLayers</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geomoose/" title="GeoMoose">GeoMoose</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/mapbender/" title="Mapbender">Mapbender</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/pywps/" title="PyWPS">PyWPS</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geoserver/" title="GeoServer">GeoServer</a></li>
+        </ul>
     </div>
-	  <aside class="notes">
-	    Llevo tiempo buscando un ejemplo, un caso de uso, que me permita enseñar todo el stack de software OSGeo y por qué es tan importante crear, utilizar y divulgar sobre software libre. Pero siempre me encontraba casos de uso que eran demasiado complejos o demasiado específicos para que cualquier asistente a un FOSS4G pudiera seguirlo y entender su importancia. Entonces se me ocurrió utilizar una historia que aunque no sea (todavía) un caso real, puede servir para explicar la importancia de la libertad, especialmente en los  casos más extremos.
-	  </aside>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Content Management Systems</h5>
+
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geonode/" title="GeoNode">GeoNode</a></li>
+        </ul>
+    </div>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Desktop Applications</h5>
+
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+        <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/marble/" title="Marble">Marble</a></li>
+        <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/gvsig/" title="gvSIG Desktop">gvSIG Desktop</a></li>
+        <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/qgis/" title="QGIS Desktop">QGIS Desktop</a></li>
+        <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/grass-gis/" title="GRASS GIS">GRASS GIS</a></li>
+      </ul>
+    </div>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Geospatial Libraries</h5>
+
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/ossim/" title="OSSIM">OSSIM</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geotools/" title="GeoTools">GeoTools</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/orfeo-toolbox/" title="Orfeo ToolBox">Orfeo ToolBox</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/gdal/" title="GDAL/OGR">GDAL/OGR</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geos/" title="GEOS">GEOS</a></li>
+        </ul>
+    </div>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Other</h5>
+
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/osgeolive/" title="OSGeoLive">OSGeoLive</a></li>
+        </ul>
+    </div>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Spatial Databases</h5>
+
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/postgis/" title="PostGIS">PostGIS</a></li>
+        </ul>
+    </div>
+    <div style="width:30%;float:left;padding-top:1em">
+        <h5>Metadata Catalogs</h5>
+
+        <ul style=";margin-bottom: 0;padding-left: 0; list-style: none;">
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/geonetwork/" title="GeoNetwork">GeoNetwork</a></li>
+          <li><a style="color:black;text-shadow:none" href="https://www.osgeo.org/projects/pycsw/" title="pycsw">pycsw</a></li>
+        </ul>
+    </div>
+    <h4 style="width:100vh">And then there are the community projects...</h4>
   </section>
-</section>
-<section>
-  <section data-background="imagenes/sky.jpg">
-    <div style="height:100%;margin-top:20%;font-weight:bold;">
-        <h3>A long time ago in a conference far,</h3>
-        <h3>far away...</h3>
-	  </div>
-	  <aside class="notes">
-	    Empieza el viaje...
-	  </aside>
+  <section data-background="imagenes/ejemplo1.png">
   </section>
-  <section data-background="imagenes/kittenapocalypse.jpg" data-background-size="contain">
-	<aside class="notes">
-	  Breaking news! Noticias de última hora: los gatitos han desarrollado una extraña enfermedad que les ha convertido en violentos depredadores zombies. 
-	</aside>
+  <section data-background="imagenes/ejemplo2.png">
   </section>
-  <section class="star-wars" data-background="imagenes/sky.jpg">
-    <div class="fade"></div>
-    <div class="crawl">
-      <div class="title">
-        <h1>SIGLibre</h1>
-      </div>
-      <p>Es el año 2020. Los gatitos son ahora zombies, poniendo en peligro a la humanidad. Un pequeño grupo de geoinquietes se aislaron en una casa fortificada.</p>
-      <p>Pero saben que no sobrevivirán mucho tiempo, tienen que escapar y luchar contra los gatitos zombies si no quieren que la humanidad se extinga.</p>
-      <p>Por suerte, tienen entre sus filas a personas que pertenecen a OSGeo…</p>
-	</div>
-	<aside class="notes">
-	  Tenemos a un grupo de expertos en tecnologías geoespaciales supervivientes de la masacre. Día y noche escuchan a los gatitos maullando en el exterior como pidiendo que les abran la puerta. Pero ellos saben que no deben hacer caso y se preparan para la guerra. No saben si hay más personas que han sobrevivido ni si quizás sean los últimos humanos supervivientes...
-	</aside>
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/military_strategy.gif">
-	<aside class="notes">
-	    Estamos en mitad de un apocalipsis zombie y nuestro objetivo es sobrevivir. Para ello, necesitamos retomar el control de nuestro entorno. Necesitamos saquear las farmacias para conseguir medicinas, conseguir materiales para fabricar armas y herramientas y, sobre todo, necesitamos provisiones.
-	</aside>
-  </section>
-  <section data-background="imagenes/escondido.jpg">
-    <p><a href="https://www.openstreetmap.org/"><img class="fragment" src="imagenes/osm.svg"/></a></p>
-	<aside class="notes">
-	    Lo primero: vamos a recopilar datos de nuestro entorno. El mejor sitio para encontrarlos: en OSM.
-	</aside>
-  </section>
-  <section data-background="imagenes/osm_girona.png">
-  </section>
-  <section data-background="imagenes/escondido.jpg">
-    <p><a href="https://www.openstreetmap.org/"><img src="imagenes/osm.svg"/></a></p>
-    <p><a href="https://www.hotosm.org/"><img src="imagenes/hot.svg"/></a></p>
-	<aside class="notes">
-	    Es más, si tenemos suerte, puede que incluso haya un equipo de HOTOSM trabajando en nuestra zona.
-	</aside>
-  </section>
-  <section data-background="imagenes/mapathon.jpg">
-  </section>
-  <section data-background="imagenes/escondido.jpg">
-    <p><a href="https://wiki.osgeo.org/wiki/Marble_Virtual_Globe"><img src="imagenes/marble.png"/></a></p>
-	<aside class="notes">
-	    Podemos usar Marble para visualizar los datos de OpenStreetMap. Marble es una aplicación de escritorio KDE que representa un globo terráqueo. Incluye cálculo de rutas y búsqueda de puntos de interés. Es un buen punto de partida para tener una visión global de nuestro entorno y situar qué localizaciones nos interesa visitar. 
-	</aside>
-  </section>
-  <section data-background="imagenes/marble_girona.png">
-  </section>
-  <section data-background="imagenes/guifi.net.png">
-    <p><a href="https://guifi.net/"><img src="imagenes/guifi.net_logo.gif"/></a></p>
-	<aside class="notes">
-	    Y yo sé lo que estáis pensando: en un apocalipsis zombie, lo primero que se va a caer va a ser internet. Si ya se cae cuando todo funciona normal... ¿no se va a caer internet con el apocalipsis zombie? Seguro, pero podemos seguir usando guifi.net. Guifi.net es un proyecto para crear una red global de comunicaciones (internet) libre, abierta y neutral. Como podéis ver, hay zonas mucho más pobladas de antenas que otras, pero el crecimiento es exponencial. El proyecto empezó en 2004 en Cataluña para intentar solucionar las dificultades de las zonas rurales para acceder a un internet rápido y pronto se extendió por todo el mundo con la idea de extender un internet libre a bajo coste. Cualquiera con una antena puede conectarse a la red de forma gratuita y sólo tiene que encargarse del coste de mantenimiento de su propia antena. Algunos voluntarios permiten el acceso a internet desde sus nodos y algunas empresas y ayuntamientos ceden gratuitamente ancho de banda al proyecto. Al ser una red descentralizada, se intenta que ningún nodo sea imprescindible, que la red sea lo más resiliente posible.
-	</aside>
-  </section>
-  <section data-background="imagenes/catsearching.gif">
-    <p><a href="https://postgis.net/"><img class="fragment" src="imagenes/postgis.png"/></a>
-    <a href="https://trac.osgeo.org/geos"><img class="fragment" src="imagenes/geos.png"/></a></p>
-	<aside class="notes">
-	    <p>Así que, de una forma o de otra, conseguiremos acceso a los datos base para poder conocer nuestra región. Pero, ¿dónde guardar y procesar los datos? Suerte que tenemos la extensión espacial de PostGRES: PostGIS. Por cierto usa GEOS, el port a C++ de JTS. JTS Topology Suite is an open-source Java software library that provides an object model for Euclidean planar linear geometry together with a set of fundamental geometric functions. </p>
-	</aside>
-  </section>
-  <section data-background="imagenes/pgadmin.png">
-  </section>
-  <section data-background="imagenes/catsearching.gif">
-    <p><a href="https://postgis.net/"><img src="imagenes/postgis.png"/></a><a href="https://trac.osgeo.org/geos"><img src="imagenes/geos.png"/></a></p>
-    <p><a href="https://www.gdal.org/"><img class="fragment" src="imagenes/gdal.png"/></a></p>
-	<aside class="notes">
-	    <p>Y podemos usar GDAL para transformar del formato OSM a postGIS. GDAL is a translator library for raster and vector geospatial data formats</p>
-	    <p> Como veis, hemos podido conseguir datos de nuestro entorno que ahora podremos procesar y analizar para crear nuestras estrategias contra los gatitos zombies.</p> 
-	</aside>
-  </section>
-  <section data-background-size="contain" data-background="imagenes/gdal_command_line.png">
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/cloud.gif">
-	<aside class="notes">
-	    Pero los datos hay que actualizarlos, durante el apocalipsis zombie de gatitos habrá habido explosiones y muchos edificios se habrán caído y muchas calles estarán ahora cortadas. Además, hay que coger datos específicos, a ser posible en tiempo real, para saber dónde están las hordas de gatitos y poder evitarlas.
-	</aside>
-  </section>
-  <section data-background="imagenes/CIBASS-Spy-cat.jpg" data-background-size="contain">
-    <h2><a href="https://en.wikipedia.org/wiki/Acoustic_Kitty">Accoustic Kitty</a></h2>
-    <h3><a class="fragment" href="https://www.arduino.cc/"><img style="height:100px" src="imagenes/arduino.png"/></a></h3>
-	<aside class="notes">
-	    <p>¿Cómo podemos sacar datos del entorno? Pues podemos usar los gatos zombies como sensores. Esto fue un experimento de los años sesenta de la CIA, que nunca llegó a buen puerto porque no fueron capaces de entrenar a los gatos para hacer lo que ellos querían. Pero en nuestro caso, lo que queremos es, precisamente, monitorizar los movimientos de las hordas gatunas.</p>
-	    <p>Como hardware, si tenemos acceso a alguna impresora de microprocesadores, podemos usar arduinos, que es hardware libre. Los arduinos son unos procesadores muy ligeros que funcionan a bajo voltaje y nos permitirían fabricar sensores fácilmente para colocarlos por toda la ciudad.</p>
-	    <p>Pero seguramente a lo único a lo que tendremos acceso es a alguna tienda de móviles, que podremos atracar para instalar GeoPaparazzis que reporten los datos. Si además tenemos acceso a alguna batería solar, cada gatito sensor que fabriquemos tendrá autonomía indefinida. Una alternativa a GeoPaparazzi podría ser gvSIG mobile.</p>
-	</aside>
-  </section>
-  <section data-background-size="contain" data-background="imagenes/arduino_foto.jpg">
-  </section>
-  <section data-background="imagenes/CIBASS-Spy-cat.jpg" data-background-size="contain">
-    <h2><a href="https://en.wikipedia.org/wiki/Acoustic_Kitty">Accoustic Kitty</a></h2>
-    <h3><a href="https://www.arduino.cc/"><img style="height:100px" src="imagenes/arduino.png"/></a></h3>
-    <h3><a href="https://geopaparazzi.github.io/geopaparazzi/"><img style="height:200px" src="imagenes/geopaparazzi.png"/></a></h3>
-	<aside class="notes">
-	    <p>Pero seguramente a lo único a lo que tendremos acceso es a alguna tienda de móviles, que podremos atracar para instalar GeoPaparazzis que reporten los datos. Si además tenemos acceso a alguna batería solar, cada gatito sensor que fabriquemos tendrá autonomía indefinida.
-	    </p>
-	</aside>
-  </section>
+  <section data-background="imagenes/ejemplo3.png">
+  </section> 
   <section>
-    <h2>
-        <img style="max-width:25vw;max-height:95vh" src="imagenes/geopaparazzi_map.png"/>
-        <img style="max-width:25vw;max-height:95vh" src="imagenes/geopaparazzi_note_large.png"/>
-        <img style="max-width:25vw;max-height:95vh" src="imagenes/geopaparazzi_sketchnotes.png"/>
-   </h2>
-  </section>
-  <section data-background="imagenes/CIBASS-Spy-cat.jpg" data-background-size="contain">
-    <h2><a href="https://en.wikipedia.org/wiki/Acoustic_Kitty">Accoustic Kitty</a></h2>
-    <h3><a href="https://www.arduino.cc/"><img style="height:100px" src="imagenes/arduino.png"/></a></h3>
-    <h3><a href="https://geopaparazzi.github.io/geopaparazzi/"><img style="height:200px" src="imagenes/geopaparazzi.png"/></a>
-    <a href="http://www.gvsig.com/en/products/gvsig-mobile"><img style="height:200px" src="imagenes/gvsig_mobile.png"/></a></h3>
-	<aside class="notes">
-	    <p>Una alternativa a GeoPaparazzi podría ser gvSIG mobile.</p>
-	</aside>
-  </section>
-  <section data-background="imagenes/drone.gif">
-    <p><a class="fragment" href="https://www.orfeo-toolbox.org/"><img src="imagenes/orfeo_toolbox.png"/></a></p>
-	<aside class="notes">
-	    Ya tenemos datos sobre el comportamiento de las hordas de gatitos. Pero también nos vendría bien tener algo de información y datos con drones. Si tenemos la suerte de haber conseguido algunos dones que nos envíen información, podríamos lanzarlos para que nos envíen fotografías aéreas. Estas fotografías las podemos procesar con Orfeo Toolbox para detectar automáticamente dónde están las hordas de gatitos.
-	</aside>
-  </section>
+    <img style="height:80%" src="imagenes/2011_delawen_routing1.gif"/>
+    <img style="height:80%" src="imagenes/2011_delawen_routing2.gif"/>
+  </section> 
   <section>
-    <h2>
-        <img style="width:45vw;max-height:95vh" src="imagenes/orfeo_1.png"/>
-        <img style="width:45vw;max-height:95vh" src="imagenes/orfeo_2.png"/>
-   </h2>
-  </section>
-  <section data-background="imagenes/angrycat.png">
-    <p><a class="fragment" href="https://grass.osgeo.org/"><img src="imagenes/grass.png"/></a></p>
-    <p><a class="fragment" href="https://qgis.org"><img src="imagenes/qgis.png"/></a></p>
-	<aside class="notes">
-	  Ahora que ya tenemos los datos, ¿con qué analizamos los datos para detectar los patrones de comportamiento de las hordas de gatitos? ¿Cómo planificamos nuestras misiones de recaptación de productos? Pues tenemos por ejemplo GRASS y QGIS. Ambos nos permiten definir y lanzar algoritmos para procesar todos estos datos y sacar conclusiones de nuestro entorno. ¿Suelen los gatitos moverse de día o de noche? ¿qué tipo de POIs suelen atraerlos?  
-	</aside>
-  </section>
-  <section data-background-size="contain" data-background="imagenes/qgis_gatitos.png">
-  </section>
-  <section data-background-size="contain" data-background="imagenes/simbolizador.png">
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/surprise_cat.gif">
-    <p><a class="fragment" href="https://live.osgeo.org/en/index.html"><img src="imagenes/osgeolive.png"/></a></p>
-	<aside class="notes">
-	    Cuando conseguimos entrar y nos encontramos un grupo de personas asustadas y malnutridas. Ellos también intentaron montar un sistema, pero estaban usando un sistema con licencia restrictiva que no les permitía toda la libertad del stack de OSGeo.
-	    Así que les dejamos unos cuantos usb de OSGeo Live para que practiquen. Nos aseguramos de que tenemos conectividad hacia su casa, y volvemos.
-	</aside>
-  </section>
-  <section data-background="imagenes/esri.jpg">
-  </section>
-  <section data-background="imagenes/escondido.jpg">
-    <p><a href="https://geonetwork-opensource.org"><img src="imagenes/geonetwork.png"/></a><a class="fragment" href="https://openlayers.org/"><img src="imagenes/openlayers.png"/></a></p>
-    <p><a href="http://geonode.org/"><img class="fragment" src="imagenes/geonode.png"/></a><a href="https://pycsw.org/"><img class="fragment" src="imagenes/pycsw.png"/></a></p>
-	<aside class="notes">
-	  Ahora que somos varios grupos, necesitamos un sistema para compartir datos. Nosotros montamos un GeoNetwork para que ellos puedan acceder a nuestros datos. Ellos, a su vez, montan un sencillo GeoNode con PyCSW en el backend y empiezan a publicar datasets que contienen análisis de nuestros datos en bruto.
-	</aside>
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/zombis.jpg">
-    <p><a class="fragment" href="https://www.geomoose.org/"><img src="imagenes/geomoose.png"/></a></p>
-    <p><a class="fragment" href="https://www.mapbender.org/"><img src="imagenes/mapbender.png"/></a></p>
-	<aside class="notes">
-	    Conforme vamos entrando en contacto con otras comunidades, cada tribu va montando su propia web para compartir datos, especializados en diferentes temáticas. Un grupo se centra en buscar puntos de interés de donde sacar materiales y herramientas. Otro grupo se centra en analizar los movimientos y comportamiento de los gatitos zombies. Etc...
-	</aside>
-  </section>
-  <section data-background="imagenes/zombis2.jpg">
-    <p><a class="fragment" href="https://www.deegree.org/"><img src="imagenes/degree.png"/></a></p>
-    <p><a class="fragment" href="https://www.mapserver.org/"><img src="imagenes/mapserver.png"/></a></p>
-    <p><a class="fragment" href="https://www.geoserver.org/"><img src="imagenes/geoserver.png"/></a></p>
-    <p><a class="fragment" href="https://www.geotools.org/"><img src="imagenes/geotools.png"/></a></p>
-	<aside class="notes">
-	    Algunos ofrecen directamente los servicios OGC con Deegree, MapServer o GeoServer y sobre eso montan sus webs particulares.
-	</aside>
-  </section>
-  <section data-background="imagenes/zombis3.jpg">
-    <p><a class="fragment" href="https://www.pywps.org/"><img src="imagenes/pywps.png"/></a></p>
-	<aside class="notes">
-	   Y no nos olvidemos de pyWPS, para poder compartir algoritmos y análisis para procesar datos usando las funciones definidas por otros grupos. O, simplemente, su capacidad de procesamiento.
-	</aside>
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/grumpy.gif">
-	<aside class="notes">
-	    If it does not spark you joy, change your software.
-	</aside>
-  </section>
-</section>
-<section>
-  <section data-background="imagenes/winwin.jpg">
-    <br/><br/><br/>
-    <h3>Esto es un movimiento que no tiene vuelta atrás</h3>
-    <h3>La libertad salva vidas</h3>
-    <h3>A más libertarios, más ofrecerá la libertad</h3>
-	<aside class="notes">
-	    Conclusions
-	</aside>
-  </section>
+    <h2>Where was I?</h2>
+    <h5>Spatial Data Infrastructures (as a Service)</h5>
+    <p class="fragment">Cool name for saying: platform to manage and classify spatial data.</p>
+    <p class="fragment">Catalog/Web to search + Storage (DB?) + Services to View(map)/Download (+ ETL tools)</p>
+    <br/>
+    <h5>ETL Tools</h5>
+    <p class="fragment">Scarce open source solutions</p>
+    <br/>
+    <h5>Catalogs - (Metadata - Services)</h5>
+    <p class="fragment">Standard/Interoperability focus</p>
+    <br/>
+    <h5 class="fragment">Community - President of OSGeo</h5>
+    <br/>
+    <br/>
+  </section> 
+  <section>
+    <h2>How can it be used by Red Hat?</h2>
+    <h5>Fuse/Camel Spatial</h5>
+    <img src="imagenes/camelspatial.jpg"/>
+    <br/>
+  </section> 
 </section>
 </div>
 
