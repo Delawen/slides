@@ -23,7 +23,7 @@
   <div class="reveal">
     <div class="slides">
       <section>
-        <section data-background-image="imagenes/portada.webp">
+        <section data-background-size="contain" data-background-image="imagenes/portada.webp">
           <article class="fragment">
             <h1>Introducción a la Cría de Camellos</h1>
             <h4>María Arias de Reyna</h4>
@@ -35,25 +35,26 @@
         <section data-background-image="imagenes/camel_fail.webp">
           <article>
             <p>Vengo a hablaros de <br>
-            <span style="position:absolute;left:40vw;top:40vh" class="fragment fade-out">Open Source  <br/>Integration Frameworks for <br/>IPaaS <br/>on Hybrid Platforms <br/>using EIP</span>
-            <span style="position:absolute;left:40vw;top:40vh" class="fragment fade-in-then-out">#Buzzword #Buzzword  <br/>#Buzzword #Buzzword for <br/>#Buzzword<br/>on #Buzzword #Buzzword <br/>using #Buzzword</span>
-            <span style="position:absolute;left:35vw;top:40vh" class="fragment fade-in-then-out">Framework for Data Workflows</span>
-            <span style="position:absolute;left:35vw;top:40vh" class="fragment fade-in-then-out">#Buzzword  for #Buzzword #Buzzword </span>
-            <span style="position:absolute;left:35vw;top:40vh" class="fragment fade-in-then-out">MOVER DATOS DE UN LAO PA OTRO</span>           
+            <span style="position:absolute;left:30vw;top:40vh" class="fragment fade-in-then-out">Open Source  <br/>Integration Frameworks for <br/>IPaaS <br/>on Hybrid Platforms <br/>using EIP</span>
+            <span style="position:absolute;left:30vw;top:40vh" class="fragment fade-in-then-out">#Buzzword #Buzzword  <br/>#Buzzword #Buzzword for <br/>#Buzzword<br/>on #Buzzword #Buzzword <br/>using #Buzzword</span>
+            <span style="position:absolute;left:20vw;top:40vh" class="fragment fade-in-then-out">Framework for Data Workflows</span>
+            <span style="position:absolute;left:20vw;top:40vh" class="fragment fade-in-then-out">#Buzzword  for #Buzzword #Buzzword </span>
+            <span style="position:absolute;left:20vw;top:40vh" class="fragment fade-in-then-out">MOVER DATOS DE UN LAO PA' OTRO</span>           
           </article>
         </section>
         <section data-background-size="contain" data-background="imagenes/muppet_camel.jpg">
         </section>
-        <section data-background-size="contain" data-background="imagenes/usecase0.svg"></section>
-        <section data-background-size="contain" data-background="imagenes/usecase1.svg"></section>
-        <section data-background-size="contain" data-background="imagenes/usecase2.svg"></section>
-        <section data-background-size="contain" data-background="imagenes/muppet_camel_thinking.jpg"></section>
-        <section data-background-size="contain" data-background="imagenes/usecase3.svg"></section>
-        <section data-background-size="contain" data-background="imagenes/camel_walk.webp"></section>
-        <section data-background-size="contain" data-background="imagenes/usecase4.svg"></section>
-        <section data-background-size="contain" data-background="imagenes/camel_laugh.jpg">
+        <section data-background-size="contain" data-background-image="imagenes/usecase0.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase1.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase2.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/muppet_camel_thinking.jpg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase3.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/camel_walk.webp"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase4.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/camel_laugh.jpg">
           <article>
             <h2>Enterprise Integration Patterns</h2>
+            <p class="fragment">Spring Integration, Apache Camel, Red Hat Fuse, Mule ESB, Guaraná DSL</p>
           </article>
         </section>
         <section>
@@ -95,20 +96,25 @@
       <section>
           <article>
             <p>¿Tengo que programar? ¿Sólo puedo usar Java?</p>
-            <img class="fragment" src="imagenes/camel_happy.jpg"/>
           </article>
+        </section>     
+      <section data-background-image="imagenes/camel_happy.jpg">
         </section>     
       <section data-background-image="imagenes/i_heard_you_like.webp">
           <article>
           <h3>¿Querías algo que no fuera Java?</h3>
-            <code class="fragment" data-fragment-index="1">
+          <h3 class="fragment" style="bottom:30px;position:fixed;width:inherit">Tenemos XML</h3>
+          </article>
+        </section>  
+      <section data-background-image="imagenes/i_heard_you_like.webp">
+          <article>
+            <code>
               <p>&lt;route&gt;</p>
               <p>&nbsp;&nbsp;&lt;from uri="twitter-search:#svqtech"/&gt;</p>
               <p>&nbsp;&nbsp;&lt;to uri="rest:get/procesar/{twit}?host=my.rest.endpoint/"/&gt;</p>
               <p>&nbsp;&nbsp;&lt;to uri="jdbc:mydb"/&gt;</p>
               <p>&lt;/route&gt;</p>
             </code>
-          <h3 style="bottom:30px;position:fixed;width:inherit">Tenemos XML</h3>
           </article>
         </section>  
       <section data-background-size="contain" data-background-image="imagenes/camel_conan.webp">
@@ -124,10 +130,15 @@
             <p>¿Y tengo que entender de todo esto para usarlo?</p>
             <p>¿Y no hay una forma más sencilla para no desarrolladores?</p>
             <p>(O para desarrolladores que se quieren simplificar la vida)</p>
-            <img class="fragment" src="imagenes/camel_happy.jpg"/>
           </article>
-        </section>      
-        <section data-background-size="contain" data-background="imagenes/camel_danger.jpg"></section>
+        </section>   
+      <section data-background-image="imagenes/camel_happy.jpg">
+        </section>        
+        <section data-background-size="contain" data-background="imagenes/camel_danger.jpg">
+          <article>
+             <h2>Demo time!</h2>
+          </article>
+        </section>
       </section>
       <section>
         <section data-background-image="imagenes/camel_fail.webp">
