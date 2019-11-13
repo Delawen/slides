@@ -94,9 +94,56 @@
               <p class="fragment" data-fragment-index="4"><i>//Definir claves</i></p>
               <p>from("twitter-search:#svqtech")</p>
               <p class="fragment" data-fragment-index="5">&nbsp;&nbsp;//Conversores</p>
-              <p class="fragment" data-fragment-index="2">&nbsp;&nbsp;.to("rest:get/procesar/{twit}?host=my.rest.endpoint/")</p>
+              <p class="fragment" data-fragment-index="2">&nbsp;&nbsp;.to("rest:get/procesar/{body.twit}?host=my.rest.endpoint/")</p>
               <p class="fragment" data-fragment-index="5">&nbsp;&nbsp;//Conversores</p>
               <p class="fragment" data-fragment-index="3">&nbsp;&nbsp;.to("jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>  
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code>
+              <p><i>//Definir claves</i></p>
+              <p>from("twitter-search:#svqtech")</p>
+              <p>&nbsp;&nbsp;.process(processor1)</p>
+              <p>&nbsp;&nbsp;.to("rest:get/procesar/{body.twit}?host=my.rest.endpoint/")</p>
+              <p>&nbsp;&nbsp;.process(new Processor() {</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;public void process(Exchange exchange) throws Exception {</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String payload = exchange.getIn().getBody(String.class);</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do something with the payload and/or exchange here</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exchange.getIn().setBody("Changed body");</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+              <p>&nbsp;&nbsp;})</p>
+              <p>&nbsp;&nbsp.to("jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>   
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code>
+              <p>from("twitter-search:#svqtech")</p>
+              <p>&nbsp;&nbsp;.choice()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;.multicast().parallelProcessing()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.to("rest:get/procesar/{twit}?host=my.rest.endpoint/", "jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>    
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code>
+              <p>from("twitter-search:#svqtech")</p>
+              <p>&nbsp;&nbsp;.to("rest:get/procesar/{body.twit}?host=my.rest.endpoint/")</p>
+              <p>&nbsp;&nbsp;.choice()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;.when(header("myFlag").regex(myPattern))</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.to("jms:myqueue")</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;.otherwise()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.to("jdbc:mydb")</p>
             </code>
           </article>
         </section>    
@@ -138,8 +185,22 @@
             <p>¿Y no hay una forma más sencilla para no desarrolladores?</p>
             <p>(O para desarrolladores que se quieren simplificar la vida)</p>
           </article>
-        </section>   
+        </section>  
       <section data-background-image="imagenes/camel_happy.jpg">
+        </section>      
+      <section data-background-size="contain" data-background-image="imagenes/syndesis0.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis1.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis2.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis3.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis4.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis5.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis6.png">
         </section>        
         <section data-background-size="contain" data-background="imagenes/camel_danger.jpg">
           <article>
