@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<HTML lang="es">
+<HEAD>
+  <META name="generator" content=
+  "HTML Tidy for HTML5 for Linux version 5.6.0">
+  <META charset="utf-8">
+  <TITLE>Integration Processes as a Service in the Cloud Pivoting
+  to Generate Synergies</TITLE>
+  <META name="author" content="María Arias de Reyna Domínguez">
+  <META name="apple-mobile-web-app-capable" content="yes">
+  <META name="apple-mobile-web-app-status-bar-style" content=
+  "black-translucent">
+  <META name="viewport" content=
+  "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <LINK rel="stylesheet" href="../../reveal/css/reveal.css">
+  <LINK rel="stylesheet" href="../../stylesheets/common.css" id=
+  "theme">
+  <LINK rel="stylesheet" href="../../stylesheets/redhat.css" id=
+  "theme">
+  <SCRIPT>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </SCRIPT>
+  <SCRIPT>
+      customElements.define(
+  </SCRIPT>
+</HEAD>
+<BODY>
+  <DIV class="reveal">
+    <DIV class="slides">
+      <SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/portada.webp">
+          <ARTICLE class="fragment">
+            <H1><STRIKE>Introduction to Camel
+            Breeding</STRIKE></H1>
+            <H1>Integration Processes</H1>
+            <H4>María Arias de Reyna</H4>
+            <H4><A href=
+            "https://twitter.com/delawen">@delawen</A></H4>
+          </ARTICLE>
+        </SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/me.webp"></SECTION>
+      </SECTION>
+      <SECTION>
+        <SECTION data-background-image="imagenes/camel_fail.webp">
+          <ARTICLE>
+            <P>I am going to talk about<BR>
+            <SPAN style="position:absolute;left:30vw;top:40vh"
+            class="fragment fade-in-then-out">Open Source<BR>
+            Integration Frameworks for<BR>
+            IPaaS<BR>
+            on Hybrid Platforms<BR>
+            using EIP</SPAN> <SPAN style=
+            "position:absolute;left:30vw;top:40vh" class=
+            "fragment fade-in-then-out">#Buzzword #Buzzword<BR>
+            #Buzzword #Buzzword for<BR>
+            #Buzzword<BR>
+            on #Buzzword #Buzzword<BR>
+            using #Buzzword</SPAN> <SPAN style=
+            "position:absolute;left:20vw;top:40vh" class=
+            "fragment fade-in-then-out">Framework for Data
+            Workflows</SPAN> <SPAN style=
+            "position:absolute;left:20vw;top:40vh" class=
+            "fragment fade-in-then-out">#Buzzword for #Buzzword
+            #Buzzword</SPAN> <SPAN style=
+            "position:absolute;left:20vw;top:40vh" class=
+            "fragment fade-in-then-out">MOVING DATA BETWEEN
+            COMPONENTS</SPAN></P>
+          </ARTICLE>
+        </SECTION>
+      </SECTION>
+      <SECTION>
+        <SECTION data-background-size="contain" data-background=
+        "imagenes/muppet_camel.jpg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase0.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase1.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase2.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/muppet_camel_thinking.jpg">
+        </SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase3.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/camel_walk.webp"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase4.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/camel_laugh.jpg">
+          <ARTICLE>
+            <H2>Enterprise Integration Patterns</H2>
+            <P class="fragment">Spring Integration, Apache Camel,
+            Red Hat Fuse, Mule ESB, Guaraná DSL, Syndesis</P>
+          </ARTICLE>
+        </SECTION>
+      </SECTION>
+      <SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/hi.webp">
+          <ARTICLE>
+            <P>Let's focus on:</P><BR>
+            <H2>Apache Camel - low level</H2>
+            <H2>Syndesis - high level</H2>
+          </ARTICLE>
+        </SECTION>
+        
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/camel_conan.webp">
+          <ARTICLE>
+            <H2>Apache Camel</H2>
+            <P>One of the most active Apache Project</P>
+            <P>Supports 300+ components</P>
+            <P>Runs over Java: Plain Java, Spring Boot, Kubernetes,
+            Quarkus,...</P>
+          </ARTICLE>
+        </SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/hi.webp">
+          <ARTICLE>
+            <H2>Apache Camel</H2>
+            <P>is NOT:</P>
+            <P>A connector library</P><BR>
+            <P>is:</P>
+            <P>A framework to create data workflows</P>
+            <P>including a connector library,</P>
+            <P>a conversor librery</P>
+            <P>and a router</P>
+            <P>...and all this in less than 5 megas</P>
+          </ARTICLE>
+        </SECTION>
+      </SECTION>
+      <SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase5_a.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase5_b.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase5.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase6.svg"></SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/usecase7.svg"></SECTION>
+        <SECTION data-background-size="contain" data-background=
+        "imagenes/camel_architecture_a.svg"></SECTION>
+        <SECTION data-background-size="contain" data-background=
+        "imagenes/camel_architecture.svg"></SECTION>
+        <SECTION data-background-size="contain" data-background=
+        "imagenes/exchange.svg"></SECTION>
+      </SECTION>
+      <SECTION>
+        <SECTION>
+          <ARTICLE>
+            <P>How can I define a workflow?</P>
+            <BR>
+            <code>
+              <COMMENT class="fragment" data-fragment-index="1">Run this workflow every five seconds</COMMENT>
+              <P class="fragment" data-fragment-index="1">from("timer:hello?period=5s")</p>
+              <COMMENT class="fragment" data-fragment-index="2">Log a simple hello</COMMENT>
+              <p class="fragment" data-fragment-index="2">&nbsp;&nbsp;.log("Hello FOSDEM")</p>
+              <COMMENT class="fragment" data-fragment-index="3">Send message to mock endpoint</COMMENT>
+              <P class="fragment" data-fragment-index="3">&nbsp;&nbsp;.to("mock:foo")</p>
+              <COMMENT class="fragment" data-fragment-index="4">Log something more to mark end</COMMENT>
+              <p class="fragment" data-fragment-index="4">&nbsp;&nbsp;.log("How are you?")</p>
+            </code>
+            <BR>
+            <CONSOLE class="fragment" data-fragment-index="5">
+              <SPAN>kamel run fosdem.js</SPAN> 
+              <SPAN class="fragment" data-fragment-index="6">kamel log fosdem</SPAN>
+              <SPAN class="fragment" data-fragment-index="7">kamel rm fosdem</SPAN>
+            </CONSOLE>
+          </ARTICLE>
+        </SECTION>
+        <SECTION>
+          <ARTICLE>
+            <P>Do I have to code? Can I use only Java?</P>
+          </ARTICLE>
+        </SECTION>
+        <SECTION data-background-image="imagenes/camel_happy.jpg">
+        </SECTION>
+        <SECTION data-background-image=
+        "imagenes/i_heard_you_like.webp">
+          <ARTICLE>
+            <H3>You want a non Java solution?</H3>
+            <H3 class="fragment" style=
+            "bottom:30px;position:fixed;width:inherit">We have
+            XML</H3>
+          </ARTICLE>
+        </SECTION>
+        <SECTION data-background-image=
+        "imagenes/i_heard_you_like.webp">
+          <ARTICLE>
+            <code>
+              <COMMENT>Run this workflow every five seconds</COMMENT>
+              <P>from("timer:hello?period=5s")</p>
+              <COMMENT>Log a simple hello</COMMENT>
+              <p>nbsp;&nbsp;.log("Hello FOSDEM")</p>
+              <COMMENT>Send message to mock endpoint</COMMENT>
+              <P>&nbsp;&nbsp;.to("mock:foo")</p>
+              <COMMENT>Log something more to mark end</COMMENT>
+              <p>&nbsp;&nbsp;.log("How are you?")</p>
+            </code>
+          </ARTICLE>
+        </SECTION>
+        <SECTION>
+          <ARTICLE>
+            <P>Is there no UI for dummies?</P>
+            <P>Do I have to understand all this to use it?</P>
+            <P>Is there a non-developer way?</P>
+            <P>(Or a way for developers that want to make their
+            lives easier)</P>
+          </ARTICLE>
+        </SECTION>
+        <SECTION data-background-image="imagenes/camel_happy.jpg">
+        </SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/syndesis0.png"></SECTION>
+        <SECTION data-background-image="imagenes/syndesis1.png">
+        </SECTION>
+        <SECTION data-background-image="imagenes/syndesis2.png">
+        </SECTION>
+        <SECTION data-background-image="imagenes/syndesis3.png">
+        </SECTION>
+        <SECTION data-background-image="imagenes/syndesis4.png">
+        </SECTION>
+        <SECTION data-background-image="imagenes/syndesis5.png">
+        </SECTION>
+        <SECTION data-background-image="imagenes/syndesis6.png">
+        </SECTION>
+        <SECTION data-background-size="contain" data-background=
+        "imagenes/camel_danger.jpg">
+          <ARTICLE>
+            <H2>Demo time!</H2>
+          </ARTICLE>
+        </SECTION>
+      </SECTION>
+      <SECTION>
+        <SECTION data-background-image="imagenes/camel_fail.webp">
+          <ARTICLE>
+            <P>I talked about</P><BR>
+            <P class="fragment">Open Source</P>
+            <P class="fragment">Integration Frameworks</P>
+            <P class="fragment">for IPaaS</P>
+            <P class="fragment">on Hybrid Platforms</P>
+            <P class="fragment">using EIP</P>
+          </ARTICLE>
+        </SECTION>
+        <SECTION data-background-size="contain"
+        data-background-image="imagenes/me2.webp"></SECTION>
+        <SECTION data-background-image="imagenes/cloud.webp">
+          <ARTICLE>
+            <P>Questions?</P>
+          </ARTICLE>
+        </SECTION>
+      </SECTION>
+    </DIV>
+  </DIV>
+  <SCRIPT src="../../reveal/lib/js/head.min.js"></SCRIPT> 
+  <SCRIPT src="../../reveal/js/reveal.js"></SCRIPT> 
+  <SCRIPT>
+
+
+
+
+
+
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+  </SCRIPT>
+</BODY>
+</HTML>
