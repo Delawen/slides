@@ -4,15 +4,9 @@
 [submodule "siglibre"]
 	path = siglibre
 	url = https://github.com/Delawen/siglibre.git
-[submodule "geotalleres"]
-	path = geotalleres
-	url = https://github.com/Delawen/geotalleres.git
 [submodule "Taller-GIS"]
 	path = Taller-GIS
 	url = https://github.com/Delawen/Taller-GIS.git
-[submodule "taller-geonetwork"]
-	path = taller-geonetwork
-	url = https://github.com/Delawen/taller-geonetwork.git
 [submodule "geonetwork-technical"]
 	path = geonetwork-technical
 	url = https://github.com/Delawen/geonetwork-technical.git
