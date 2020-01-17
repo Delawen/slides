@@ -11,7 +11,7 @@ permalink: /
   {% unless file.path contains 'reveal' %}
   {% assign depth = file.path | split: "/" | size %}
   {% if filepath contains '20' and depth <= 3 %}
-    <li><a href="{{site.url}}{{file.path}}"> {{file.path | remove_first: "/" | split: "/" | pop | join: " - "}} </a></li>
+    <li><a href="{{site.url}}{{site.baseurl}}{{file.path}}"> {{file.path | remove_first: "/" | split: "/" | pop | join: " - "}} </a></li>
   {% endif %}
   {% endunless %}
 {% endfor %}
@@ -21,7 +21,7 @@ permalink: /
   {% unless filepath contains '20' %}
   {% assign depth = file.path | split: "/" | size %}
   {% if depth <= 3 %}
-    <li><a href="{{site.url}}{{file.path}}"> {{file.path | remove_first: "/" | split: "/" | pop | join: " - "}} </a></li>
+    <li><a href="{{site.url}}{{site.baseurl}}{{file.path}}"> {{file.path | remove_first: "/" | split: "/" | pop | join: " - "}} </a></li>
   {% endif %}
   {% endunless %}
   {% endunless %}
