@@ -22,8 +22,8 @@ title: Slides - María Arias de Reyna Domínguez
 email: delawen on most common emails
 description: >- # this means to ignore newlines until "baseurl:"
         List of all presentations made by María Arias de Reyna Domínguez
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://delawen.github.io/slides" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/slides" # subpath of your site, e.g. /blog
+url: "https://delawen.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
