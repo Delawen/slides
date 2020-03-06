@@ -9,6 +9,6 @@ pages:
   - bundle exec jekyll build -d public
   artifacts:
     paths:
-    - 2020
+    - public
   only:
   - gh_pages
