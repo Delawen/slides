@@ -33,7 +33,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-PAGES_REPO_NWO="Delawen/slides"
+PAGES_REPO_NWO: "Delawen/slides"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
