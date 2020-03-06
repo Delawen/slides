@@ -168,7 +168,6 @@
         <section data-background-image="imagenes/roar.webp">
           <article>
             <h2>Open Washing</h2>
-            <h3>Miedo a la Libertad</h3>
           </article>
         </section>
       </section>
@@ -248,9 +247,9 @@
           <article>
             <h2>Buscando trabajo</h2>
             <p class="fragment">Permitimos remoto... para el candidato apropiado</p>
+            <p class="fragment">Remoto una tarde al mes</p>
             <p class="fragment">Salario según localización</p>
             <p class="fragment">Autónomo... o no</p>
-            <p class="fragment">Remoto una tarde al mes</p>
             <br/>
             <p class="fragment">Bonus: cuidado con las empresas "amiga"</p>
           </article>
@@ -272,7 +271,7 @@
       var i;
       var urls = document.getElementsByClassName("autofill-url");
       for (i = 0; i < urls.length; i++) {
-        urls[i].innerHTML = document.URL;
+        urls[i].innerHTML = window.location.origin + window.location.pathname;
       }
     }
     
