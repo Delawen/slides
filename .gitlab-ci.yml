@@ -1,16 +1,15 @@
-image: ruby:2.3
+image: ruby:latest
 
 variables:
   JEKYLL_ENV: production
+  LC_ALL: C.UTF-8
 
-build:
- script:
+before_script:
+  - gem install bundler
   - bundle install
- only:
-  - gh_pages
- 
 
-deploy:
+pages:
+  stage: deploy
   script:
   - bundle exec jekyll build -d public
   artifacts:
