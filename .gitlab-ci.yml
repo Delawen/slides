@@ -3,9 +3,15 @@ image: ruby:2.3
 variables:
   JEKYLL_ENV: production
 
-pages:
-  script:
+build:
+ script:
   - bundle install
+ only:
+  - gh_pages
+ 
+
+deploy:
+  script:
   - bundle exec jekyll build -d public
   artifacts:
     paths:
