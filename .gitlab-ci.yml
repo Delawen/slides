@@ -1,5 +1,8 @@
 image: ruby:2.3
 
+stages:
+ - deploy
+
 variables:
   JEKYLL_ENV: production
 
