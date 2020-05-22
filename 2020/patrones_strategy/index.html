@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+      <meta charset="utf-8"/>
+      <title>Patrón Estrategia</title>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <link rel="stylesheet" href="../../reveal/css/reveal.css"/>
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/>
+      
+      
+    <style type="text/css">
+      .personas {
+        display: grid;
+        align-items: center;
+      }
+      
+      .twitter_card {
+        display: inline-grid;
+        height: 28%;
+        width: 20%;
+      }
+      
+      .twitter_card img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+      .twitter_card a {
+        position: absolute;
+        display:flex;
+        align-self: flex-end;
+        font-size: 16px;
+        background-color: black;
+      }
+    </style>
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/Cat+reading+Military+Strategy.webp">
+          <article>
+            <h1>Patrón Estrategia</h1>
+            <br/>
+            <h4>María Arias de Reyna</h4>
+            <h6><a href="https://twitter.com/delawen">@delawen</a></h6>
+            <h6>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/cat_orgy.webp">
+          <article>
+            <h3>Coupling</h3>
+            <h3>Acoplamiento</h3>
+            <p class="fragment">Si uso una llamada a Utils.calculaClave() desde mi clase y Utils cambia su función a Utils.calculaClave(boolean complejo), tendré que cambiar mi código y adaptarlo.</p>
+            <p class="fragment">Si accedo a un atributo de otra clase y esa otra clase hace el atributo privado para protegerlo de cambios, tendré que cambiar mi código y adaptarlo.</p>
+          </article>
+          <aside class="notes">
+            <p>Acoplamiento: mide las dependencias.</p>
+            <p>Afferent: quién depende de mi. Efferent: de quién dependo. Hay que contar no sólo que elementos sino cuánto están de acoplados.</p>
+            <p>Interoperabilidad, estándares (formatos, protocolos). Contratos.</p>
+          </aside>
+        </section>
+      </section>
+      
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/W3sDesign_Visitor_Design_Pattern_UML.jpg">
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/W3sDesign_Strategy_Design_Pattern_UML.jpg">
+        </section>
+        <section>
+          <img style="height:50%" src="imagenes/W3sDesign_Visitor_Design_Pattern_UML.jpg"/>
+          <img style="height:50%" src="imagenes/W3sDesign_Strategy_Design_Pattern_UML.jpg"/>
+        </section>
+      </section>
+      
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public interface Visitable{
+    public void accept(Visitor visitor);
+  }
+  
+  public interface Visitor{
+    public void visit(Visitable v);
+    
+    //Visitable2 y OtroVisitable implementan Visitable
+    public void visit(Visitable2 v2);
+    public void visit(OtroVisitable v3);
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class Visitable2 {
+    public void accept(Visitor visitor) {
+      //Si no sabemos quién es, pasamos de él
+    }
+    
+    //Amigo implementa Visitor
+    public void accept(Amigo visitor) {
+      //A este sí le dejo visitarme
+      visitor.visit(this);
+    }
+  }  
+  
+  public class OtroVisitable {
+    public void accept(Visitor visitor) {
+      //A mi en cambio me da igual
+      visitor.visit(this);
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:30px">
+    for(Visitable v : visitables) {
+      //cada visitable decide si acepta o no
+      //y si acepta, llama al "visit" del visitor
+      v.accept(visitor);
+    }
+              </code>
+            </pre>
+          <img src="imagenes/W3sDesign_Visitor_Design_Pattern_UML.jpg"/>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/visitor.jpg">
+          <article>
+            <p>Decisión por parte del Visitable</p>
+            <p>Si añadimos nuevos Visitors, hay que modificar Visitable</p>
+            <p>Acoplamiento fuerte</p>
+            <p>Útil para recorrer elementos de forma genérica</p>
+          </article>
+        </section>
+        <section>
+          <img style="height:50%" src="imagenes/W3sDesign_Visitor_Design_Pattern_UML.jpg"/>
+          <img style="height:50%" src="imagenes/W3sDesign_Strategy_Design_Pattern_UML.jpg"/>
+        </section>
+      </section>
+      
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  //Todas nuestras estrategias hacen "do"
+  public interface IStrategy {
+  
+    //Esta función puede ser cualquier cosa
+    public String do();
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class EstrategiaSimple implements IStrategy {
+    public String do() {
+      return "Y ya está. Hecho.";
+    }
+  }
+  
+ public class EstrategiaComplicada implements IStrategy {
+    public String do() {
+      StringBuilder sb = new StringBuilder("Y");
+      sb.append(" ");
+      sb.append("ya está");
+      sb.append(". ");
+      sb.append("Hecho.");
+      return b.toString();
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class EstrategiaRara implements IStrategy {
+    public String do() {
+      StringBuilder sb = new StringBuilder("Pues");
+      sb.append(" yo");
+      sb.append(" devuelvo");
+      sb.append(" otra");
+      sb.append(" cosa.");
+      return b.toString();
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  //Clase super simple que ejecuta una estrategia según
+  //qué sea lo mejor ¡¡en tiempo real!!
+  public class Demo {
+    public static void main(String[] args) {
+      //Obtenemos la mejor estrategia
+      IStrategy strategy = getBestStrategy(args);
+        
+      //No necesitamos saber la estrategia concreta para ejecutarla aquí
+      System.out.println(strategy.do());
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers="7,10" style="font-size:40px">
+  //Clase super simple que ejecuta una estrategia según
+  //qué sea lo mejor ¡¡en tiempo real!!
+  public class Demo {
+    public static void main(String[] args) {
+      //Obtenemos la mejor estrategia
+      IStrategy strategy = getBestStrategy(args);
+        
+      //No necesitamos saber la estrategia concreta para ejecutarla aquí
+      System.out.println(strategy.do());
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        
+        <section data-background-image="imagenes/.webp">
+          <article>
+            <p>Pero getBestStrategy,</p>
+            <p>¿lo implementamos nosotras?</p>
+            <p>Seguimos altamente acopladas</p>
+          </article>
+          <aside class="notes">
+            <p>Seguramente la estrategia la escoge un wrapper, fachada o factoría.</p>
+            <p>Lo importante NO ES EL CÓDIGO.</p>
+          </aside>
+        </section>
+      
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class Demo {
+    public static void main(String[] args) {
+      //el constructor asigna una estrategia por defecto
+      Vendedor v = new Vendedor();
+      
+      //pasan cosas en tu código
+      //en algún momento, alguien llama a algo como
+      v.setStrategy(new EstrategiaOptimaParaEsteCaso());
+      
+      //pasan más cosas
+      //quizás la situación cambia y alguien llama otra vez    
+      v.setStrategy(new OtraEstrategia());
+      
+      //y finalmente, necesitamos ejecutar la estrategia
+      v.getStrategy().do();  
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers="9,13" style="font-size:40px">
+  public class Demo {
+    public static void main(String[] args) {
+      //el constructor asigna una estrategia por defecto
+      Vendedor v = new Vendedor();
+      
+      //pasan cosas en tu código
+      //en algún momento, alguien llama a algo como
+      v.setStrategy(new EstrategiaOptimaParaEsteCaso());
+      
+      //pasan más cosas
+      //quizás la situación cambia y alguien llama otra vez    
+      v.setStrategy(new OtraEstrategia());
+      
+      //y finalmente, necesitamos ejecutar la estrategia
+      v.getStrategy().do();  
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section>
+          <article>
+            <p>¿Qué tiene esto que ver con el visitor?</p>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/seguros.jpeg">
+          <article>
+            <p>¿Qué tiene esto que ver con el visitor?</p>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class Casa implements Visitable {
+    public void accept(Visitor visitor) {
+      //Esto es spam, ni le abro
+    }
+    public void accept(Amigo visitor) {
+      visitor.visit(this);
+    }
+  }  
+  
+  public class Empresa implements Visitable {
+    public void accept(Visitor visitor) {
+      //Sí a todo
+      visitor.visit(this);
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+
+  public class Demo {
+    public static void main(String[] args) {
+      List&lt;Visitables> edificios;
+      Visitor vendedora = new Vendedora();
+      
+      for(Visitable v : edificios) {
+        //cada visitable decide si acepta o no
+        //y si acepta, llama al "visit" del visitor
+        //como visitor mi estrategia está definida
+        v.accept(visitor);
+      }
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class EstrategiaAmable implements IStrategy {
+    public void visit(Visitable v) {
+      
+    }
+  }
+  
+ public class SugerAgresiva implements IStrategy {
+    public void visit(Visitable v) {
+     
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">  public class Demo {
+    public static void main(String[] args) {
+      List&lt;Visitables> edificios;
+      Vendedora vendedora = new Vendedora(new DefaultStrategy());
+      if(esUnBarrioResidencial()) {
+        vendedora.setStrategy(new EstrategiaAmable());
+      }
+      if(estamosDeRebajas()) {
+        vendedora.setStrategy(new SuperAgresiva());
+      }
+      for(Visitable v : edificios) {
+        //El visitable no puede bloquearme
+        //soy yo quien decido hasta dónde llego
+        vendedora.getStrategy().visit(v);
+      }
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/acrobatic_cat.gif">
+          <article>
+            <p>¿Hacemos un triple salto mortal?</p>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers style="font-size:40px">
+  public class Demo {
+    public static void main(String[] args) {
+      List&lt;Visitables> edificios;
+      Visitor vendedora = new Vendedora();
+      
+      
+      
+      for(Visitable v : edificios) {
+        //cada visitable decide si acepta o no
+        //y si acepta, llama al "visit" del visitor
+        //como visitor mi estrategia está definida
+        v.accept(visitor);
+      }
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/.webp">
+          <article>
+            <pre>
+              <code class="hljs" data-line-numbers="6,7,8" style="font-size:40px">
+  public class Demo {
+    public static void main(String[] args) {
+      List&lt;Visitables> edificios;
+      Visitor vendedora = new Vendedora();
+      if(estamosDeRebajas()) {
+        vendedora.setStrategy(new SuperAgresiva());
+      }
+      for(Visitable v : edificios) {
+        //cada visitable decide si acepta o no
+        //y si acepta, llama al "visit" del visitor
+        //como visitor mi estrategia está definida
+        v.accept(visitor);
+      }
+    }
+  }
+              </code>
+            </pre>
+          </article>
+        </section>
+        <section>
+          <article class="personas">
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/1223979137251053568/a-vzvmhI_400x400.jpg"/>
+              <a href="https://twitter.com/amayita"/>@amayita</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/678013204069527560/BU0p6mg0_400x400.png"/>
+              <a href="https://twitter.com/ladybenko"/>@ladybenko</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/1171404634742767618/k6UaoVJ2_400x400.jpg"/>
+              <a href="https://twitter.com/Terceranexus6"/>@Terceranexus6</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/972384772117934080/cJq-FLnw_400x400.jpg"/>
+              <a href="https://twitter.com/carmen10maica"/>@carmen10maica</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/2818477708/0ef050189a11bb7f9cf56306f5d171bf_400x400.png"/>
+              <a href="https://twitter.com/AstroKatie"/>@AstroKatie</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/1233841113003429888/iKQWzGCl_400x400.jpg"/>
+              <a href="https://twitter.com/Fox0x01"/>@Fox0x01</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/1186408146480156672/syr1rWpj_400x400.jpg"/>
+              <a href="https://twitter.com/SarahJamieLewis"/>@SarahJamieLewis</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/1259517217047105537/0tFigyzF_400x400.jpg"/>
+              <a href="https://twitter.com/Gaohmee"/>@Gaohmee</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/763179688013377536/mbsD4Ptg_400x400.jpg"/>
+              <a href="https://twitter.com/RealSexyCyborg"/>@RealSexyCyborg</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/573313210515783680/EAfQAYgp_400x400.png"/>
+              <a href="https://twitter.com/reginaobe"/>@reginaobe</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/1240706788418359297/zKeh1mNA_400x400.jpg"/>
+              <a href="https://twitter.com/underdarkGIS"/>@underdarkGIS</a>
+            </div>
+            <div class="twitter_card">
+              <img src="https://pbs.twimg.com/profile_images/888425690185388032/ns4l2dNB_400x400.jpg"/>
+              <a href="https://twitter.com/wonderchook"/>@wonderchook</a>
+            </div>
+            <p>Esta presentación está en <span class="autofill-url"></span></p>
+          </article>
+        </section>
+      </section>
+    </div>
+  </div>
+  <script src="../../reveal/js/reveal.js"></script> 
+  <script>
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'fade',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				      	{ src: '../../reveal/plugin/highlight/highlight.js', async: true },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        urls[i].innerHTML = window.location.origin + window.location.pathname;
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+</body>
+</HTML>
