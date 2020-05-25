@@ -424,9 +424,9 @@
       
       for(Visitable v : edificios) {
         //cada visitable decide si acepta o no
-        //y si acepta, llama al "visit" del visitor
+        //y si acepta, llama al "visit" de la vendedora
         //como visitor mi estrategia está definida
-        v.accept(visitor);
+        v.accept(vendedora);
       }
     }
   }
@@ -437,7 +437,7 @@
         <section data-background-size="contain" data-background-image="imagenes/.webp">
           <article>
             <pre>
-              <code class="hljs" data-line-numbers="6,7,8" style="font-size:40px">
+              <code class="hljs" data-line-numbers="6,7,8,12" style="font-size:40px">
   public class Demo {
     public static void main(String[] args) {
       List&lt;Visitables> edificios;
@@ -447,9 +447,9 @@
       }
       for(Visitable v : edificios) {
         //cada visitable decide si acepta o no
-        //y si acepta, llama al "visit" del visitor
-        //como visitor mi estrategia está definida
-        v.accept(visitor);
+        //y si acepta, llama al "visit" de la vendedora
+        //como vendedora mi estrategia es en tiempo real
+        v.accept(vendedora);
       }
     }
   }
