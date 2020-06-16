@@ -3,7 +3,7 @@ name: hugo publish
 on:
   push:
     branches:
-    - master
+    - gh-pages
 
 jobs:
   build-deploy:
