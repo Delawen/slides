@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
+  <meta charset="utf-8">
+  <title>Integración de Procesos as a Service</title>
+  <meta name="author" content="María Arias de Reyna Domínguez">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../../reveal/css/reveal.css">
+  <link rel="stylesheet" href="../../stylesheets/common.css" id="theme">
+  <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme">
+  <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/portada.webp">
+          <article class="fragment">
+            <h1>Introducción a la Cría de Camellos</h1>
+            <h4>María Arias de Reyna</h4>
+            <h4><a href="https://twitter.com/delawen">@delawen</a></h4>
+          </article>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/me.webp">
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/me2.webp">
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/camel_fail.webp">
+          <article>
+            <p>Vengo a hablaros de <br>
+            <span style="position:absolute;left:30vw;top:40vh" class="fragment fade-in-then-out">Open Source  <br/>Integration Frameworks for <br/>IPaaS <br/>on Hybrid Platforms <br/>using EIP</span>
+            <span style="position:absolute;left:30vw;top:40vh" class="fragment fade-in-then-out">#Buzzword #Buzzword  <br/>#Buzzword #Buzzword for <br/>#Buzzword<br/>on #Buzzword #Buzzword <br/>using #Buzzword</span>
+            <span style="position:absolute;left:20vw;top:40vh" class="fragment fade-in-then-out">Framework for Data Workflows</span>
+            <span style="position:absolute;left:20vw;top:40vh" class="fragment fade-in-then-out">#Buzzword  for #Buzzword #Buzzword </span>
+            <span style="position:absolute;left:20vw;top:40vh" class="fragment fade-in-then-out">MOVER DATOS DE UN LAO PA' OTRO</span>           
+          </article>
+        </section>
+    </section> 
+    <section>
+        <section data-background-size="contain" data-background="imagenes/muppet_camel.jpg">
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase0.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase1.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase2.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/muppet_camel_thinking.jpg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase3.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/camel_walk.webp"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase4.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/camel_laugh.jpg">
+          <article>
+            <h2>Enterprise Integration Patterns</h2>
+            <p class="fragment">Spring Integration, Apache Camel, Red Hat Fuse, Mule ESB, Guaraná DSL</p>
+          </article>
+        </section>
+    </section> 
+    <section>
+        <section data-background-size="contain" data-background-image="imagenes/hi.webp">
+          <article>
+            <p>Apache Camel NO es:</p>
+            <p>Una biblioteca de conectores</p>
+            <br/>
+            <p>Apache Camel es:</p>
+            <p>Un framework para crear workflow de datos</p>
+            <p>incluyendo una biblioteca de conectores,</p>
+            <p>una biblioteca de conversores</p>
+            <p>y un enrutador</p>
+            <p>...y todo esto en menos de 5 megas</p>
+          </article>
+        </section>
+      </section>  
+    </section> 
+    <section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase5.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase6.svg"></section>
+        <section data-background-size="contain" data-background-image="imagenes/usecase7.svg"></section>
+        <section data-background-size="contain" data-background="imagenes/camel_architecture.svg">
+        </section>
+        <section data-background-size="contain" data-background="imagenes/exchange.svg">
+        </section>
+      </section>   
+    <section>      
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code class="fragment" data-fragment-index="1">
+              <p class="fragment" data-fragment-index="4"><i>//Definir claves</i></p>
+              <p>from("twitter-search:#svqtech")</p>
+              <p class="fragment" data-fragment-index="5">&nbsp;&nbsp;//Conversores</p>
+              <p class="fragment" data-fragment-index="2">&nbsp;&nbsp;.to("rest:get/procesar/{body.twit}?host=my.rest.endpoint/")</p>
+              <p class="fragment" data-fragment-index="5">&nbsp;&nbsp;//Conversores</p>
+              <p class="fragment" data-fragment-index="3">&nbsp;&nbsp;.to("jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>  
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code>
+              <p><i>//Definir claves</i></p>
+              <p>from("twitter-search:#svqtech")</p>
+              <p>&nbsp;&nbsp;.process(processor1)</p>
+              <p>&nbsp;&nbsp;.to("rest:get/procesar/{body.twit}?host=my.rest.endpoint/")</p>
+              <p>&nbsp;&nbsp;.process(new Processor() {</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;public void process(Exchange exchange) throws Exception {</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String payload = exchange.getIn().getBody(String.class);</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// do something with the payload and/or exchange here</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exchange.getIn().setBody("Changed body");</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+              <p>&nbsp;&nbsp;})</p>
+              <p>&nbsp;&nbsp.to("jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>   
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code>
+              <p>from("twitter-search:#svqtech")</p>
+              <p>&nbsp;&nbsp;.choice()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;.multicast().parallelProcessing()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.to("rest:get/procesar/{twit}?host=my.rest.endpoint/", "jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>    
+      <section>
+          <article>
+            <p>¿Cómo puedo definir un workflow?</p>
+            <br/>
+            <code>
+              <p>from("twitter-search:#svqtech")</p>
+              <p>&nbsp;&nbsp;.to("rest:get/procesar/{body.twit}?host=my.rest.endpoint/")</p>
+              <p>&nbsp;&nbsp;.choice()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;.when(header("myFlag").regex(myPattern))</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.to("jms:myqueue")</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;.otherwise()</p>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.to("jdbc:mydb")</p>
+            </code>
+          </article>
+        </section>    
+      <section>
+          <article>
+            <p>¿Tengo que programar? ¿Sólo puedo usar Java?</p>
+          </article>
+        </section>     
+      <section data-background-image="imagenes/camel_happy.jpg">
+        </section>     
+      <section data-background-image="imagenes/i_heard_you_like.webp">
+          <article>
+          <h3>¿Querías algo que no fuera Java?</h3>
+          <h3 class="fragment" style="bottom:30px;position:fixed;width:inherit">Tenemos XML</h3>
+          </article>
+        </section>  
+      <section data-background-image="imagenes/i_heard_you_like.webp">
+          <article>
+            <code>
+              <p>&lt;route&gt;</p>
+              <p>&nbsp;&nbsp;&lt;from uri="twitter-search:#svqtech"/&gt;</p>
+              <p>&nbsp;&nbsp;&lt;to uri="rest:get/procesar/{twit}?host=my.rest.endpoint/"/&gt;</p>
+              <p>&nbsp;&nbsp;&lt;to uri="jdbc:mydb"/&gt;</p>
+              <p>&lt;/route&gt;</p>
+            </code>
+          </article>
+        </section>  
+      <section data-background-size="contain" data-background-image="imagenes/camel_conan.webp">
+          <article>
+            <p>Spring-Boot compatible</p>
+            <p>Camel-K</p>
+            <p>Camel Quarkus</p>
+          </article>
+        </section>  
+      <section>
+          <article>
+            <p>¿Y no hay una interfaz gráfica para dummies?</p>
+            <p>¿Y tengo que entender de todo esto para usarlo?</p>
+            <p>¿Y no hay una forma más sencilla para no desarrolladores?</p>
+            <p>(O para desarrolladores que se quieren simplificar la vida)</p>
+          </article>
+        </section>  
+      <section data-background-image="imagenes/camel_happy.jpg">
+        </section>      
+      <section data-background-size="contain" data-background-image="imagenes/syndesis0.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis1.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis2.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis3.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis4.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis5.png">
+        </section>        
+      <section data-background-image="imagenes/syndesis6.png">
+        </section>        
+        <section data-background-size="contain" data-background="imagenes/camel_danger.jpg">
+          <article>
+             <h2>Demo time!</h2>
+          </article>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/camel_fail.webp">
+          <article>
+            <p>Os he hablado de </p>
+            <br/>
+            <p class="fragment">Open Source </p>
+            <p class="fragment">Integration Frameworks </p>
+            <p class="fragment">for IPaaS </p>
+            <p class="fragment">on Hybrid Platforms </p>
+            <p class="fragment">using EIP</span>
+          </article>
+        </section>
+        <section data-background-image="imagenes/cloud.webp">
+          <article>
+            <p>¿Preguntas?</span>
+          </article>
+        </section>
+      </section>
+    </div>
+  </div>
+  <script src="../../reveal/lib/js/head.min.js"></script> 
+  <script src="../../reveal/js/reveal.js"></script> 
+  <script>
+
+
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/marcellus/marcellus.css);
+@import url(../../lib/font/opensans/opensans.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #000;
+$headingColor: #000;
+
+$mainFontSize: 36px;
+$mainFont: 'open_sansregular', Helvetica, sans-serif;
+$headingFont: 'marcellusregular', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 400;
+$linkColor: #000;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.section-slide {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal section img {
+	margin: 15px 0px;
+  background: transparent;
+  border: 0;
+  box-shadow: 0 0 0 0;
+}
+.reveal .progress span {
+	background-color: #fff;
+}

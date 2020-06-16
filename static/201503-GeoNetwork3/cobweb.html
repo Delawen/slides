@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Cobweb</title>
+
+		<meta name="description" content="Citizen science, SOS, Crowd data,...">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('geocat') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/geocat.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../stylesheets/cobweb.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">Cobweb</header>
+<div class="slides">
+<section data-background-size="contain">
+<div>
+    <img style="border:none;box-shadow:none" src="images/portada.png">
+</div>
+<h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+</section>
+<section>
+	<section>
+		<h2>The Internet of Things</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Sensors everywhere:car, phones, industries,...</li>
+			<li>Data published by public administrations, social organizations or companies</li>
+			<li>Services to task and access sensors SOS</li>
+			<li class="fragment" data-fragment-index="1">Data uploaded by common people (crowd-data)</li>
+		</ul>
+		<img style="float:right;max-width:50%" src="images/TheInternetOfThings.png"/>
+		<img style="position:fixed;top:0;bottom:0;margin:auto" class="fragment" data-fragment-index="1" src="images/caseOfFire.jpg"/>
+	</section>
+	<section>
+		<h2>How does GeoNetwork fit here?</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Data is (almost) always temporal-spatial</li>
+			<li class="fragment" data-fragment-index="0">Metadata is (super) important</li>
+			<li class="fragment" data-fragment-index="1">A metadata catalog is needed for this</li>
+		</ul>
+		<img style="float:right;max-width:50%" src="images/TheInternetOfGeoNetwork.png"/>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>So, what is Cobweb?</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Collect data from very different sources</li>
+			<li>Conflation of data</li>
+			<li>Make this data available to groups of interest</li>
+			<li>Make people involved in science</li>
+			<li>Create a reusable platform to collect, conflate and distribute data</li>
+		</ul>
+		<img style="float:right;max-width:50%" src="images/whatIsCobweb2.png"/>
+	</section>
+	<section>
+		<h2>So, what is Cobweb?</h2>
+		<img style="height:83%" src="images/architecture.svg"/>
+	</section>
+	<section>
+		<h2>Is GeoNetwork enough for this?</h2>
+		<ul style="float:left;text-align:left">
+			<li>Connect to Authoring Tool</li>
+			<li class="fragment">Wizards to create surveys (metadata)</li>
+			<li class="fragment">System to join a survey (group), invite, reject,...</li>
+			<li class="fragment">GeoXACML? Complex constraints</li>
+			<li class="fragment">Better integration with WxS (operatesOn)</li>
+			<li class="fragment">Sell data through the portal?</li>
+			<li class="fragment">Support for SOS. Quality? ISO19157</li>
+			<li class="fragment">Suggest data interesting to the user (complex profile)</li>
+			<li class="fragment">More "social" (+complex workflows)</li>
+			<li class="fragment">Store individual observations or collections? </li>
+		</ul>
+	</section>
+</section>
+<section>
+    <h2>That's it</h2>
+    <div>Questions, suggestions, comments, critics,...</div>
+    <div><a href="https://geocat.net"><img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/298349/GeoCat.png"></a>
+    </div>
+    <div><a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <div>
+        <br>
+    </div>
+    <img src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="geocat" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
