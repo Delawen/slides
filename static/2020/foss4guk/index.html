@@ -247,10 +247,12 @@
           <article>
             <pre> 
               <code class="hljs" data-line-numbers>
-//Run this workflow every five seconds
-from("timer:hello?period=5s")
-  //Log something more to mark end
-    .log("Camel or llama?")
+//Run this workflow every second
+      from("timer:java?period=1000")
+        .setBody()
+          .simple("Camel or llama? ")
+        .to("log:info");
+
               </code>
               <code class="hljs" data-line-numbers data-trim>
                 kamel run file.js 
