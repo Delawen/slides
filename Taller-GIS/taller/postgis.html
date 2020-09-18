@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Taller de PostGIS | @delawen</title>
+    
+    <meta name="description" content="Taller de PostGIS básico" />
+    <meta name="author" content="María Arias de Reyna" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported" onload="mapsReady()">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div style="position: absolute; bottom:10px; right:20px">
+<a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"/></a>
+</div>
+
+<div style="position: absolute;
+    bottom: 10px;
+    left: 10px;">
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#tallergis',
+  interval: 30000,
+  title: 'Taller GIS',
+  subject: '#tallergis' ,
+  width: 150,
+  height: 200,
+  theme: {
+    shell: {
+      background: '#E2E2CA',
+      color: '#000000'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</div>
+
+<div id="impress">
+
+
+    <!--
+        
+        So to make a summary of all the possible attributes used to position presentation steps, we have:
+        
+        * `data-x`, `data-y`, `data-z` -- they define the position of **the center** of step element on
+            the canvas in pixels; their default value is 0;
+        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` -- they define the rotation of
+            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+            are exactly the same;
+        * `data-scale` -- defines the scale of step element; default value is 1
+        
+        These values are used by impress.js in CSS transformation functions, so for more information consult
+        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+        
+    -->
+
+    <div class="step slide" data-x="-800" data-y="-800" data-rotate="-250">
+      <h1>Taller de PostGIS
+      <img style="height:20%" src="http://live.osgeo.org/_images/logo-PostGIS.png"/></h1>
+      <h2>María Arias de Reyna Domínguez - @delawen</h2>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>Qué es PostGIS</li>
+          <li>El tipo Geometría</li>
+          <li>Funciones básicas</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+  <div class="step" data-x="2000" data-y="2000" data-rotate-z="90">
+    <h2>Qué es PostGIS</h2>
+    <q> “Everything is related to everything else, but near things are more related than distant things”, 
+      <a href="http://en.wikipedia.org/wiki/First_law_of_geography">First Law of Geography</a></q>
+      <center><img style="height:120px" src="http://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg"/> + 
+      <img style="height:120px" src="http://static.memrise.com.s3.amazonaws.com/uploads/iset_photos/Green-Globe.png"/></center>
+  </div>
+
+  <div class="step" data-x="4000" data-y="2000">
+    <p>sudo apt-get install postgresql-9.1-postgis</p>
+    <p>sudo apt-get install postgresql-*-postgis</p>
+    <p>¡¡Cuidado con el paquete "postgis"!!</p>
+  </div>
+
+  <div class="step" data-x="4000" data-y="4000">
+    <p>Al instalar postGIS se crea un template_postgis(_20).</p>
+    <p>Este template define una base de datos con capacidad espacial.</p>
+    <p>Podemos ver la versión de postGIS instalada con</p>
+    <p><strong>SELECT postgis_full_version();</strong></p>
+  </div>
+
+  <div class="step" data-x="4000" data-y="6000">
+    <p style="font-size:50%">sudo apt-get install  postgresql-9.1-postgis</p>
+    <p style="font-size:50%">psql -h localhost -U postgres  -c'createdb -E UTF8 -U postgres template_postgis'</p>
+    <p style="font-size:50%">sudo su postgres -c'createdb -E UTF8 -U postgres template_postgis'</p>
+    <p style="font-size:50%">sudo su postgres -c'createlang -d template_postgis plpgsql;'</p>
+    <p style="font-size:50%">psql -U postgres -d template_postgis  -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql </p>
+    <p style="font-size:50%">psql -U postgres -d template_postgis  -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql </p>
+    <p style="font-size:50%">psql -U postgres -d template_postgis  -c "GRANT ALL ON geometry_columns TO PUBLIC;"</p>
+    <p style="font-size:50%">psql -U postgres -d template_postgis  -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"</p>
+    <p style="font-size:50%">psql -U postgres -d template_postgis  -c "GRANT ALL ON geography_columns TO PUBLIC;"</p>
+    <p style="font-size:50%">psql -U postgres -d template_postgis  -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis';"</p>
+  </div>
+
+  <div class="step" data-x="4000" data-y="8000">
+    <p>Con el template creado, ya podemos crear bases de datos espaciales como churros.</p>
+    <p>createdb -E UTF8 -U postgres -T template_postgis db_taller</p>
+  </div>
+
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>El tipo Geometría</li>
+          <li>Funciones básicas</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+  <div class="step" data-x="-5000" data-y="5000" data-rotate-z="90" data-scale="20">
+    <h2>El tipo Geometría</h2>
+    <p>Es un tipo más de la base de datos.</p>
+    <p>Permite definirse en "cualquier" sistema de coordenadas.</p>
+    <p>Número ilimitado de dimensiones.</p>
+    <center><img src="http://workshops.opengeo.org/postgis-intro/_images/hierarchy.png"/></center>
+  </div>
+
+  <div class="step" data-x="-4000" data-y="4000" data-scale="5">
+    <p>Point</p>
+    <p>LineString</p>
+    <p>LinearRing</p>
+    <p>Polygon</p>
+    <p>MultiPoint</p>
+    <p>MultiLineString</p>
+    <p>MultiPolygon</p>
+    <p>GeometryCollection</p>
+  </div>
+
+  <div class="step" data-x="-4000" data-y="3250">
+     <p>Latitud, Longitud</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="3500">
+     <p>Conjunto ordenado de puntos</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="3750">
+     <p>Curvas. Poco usado salvo para polígonos.</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="4000">
+     <p>Conjunto de líneas cerrado</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="4200">
+     <p>Nube de Puntos</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="4400">
+     <p>Manojo de líneas</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="4650">
+     <p>Varios polígonos</p>
+  </div>
+  <div class="step" data-x="-4000" data-y="4900" data-scale="2">
+     <p>Caos</p>
+  </div>
+
+  <div class="step" data-x="-3488" data-y="2794" data-rotate-z="120">
+     <p>Los datos pueden sacarse de muchas fuentes:</p>
+     <p>Shapefiles</p>
+     <p><a href="http://wiki.openstreetmap.org/wiki/Osm2pgsql">Osm</a></p>
+     <p>Comandos insert</p>
+     <p>GPS</p>
+  </div>  
+
+  <div class="step" data-x="-3655" data-y="3090" data-rotate-z="120">
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+     <p>osm2pgsql -U postgres -d db_taller barcelona.osm</p>
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+  </div>
+
+  <div class="step" data-x="6000" data-y="6000">
+     <p>Si queremos definir una tabla manualmente, hay que especificar las columnas geométricas de forma especial.</p>
+     <p><a href="http://www.postgis.org/documentation/manual-svn/AddGeometryColumn.html">
+        SELECT AddGeometryColumn ('my_schema','my_spatial_table','my_col',4326,'LINESTRING',2);</a></p>
+    <center><img src="images/postgis.png"/></center>
+  </div>
+
+  <div class="step" data-x="6000" data-y="6000">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>CONSTRAINT enforce_dims_my_col CHECK (st_ndims(my_col)=2)</p>
+    <p>&nbsp;</p>
+    <p>CONSTRAINT enforce_geotype_my_col CHECK (geometrytype(my_col) = 'LINESTRING'::text OR my_col IS NULL),</p>
+    <p>&nbsp;</p>
+    <p>CONSTRAINT enforce_srid_my_col CHECK (st_srid(my_col) = 4326)</p>
+  </div>
+
+  <div class="step" data-x="6000" data-y="8000">
+    <p>También podemos meter esas constraint a mano</p>
+    <p>O utilizar <a href="http://www.postgis.org/docs/Populate_Geometry_Columns.html">Populate_Geometry_Columns</a></p>
+    <p>Personalmente no me fío de esta última función</p>
+  </div>
+
+  <div class="step" data-x="2000" data-y="0" data-rotate-z="90">
+     <p>El tipo geometría tiene sus propios índices, normalmente <a href="http://en.wikipedia.org/wiki/R-tree"> en forma de árbol</a>.</p>
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/boundingbox.png"/></center>
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/bbox.png"/></center>
+  </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Funciones básicas</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+
+  <div class="step" data-x="2000" data-y="-2000">
+     <h2>Funciones básicas</h2>
+     <p>Existen muchas funciones geográficas en PostGIS</p>
+  </div>
+
+  <div class="step" data-x="2000" data-y="-4000">
+     <p>ST_MakePoint(Longitude, Latitude)</p>
+     <p>ST_GeomFromText(WellKnownText, srid)</p>
+     <p>ST_SetSRID(geometry, srid)</p>
+     <p>&nbsp;</p>
+     <p>ST_AsText(geometry)</p>
+     <p>ST_AsGeoJSON(geometry)</p>
+     <p>ST_AsGML(geometry)</p>
+  </div>
+
+
+  <div class="step" data-x="2000" data-y="-4000">
+     <p>ST_X(point)</p>
+     <p>ST_Y(point)</p>
+     <p>&nbsp;</p>
+     <p>ST_StartPoint(geometry)</p>
+     <p>ST_EndPoint(geometry)</p>
+  </div>
+
+  <div class="step" data-x="2000" data-y="-6000">
+     <p>Hay muchas formas de ver si dos geometrías son iguales.</p>
+     <p>Puede interesarte una forma más estricta o no según tus necesidades.</p>
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/polygon-table.png"/></center>
+     <p>ST_OrderingEquals: Exactamente iguales</p>
+     <p>ST_Equals: Ocupan el mismo espacio físico</p>
+     <p>=: Ocupan el mismo bounding box</p>
+     <p>&&: Bounding Box que se tocan</p>
+  </div>
+
+  <div class="step" data-x="2000" data-y="-8000">
+     <p>ST_Area(geometry)</p>
+     <p>ST_Length(geometry)</p>
+     <p>ST_NumPoints(linestring)</p>
+     <p>ST_NumGeometries(geometry)</p>
+  </div>
+
+  <div class="step" data-x="12000" data-y="-12000" data-scale="5
+">
+     <p>ST_Distance(geometry, geometry)</p>
+     <p>ST_DWithin(geometry, geometry, radius)</p>
+     <p>ST_Intersects(geometry, geometry)</p>
+     <p>ST_Contains(geometry, geometry)</p>
+     <p>ST_Crosses(geometry, geometry)</p>
+     <p>ST_Disjoint(geometry, geometry)</p>
+     <p>ST_Overlaps(geometry, geometry)</p>
+  </div>
+
+
+  <div class="step" data-x="11500" data-y="-12500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_intersects.png"/></center>
+  </div>
+
+  <div class="step" data-x="12300" data-y="-12500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_disjoint.png"/></center>
+  </div>
+
+  <div class="step" data-x="11500" data-y="-11500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_crosses.png"/></center>
+  </div>
+
+  <div class="step" data-x="12300" data-y="-11500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_overlaps.png"/></center>
+  </div>
+
+  <div class="step" data-x="12800" data-y="-12500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_touches.png"/></center>
+  </div>
+
+  <div class="step" data-x="11500" data-y="-10500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_within.png"/></center>
+  </div>
+
+  <div class="step" data-x="12800" data-y="-10500">
+     <center><img src="http://workshops.opengeo.org/postgis-intro/_images/st_dwithin.png"/></center>
+  </div>
+
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-5000" data-y="-1500" data-rotate-z="45">
+      <p>Lo mismo que se aplica a un postgreSQL.</p>
+      <p>Al menos respecto a parámetros de SO.</p>
+    </div>
+
+    <div class="step" data-x="-5000" data-y="-3000">
+      <p>Es fundamental usar índices espaciales.</p>
+      <p>Si además podemos hacer cluster, mejor.</p>
+      <p>Suelen ser más útiles que los índices sobre otros campos.</p>
+      <p>(en igualdad de condiciones)</p>
+    </div>
+
+
+    <div class="step" data-x="-7000" data-y="-5000">
+      <h2>Shared Buffers</h2>
+      <p>Memoria que comparten los procesos (por ejemplo datos que sacan de una tabla)</p>
+      <p>Recomendado: 75% de la RAM</p>
+      <p style="font-size:30%">NOTE: There is a kernel parameter that needs to be adjusted to allow large values of shared_buffers to work, 
+      since the kernel puts limits on how much shared memory can be allocated (to prevent accidents). 
+      Work out how much memory you're going to allocate to shared_buffers, double it, then echo that value 
+      (in bytes) to /proc/sys/kernel/shmmax and /proc/sys/kernel/shmall, and persist that setting on reboot in /etc/sysctl.conf.</p>
+    </div>
+
+
+    <div class="step" data-x="-7000" data-y="-3000">
+      <h2>Work Mem</h2>
+      <p>Espacio en RAM que usa cada sub-query dentro de la query.</p>
+      <p>En PG >= 9 el EXPLAIN ANALYZE te enseña cuanta memoria va a gastar la query.</p>
+      <p>Recomendado: Para un servidor en producción Memoria Disponible / 2 * max_connections.</p>
+      <p style="font-size:30%">NOTE: Set this value at your own risk and only after significant testing. 
+      Having it too high can have rather unexpected consequences. Setting it to 1 or 2GB, unless you have VERY few 
+      threads, or a TON of memory, is a very, very bad idea.</p>
+      <p style="font-size:30%">So, if you're doing data warehousing, and you're pretty much the only user (or there's only one at a time), 
+      setting it up pretty high is acceptable, but you do need to watch the box and make sure you don't run it out of memory. 
+      Also, make sure you have things configured correctly, if you're using Linux, to prevent the OOM killer from kicking in. Also,
+      as I suggested before, set it to a reasonable level for the 'default' and just up it for specific queries that may benefit from it.</p>
+    </div>
+
+
+    <div class="step" data-x="-9000" data-y="-3000">
+      <h2>Maintenance Work Mem</h2>
+      <p>Work Mem para VACUUM, Index, etc...</p>
+      <p>Recomendado: Memoria Disponible / 8</p>
+    </div>
+
+    <div class="step" data-x="-9000" data-y="-1000">
+      <h2>Wal Buffers</h2>
+      <p>Establece la cantidad de memoria utilizada para escritura anticipada registro (WAL) de datos.</p>
+      <p>Recomendado: Si tu base de datos es estática, no necesitas mucho. Si tu base de datos es muy dinámica, necesitarás más espacio. </p>
+      <p>Mientras que el valor por defecto es a menudo suficiente para la mayoría de los datos, los datos geoespaciales tiende a ser 
+      mucho más grandes. Por lo tanto, se recomienda aumentar el tamaño de este parámetro (1 MB).</p>
+    </div>
+
+    <div class="step" data-x="-9000" data-y="1000">
+      <h2>Effective Cache Size</h2>
+      <p>Espacio de memoria que el query planner usa para cachear.</p>
+      <p>Recomendado: 50/75% Memoria Disponible</p>
+      <p>Mientras que el valor por defecto es a menudo suficiente para la mayoría de los datos, los datos geoespaciales tiende a ser 
+      mucho más grandes. Por lo tanto, se recomienda aumentar el tamaño de este parámetro (1 MB).</p>
+    </div>
+
+    <div class="step" data-x="5000" data-y="-1500" data-rotate-z="45">
+        <h2>Para saber más</h2>
+        <p><a href="http://workshops.opengeo.org/postgis-intro/">Workshop</a> de OpenGeo.</p>
+        <p>Visitar este otro <a href="http://workshops.opengeo.org/postgis-spatialdbtips">Workshop</a> de bases de datos geográficas en general.</p>
+        <p>Que no sea por <a href="http://www.bostongis.com/?content_name=postgis_tut01">tutoriales</a> y más 
+        <a href="http://trac.osgeo.org/postgis/wiki/UsersWikiTutorials">tutoriales</a>.</p>
+    </div>
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+
+<!--
+
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>

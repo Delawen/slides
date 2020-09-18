@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Social Features in geoNetwork</title>
+
+		<meta name="description" content="Social Features: Extending the portal. Comments, suggestions, upload data, forums">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">Social Features in geoNetwork</header>
+<div class="slides">
+<section data-background-size="contain">
+<div style="height:100%">
+    <h2>Social Features in GeoNetwork</h2>
+    <img style="border:none;box-shadow:none;max-height:60%;" src="images/portada_social.svg">
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+</div>
+</section>
+<section>
+	<section>
+		<h2>SDI versus Social Network</h2>
+		<div style="text-align:left">
+			<img class="clean" style="float:right;max-height:20%;max-width:30%" src="images/gnversussn.svg"/>
+			<p>GeoNetwork:
+			<ul style="margin-left:12%">
+				<li>Classic SDI</li>
+				<li>"Readonly"</li>
+			</ul>
+			</p>
+			<p>Social Network:
+			<ul style="margin-left:12%">
+				<li>Discuss and comment related data</li>
+				<li>Upload own data</li>
+				<li>Suggested data (extended user profiles)</li>
+				<li>Data more reusable</li>
+			</ul>
+			</p>
+		</div>
+	</section>
+	<section>
+		<h2>Improve social features</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Allow to login with external openId</li>
+			<li>Allow to link related data</li>
+			<li>Allow to link related apps</li>
+			<li>Allow to upload (meta)data</li>
+			<li>Allow comments on metadata</li>
+		</ul>
+		<img class="clean" style="float:right;max-width:50%;max-height:80%" src="images/improveSocial4.svg"/>
+	</section>
+	<section>
+		<h2>Improve social features</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Extended user profile
+			<ul style="margin-left:6%;font-size:90%">
+				<li>Offer suggested datasets</li>
+				<li>Reward most active users</li>
+				<li>Allow groups administrated by users</li>
+				<li>Dashboards</li>
+				<li>Notifications (private messages?)</li>
+			</ul></li>
+		</ul>
+		<img class="clean" style="float:right;max-width:50%;max-height:80%" src="images/improveSocial3.svg"/>
+	</section>
+	<section>
+		<h2>What happens with current SDIs?</h2>
+		<ul style="float:left;text-align:left;max-width:60%">
+			<li>Allow geoNetwork to work as classic SDI</li>
+			<li>New extension (maven project) for all this social features</li>
+			<li>Activated by settings?</li>
+			<li>Backwards compatible</li>
+		</ul>
+		<img class="clean" style="float:right;max-width:40%;max-height:80%" src="images/classicornot.svg"/>
+	</section>
+</section>
+<section>
+    <h2>That's it</h2>
+    <div>Questions, suggestions, comments, critics,...</div>
+    <div><a href="https://geocat.net">GeoCat bv</a></div>
+    <div><a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <div>
+        <br>
+    </div>
+    <img class="clean" src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="geocat" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

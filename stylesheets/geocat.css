@@ -1,0 +1,142 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('fonts/OpenSans.woff2') format('woff2'),
+    url('fonts/OpenSans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Open Sans';
+  font-size: 26pt;
+}
+
+/* Front Page */
+
+section {
+  height: 100%;
+  width: 100%;
+}
+
+.reveal .slides > section > section > div,
+.reveal .slides > section > section > quote {
+  padding-top: 5vh;
+  background-color: #00aad6CC;
+  position: absolute;
+  height: 60vh;
+  top: 40vh;
+  color: white;
+  width: 100%;
+}
+
+.reveal .slides > section > section > div.content-text {
+  padding: 5vh;
+  background-color: white;
+  position: absolute;
+  height: 30vh;
+  top: 0px;
+  color: black;
+  width: 100%;
+}
+
+.reveal .slides > section > section > div.full h1,
+.reveal .slides > section > section > div.full h2,
+.reveal .slides > section > section > div.full h3,
+.reveal .slides > section > section > div.full h4 {
+  color: #00aad6CC;
+}
+
+.reveal .slides > section > section > img {
+  height: 40vh;
+}
+
+.reveal .slides > section > section > quote {
+  padding: 5%;
+  left: 0px;
+}
+
+.reveal a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.reveal a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* H styling */
+
+.reveal h1,.reveal  h2,.reveal  h3,.reveal  h4,.reveal  h5,.reveal  h6,.reveal  h7,.reveal  h8,.reveal  h9 {
+  padding-bottom: 1%;
+}
+
+.reveal h1 {
+  font-size: 200%;
+}
+
+.reveal h2 {
+  font-size: 180%;
+}
+
+.reveal h3 {
+  font-size: 150%;
+}
+
+.reveal h4 {
+  font-size: 130%;
+}
+
+.reveal h5 {
+  font-size: 120%;
+}
+
+.reveal h6 {
+  font-size: 110%;
+}
+
+.reveal h7 {
+  font-weight:bold;
+}
+
+/* Controls */
+
+.reveal .controls {
+  z-index: 6;
+}
+
+
+/* GeoCat Footer and Header */
+
+footer {
+  position:absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 10px;
+  z-index: 3;
+  background-color: white;
+  width: 100%;
+  height: 20px;
+}
+
+footer img {
+  max-width: 40%;
+  float: left;
+  max-height: 100%;
+}
+
+header {
+  position:fixed;
+  top:10px;
+  right:10px;
+  z-index:3;
+  height: 5%;
+  width:100%;
+}
+
+header img {
+  max-height:100%;
+  float:right;
+}

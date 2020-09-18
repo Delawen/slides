@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- OpenLayers framework -->
+	<link rel="stylesheet" href="http://openlayers.org/dev/examples/style.css" />
+	<link rel="stylesheet" href="http://openlayers.org/dev/theme/default/style.css" />
+	<script src="http://openlayers.org/dev/OpenLayers.js"></script>
+</head>
+<body onload="init()">
+                <div id="map" style="width:100%;height:330px" class="smallmap"></div>
+	<script type="text/javascript">
+		function init() {
+		    var map = new OpenLayers.Map("map");
+		    var osm = new OpenLayers.Layer.OSM();
+		    map.addLayer(osm);
+		
+		    var feature = new OpenLayers.Feature.Vector(
+		                    new OpenLayers.Geometry.Point(
+		                        313914.7189699, 5157879.2777324
+		                    ), {type: 40});
+	              var layer = new OpenLayers.Layer.Vector('Points', {
+	                styleMap: new OpenLayers.StyleMap({
+	                    pointRadius: "${type}", // based on feature.attributes.type
+	                    fillColor: "#FF6666",
+			    fillOpacity: 0.3
+	                })
+	            });
+		    layer.addFeatures([feature]);
+	            map.addLayer(layer);
+		    map.setCenter(new OpenLayers.LonLat(313914.7189699, 5157879.2777324), 14);
+	}
+</script>
+</body>
+</html>
+
+

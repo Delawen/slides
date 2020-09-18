@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GeoPackage</title>
+
+		<meta name="description" content="GeoPackage: el nuevo estándar de OGC para desarrollo móvil">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal/css/reveal.min.css">
+                <link rel="stylesheet" href="stylesheets/cobweb.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">GeoPackage</header>
+			<div class="slides">
+			    <section>
+			        <h1>GeoPackage</h1>
+				<div>El nuevo estándar OGC</div>
+				<div>para desarrollo móvil</div>
+				<div>
+					<img src="images/geopkg.png"/></div>
+			    </section>
+                            <section>
+                                        <h3>Explosión del desarrollo móvil</h3>
+                                        <img src="images/tech-cat.jpg"/>
+                            </section>
+			    <section>
+				        <h3>Formatos basados en ficheros</h3>
+					<img src="images/gato_dinosaurio.jpg"/>	
+			    </section>
+			    <section>
+				        <h3>Nuevos formatos para móviles</h3>
+					<img src="images/gato-formato.jpg"/>	
+			    </section>
+			    <section>
+				        <h3>Zampadores de Baterías</h3>
+					<img src="images/gato_bateria.jpg"/>	
+			    </section>
+			    <section>
+				        <h3>Nuevo estándar</h3>
+					<a href="http://xkcd.com/927/">
+					   <img src="images/standards.png"/>	
+					</a>
+			    </section>
+			    <section>
+				        <h3>SQLite</h3>
+					<div style="float:left">
+						<a href="http://xkcd.com/927/">
+						   <img src="images/gato_sqlite.jpg"/>	
+						</a>
+					</div>
+					<div style="float:right">
+						<ul>
+						   <li>Vector WKB/WKT</li>
+						   <li>Image tiles (PNG/JPG)</li>
+						   <li>Soporte para Proyecciones</li>
+						   <li style="text-decoration:line-through">Spatialite</li>
+						   <li>Extensión: *.gpkx</li>
+						   <li>Tablas: gpkx_*</li>
+						   <li>SQLite válido</li>
+						</ul>
+					</div>
+			    </section>
+			    <section>
+				        <h3>SQLite</h3>
+					<img src="images/geopackage.png"/>
+			    </section>
+			    <section>
+				        <h3>SQLite</h3>
+					<ul>
+					   <li>Interoperable</li>
+					   <li>Fácil de almacenar y enviar</li>
+					   <li>Varios datasets en el mismo fichero</li>
+					   <li>Rendimiento</li>
+					   <li>Modelo de extensiones bien definido</li>
+					   <li>Raster y Vector en el mismo fichero</li>
+					   <li>Metadatos también</li>
+					   <li>Baseline con rodaje (SQLite)</li>
+					</ul>
+			    </section>
+			    <section>
+				        <h3>GeoPackage SWG</h3>
+					<p><a href="http://www.opengeospatial.org/projects/groups/geopackageswg">Exclusiva mundial</a></p>
+					<a href="https://twitter.com/geomodernito"><img src="images/cat_hipster.jpg"/></a>
+			    </section>
+			    <section>
+				        <h2>Vas a explicar ya qué es Cobweb?</h2>
+					<a href="http://cobwebproject.eu/">
+					   <img style="max-height:20%" src="images/cobweb.png"/>	
+					</a>
+				        <ul>
+					   <li>Porque yo juraría que trabajabas en algo de <a href="http://geocat.net">geogatos</a></li>
+					   <li>Porque el arbolito me lleva observando todo el rato</li>
+					   <li>Porque no es un árbol, es una persona</li>
+					   <li>¡Una persona mutante con personas en los brazos!</li>
+					</ul>		
+			   </section>
+			   <section>
+				        <h2>Cobweb</h2>
+					<a href="http://cobwebproject.eu/">
+					   <img style="max-height:20%" src="images/cobweb.png"/>	
+					</a>
+				        <ul>
+					   <li>Es un proyecto europeo</li>
+					   <li>Crowdsourcing para ciencia</li>
+					   <li>Convertir a personas en sensores</li>
+					   <li>Caminamos a hombros de gigantes... y de hormigas</li>
+					</ul>		
+			   </section>
+			   <section>
+				        <h2>Esto ha sido todo</h2>
+					<img style="max-height:60%;" src="images/gato_cerveza.jpg"/>	
+			   </section>
+			</div>
+
+			<footer class="universal">
+				<div> 
+					<img src="images/cobweb.png"/>
+					<img src="images/eu.png"/>
+				</div>
+				<footer/>
+			</footer>
+		</div>
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

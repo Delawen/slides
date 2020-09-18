@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>OWS y GeoPackage, estándares en tu móvil</title>
+
+		<meta name="description" content="Desde la irrupción de las tecnologías móviles ha habido una explosión de nuevas tecnologías  y formatos para realizar operaciones geográficas. Desde la OGC se está desarrollando el estándar GeoPackage, que intenta englobar todas las funcionalidades existentes dentro de un mismo formato que sea ligero, sencillo y eficiente. ¿Será posible aunar raster y vectorial en un solo formato? ¿Se podrá usar de forma ligera sobre el móvil?">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">OWS y GeoPackage, estándares en tu móvil</header>
+<div class="slides">
+    <section data-background-size="contain">
+        <h1>OWS y GeoPackage</h1>
+        <div>Estándares en el móvil</div>
+        <div>
+            <img src="images/geopackage.jpg"/>
+        </div>
+	<p><a href="https://twitter.com/delawen">María Arias de Reyna @delawen</a></p>
+	<p><a href="https://twitter.com/geocat_bv">@geocat_bv</a></p>
+    </section>
+    <section>
+	<h2>Quienes somos</h2>
+	    <img class="quienessomos clean"/>
+    </section>
+  <section>
+    <section>
+	<h2>Claves del entorno móvil</h2>
+	    <ul style="text-align:left">
+		<li>Hardware limitado</li>
+		<li>Conectividad limitada</li>
+		<li>Espacio limitado</li>
+		<li class="fragment">Exigencia de datos actualizados (tiempo real)</li>
+	    </ul>
+
+            <img class="clean" style="max-height:50%;max-width:50%" src="images/nokia.png"/>
+    </section>
+    <section>
+	<h2>Claves del entorno móvil</h2>
+	    <ul style="text-align:left">
+		<li>Explosión de formatos</li>
+		<li>Incompatibles entre sí</li>
+		<li>Centrados en casos de uso</li>
+		<li class="fragment">¿Aplicaciones interesantes?</li>
+	    </ul>
+            <img class="clean" style="max-height:50%;max-width:50%" src="images/mobilemap.png"/>
+    </section>
+  </section>
+  <section>
+    <section><h2>GeoPackage</h2>
+	    <p>El estandar para gobernarlos a todos</p>
+	    <img class="clean" style="height:60%" src="images/onering.jpg"/>
+    </section>
+    <section>
+	<img class="clean" style="height:100%" src="http://imgs.xkcd.com/comics/standards.png"/>
+    </section>
+    <section>
+	<h2>GeoPackage</h2>
+	    <ul style="text-align:left">
+		<li>Basado en sqlite (un solo fichero)</li>
+		<li>Software ya desarrollado</li>
+		<li>Mezcla vectorial y ráster</li>
+		<li>Estándar <strong>libre</strong></li>
+		<li>"Copiado" de postGIS</li>
+	    </ul>
+	    <img class="clean" src="images/toomanycats.gif"/>
+    </section>
+    <section>
+	<h2>GeoPackage</h2>
+	    <ul style="text-align:left">
+		<li>Formato en desarrollo</li>
+		<li>Operaciones espaciales limitadas</li>
+		<li>Compartición entre diferentes apps</li>
+		<li class="fragment" data-fragment-index="1">¿Sincronización?</li>
+		<img class="fragment" data-fragment-index="1" class="clean" style="float:right" src="images/synchronizedcats.gif"/>
+	    </ul>
+    </section>
+    <section>
+	<h2>GeoPackage</h2>
+	    <ul style="text-align:left;float:left">
+		<li>GeoSincronizationService</li>
+		<li class="fragment">OWS incluído</li>
+		<li class="fragment">Siempre compatible con sqLite (failback)</li>
+		<li class="fragment">Abierto a sugerencias</li>
+		<li class="fragment">¡¡Estándar libre interoperable!!</li>
+	    </ul>
+	    <img class="clean" style="float:right" src="images/interoperable.png"/>
+    </section>
+  </section>
+<section>
+    <h2>Y eso es todo</h2>
+    <div>¿Dudas, preguntas, sugerencias, críticas destructivas?</div>
+    <div><a href="http://geocat.net"><img class="clean" src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/298349/GeoCat.png"></a>
+    </div>
+    <div><a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <div>
+        <br>
+    </div>
+    <img class="clean" src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="geocat" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

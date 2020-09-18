@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GeoCat Live</title>
+
+		<meta name="description" content="Unifying GIS servers">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal/css/reveal.min.css">
+
+		<script>
+		if (window.location.search.indexOf('geocat') > 0)
+		    document.write('<link rel="stylesheet" href="stylesheets/geocat.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="stylesheets/cobweb.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div style="max-height:6%;max-width:10%;position:fixed;top:4px;left:4px;background-color:rgba(255, 255, 255, 0.5)">
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/298349/GeoCat.png" style="height:100%;width:100%">
+		</div>
+
+		<div class="reveal">
+			<header class="universal">geoNetwork</header>
+<div class="slides">
+    <section>
+        	<h1>GeoCat Live</h1>
+		<div>Earth-hosted&nbsp;</div>
+		<div>GIS servers</div>
+		<div><img src="images/geocat-live.png"/></div>
+		<h4><a href="http://twitter.com/delawen">@delawen</a></h4>
+		<h5>María Arias de Reyna Domínguez</h5>
+    </section>
+    <section>
+        <h2>Who are we?</h2>
+        <a href="http://geocat.net"><img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/298242/GeoCat.png"></a>
+        <br>
+        <div>
+            <a href="http://live.geocat.net"><img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/298256/bridge.png"></a>
+        <br>
+</div>
+
+	</section>
+        <section>
+            <section>
+                <h2>GIS Ecosystem</h2>
+		<div>
+			<ul>
+				<li>
+			                <span style="text-align: center;">GeoDatabases</span>
+			            </li>
+				<li>
+			            <span style="text-align: center;">Map Services (geoServer, mapServer,...)</span>
+			        </li>
+				<li>
+			        	<span style="text-align: center;">Metadata Catalog (geoNetwork, pyCSW)</span>
+			    	</li>
+				<li class="fragment" data-fragment-index="0">
+				    <span style="text-align: center;">Unified interface?</span>
+				</li>
+				<li class="fragment" data-fragment-index="1">
+				    <span style="text-align: center;">Desktop client (qGIS, ArcGIS,...)</span>
+				</li>
+			</ul>
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/300030/bowie1.gif" style="width: 459.60528766174605px; height: 320.1412933408221px; max-height: none; max-width: none;">
+		</div>
+	    </section>
+            <section>
+                <h2>GIS Ecosystem</h2>
+		<div>
+			<ul>
+				<li>
+			                <span style="text-align: center;">Interoperability</span>
+			            </li>
+				<li>
+			            <span style="text-align: center;">INSPIRE</span>
+			        </li>
+				<li>
+			        	<span style="text-align: center;">Create and edit geo datasets</span>
+			    	</li>
+				<li>
+				    <span style="text-align: center;">Accesibility</span>
+				</li>
+			</ul>
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/300036/tumblr_lmtcao8u0a1qf2vcbo1_500.gif">
+		</div>
+	    </section>
+	    <section>
+		    <h2>GIS Ecosystem</h2>
+			<div>Solution: Unified Platform</div>
+			<div>maybe even a SaaS?</div>
+			<div>
+				<img src="images/bowie-think.gif">
+			</div>
+	    </section>
+	    <section>
+        	<h2>GIS Ecosystem</h2>
+		<div style="text-align: center;">Each server has its own requirements</div>
+		<div style="text-align: center;">Very different developments</div>
+		<div>
+			<ul>
+				<li>open-sourced?</li>
+				<li>easy to install and administer?</li>
+				<li>good performance?</li>
+				<li>scalable?</li>
+			</ul>
+			<div style="text-align: center;">
+				<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/300051/tumblr_lz045bspF61qgb8pq.gif">
+			</div>
+		</div>
+	    </section>
+	</section>
+	<section>
+	    <section>
+		<h2>GeoCat Live</h2>
+		<div style="width:35%;float:left">
+		    <ul>
+			<li>GIS Services</li>
+			<ul>
+			    <li><a href="http://geoserver.org/">GeoServer</a></li>
+			    <li>(+ MapServer)</li>
+			</ul>
+			<li class="fragment" data-fragment-index="0">Metadata Catalog</li>
+			<ul>
+				<li class="fragment" data-fragment-index="0"><a href="http://geonetwork-opensource.org/">GeoNetwork</a></li>
+			        <li class="fragment" data-fragment-index="0">(+ pyCSW)</li>
+			</ul>
+			<li class="fragment" data-fragment-index="1">Unified interface</li>
+				<ul>
+					<li class="fragment" data-fragment-index="1">Web UI (gn3)</li>
+					<li class="fragment" data-fragment-index="1"><a href="https://www.geocat.net/bridge">GeoCat Bridge</a></li>
+					<li class="fragment" data-fragment-index="1">Custom API</li>
+				</ul>
+		     </ul>
+		</div>
+		<div style="width: 60%;float:right">
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/300053/giphy.gif">
+			<img class="fragment" data-fragment-index="1" src="https://camo.githubusercontent.com/db3b1da6fa546215e999bb180f9d1e197d9b4401/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d646f776e6c6f61642669643d30427779764e4b596747345a57544752784d6e424f59306850576c55"/>
+		</div>
+	    </section>
+	    <section>
+        	<h2>GeoCat Live</h2>
+    		<p>Hosting</p>
+		<ul>
+			<li>Publish WMS/WFS</li>
+			<li>Publish CSW/RDF/RSS/DCAT</li>
+			<li>PostGIS storage</li>
+			<li>WMC for online maps</li>
+		</ul>
+		<div style="text-align: center;">
+			<img src="images/bowie-dance.gif">
+		</div>
+	    </section>
+	</section>
+	<section>
+    		<h2>And... that's it!</h2>
+		<div>Questions, suggestions, comments, critics?</div>
+		<div><strong><p>See you tomorrow at 10 for </p><p><a href="http://foss4g-e.org/content/geocat-bridge-publish-arcgis-desktop-foss4g">GeoCat Bridge - Publish From ArcGIS Desktop Into FOSS4G</a></strong></p></div>
+		<img src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+		<div><a href="http://twitter.com/geocat_bv">@geocat_bv</a> <a href="http://twitter.com/delawen">@delawen</a></div>
+    	</section>
+</div>
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+		</div>
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

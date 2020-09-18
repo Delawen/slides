@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GeoNetwork: State of the Art</title>
+
+		<meta name="description" content="Current status of GeoNetwork and future developments">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('geocat') < 0)
+		    document.write('<link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../../stylesheets/delawen.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+<div class="reveal">
+<div style="max-width:200px;position:absolute;bottom:1px;left:1px;z-index:3">
+            <a class="twitter-timeline"  href="https://twitter.com/search?q=%23geonetwork%20OR%20%23foss4g%20OR%20%40geocat_bv%20OR%20%40delawen" data-widget-id="357506833780445184">Tweets sobre #geonetwork OR #foss4g OR @geocat_bv OR @delawen</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div class="slides">
+<section data-background-size="contain">
+  <div style="padding-top:20%">
+    <h2 style="text-transform:uppercase">GeoNetwork: State of the Art</h2>
+    <img class="logogn clean"/>
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+    <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
+  </div>
+</section>
+<section>
+  <section>
+    <h2>Who am I and why do I talk about this</h2>
+    <div>I am part of GeoCat's herd</div>
+    <div><a href="https://geocat.net">GeoCat bv</a> <a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <img class="clean lotsofcats">
+    <div>and a GeoNetwork developer</div>
+  </section>
+  <section>
+    <h2>Quick Overview</h2>
+    <div>Stable usage with slowly increase</div>
+    <img class="clean" src="imagenes/stats.png">
+    <div>and that's only from sourceforge</div>
+  </section>
+  <section>
+    <h2>Quick Overview</h2>
+    <div>Mostly developed by europeans</div>
+    <img class="clean" src="imagenes/punchcard.png">
+    <div>on their work time</div>
+  </section>
+  <section>
+    <h2>Quick Overview</h2>
+    <div><a href="https://github.com/geonetwork/core-geonetwork/wiki/Bolsena-2016">Bolsena Codesprint</a></div>
+    <img class="clean"
+		style="max-height:70%;max-width:70%" 
+		src="https://pbs.twimg.com/media/CkbClWVXIAQYY1M.jpg">
+    <div>where we try to catch up</div>
+  </section>
+  <section>
+    <h2>Quick Overview</h2>
+    <div>Stakeholders Meeting</div>
+    <img class="clean"
+		style="max-height:70%;max-width:70%" 
+		src="../../stylesheets/cats/Cat-meeting.jpg">
+    <div>where we try to align views and define a rough roadmap</div>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Recent Developments</h2>
+      <p><a href="https://github.com/geonetwork/core-geonetwork/wiki/WFS-Filters-based-on-WFS-indexing-with-SOLR">WFS Filters based on WFS indexing with SOLR</a></p>
+      <div style="position:relative">
+        <img class="fragment fade-out" data-fragment-index="0" style="position:absolute;left:15%"
+           src="imagenes/wfssolrindex.png"/>
+        <div class="fragment fade-out" data-fragment-index="1">
+          <img class="fragment fade-in" data-fragment-index="0"  style="position:absolute;left:10%"
+           src="imagenes/wfssolrindex2.png"/>
+        </div>
+      <p class="fragment" data-fragment-index="1"><a href="https://github.com/geonetwork/core-geonetwork/wiki/Search-engines">Improved support for search engines</a>: nojs, sitemap, schema.org,... and wfs-proxy</p>
+      <p class="fragment" data-fragment-index="2"><a href="https://github.com/geonetwork/core-geonetwork/pull/1578">Better styling and developing rules</a></p>
+      <p class="fragment" data-fragment-index="3"><a href="https://github.com/geonetwork/core-geonetwork/pull/1480">Cleanup of old code</a></p>
+      <p class="fragment" data-fragment-index="4"><a href="https://github.com/geonetwork/core-geonetwork/pull/1502">Like z3950 harvesting</a></p>
+      <p class="fragment" data-fragment-index="5"><a href="https://github.com/metadata101">Metadata 101</a></p>
+      <p class="fragment" data-fragment-index="6">HUGE REFACTOR</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Current Developments</h2>
+      <p>Version 3.1.5 and 3.2.0</p>
+      <p class="fragment"><a href="https://github.com/geonetwork/core-geonetwork/pull/1527">Drafted metadata</a></p>
+      <p class="fragment"><a href="https://vanilla.geocat.net/geonetwork/doc/api/">New API</a></p>
+      <p class="fragment"><a href="http://geonetwork-opensource.org/manuals/trunk/eng/users/index.html">Improved Documentation (always)</a></p>
+      <p class="fragment"><a href="https://github.com/geonetwork/core-geonetwork/wiki/SOS-support">SOS support</a></p>
+      <p class="fragment" style="font-size:80%">(Mimic WFS/WMS support on map)</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Future Developments</h2>
+      <p>Improved Scalability -> Following session!</p>
+      <p class="fragment">SOLR support/Elastic Search</p>
+      <p class="fragment"><a href="https://github.com/geonetwork/core-geonetwork/pull/1533">Better overriding of translations</a></p>
+      <p class="fragment">Dashboard</p>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <p class="fragment">Anything <strong>you</strong> want to contribute with :) </p>
+  </section>
+</section>
+</div>
+
+
+
+		</div>
+
+		<script src="../../reveal/lib/js/head.min.js"></script>
+		<script src="../../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</body>
+</html>

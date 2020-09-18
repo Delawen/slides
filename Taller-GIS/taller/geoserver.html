@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Taller de Geoserver | @delawen</title>
+    
+    <meta name="description" content="Taller de GeoServer básico" />
+    <meta name="author" content="María Arias de Reyna" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div style="position: absolute; bottom:10px; right:20px">
+<a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"/></a>
+</div>
+
+<div style="position: absolute;
+    bottom: 10px;
+    left: 10px;">
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#tallergis',
+  interval: 30000,
+  title: 'Taller GIS',
+  subject: '#tallergis' ,
+  width: 150,
+  height: 200,
+  theme: {
+    shell: {
+      background: '#E2E2CA',
+      color: '#000000'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</div>
+
+<div id="impress">
+
+
+    <!--
+        
+        So to make a summary of all the possible attributes used to position presentation steps, we have:
+        
+        * `data-x`, `data-y`, `data-z` -- they define the position of **the center** of step element on
+            the canvas in pixels; their default value is 0;
+        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` -- they define the rotation of
+            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+            are exactly the same;
+        * `data-scale` -- defines the scale of step element; default value is 1
+        
+        These values are used by impress.js in CSS transformation functions, so for more information consult
+        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+        
+    -->
+
+    <div id="intro-geoserver" class="step slide" data-x="-800" data-y="-800" data-rotate="-250">
+      <h1>Taller de GeoServer
+      <img src="http://static.geoserver.org/images/GS-Bttn300.png"/></h1>
+      <h2>María Arias de Reyna Domínguez - @delawen</h2>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>Qué es GeoServer</li>
+          <li>Instalación</li>
+          <li>Gestionar Capas</li>
+          <li>GeoWebCache</li>
+          <li>Seguridad</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="step " data-x="-2500" data-y="1500">
+        <h2>Qué es GeoServer</h2>
+        <center><img src="images/geoserver-que_es.png"/></center>
+        <p>"GeoServer is a Java-based software server that allows users to view and edit geospatial data. 
+          Using open standards set forth by the Open Geospatial Consortium (OGC), GeoServer allows for great 
+          flexibility in map creation and data sharing."</p>
+    </div>
+
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>Instalación</li>
+          <li>Gestionar Capas</li>
+          <li>GeoWebCache</li>
+          <li>Seguridad</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="0" data-y="3000">
+        <h2>Instalación</h2>
+        <p>Sobre el contenedor Tomcat, soltar el 
+        <a href="http://sourceforge.net/projects/geoserver/files/GeoServer/2.2-beta1/geoserver-2.2-beta1-war.zip/download">WAR</a></p>
+        <center><img src="images/tomcat.png"/></center>
+        <p>sudo apt-get install tomcat7</p>
+        <p>sudo mv geoserver.war /var/lib/tomcat7/webapps</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="3000" data-z="500">
+        <p>También hay una versión de GeoServer con Tomcat incrustado.</p>
+        <p>Pero creo que somos lo bastante frikis para no usarlo.</p>
+    </div>
+
+    <div class="step" data-x="1500" data-y="3000">
+        <p>Versiones de Java recomendadas:</p>
+        <p> * Java 6 - Oracle * </p>
+        <p> * JAI (aceleraciones nativas) *  - Opcional </p>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Gestionar Capas</li>
+          <li>GeoWebCache</li>
+          <li>Seguridad</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="1500" data-y="1500">
+        <h2>Gestionar Capas</h2>
+        <p>La administración de GeoServer va por interfaz web.</p>
+        <a target="geoserver" href="http://localhost:8080/geoserver"><center>
+          <img src="http://docs.geoserver.org/stable/en/user/_images/web-admin.png"/></center>
+        </a>
+    </div>
+
+
+    <div class="step" data-x="7500" data-y="1500">
+        <h2>Tipos de Capas</h2>
+        <p>WMS (Ráster)</p>
+        <a target="otro" href="http://workshops.opengeo.org/geoserver-intro/overview/wms.html"><center>
+          <img src="http://workshops.opengeo.org/geoserver-intro/_images/wms.png"/></center>
+        </a>
+    </div>
+
+    <div class="step" data-x="7500" data-y="3000">
+        <h2>Tipos de Capas</h2>
+        <p>WFS (Vectorial)</p>
+        <a target="otro" href="http://workshops.opengeo.org/geoserver-intro/overview/wfs.html"><center>
+          <img src="http://workshops.opengeo.org/geoserver-intro/_images/wfs.png"/></center>
+        </a>
+    </div>
+
+    <div class="step" data-x="6000" data-y="3000">
+        <h2>Tipos de Capas</h2>
+        <p>WCS (Raster + Vectorial)</p>
+        <p>Poco usado, suelen separarlo en dos.</p>
+        <p>WPS (Operaciones)</p>
+        <p>Este sí que no lo usa nadie, ni siquiera viene por defecto en GeoServer.</p>
+    </div>
+
+    <div class="step" data-x="3000" data-y="1500">
+        <p>En GeoServer, las capas se clasifican en espacios de trabajo.</p>
+        <a target="geoserver" href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.data.workspace.WorkspacePage"><center>
+          <img src="images/geoserver.png"/></center>
+        </a>
+        <p>Un espacio de trabajo no es más que un contenedor de capas.</p>
+        <p>Concepto namespace.</p>
+    </div>
+
+    <div class="step" data-x="4500" data-y="1500">
+        <p>La información de las capas sale de los almacenes de datos (store).</p>
+        <center><img style="max-height:35%" src="images/geoserver2.png"/></center>
+        <a target="geoserver" href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.data.store.NewDataPage"><center>
+          <img style="max-height:35%" src="images/geoserver3.png"/></center>
+        </a>
+        <p>Por ejemplo podemos meter alguna del <a href="http://www.idee.es/show.do?to=pideep_desarrollador_wms.ES#Cartociudad">IDEE</a>.</p>
+    </div>
+
+    <div class="step" data-x="4500" data-y="3000">
+        <p>Configuramos cómo se conectará GeoServer al orígen de datos.</p>
+        <a target="geoserver" href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.data.store.WMSStoreNewPage"><center>
+          <img style="max-height:65%" src="images/geoserver5.png"/></center>
+        </a>
+    </div>
+
+    <div class="step" data-x="6000" data-y="1500" data-scale="3">
+        <p>Una vez configurado el orígen de los datos, podemos crear una capa nueva.</p>
+        <a target="geoserver" href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.data.layer.LayerPage"><center>
+          <img style="max-height:35%" src="images/geoserver4.png"/></center>
+        </a>
+        <p>que nos redirigirá automáticamente a la opción de "Nueva Capa".</p>
+    </div>
+
+    <div class="step" data-x="6000" data-y="1500">
+        <p>Las capas WMS pueden agruparse en meta-capas (layer-group)</p>
+    </div>
+
+    <div class="step" data-x="-6000" data-y="1500" data-rotation-z="-45" data-scale="6">
+        <p>¿Y si queremos que la capa tenga nuestro propio estilo?</p>
+        <p>Es decir, coger unos datos vectoriales y pintarlos a nuestra manera.</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+
+
+    <div class="step" data-x="-7000" data-y="1500" data-rotation-z="-45" data-scale="1">
+        <p>Lo primero, necesitaremos una capa vectorial.</p>
+        <p>La forma más sencilla, cogiendo un 
+        <a href="http://downloads.cloudmade.com/europe/southern_europe/spain/andalucia/andalucia.shapefiles.zip">shapefile</a>.</p>
+        <p>Aunque como GeoServer no nos deja subir ficheros, tendremos que ponerlos a mano en el servidor.</p>
+    </div>
+
+    <div class="step" data-x="-7000" data-y="1500" data-rotation-z="-45" data-scale="1">
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Cuidado con los permisos, sólo podrá usar ficheros que el usuario tomcat pueda usar.</p>
+    </div>
+
+
+    <div class="step" data-x="-7000" data-y="2000" data-rotation-z="-45" data-scale="1">
+        <p>Dado que son varios ficheros, mejor cargar el 
+          <a href="http://localhost:8080/geoserver/web/?wicket:interface=:16::::">el directorio entero</a>.</p>
+        <p>Ya tenemos el almacén de capas, pero no está publicado en ningún sitio.</p>
+        <p>Para publicar una capa WMS tendremos que definir primero un estilo 
+          (<a href="http://www.opengeospatial.org/standards/sld">SLD</a>).</p>
+    </div>
+
+    <div class="step" data-x="-6000" data-y="2000" data-rotation-z="-45" data-scale="1">
+        <p>GeoServer nos proporciona un 
+          <a href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.wms.web.data.StyleNewPage">editor de estilos</a>.</p>
+    </div>
+
+    <div class="step" data-x="-6000" data-y="1500" data-rotation-z="-45" data-scale="1">
+        <h2>¿Metemos filtros?</h2>
+        <p>          &lt;ogc:Filter></p>
+        <p>&lt;ogc:PropertyIsEqualTo></p>
+        <p>&lt;ogc:PropertyName>LANES&lt;/ogc:PropertyName></p>
+        <p>&lt;ogc:Literal>1&lt;/ogc:Literal></p>
+        <p>&lt;/ogc:PropertyIsEqualTo></p>
+        <p>&lt;/ogc:Filter>&lt;/p>
+        <p>          &lt;ogc:Filter></p>
+        <p>&lt;ogc:PropertyIsNotEqualTo></p>
+        <p>&lt;ogc:PropertyName>LANES&lt;/ogc:PropertyName></p>
+        <p>&lt;ogc:Literal>1&lt;/ogc:Literal></p>
+        <p>&lt;/ogc:PropertyIsNotEqualTo></p>
+        <p>&lt;/ogc:Filter>&lt;/p>
+    </div>
+
+    <div class="step" data-x="-6000" data-y="6000" data-rotation-z="-45" data-scale="1">
+        <p>PropertyIsEqualTo</p>
+        <p>PropertyIsNotEqualTo</p>
+        <p>PropertyIsLessThan</p>
+        <p>PropertyIsLessThanOrEqualTo</p>
+        <p>PropertyIsGreaterThan</p>
+        <p>PropertyIsGreaterThanOrEqualTo</p>
+        <p>PropertyIsBetween</p>
+        <p>Intersects</p>
+        <p>Equals</p>
+        <p>Disjoint</p>
+        <p>Within</p>
+        <p>Overlaps</p>
+        <p>Crosses</p>
+        <p>DWithin</p>
+        <p>Beyond</p>
+        <p>Distance</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>GeoWebCache</li>
+          <li>Seguridad</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="1500" data-y="-4500" data-scale="6">
+        <h2>GeoWebCache</h2>
+        <p>Es una librería independiente de GeoServer.</p>
+        <a target="geoserver" href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.gwc.web.GWCSettingsPage"><center>
+          <img src="images/geoserver1.png" style="max-height:60%"/></center>
+        </a>
+        <p>Permite acelerar GeoServer mediante el cacheo de tiles.</p>
+    </div>
+
+    <div class="step" data-x="3300" data-y="-3000">
+        <p>Los tiles son como el WMS, solo que cuadriculando el mapa.</p>
+        <center><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Cyprus_floor_tile.jpg/338px-Cyprus_floor_tile.jpg"></img></center>
+    </div>
+
+    <div class="step" data-x="1500" data-y="-4000" data-scale="2">
+        <p>Sólo guarda imágenes raster.</p>
+    </div>
+
+    <div class="step" data-x="1500" data-y="-3300" data-scale="2" data-rotate-z="15">
+        <p>Cachear capas ocupa mucho espacio (muchas imágenes).</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Seguridad</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+    <div class="step" data-x="-1000" data-y="-7000">
+        <h2>Seguridad</h2>
+        <p>Como todo framework decente, trae usuarios y roles.</p>
+        <a href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.security.web.auth.AuthenticationPage">
+        <img src="images/geoserver6.png"/>
+        </a>
+    </div>
+
+    <div class="step" data-x="-2500" data-y="-7000">
+        <p>Podemos guardar los usuarios en un LDAP, en una base de datos,...</p>
+        <p>Elegir el tipo de encriptación de las contraseñas, la dificultad de las mismas,...</p>
+        <a href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.security.web.passwd.PasswordPage">
+        <img src="images/geoserver7.png"/>
+        </a>
+    </div>
+
+    <div class="step" data-x="-4000" data-y="-7000">
+        <p>Podemos crear usuarios y roles de forma sencilla:</p>
+        <a href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.security.web.UserGroupRoleServicesPage">
+        <img src="images/geoserver8.png"/>
+        </a>
+    </div>
+
+    <div class="step" data-x="-5700" data-y="-7000">
+        <p>Las restricciones de acceso van a nivel de Servicio o de capa, pero no son combinables.</p>
+        <a href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.security.web.service.ServiceAccessRulePage">
+        <img src="images/geoserver9.png"/>
+        </a>
+        <a href="http://localhost:8080/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.security.web.data.DataSecurityPage">
+        <img src="images/geoserver10.png"/>
+        </a>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Configuración</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-2500" data-y="-1500">
+        <h2>Configuración</h2>
+        <p>Configurar geoserver_data_dir en el web.xml</p>
+        <p>&nbsp;</p>
+        <p>Lo mejor es utilizar memory mapped buffers (salvo que uses Windows) si tienes suficiente memoria RAM, 
+          ya que evitarás contínuos accesos físicos a disco.</p>
+        <p>&nbsp;</p>
+        <p>Cuando se usan conexiones a bases de datos, marcar siempre la opción de 
+        validar la conexión, porque nunca sabes cuándo va a petar la conexión.</p>
+    </div>
+
+    <div class="step" data-x="-5000" data-y="-1500" data-rotate-z="45">
+        <h2>Para saber más</h2>
+        <p>Echarle un vistazo al <a href="http://workshops.opengeo.org/geoserver-intro/">workshop de OpenGeo</a>.</p>
+        <p>GeoServer dispone de API REST.</p>
+    </div>
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>

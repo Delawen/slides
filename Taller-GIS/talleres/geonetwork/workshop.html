@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title> Tutorial práctico: "Cómo tener tu propio catálogo de metadatos en 30 minutos" | SIG LIBRE 2013</title>
+    
+    <meta name="description" content="Tutorial práctico: "Cómo tener tu propio catálogo de metadatos en 30 minutos"" />
+    <meta name="author" content="María Arias de Reyna" />
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fruktur&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="css/impress-demo.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div sytle="position:absolute;top:10px;left:10px"><img style="max-width:15%" src="images/geocat.png"/></div>
+
+<div style="position: absolute; bottom:10px; right:20px">
+<a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"/></a>
+</div>
+
+<div style="position: absolute;
+    bottom: 10px;
+    left: 10px;">
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#geonetwork OR #siglibre7',
+  interval: 300,
+  title: 'GeoNetwork',
+  subject: '' ,
+  width: 150,
+  height: 200,
+  theme: {
+    shell: {
+      background: '#E2E2CA',
+      color: '#000000'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</div>
+
+<div id="impress">
+    <div class="step slide" data-x="-8000" data-y="-8000" data-rotate="0">
+      <h1>Tutorial práctico:</h1>
+      <h1> "Cómo tener tu propio catálogo de metadatos en 30 minutos"</h1>
+      <h2>María Arias de Reyna @delawen</h2>
+      <h2>José García</h2>
+    </div>
+
+    <article class="step" data-x="0" data-y="0">
+	<div class="contenido">
+	        <ul>
+		  <li>Visión General</li>
+	          <li>Instalación</li>
+	          <li>Cambiando de Estilo</li>
+                  <li>Introduciendo Datos</li>
+	          <li>Tu propio catálogo de metadatos</li>
+	        </ul>
+	</div>
+    </article>
+
+  <article class="step" data-x="9000" data-y="0">
+	<h2>Visión General</h2>
+	<center><img src="images/overview-workshop.png" style="height:90%"></img></center>
+        <img class="gato" src="images/nif1.png"/>
+  </article>
+
+  
+  <article class="step" data-x="0" data-y="0">
+        <div class="contenido">
+                <ul>
+                  <li>&nbsp;</li>
+                  <li>Instalación</li>
+                  <li>Cambiando de Estilo</li>
+                  <li>Introduciendo Datos</li>
+                  <li>Tu propio catálogo de metadatos</li>
+                </ul>
+        </div>
+    </article>
+
+  <article class="step" data-x="20000" data-y="0">
+        <h2>Instalación</h2>
+        <p>Por simplificar, usaremos Linux</p>
+	<p>(de todas formas otro SO no sería serio)</p>
+	<p>Necesitamos: </p>
+	<ul>
+		<li>Un ordenador con Linux (ejem. Debian)</li>
+		<li>Internet</li>
+		<li>Java (mvn)</li>
+		<li>Postgresql (opcional)</li>
+		<li>27 minutos</li>
+	</ul>
+        <img class="gato" src="images/nif2.png"/>
+    </article>
+
+  <article class="step" data-x="20000" data-y="10000">
+        <h2>Instalación</h2>
+	<p>Para valientes:</p>
+	<p>$ git clone --recursive git://github.com/geonetwork/core-geonetwork.git master</p>
+	<p>$ cd master</p>
+	<p>$ git checkout master</p>
+	<p>$ git submodule update --init</p>
+	<p>$ mvn clean install</p>
+	<p>Para conservadores:</p>
+	<p><a href="http://sourceforge.net/projects/geonetwork/files/GeoNetwork_opensource/v2.8.0/geonetwork.war/download">Sourceforge</a></p>
+        <img class="gato" src="images/nif2.png"/>
+    </article>
+
+
+  <article class="step" data-x="30000" data-y="0">
+        <h2>Instalación</h2>
+        <p>Configuremos un poco:</p>
+        <p>En ./web/src/main/webapp/WEB-INF/config.xml seleccionamos la base de datos adecuada</p>
+        <img class="gato" src="images/nif2.png"/>
+  </article>
+
+  <article class="step" data-x="30000" data-y="0">
+        <h2>Instalación</h2>
+	<p>Configuremos un poco:</p>
+	<p>En ./web/src/main/webapp/WEB-INF/config.xml seleccionamos la base de datos adecuada</p>
+	<p>Ya está.</p>
+	<p>Arrancamos con maven jetty (rápido)</p>
+	<p>cd web; mvn jetty:run</p>
+        <img class="gato" src="images/nif2.png"/>
+  </article>
+
+
+  <article class="step" data-x="0" data-y="0">
+        <div class="contenido">
+                <ul>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>Cambiando de Estilo</li>
+                  <li>Introduciendo Datos</li>
+                  <li>Tu propio catálogo de metadatos</li>
+                </ul>
+        </div>
+    </article>
+
+
+  <article class="step" data-x="40000" data-y="0">
+        <h2>Cambiando el estilo</h2>
+        <p>geoNetwork tiene dos estilos por defecto: clásico y widgets</p>
+        <p>mvn jetty:run -Pwidgets</p>
+	<p>&nbsp;</p>
+        <p>O bien podríamos introducir un estilo propio gracias a los widgets</p>
+        <p>(que obviamente no da tiempo a desarrollar en 16 minutos)</p>
+	<p><img style="max-width:50%" src="images/ngr"/><img style="max-width:50%" src="images/eea.png"/></p>
+        <img class="gato" src="images/nif3.png"/>
+  </article>
+
+
+
+  <article class="step" data-x="0" data-y="0">
+        <div class="contenido">
+                <ul>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>Introduciendo Datos</li>
+                  <li>Tu propio catálogo de metadatos</li>
+                </ul>
+        </div>
+    </article>
+
+  <article class="step" data-x="-10000" data-y="0">
+        <h2>Introduciendo Datos</h2>
+        <p>porque un portal sin datos no es nada</p>
+        <p>Varias formas:</p>
+        <ul>
+		<li>Introducir mediante el editor</li>
+		<li>Importar desde fichero (XML)</li>
+		<li>Harvesting</li>
+	</ul>
+        <p>Existen muchas fuentes de harvesting</p>
+        <ul>
+		<li><a href="http://geonetwork-opensource.org/gallery/gallery.html#geonetwork-nodes">Otros geonetworks</a></li>
+		<li>CSW (<a href="http://gis.socib.es/geonetwork/srv/en/csw">Socib (Balears)</a>)</li>
+	</ul>
+        <img class="gato" src="images/nif4.png"/>
+  </article>
+
+
+
+  <article class="step" data-x="0" data-y="0">
+        <div class="contenido">
+                <ul>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>Tu propio catálogo de metadatos</li>
+                </ul>
+        </div>
+    </article>
+
+  <article class="step" data-x="-30000" data-y="0">
+	<h2>Tu propio catálogo de metadatos</h2>
+        <h3>Hasta aquí hemos llegado</h3>
+        <p>Pero este no es el final, es sólo el principio. GeoNetwork es sólo la base sobre la que construir.</p>
+        <ul>
+                <li>Admite más widgets (gráficas, estadísticas,...)</li>
+                <li>Colaborativo (división por roles y grupos de trabajo)</li>
+                <li>Preparado para Minería de Datos (Lucene)</li>
+                <li>... o lo que se os ocurra</li>
+        </ul>
+        <img class="gato" src="images/nif5.png"/>
+  </article>
+
+
+  <article class="step" data-x="30000" data-y="30000">
+        <h2>Gracias por vuestra atención</h2>
+        <h3 style="text-align:center">¿Dudas, preguntas?</h3>
+        <p style="text-align:center">Os estaremos esperando en</p>
+	<center><img src="images/geocat.png"/></center>
+	<center><img src="images/lotsofcats.png"/></center>
+	<p style="text-align:center"><a href="http://geocat.net">@geocat_bv</a></p>
+  </article>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+</body>
+</html>

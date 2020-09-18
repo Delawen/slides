@@ -1,0 +1,75 @@
+
+.reveal h1 {
+  font-size: 200%;
+}
+
+.reveal h2 {
+  font-size: 130%;
+  color: #ff9900;
+}
+
+.reveal h4 {
+  font-size: 110%;
+  color: #3f00ff;
+}
+
+.reveal h3 {
+  color: #ff9900;
+}
+
+.reveal a:not(.image):hover, a:hover {
+  color: #1e1446;
+}
+
+.reveal a:not(.image), a {
+  color: #0099CC;
+}
+
+.reveal > header.universal {
+  display:none;
+}
+
+.reveal > footer.universal {
+  background-color: #0099CC; 
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  min-height: 50px;
+}
+
+.reveal > footer.universal > div > img {
+  max-width:45%;
+  max-height: 16px;
+}
+
+.reveal > footer.universal > footer {
+   border-top: 1px solid white;
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
+}
+
+body {
+  background: radial-gradient(#ffffff 0%, #e8eff1, #d6e4e8, #b0c7ce, #a0c3ce, #7db5c7, #0099CC 100%);
+}
+
+
+.reveal .controls {
+  bottom: 60px;
+}
+.reveal .controls div.navigate-right.enabled {
+  border-left-color:#0099CC;
+}
+.reveal .controls div.navigate-left.enabled {
+  border-right-color:#0099CC;
+}
+.reveal .controls div.navigate-down.enabled {
+  border-top-color:#0099CC;
+}
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color:#0099CC;
+}
+
+img.geocat  {
+    content:url(images/GeoCat3.png);
+}

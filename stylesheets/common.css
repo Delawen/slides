@@ -1,0 +1,411 @@
+/*********************************************
+ * FONTS
+ *********************************************/
+
+@font-face {
+    font-family: OpenSans;
+    src: url('fonts/OpenSans.woff2') format('woff2'),
+        url('fonts/OpenSans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Impact';
+    src: url('fonts/Impact.woff2') format('woff2'),
+        url('fonts/Impact.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*********************************************
+ * REVEAL
+ *********************************************/
+
+.reveal .slides {
+  height: 100%;
+  font-size: 36px;
+}
+
+.reveal .slides section.present {
+  height: 95%;
+}
+
+.reveal section p, .reveal section, .reveal section li {
+  color: #333333; 
+  font-family: Impact, OpenSans;
+}
+
+li.disabled {
+   color: #aaa;
+}
+
+ul.index li {
+   text-align: left;
+   padding-bottom: 36px;
+}
+
+ul.index {
+   margin-top: 10%;
+   margin-bottom: 33px;
+   list-style-type: decimal;
+   margin-left: 10%;
+}
+
+
+html.difuminar .reveal .slide-background.present {
+  opacity: 0.7;
+}
+
+.reveal span.source {
+  top:1px;
+  right:0px;
+  position:absolute;
+  font-size:50%;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #333333;
+  font-family: OpenSans;
+  line-height: 0.9em;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.reveal strong, strong {
+  font-weight: bold;
+}
+
+h1, h2 {
+  font-family: Impact;
+  text-transform: uppercase;
+}
+
+.reveal h1 {
+  font-size: 300%;
+}
+
+.reveal h2 {
+  font-size: 170%;
+}
+
+.reveal h3 {
+  font-size: 160%;
+}
+
+.reveal h4 {
+  font-size: 140%;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: #264c66; }
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #3b759e;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); 
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #3b759e; }
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #3b759e; }
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #3b759e; }
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #3b759e; }
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #74a7cb; }
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #74a7cb; }
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #74a7cb; }
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #74a7cb; }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2); }
+
+.reveal .progress span {
+  background: white;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+
+/*********************************************
+ * OpenLayers
+ *********************************************/
+
+.reveal .olMap img {
+   max-height: inherit;
+}
+
+.reveal .olMap div {
+   font-size: 60%;
+}
+
+.reveal > footer.universal > div > img {
+   max-width: 30%;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+img.cat {
+  max-height:100%;
+  max-width:100%;
+}
+
+img.title {
+  max-height: 70%;
+  max-width: 70%;
+}
+
+img.geocatherd, img.geocatherd:after {
+  content:url(images/GeoCatHerd.png);
+}
+
+img.quienessomos, img.quienessomos:after {
+  content:url('images/quienesSomos.svg');
+}
+
+img.geocat, img.geocat:after  {
+  content:url(images/GeoCat.png);
+}
+
+img.lotsofcats, img.lotsofcats:after {
+  content:url('images/lotsofcats.png');
+}
+
+img.geonetwork, img.geonetwork:after {
+  content:url(images/geonetwork-logo.png);
+}
+
+img.opendata, img.opendata:after {
+  content:url(images/fivestars.png);
+}
+
+img.logogn, img.logogn:after {
+  content:url(images/GeoNetwork.png);
+  max-height: 120px;
+  max-width: 120px;
+}
+
+
+/*********************************************
+ * CATS
+ *********************************************/
+
+img.cat.lawyer, img.cat.lawyer:after {
+  content:url(cats/lawyercat.jpg);
+}
+
+img.cat.search, img.cat.search:after {
+  content:url(cats/catsearching.gif);
+}
+
+img.cat.roar, img.cat.roar:after {
+  content:url(cats/roar.gif);
+}
+
+img.cat.lion, img.cat.lion:after {
+  content:url(cats/lion.gif);
+}
+
+img.cat.grumpy, img.cat.grumpy:after {
+  content:url(cats/grumpylooking.gif);
+}
+
+img.cat.science, img.cat.science:after {
+  content:url(cats/science.gif);
+}
+
+img.cat.workinghard, img.cat.workinghard:after {
+  content:url(cats/workinghard.gif);
+}
+
+img.cat.android, img.cat.android:after {
+  content:url(cats/android.png);
+}
+
+/*********************************************
+ * ANIMATE NEON FLICKER
+ *********************************************/
+
+:root {
+  /* Base font size */
+  
+  /* Set neon color */
+  --neon-text-color: #f40;
+  --neon-border-color: #08f;
+}
+
+.neon {
+  font-family: 'Exo 2', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  background: #000;
+  min-height: 30vh;
+  font-weight: 200;
+  font-style: italic;
+  color: #fff;
+  padding: 1rem 1rem 1rem;
+  border: 0.4rem solid #fff;
+  border-radius: 0.6rem;
+  text-transform: uppercase;
+  animation: flicker 1.5s infinite alternate;     
+}
+
+.neon::-moz-selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+.neon::selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+.neon:focus {
+  outline: none;
+}
+
+@keyframes flicker {
+    
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      
+        text-shadow:
+            -0.2rem -0.2rem 1rem #fff,
+            0.2rem 0.2rem 1rem #fff,
+            0 0 2rem var(--neon-text-color),
+            0 0 4rem var(--neon-text-color),
+            0 0 6rem var(--neon-text-color),
+            0 0 8rem var(--neon-text-color),
+            0 0 10rem var(--neon-text-color);
+        
+        box-shadow:
+            0 0 .5rem #fff,
+            inset 0 0 .5rem #fff,
+            0 0 2rem var(--neon-border-color),
+            inset 0 0 2rem var(--neon-border-color),
+            0 0 4rem var(--neon-border-color),
+            inset 0 0 4rem var(--neon-border-color);        
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
+}
+
+/*********************************************
+ * CODE
+ *********************************************/
+
+.reveal .slides section code * {
+  text-align: left;
+  font-family: OpenSans;
+  text-shadow: none;
+}
+
+
+
+/*********************************************
+ * STAR WARS
+ *********************************************/
+ 
+.fade {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  top: -25px;
+  background-image: linear-gradient(0deg, transparent, black 75%);
+  z-index: 1000000000;
+}
+
+.present.star-wars {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  color: #feda4a;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 200%;
+  letter-spacing: 6px;
+  line-height: 150%;
+  perspective: 60vw;
+  text-align: justify;
+  overflow: hidden;
+
+}
+
+.present.star-wars .crawl {
+  position: relative;
+  top:100vh;
+  animation: crawl 30s linear;
+  width: 100vw;
+}
+
+.present.star-wars .crawl > .title {
+  font-size: 90%;
+  text-align: center;
+}
+
+.present.star-wars .crawl > .title h1 {
+  margin: 0 0 100px;
+  text-transform: uppercase;
+}
+
+.present.star-wars .crawl p {
+  color:white;
+  text-shadow: 1px 0 0 #AA007F, -1px 0 0 #AA007F, 0 1px 0 #AA007F, 0 -1px 0 #AA007F, 2px 2px #AA007F, -2px -2px 0 #AA007F, 2px -2px 0 #AA007F, -2px 2px 0 #AA007F;
+}
+
+@keyframes crawl {
+	0% {
+	  top: 0px;
+    transform: rotateX(20deg)  translateZ(0);
+  }
+	100% { 
+    top: -300vh;
+    transform: rotateX(25deg) translateZ(-400vh);
+  }
+}

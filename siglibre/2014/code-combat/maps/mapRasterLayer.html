@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<!-- Leaflet framework -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    </head>
+    <body>
+    <div id="mapRasterLayer" class="map" style="height: 300px"></div>
+    <script type="text/javascript">
+var map;
+
+function initmap() {
+	// set up the map
+	map = new L.Map('mapRasterLayer');
+	// create the tile layer with correct attribution
+	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+	var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+	map.setView(new L.LatLng(41.9793006, 2.8199439), 14);
+	map.addLayer(osm);
+}
+window.document.onload = initmap();
+</script>
+    </body>
+</html>
+
+

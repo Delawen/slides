@@ -1,0 +1,750 @@
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+      <meta charset="utf-8">
+
+      <title>CodeCombat Leaflet vs OpenLayers</title>
+
+      <meta name="description" content="Comparativa amena y práctica donde cada ponente defenderá una de las dos librerías, enfrentándose y peleando por demostrar qué librería es mejor. A lo largo de la presentación no sólo se irán desgranando las características, sino que se mostrarán también ejemplos prácticos de casos de uso.">
+      <meta name="author" content="María Arias De Reyna - Moisés Arcos Santiago">
+
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+      <link rel="stylesheet" href="css/reveal.min.css">
+      <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+      <!-- For syntax highlighting -->
+      <link rel="stylesheet" href="lib/css/zenburn.css">
+
+      <!-- Leaflet framework -->
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+      <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+      <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+      <script>
+         document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+     </script>
+
+    		<!--[if lt IE 9]>
+    		<script src="lib/js/html5shiv.js"></script>
+    		<![endif]-->
+
+    	</head>
+    	<body>
+    	    <div class="reveal">
+                
+<div class="slides">
+    <section data-id="5a70c9dc8fd303535660c7f15571c2a9">
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235843/Funny-Cat-Fighting-Picture.jpg" data-id="51248f3de1af92cb756480c91416aed7">
+                            <h1>Code Combat</h1>
+    <div>Leaflet - OpenLayers</div>
+                        </section>
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235794/Tyler-fight-club.jpg" data-id="a4e24b3d842549d314ccebf6d34c47bd">
+                            <h2>Quienes somos</h2>
+                            <div>
+                                <ul>
+                                    <h4>Alejandro Díaz - <a href="https://twitter.com/alediaztorres">@alediaztorres</a>
+    </h4>
+                                    <li>Desarrollador GIS</li>
+                                    <li>Miembro de</li>
+                                    <ul>
+                                        <li>
+                                            <a href="http://wiki.osgeo.org/wiki/User:Moiarcsan">OSGeo</a>&nbsp;y&nbsp;<a href="http://es.osgeo.org">OSGeo-es</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://sevilla.geoinquietos.org">Geoinquietos Sevilla</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.openstreetmap.org/user/MoiArcSan">OpenStreetMap</a>
+                                        </li>
+                                        <li>...</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </section>
+    <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235794/Tyler-fight-club.jpg" data-id="882b9e4f0cb3bb7ed3a2d615e221f207">
+                            <h2>Quienes somos</h2>
+                            <div>
+                                <ul>
+                                    <h4>María Arias de Reyna - <a href="https://twitter.com/delawen">@delawen</a>
+</h4>
+                                    <li>Desarrolladora GIS</li>
+                                    <li>Miembro de</li>
+                                    <ul>
+                                        <li>
+                                            <a href="http://wiki.osgeo.org/wiki/User:Delawen">OSGeo</a>&nbsp;y&nbsp;<a href="http://es.osgeo.org">OSGeo-es</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://sevilla.geoinquietos.org">Geoinquietos Sevilla</a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.openstreetmap.org/user/Delawen">OpenStreetMap</a>
+                                        </li>
+                                        <li>...</li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </section>
+                        <section data-id="f75200b3143626ee40210736cf690b32" data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/303774/Hahnenkampf_1.jpg">
+                            <h2>planteamiento del enfrentamiento</h2>
+				<div style="text-align: left;">
+<ul>
+					<li class="fragment" data-fragment-index="0">Dos librerías</li>
+					<li class="fragment" data-fragment-index="1">Una lista de funcionalidades</li>
+					<li class="fragment" data-fragment-index="2">Que gane el mejor</li>
+				</ul>
+                        </section>
+                    </section>
+<section data-id="315427904a347dc9a5af9e03f45d0307">
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235800/cats_boxing_salt_pepper.jpg" data-id="db41fe523c8421b0fd688212b44009b7">
+                            <h2>Tipos de Capas</h2>
+<div>
+    <br>
+</div>
+<div>
+    <div style="text-align: left; font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">Nos interesa:</div>
+    <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+        <ul>
+            <li style="text-align: left;">Capas Raster</li>
+            <li style="text-align: left;">Capas Vectoriales</li>
+        </ul>
+        <span>
+            <div style="text-align: left; font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+                <span>
+                    <br>
+                </span>
+            </div>
+            <div style="text-align: left;">
+                <span>Puntos extra:</span>
+            </div>
+        </span>
+        <ul>
+            <li>
+                <span>Variedad de tipos</span>
+                <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: center;">
+                </div>
+            </li>
+            <li style="text-align: center; ">
+                <span style="text-align: left;">Simplicidad a la hora de crearlas</span>
+            </li>
+            <li style="text-align: left;">Flexibilidad en los estilos</li>
+        </ul>
+    </div>
+</div>
+                        </section>
+                        <section data-id="0ea35a71738ff58d073486dc3d057f40">
+                            <h2>LeafLet</h2>
+                            <h3>Capas Raster</h3>
+                            <h4 class="fragment" data-fragment-index="0">Código HMTL</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="1">
+<code data-trim="" style="word-wrap: break-word;">
+                                    <div id="mapRasterLayer" class="map" style="height: 300px">
+</div>
+                                </code>
+</pre>
+                            <h4 class="fragment" data-fragment-index="2">Código javascript</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="3">
+<code data-trim="" style="word-wrap: break-word;">
+function initmap() {
+    // set up the map
+    map = new L.Map('mapRasterLayer');
+    // create the tile layer with correct attribution
+    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+    map.setView(new L.LatLng(41.9793006, 2.8199439), 14);
+    map.addLayer(osm);
+}
+                                </code>
+</pre>
+                        </section>
+                        <section data-id="726c7a1e0cc11aa5aa4349044c307791">
+                            <h2>LeafLet</h2>
+                            <h3>Capas Raster</h3>
+                            <iframe src="maps/mapRasterLayer.html" frameborder="0" width="1200px" height="400px" scrolling="now">
+</iframe>
+                        </section>
+                        <section data-id="71c74c97375a12426d61f52fcfa2034b">
+                            <h2>LeafLet</h2>
+                            <h3>Capas Vectoriales</h3>
+                            <h4 class="fragment" data-fragment-index="0">Código HMTL</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="1">
+<code data-trim="" style="word-wrap: break-word;">
+                                    <div id="mapVectorLayer" class="map" style="height: 300px">
+</div>
+                                </code>
+</pre>
+                            <h4 class="fragment" data-fragment-index="2">Código javascript</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="3">
+<code data-trim="" style="word-wrap: break-word;">
+function initmap() {
+    // set up the map
+    map = new L.Map('mapVectorLayer');
+    // create the tile layer with correct attribution
+    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+    map.setView(new L.LatLng(41.9793006, 2.8199439), 14);
+    map.addLayer(osm);
+    // Add vector features
+    var circle = L.circle([41.9793006, 2.8199439], 500, {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5
+    }).addTo(map);
+}
+                                </code>
+</pre>
+                        </section>
+                        <section data-id="68c9ae55009ddc2c47f3bee3421f89e3">
+                            <h2>LeafLet</h2>
+                            <h3>Capas Vectoriales</h3>
+                            <iframe src="maps/mapVectorLayer.html" frameborder="0" width="1200px" height="400px" scrolling="now">
+</iframe>
+                        </section>
+                       <section data-id="0ea35a71738ff58d073486dc3d057f40">
+                            <h2>OpenLayers</h2>
+                            <h3>Capas Raster</h3>
+                            <h4 class="fragment" data-fragment-index="0">Código HMTL</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="1">
+<code data-trim="" style="word-wrap: break-word;">
+                <div id="map" style="width:100%;height:330px" class="smallmap"></div>
+                                </code>
+</pre>
+                            <h4 class="fragment" data-fragment-index="2">Código javascript</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="3">
+<code data-trim="" style="word-wrap: break-word;">
+			function init() {
+			    var map = new OpenLayers.Map({
+			        div: "map"
+			    });
+			    var osm = new OpenLayers.Layer.OSM();
+			    map.addLayers([osm]);
+			    map.setCenter(
+		                new OpenLayers.LonLat(2.8199439, 41.9793006)
+				.transform(new OpenLayers.Projection("EPSG:4326"),
+		                    map.getProjectionObject()), 12);
+			}
+                                </code>
+</pre>
+                        </section>
+                        <section data-id="726c7a1e0cc11aa5aa4349044c307791">
+                            <h2>OpenLayers</h2>
+                            <h3>Capas Raster</h3>
+                            <iframe src="maps/mapRasterLayerOL.html" frameborder="0" width="1200px" height="400px" scrolling="now">
+</iframe>
+                        </section>
+                        <section data-id="71c74c97375a12426d61f52fcfa2034b">
+                            <h2>OpenLayers</h2>
+                            <h3>Capas Vectoriales</h3>
+                            <h4 class="fragment" data-fragment-index="0">Código HMTL</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="1">
+<code data-trim="" style="word-wrap: break-word;">
+                <div id="map" style="width:100%;height:330px" class="smallmap"></div>
+                                </code>
+</pre>
+                            <h4 class="fragment" data-fragment-index="2">Código javascript</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="3">
+<code data-trim="" style="word-wrap: break-word;">
+function init() {
+		    var map = new OpenLayers.Map("map");
+		    var feature = new OpenLayers.Feature.Vector(
+		                    new OpenLayers.Geometry.Point(
+		                        313914.7189699, 5157879.2777324
+		                    ), {type: 40});
+	              var layer = new OpenLayers.Layer.Vector('Points', {
+	                styleMap: new OpenLayers.StyleMap({
+	                    pointRadius: "${type}", // based on feature.attributes.type
+	                    fillColor: "#FF6666",fillOpacity: 0.3
+	                })});
+		    layer.addFeatures([feature]);
+	            map.addLayer(layer);
+	}
+                                </code>
+</pre>
+                        </section>
+                        <section data-id="68c9ae55009ddc2c47f3bee3421f89e3">
+                            <h2>OpenLayers</h2>
+                            <h3>Capas Vectoriales</h3>
+                            <iframe src="maps/mapVectorLayerOL.html" frameborder="0" width="1200px" height="400px" scrolling="now">
+</iframe>
+                        </section>
+                        <section data-id="31afd5f386af130dfa5e57cf6a50015a">
+                            <h2>Puntuación</h2>
+<div>
+    <ul>
+        <li class="visible" data-fragment-index="0">Capas Vectoriales:&nbsp;</li>
+        <ul>
+            <li class="fragment" data-fragment-index="0">Empate</li>
+        </ul>
+        <li class="visible current-fragment" data-fragment-index="1">Capas Raster:&nbsp;</li>
+        <ul>
+            <li class="fragment" data-fragment-index="1">Empate</li>
+        </ul>
+        <li data-fragment-index="2">Variedad:&nbsp;</li>
+        <ul>
+            <li data-fragment-index="2" class="fragment">OpenLayers</li>
+        </ul>
+        <li data-fragment-index="3">Simplicidad:&nbsp;</li>
+        <ul>
+            <li class="fragment current-fragment" data-fragment-index="3">Empate</li>
+        </ul>
+        <li data-fragment-index="4">Estilos:&nbsp;</li>
+        <ul>
+            <li class="fragment" data-fragment-index="4">OpenLayers</li>
+        </ul>
+        <li class="fragment" data-fragment-index="5">
+            <b style="font-size: 54px; text-align: center;">Ganador: OpenLayers</b>
+        </li>
+    </ul>
+    </div>
+                        </section>
+                    </section>
+    <section data-id="4d3c20ff964a503bade70c5f24c3b76b">
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235801/membiggles2.jpg" data-id="c0c3961bdcab7a4fe3bb2157933ffede">
+                            <h2>
+    <span>Habilidades de Interacción</span>
+</h2>
+<div>
+    <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">Nos interesa:</div>
+    <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+        <ul>
+            <li style="text-align: left;">Interacción con el mapa
+		<ul>
+	            <li style="text-align: left;">Click</li>
+	            <li style="text-align: left;">Arrastre</li>
+	            <li style="text-align: left;">...</li>
+        	</ul></li>
+            <li style="text-align: left;">Interacción con las capas
+		<ul>
+	            <li style="text-align: left;">Selección de Feature</li>
+	            <li style="text-align: left;">Arrastre de Feature</li>
+	            <li style="text-align: left;">...</li>
+        	</ul></li>
+        </ul>
+        <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">
+            <br>
+        </div>
+        <div style="text-align: left;">Puntos extra:</div>
+        <ul>
+            <li>Extensiones modularizables</li>
+        </ul>
+    </div>
+</div>
+<div>
+    <span>
+        <br>
+    </span>
+</div>
+<h2>
+    <br>
+    </h2>
+                        </section>
+                        <section data-id="861dec27f82314b0d2d70241648a6c8b">
+                            <h2>Puntuación</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+            <ul>
+                <li data-fragment-index="0">Interacción mapa:&nbsp;</li>
+                <ul>
+                    <li class="fragment" data-fragment-index="0">Empate</li>
+                </ul>
+                <li data-fragment-index="1">Interacción capas:&nbsp;</li>
+                <ul>
+                    <li class="fragment" data-fragment-index="1">Empate</li>
+                </ul>
+                <li data-fragment-index="2">Modularizable:</li>
+                <ul>
+                    <li class="fragment" data-fragment-index="2">&nbsp;Empate</li>
+                </ul>
+                <li class="fragment" data-fragment-index="3">
+                    <b style="font-size: 54px; text-align: center;">Ganador: Empate</b>
+                </li>
+            </ul>
+        </div>
+        </div>
+                        </section>
+                        
+                        
+                    </section>
+                        
+                    <section data-id="cbbc1a91b71cfeec63598de81bbad849">
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235842/cat-fight-image.jpg" data-id="78a6c4742a860e7696a6cfa7a5b54afc">
+                            <h2>Map Controls</h2>
+        <div>
+            <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">Nos interesa:</div>
+            <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+                <ul>
+                    <li style="text-align: left;">Simplicidad de uso</li>
+                    <li style="text-align: left;">Controles básicos</li>
+                    <ul>
+                        <li style="text-align: left;">zoom</li>
+                        <li style="text-align: left;">escala</li>
+                        <li style="text-align: left;">...</li>
+                    </ul>
+                    <li style="text-align: left;">Controles avanzados</li>
+                </ul>
+                <div style="text-align: left;">
+                    <br>
+                </div>
+                <div style="text-align: left;">Puntos extra:</div>
+                <ul>
+                    <li>Controles extensibles</li>
+                </ul>
+            </div>
+        </div>
+                        </section>
+                        <section data-id="4a0c1e0431c8e9d996dd00c78787beb8">
+                            <h2>LeafLet</h2>
+                            <h4 class="fragment" data-fragment-index="0">Código HMTL</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="1">
+        <code data-trim="" style="word-wrap: break-word;">
+                                    <div id="mapControls" class="map" style="height: 300px">
+        </div>
+                                </code>
+    </pre>
+                            <h4 class="fragment" data-fragment-index="2">Código javascript</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="3">
+    <code data-trim="" style="word-wrap: break-word;">
+                                    function initmap() {
+                // Creamos el mapa, el zoom (+/-) viene por defecto
+                map = new L.Map('mapControls');
+                // Modificamos el centro del mapa
+                map.setView(new L.LatLng(41.9793006, 2.8199439), 14);
+                // Create the tile layer url
+                var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+                // el control de atribución viene por defecto,
+                // pero lo podemos personalizar de la siguiente forma
+                var attrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors. Imagery © 2011 CloudMade';
+                // Creamos la capa con el mapa de OSM
+                var osm = new L.TileLayer(osmUrl, {attribution: attrib});
+                // Añadimos la capa al mapa
+                map.addLayer(osm);
+                // Creamos una capa con un círculo al que se le puede hacer clic
+                var circle = L.circle([41.9793006, 2.8199439], 500, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5
+                }).bindPopup("Clic").addTo(map);
+                var cmUrl = 'http://{s}.tile.cloudmade.com/36c9ef9aa99742b48650db1124bf483f/{styleId}@2x/256/{z}/{x}/{y}.png';
+                var midnight  = L.tileLayer(cmUrl, {styleId: 999, attribution: attrib}).addTo(map);
+                var baseLayers = {
+                    "OpenStreetMap": osm,
+                    "Night View": midnight
+                };
+                var overlays = {
+                    "Circle": circle
+                };
+                // Añadimos el intercambiador de capas
+                L.control.layers(baseLayers, overlays).addTo(map);
+                // Añadimos la escala
+                L.control.scale().addTo(map);
+            }
+                                </code>
+</pre>
+</section>
+                        <section data-id="048779688ccb5728e01525f64a15d0a6">
+                            <h2>LeafLet</h2>
+                            <h2>Map Controls</h2>
+                            <iframe src="maps/mapControls.html" frameborder="0" width="1200px" height="400px" scrolling="now">
+</iframe>
+                        </section>
+                        <section data-id="4a0c1e0431c8e9d996dd00c78787beb8">
+                            <h2>OpenLayers</h2>
+                            <h4 class="fragment" data-fragment-index="0">Código HMTL</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="1">
+        <code data-trim="" style="word-wrap: break-word;">
+                <div id="map" style="width:100%;height:330px" class="smallmap"></div>
+        </code>
+    </pre>
+                            <h4 class="fragment" data-fragment-index="2">Código javascript</h4>
+                            <pre class="fragment" style="box-shadow: 0 0 0 rgba(0,0,0,.3);" data-fragment-index="3">
+    <code data-trim="" style="word-wrap: break-word;">
+                function init() {
+			   //zoom y selector de capas vienen por defecto
+			   // atribution viene por defecto para OSM, pero vamos a añadirlos explícitamente para otra capa
+			    var map = new OpenLayers.Map("map");
+			                var options = {attribution: {
+			                        title: "Provided by OSGeo",
+			                        href: "http://www.osgeo.org/"
+			                    }};
+			    map.addLayer(new OpenLayers.Layer.WMS("OpenLayers WMS",
+			              "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers:'basic'}, options));
+			    map.setCenter([2.8199439, 41.9793006], 12);
+			    var vectors = new OpenLayers.Layer.Vector("vector",  {
+		                styleMap: new OpenLayers.StyleMap({
+		                    pointRadius: "${type}", // based on feature.attributes.type
+		                    fillColor: "#FF6666",
+				    fillOpacity: 0.3})}
+				);
+		            map.addLayer(vectors);
+		            var feature = new OpenLayers.Feature.Vector(
+		                 new OpenLayers.Geometry.Point(2.8199439, 41.9793006),
+					{type:40});
+		            vectors.addFeatures([feature]);
+		
+		            var highlightCtrl = new OpenLayers.Control.SelectFeature(vectors, {
+		                hover: true, highlightOnly: false,
+		                eventListeners: {featurehighlighted: report}
+		            });
+		
+		            var selectCtrl = new OpenLayers.Control.SelectFeature(vectors,{clickout: true});
+		
+		            map.addControl(highlightCtrl);
+		            map.addControl(selectCtrl);
+		            highlightCtrl.activate();
+			    selectCtrl.activate();
+			   map.addControls([new OpenLayers.Control.ScaleLine()]);
+			}
+                                </code>
+</pre>
+</section>
+                        <section data-id="048779688ccb5728e01525f64a15d0a6">
+                            <h2>OpenLayers</h2>
+                            <h2>Map Controls</h2>
+                            <iframe src="maps/mapControlsOL.html" frameborder="0" width="1200px" height="400px" scrolling="now">
+</iframe>
+                        </section>
+                        <section data-id="3fbf04dac37299b72ebd11bb85f8d4de">
+                            <h2>Puntuación</h2>
+<div style="font-style: normal; font-variant: normal;">
+    <div style="font-style: normal; font-variant: normal;">
+        <ul style="font-size: 35.4107666015625px;">
+            <li data-fragment-index="0">
+                <span style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: justify;">Simplicidad de uso</span>:&nbsp;</li>
+                <ul>
+                    <li class="fragment" data-fragment-index="0">Empate</li>
+                </ul>
+                <li data-fragment-index="1">
+                    <span style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: justify;">Controles básicos</span>:&nbsp;</li>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Empate</li>
+                    </ul>
+                    <li data-fragment-index="2">
+                        <span style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: justify;">Controles avanzados</span>:&nbsp;</li>
+                        <ul>
+                            <li class="fragment" data-fragment-index="2">OpenLayers</li>
+                        </ul>
+                        <li data-fragment-index="2">Extensibles:&nbsp;</li>
+                        <ul>
+                            <li class="fragment" data-fragment-index="2">Empate</li>
+                        </ul>
+                        <li class="fragment" data-fragment-index="3">
+                            <b style="font-size: 54px; text-align: center;">Ganador: OpenLayers</b>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                        </section>
+                    </section>
+                <section data-id="68169edd996356317b8dae20c5fc1e01">
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235844/1102540837_1389739249.jpg" data-id="633dcdc50d3e65ab432de327ee7b3901">
+                            <h2>
+                <span>Compatibilidad entre Navegadores</span>
+            </h2>
+            <div>
+                <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">Nos interesa:</div>
+                <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+                    <ul>
+                        <li style="text-align: left;">Soporte en escritorio</li>
+                        <li style="text-align: left;">Soporte en movilidad</li>
+                    </ul>
+                    <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">
+                        <br>
+                    </div>
+                    <div style="text-align: left;">Puntos extra:</div>
+                    <ul>
+                        <li>Soporte en navegadores antiguos</li>
+                        <li>Uso de HTML5&nbsp;</li>
+                    </ul>
+                </div>
+                </div>
+                        </section>
+                        
+                        
+                        <section data-id="14366045d611667aef50adc5b83ff42b">
+                            <h2>Puntuación</h2>
+                <div>
+                    <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+                        <ul>
+                            <li data-fragment-index="0">Escritorio:&nbsp;</li>
+                            <ul>
+                                <li class="fragment" data-fragment-index="0">Empate</li>
+                            </ul>
+                            <li data-fragment-index="1">Movilidad:&nbsp;</li>
+                            <ul>
+                                <li class="fragment" data-fragment-index="1">Empate</li>
+                            </ul>
+                            <li data-fragment-index="2">Navegadores Antiguos:&nbsp;</li>
+                            <ul>
+                                <li class="fragment" data-fragment-index="2">OpenLayers</li>
+                            </ul>
+                            <li data-fragment-index="3">Uso de HTML5:&nbsp;</li>
+                            <ul>
+                                <li class="fragment" data-fragment-index="3">Leaflet</li>
+                            </ul>
+                            <li class="fragment" data-fragment-index="4">
+                                <b style="font-size: 54px; text-align: center;">Ganador: Empate</b>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                        </section>
+                    </section>
+                    <section data-id="ba8c41280cbead5c47112b5e3bd1ecb7">
+                        <section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235850/cat-fight-three-3-08.jpg" data-id="8c9c79d2df111cee18f65308276fa555">
+                            <h2>Módulos (Extensiones) y Personalización</h2>
+                    <div>
+                        <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">Nos interesa:</div>
+                        <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+                            <ul>
+                                <li style="text-align: left;">Acepta extensiones</li>
+                                <li style="text-align: left;">Acepta cambios en el estilo</li>
+                            </ul>
+                            <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal; text-align: left;">
+                                <br>
+                            </div>
+                            <div style="text-align: left;">Puntos extra:</div>
+                            <ul>
+                                <li>Repositorio extensiones de terceras partes</li>
+                                <li>CSS3</li>
+                            </ul>
+                        </div>
+                        </div>
+                        </section>
+                        
+                        
+                        <section data-id="5b92570f03d2b3684131fa25a22c956a">
+                            <h2>PunTuación</h2>
+                        <div>
+                            <div style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">
+                                <ul>
+                                    <li data-fragment-index="0">Extensiones:&nbsp;</li>
+                                    <ul>
+                                        <li class="fragment" data-fragment-index="0">Empate</li>
+                                    </ul>
+                                    <li data-fragment-index="1">Estilo:&nbsp;</li>
+                                    <ul>
+                                        <li class="fragment" data-fragment-index="1">Empate</li>
+                                    </ul>
+                                    <li data-fragment-index="2">Repositorio:&nbsp;</li>
+                                    <ul>
+                                        <li data-fragment-index="2" class="fragment">
+                                            <span style="font-size: 35.4107666015625px; font-style: normal; font-variant: normal;">Leaflet</span>
+                                        </li>
+                                    </ul>
+                                    <li data-fragment-index="3">CSS3:&nbsp;</li>
+                                    <ul>
+                                        <li class="fragment" data-fragment-index="3">Leaflet</li>
+                                    </ul>
+                                    <li class="fragment" data-fragment-index="4">
+                                        <b style="font-size: 54px; text-align: center;">Ganador: Leaflet</b>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </section>
+                    </section>
+                        
+                        
+                        
+                        
+                    <section data-id="ca954d9cc338feb4036cf15c253456ad">
+                        
+                        <section data-id="04c033804d0358b993066c315e8031fe">
+                            <h2>Resumen</h2>
+                            <div>
+                                <br>
+                            </div>
+                            <div>
+                                <br>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li data-fragment-index="2">
+                                        <span style="text-align: center;">Tipos de Capas: </span>
+                                        <b style="text-align: center;">OpenLayers</b>
+                                        <br>
+                                    </li>
+                                    <li data-fragment-index="3">
+                                        <span style="text-align: center;">Habilidades de Interacción: Empate</span>
+                                        <br>
+                                    </li>
+                                    <li data-fragment-index="4">
+                                        <span style="text-align: center;">Controles del Mapa: </span>
+                                        <b style="text-align: center;">OpenLayers</b>
+                                        <br>
+                                    </li>
+                                    <li data-fragment-index="5">
+                                        <span style="text-align: center;">Compatibilidad entre Navegadores: Empate</span>
+                                        <br>
+                                    </li>
+                                    <li data-fragment-index="6">
+                                        <span style="text-align: center;">Módulos (Extensiones) y Personalización: </span>
+                                        <b style="text-align: center;">Leaflet</b>
+                                        <br>
+                                    </li>
+                                </ul>
+                                <div>
+                                    <b>
+                                    <br>
+                                </b>
+                            </div>
+                        </div>
+                        <div class="fragment" data-fragment-index="0">
+                            <b>Conclusión: Empate&nbsp;</b>
+                        </div>
+                        <div class="fragment" data-fragment-index="1">
+                            <font style="font-size: 24px;">(con OpenLayers a la cabeza)</font>
+                        </div>
+                    </section>
+			<section style="background-color:transparent;" data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/235798/cats-on-boxing-day.jpg" data-background-size="initial" data-id="608c3fe0edf3e23610892b7dce8c0305">
+                    </section>
+                </section>
+            </div>
+
+
+            </div>
+
+            <script src="lib/js/head.min.js"></script>
+            <script src="js/reveal.min.js"></script>
+
+            <script>
+
+    			// Full list of configuration options available here:
+    			// https://github.com/hakimel/reveal.js#configuration
+    			Reveal.initialize({
+    				controls: true,
+    				progress: true,
+    				history: true,
+    				center: true,
+
+    				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    				// Parallax scrolling
+    				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    				// parallaxBackgroundSize: '2100px 900px',
+
+    				// Optional libraries used to extend on reveal.js
+    				dependencies: [
+                   { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                   { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                   { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                   { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                   { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                   { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                   ]
+               });
+
+</script>
+
+</body>
+</html>

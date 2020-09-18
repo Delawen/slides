@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title> GeoNetwork | @delawen</title>
+    
+    <meta name="description" content="Taller de PostGIS básico" />
+    <meta name="author" content="María Arias de Reyna" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported" onload="mapsReady()">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div style="position: absolute; bottom:10px; right:20px">
+<a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"/></a>
+</div>
+
+<div style="position: absolute;
+    bottom: 10px;
+    left: 10px;">
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#geonetwork',
+  interval: 30000,
+  title: 'GeoNetwork',
+  subject: '#geonetwork' ,
+  width: 150,
+  height: 200,
+  theme: {
+    shell: {
+      background: '#E2E2CA',
+      color: '#000000'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</div>
+
+<header style="position:absolute; top: 10px; left:10px">
+	<img src="images/geonetwork-logo.png"/>
+</header>
+
+<div id="impress">
+    <div class="step slide" data-x="-800" data-y="-800" data-rotate="-250">
+      <h1>GeoNetwork: domesticando una jauría de metagatos</h1>
+      <h2>María Arias de Reyna Domínguez - @delawen</h2>
+    </div>
+
+    <article class="step" data-x="0" data-y="0">
+	<div class="contenido">
+	        <ul>
+	          <li>Qué es un Metagato</li>
+	          <li>Qué hace GeoNetwork</li>
+	          <li>¿Y ahora?</li>
+	          <li>Un caso práctico</li>
+	        </ul>
+	</div>
+    </article>
+
+  <article class="step" data-x="2000" data-y="2000" data-rotate-z="90">
+    <h2>Qué es un Metadato</h2>
+	<strong><p>Un metadato es un dato que describe a otros datos.</p></strong>
+	<p>&nbsp;</p>
+	<p>Si poseen una estructura y etiquetas conocidas, es más fácil reutilizar estos datos.</p>
+	<p>Relacionado con linked-data, opendata, interoperabilidad,...</p>
+	<p>&nbsp;</p>
+	<p>Pero conforme vamos acumulando más datos, necesitaremos un lugar donde almacenarlos y poder reutilizarlos.</p>
+	<p>¿Base de datos? ¿Sistema de ficheros?</p>
+      <img class="gato" src="http://delawen.github.com/Taller-Routing/cute/metagato.jpg"/>
+  </article>
+
+  <article class="step" data-x="4000" data-y="2000">
+     <div class="contenido">
+        <strong><p>¿Y un software especializado en almacenamiento, edición y procesamiento de metadatos?</p></strong>
+	<p>&nbsp;</p>
+	<p>Concretamente, voy a hablaros de un software especializado en metadatos gis.</p>
+	<p>Metadatos con referencias geográficas.</p>
+      <img class="gato" src="http://delawen.github.com/Taller-Routing/cute/metagato.jpg"/>
+    </div>
+  </article>
+
+    <article class="step" data-x="0" data-y="0">
+	<div class="contenido">
+	        <ul>
+	          <li>&nbsp;</li>
+	          <li>Qué hace GeoNetwork</li>
+	          <li>¿Y ahora?</li>
+	          <li>Un caso práctico</li>
+        	</ul>
+	</div>
+    </article>
+
+  <article class="step" data-x="4000" data-y="8000">
+	<div class="contenido">
+		<h2>¿Qué hace GeoNetwork?</h2>
+		<p>Definición genérica de estructura/tipo de metadatos (XML)</p>
+		<p>Creación dinámica de formularios para editarlos</p>
+		<p>Búsqueda y almacenamiento</p>
+		<p>Validación (INSPIRE)</p>
+		<p>Harvesting</p>
+		<p>Mapas</p>
+	</div>
+	<img class="gato" src="http://delawen.github.com/Taller-Routing/cute/chemistry_cat.png"/>
+  </article>
+
+
+  <article class="step" data-x="4000" data-y="6000">
+	<h2>¿Qué hace GeoNetwork?</h2>
+	<img style="max-width: 57%" src="images/snapshot1.png"/>
+	<img style="max-width: 40%" src="images/snapshot2.png"/>
+	<img style="max-height:60%" src="images/snapshot3.png"/>
+      <img class="gato" src="http://delawen.github.com/Taller-Routing/cute/chemistry_cat.png"/>
+  </article>
+
+    <article class="step" data-x="0" data-y="0">
+	<div class="contenido">
+	        <ul>
+	          <li>&nbsp;</li>
+	          <li>&nbsp;</li>
+	          <li>¿Y ahora?</li>
+	          <li>Un caso práctico</li>
+        	</ul>
+	</div>
+    </article>
+
+
+  <article class="step" data-x="6000" data-y="6000">   
+	<h2>¿Y ahora?</h2>
+	<p>Quedan muchos retos por delante:</p>
+	<p>Linked-data</p>
+	<p>Muy ligado a la AAPP, cuando no tiene por qué</p>
+	<p>Búsquedas semánticas</p>
+	<p>SOS Servicio de Observación de Sensores (Cobweb)</p>
+	<p>&nbsp;</p>
+	<p>Mucho por desarrollar</p>
+      <img class="gato" src="http://delawen.github.com/Taller-Routing/cute/i-did-has-cheezburger.png"/>
+  </article>
+
+    <article class="step" data-x="0" data-y="0">
+	<div class="contenido">
+	        <ul>
+	          <li>&nbsp;</li>
+	          <li>&nbsp;</li>
+	          <li>&nbsp;</li>
+	          <li>Un caso práctico</li>
+        	</ul>
+	</div>
+    </article>
+
+  <article class="step" data-x="-5000" data-y="5000" data-rotate-z="90" data-scale="20">
+      <h2>Un caso práctico: <a href="http://www.opengeospatial.org/projects/initiatives/cobweb">CobWeb</a></h2>
+	<p>Proyecto Europeo a cuatro años</p>
+	<p>Observatorio Ciudadano Europeo: Convertir a los ciudadanos en sensores</p>
+	<p>Unir GeoNetwork con diversas fuentes</p>
+	<p>Aseguramiento social (gamificación) de la calidad</p>
+	<p>Involucrar todas las capas de la sociedad en la liberación de datos</p>
+	<p>Inicialmente para Gales, Alemania y Grecia,pero enfocado a toda Europa</p>
+	<p>(Se aceptan sugerencias)</p>
+	<p></p>
+      <img class="gato" src="http://delawen.github.com/Taller-Routing/cute/chemistry_cat.png"/>
+  </article>
+
+
+  <article class="step" data-x="6000" data-y="8000">
+	<div class="contenido">
+		<h2>Gracias por vuestra atención</h2>
+		<p>y perdón por el rollo</p>
+	</div>
+      <img class="gato" src="http://delawen.github.com/Taller-Routing/cute/halp-i-not-cheezburger.png"/>
+  </article>
+
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+		    <head>
+		        <link rel="stylesheet"  
+			href="http://dev.openlayers.org/examples/style.css"  
+			type="text/css">
+		        <script   
+			src="http://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+		        <style>.olMap {width:512px;height:256px;}</style>
+		    </head>
+		    <body style="height:256px">
+		        <div id="map-id"></div>
+		        <script>
+
+			function init() {
+
+		            var map=new OpenLayers.Map("map-id");
+		            map.addLayer(new OpenLayers.Layer.OSM());
+			    var bounds = new OpenLayers.Bounds();	
+			    bounds.extend(new OpenLayers.LonLat(-671944,4489904));	
+			    bounds.extend(new OpenLayers.LonLat(-658568,4497547));	
+			    map.zoomToExtent(bounds, true);
+			
+			   var vector = new OpenLayers.Layer.Vector("Vector Layer", {
+				projection: "EPSG:900913"});
+			    map.addLayer(vector);
+			    var control = new OpenLayers.Control.EditingToolbar(vector);
+			    map.addControl(control);
+			    control.activate();
+			    
+			}
+
+			init();
+		        </script>
+		    </body>
+</html>

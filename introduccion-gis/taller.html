@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>	
+		<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
+		<meta charset="utf-8">
+
+		<title>Taller Introducción GIS</title>
+
+		<link rel="stylesheet" href="http://dev.openlayers.org/examples/style.css" type="text/css">
+		<meta name="description" content="Se trataran los conceptos básicos sobre mapas y localización para poder manejar datos geográficos y luego se hará un recorrido sobre el software básico para crear, almacenar, mostrar y modificar mapas.">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+        	<link rel="stylesheet" href="stylesheets/delawen.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+    		<script src="http://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+		<style>
+			div.olMap {
+				width:700px;
+				height:400px;
+				}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+<section>
+    	<h1><strong>S</strong>istemas de</h1>
+	<h1><strong>I</strong>nformación</h1>
+	<h1><strong>G</strong>eográfica</h1>
+	<div>Cómo hacer mapas</div>
+	<div>usando software libre</div>
+	<img src="images/cat_penguin.jpg" style="height:20%"/>
+	<div><a href="http://twitter.com/delawen">@delawen</a></div>
+</section>
+<section>
+	<section>
+		<h2>Qué necesitamos</h2>
+		<p>Un ordenador (GNU/Linux, a ser posible)</p>
+		<p>Un navegador (Firefox o Chrome, a ser posible)</p>
+		<p>Un editor de textos</p>
+		<p>Internet</p>
+		<p>Una cuenta de correo para CartoDB (opcional)</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Mapa básico</h2>
+		<pre class="code">&lt;html&gt;
+		    <span class="nt">&lt;head&gt;</span>
+		        <span class="nt">&lt;link rel="stylesheet" </span> 
+			<span class="nt">href=</span><span class="s">"http://dev.openlayers.org/examples/style.css" </span> 
+			<span class="nt">type="text/css"</span><span class="nt">&gt;</span>
+		        <span class="nt">&lt;script  </span> 
+			<span class="nt">src=</span><span class="s">"http://openlayers.org/api/2.13.1/OpenLayers.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+		        <span class="nt">&lt;style&gt;.olMap</span> <span class="p">{width:512px;height:256px;}&lt;/style&gt;</span>
+		    <span class="nt">&lt;/head&gt;</span>
+		    <span class="nt">&lt;body&gt;</span>
+		        <span class="nt">&lt;div id="map-id"&gt;&lt;/div&gt;</span>
+		        <span class="nt">&lt;script&gt;</span>
+		            <span class="kd">var map=new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="s2">"map-id"</span><span class="p">);</span>
+		            <span class="kd">map.addLayer(new OpenLayers.Layer.OSM());</span>
+		            <span class="nx">map.zoomToMaxExtent();</span>
+		        <span class="nt">&lt;/script&gt;</span>
+		    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+	</pre>
+	</section>
+	<section>
+		<h2>Mapa básico</h2>
+		<div>
+			<div id="map1">
+				<button id="loadMapButton1" onclick="loadMap1()">Cargar</button>
+			</div>
+		        <script>
+			function loadMap1() {
+		            var map = new OpenLayers.Map("map1");
+		            map.addLayer(new OpenLayers.Layer.OSM());
+		            map.zoomToMaxExtent();
+			    document.getElementById("loadMapButton1").style.display = "none";
+			}
+		        </script>
+		</div>
+	</section>
+	<section>
+		<h2>Centrar mapa</h2>
+		<pre class="code">&lt;html&gt;
+		    <span class="nt">&lt;head&gt;</span>
+		        <span class="nt">&lt;link rel="stylesheet" </span> 
+			<span class="nt">href=</span><span class="s">"http://dev.openlayers.org/examples/style.css" </span> 
+			<span class="nt">type="text/css"</span><span class="nt">&gt;</span>
+		        <span class="nt">&lt;script  </span> 
+			<span class="nt">src=</span><span class="s">"http://openlayers.org/api/2.13.1/OpenLayers.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+		        <span class="nt">&lt;style&gt;.olMap</span> <span class="p">{width:512px;height:256px;}&lt;/style&gt;</span>
+		    <span class="nt">&lt;/head&gt;</span>
+		    <span class="nt">&lt;body&gt;</span>
+		        <span class="nt">&lt;div id="map2"&gt;&lt;/div&gt;</span>
+		        <span class="nt">&lt;script&gt;</span>
+		            <span class="kd">var map=new OpenLayers.Map("map2");</span>
+		            <span class="kd">map.addLayer(new OpenLayers.Layer.OSM());</span>
+		            <strong><span class="nx">var bounds = new OpenLayers.Bounds();</span>
+		            <span class="nx">bounds.extend(new OpenLayers.LonLat(-671944,4489904));</span>
+		            <span class="nx">bounds.extend(new OpenLayers.LonLat(-658568,4497547));</span>
+		            <span class="nx">map.zoomToExtent(bounds, true);</span></strong>
+		        <span class="nt">&lt;/script&gt;</span>
+		    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+	</pre>
+	</section>
+	<section>
+		<h2>Centrar mapa</h2>
+		<div>
+			<div id="map2">
+				<button id="loadMapButton2" onclick="loadMap2()">Cargar</button>
+			</div>
+		        <script>
+			function loadMap2() {
+		            var map = new OpenLayers.Map("map2");
+		            map.addLayer(new OpenLayers.Layer.OSM());
+		            var bounds = new OpenLayers.Bounds();	
+			    bounds.extend(new OpenLayers.LonLat(-671944,4489904));	
+			    bounds.extend(new OpenLayers.LonLat(-658568,4497547));	
+			    map.zoomToExtent(bounds, true);
+			    document.getElementById("loadMapButton2").style.display = "none";
+			}
+		        </script>
+		</div>
+	</section>
+	<section>
+		<h2>Capa WMS</h2>
+		<pre class="code">&lt;html&gt;
+		    <span class="nt">&lt;head&gt;</span>
+		        <span class="nt">&lt;link rel="stylesheet" </span> 
+			<span class="nt">href=</span><span class="s">"http://dev.openlayers.org/examples/style.css" </span> 
+			<span class="nt">type="text/css"</span><span class="nt">&gt;</span>
+		        <span class="nt">&lt;script  </span> 
+			<span class="nt">src=</span><span class="s">"http://openlayers.org/api/2.13.1/OpenLayers.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+		        <span class="nt">&lt;style&gt;.olMap</span> <span class="p">{width:512px;height:256px;}&lt;/style&gt;</span>
+		    <span class="nt">&lt;/head&gt;</span>
+		    <span class="nt">&lt;body&gt;</span>
+		        <span class="nt">&lt;div id="map2"&gt;&lt;/div&gt;</span>
+		        <span class="nt">&lt;script&gt;</span>
+		            <strong><span class="nx">var pnoa = new OpenLayers.Layer.WMS(</span>
+		            <span class="kd">"PNOA", "http://www.ign.es/wms-inspire/pnoa-ma",</span>
+		            <span class="kd">{layers: "OI.OrthoimageCoverage",</span>
+		            <span class="kd">transparent: false, format:"image/png"},</span>
+		            <span class="kd">{isBaseLayer: true,</span>
+		            <span class="kd">tileSize: new OpenLayers.Size(256,256)});</span>
+		            <span class="kd">map.addLayer(pnoa);</span>
+		            <span class="kd">map.zoomToMaxExtent();</span></strong>
+		        <span class="nt">&lt;/script&gt;</span>
+		    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+	</pre>
+	</section>
+	<section>
+		<h2>Capa WMS</h2>
+		<div>
+			<div id="map3">
+				<button id="loadMapButton3" onclick="loadMap3()">Cargar</button>
+			</div>
+		        <script>
+			function loadMap3() {
+		            var map = new OpenLayers.Map("map3");
+		            var pnoa = new OpenLayers.Layer.WMS(
+                		"PNOA",
+                		"http://www.ign.es/wms-inspire/pnoa-ma",
+               			 {layers: "OI.OrthoimageCoverage",
+				  transparent: false,
+				  format:"image/png"},
+				  {isBaseLayer: true,
+				  tileSize: new OpenLayers.Size(256,256)}
+            		    );
+			    map.addLayer(pnoa);
+			    map.zoomToMaxExtent();
+			    document.getElementById("loadMapButton3").style.display = "none";
+			}
+		        </script>
+		</div>
+	</section>
+	<section>
+		<h2>Capa Vectorial</h2>
+		<p>OpenLayers almacena en memoria diferentes geometrías.</p>
+		<p>Cada vez que se repinta el mapa, recalcula dónde se dibujan las geometrías.</p>
+		<p>A partir de cierto número de geometrías (depende del navegador), OpenLayers empieza a resultar pesado.</p>
+		<p>Los datos pueden estar en remoto o en local.</p>
+	</section>
+	<section>
+		<h2>Capa KML</h2>
+		<pre class="code">
+		<strong><span class="kd">map.addLayer(new OpenLayers.Layer.OSM());</span>
+		<span class="kd">var wfs = new OpenLayers.Layer.Vector("KML", {</span>
+                <span class="kd">strategies: [new OpenLayers.Strategy.Fixed()],</span>
+                <span class="kd">protocol: new OpenLayers.Protocol.HTTP({</span>
+	        <span class="kd">url: "data/Monumentos.kml",</span>
+	        <span class="kd">format: new OpenLayers.Format.KML({</span>
+	        <span class="kd">extractAttributes: true, maxDepth: 2})})});</span>
+	        <span class="kd">map.addLayer(wfs);</span>
+	        <span class="kd">var bounds = new OpenLayers.Bounds();</span>
+	        <span class="kd">bounds.extend(new OpenLayers.LonLat(-671944,4489904));	</span>
+	        <span class="kd">bounds.extend(new OpenLayers.LonLat(-658568,4497547));	</span>
+	        <span class="kd">map.zoomToExtent(bounds, true);</span></strong>
+	</pre>
+	</section>
+	<section>
+		<h2>Capa KML</h2>
+		<div>
+			<div id="map4">
+				<button id="loadMapButton4" onclick="loadMap4()">Cargar</button>
+			</div>
+		        <script>
+			function loadMap4() {
+		            var map = new OpenLayers.Map("map4");
+		            map.addLayer(new OpenLayers.Layer.OSM());
+			    var wfs = new OpenLayers.Layer.Vector("KML", {
+			        strategies: [new OpenLayers.Strategy.Fixed()],
+			        protocol: new OpenLayers.Protocol.HTTP({
+			            url: "data/Monumentos.kml",
+			            format: new OpenLayers.Format.KML({
+			                extractAttributes: true,
+			                maxDepth: 2})})});
+        		    map.addLayer(wfs);
+		            var bounds = new OpenLayers.Bounds();	
+			    bounds.extend(new OpenLayers.LonLat(-671944,4489904));	
+			    bounds.extend(new OpenLayers.LonLat(-658568,4497547));	
+			    map.zoomToExtent(bounds, true);
+			    document.getElementById("loadMapButton4").style.display = "none";
+			}
+		        </script>
+		</div>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Controles</h2>
+		<p>Los controles son las herramientas para manejar el mapa.</p>
+		<p>map.addControl($control);</p> 
+		<p>$control.activate();</p>
+	</section>
+	<section>
+		<h2>Medición</h2>	
+		<p style="height:300px;width:600px">
+			<object height="350" width="550" style="bottom:40px" data="example.html"></object>
+		</p>
+	</section>
+	<section>
+		<h2>Edición</h2>	
+		<p style="height:300px;width:600px">
+			<object height="350" width="550" style="bottom:40px" data="example2.html"></object>
+		</p>
+	</section>
+	<section>
+		<h2>Otros controles típicos</h2>
+		<p>map.addControl(new OpenLayers.Control.LayerSwitcher());</p>
+		<p>map.addControl(new OpenLayers.Control.PanZoomBar());</p>
+		<p>map.addControl(new OpenLayers.Control.Permalink());</p>
+		<p>map.addControl(new OpenLayers.Control.ScaleLine());</p>
+		<p>map.addControl(new OpenLayers.Control.Scale());</p>
+		<p>map.addControl(new OpenLayers.Control.OverviewMap());</p>
+		<p>map.addControl(new OpenLayers.Control.PanPanel());</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>CartoDB</h2>
+		<p>Librería propia</p>
+		<p><a href="https://github.com/CartoDB/cartodb.js/blob/develop/examples/openlayers.html">Usar capa de tiles</a></p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>OpenStreetMap</h2>
+		<p>Planet OSM</p>
+		<p><a href="http://wiki.openstreetmap.org/wiki/Xapi">XAPI</a></p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Ya podéis volar solos</h2>
+		<p>Os sigo esperando este fin de semana en la Mapping Party</p>
+		<p>O si no, en geoinquietos</p>
+		<p>En cualquier caso, gracias por aguantarme</p>
+	</section>
+</section>
+</div>
+
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, 
+				transition: Reveal.getQueryHash().transition || 'default', 
+
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

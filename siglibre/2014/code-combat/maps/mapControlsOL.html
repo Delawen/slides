@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- OpenLayers framework -->
+	<link rel="stylesheet" href="http://openlayers.org/dev/examples/style.css" />
+	<link rel="stylesheet" href="http://openlayers.org/dev/theme/default/style.css" />
+	<script src="http://openlayers.org/dev/OpenLayers.js"></script>
+</head>
+	<body onload="init()">
+                <div id="map" style="width:100%;height:330px" class="smallmap"></div>
+		<script type="text/javascript">
+
+			function init() {
+			   //zoom y selector de capas vienen por defecto
+			   // atribution viene por defecto para OSM, pero vamos a añadirlos explícitamente para otra capa
+			    var map = new OpenLayers.Map("map");
+			                var options = {attribution: {
+			                        title: "Provided by OSGeo",
+			                        href: "http://www.osgeo.org/"
+			                    }};
+			    map.addLayer(new OpenLayers.Layer.WMS("OpenLayers WMS",
+			              "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers:'basic'}, options));
+			    map.setCenter([2.8199439, 41.9793006], 12);
+			    var vectors = new OpenLayers.Layer.Vector("vector",  {
+		                styleMap: new OpenLayers.StyleMap({
+		                    pointRadius: "${type}", // based on feature.attributes.type
+		                    fillColor: "#FF6666",
+				    fillOpacity: 0.3})}
+				);
+		            map.addLayer(vectors);
+		            var feature = new OpenLayers.Feature.Vector(
+		                 new OpenLayers.Geometry.Point(2.8199439, 41.9793006),
+					{type:40});
+		            vectors.addFeatures([feature]);
+		
+		            var highlightCtrl = new OpenLayers.Control.SelectFeature(vectors, {
+		                hover: true, highlightOnly: false,
+		                eventListeners: {featurehighlighted: report}
+		            });
+		
+		            var selectCtrl = new OpenLayers.Control.SelectFeature(vectors,{clickout: true});
+		
+		            map.addControl(highlightCtrl);
+		            map.addControl(selectCtrl);
+		            highlightCtrl.activate();
+			    selectCtrl.activate();
+			   map.addControls([new OpenLayers.Control.ScaleLine()]);
+			}
+
+			function report() {alert("interacción");}
+		</script>
+	</body>
+</html>
+
+

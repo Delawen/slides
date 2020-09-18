@@ -1,0 +1,160 @@
+@font-face {
+  font-family: 'Miriam Libre';
+  src: url('fonts/MiriamLibre-Regular.eot');
+  src: url('fonts/MiriamLibre-Regular.eot?#iefix') format('embedded-opentype'),
+    url('fonts/MiriamLibre-Regular.woff2') format('woff2'),
+    url('fonts/MiriamLibre-Regular.woff') format('woff'),
+    url('fonts/MiriamLibre-Regular.ttf') format('truetype'),
+    url('fonts/MiriamLibre-Regular.svg#MiriamLibre-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sintony';
+  src: url('fonts/Sintony_1.eot');
+  src: url('fonts/Sintony_1.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Sintony_1.woff2') format('woff2'),
+    url('fonts/Sintony_1.woff') format('woff'),
+    url('fonts/Sintony_1.ttf') format('truetype'),
+    url('fonts/Sintony_1.svg#Sintony') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Sintony';
+  color: #6A004F;
+  font-size: 42px;
+}
+
+.reveal a {
+  text-decoration:none;
+  text-shadow: 1px 1px #848484;
+  color: #6A004F;
+}
+
+.reveal a:hover {
+  text-shadow:none;
+  color:#BB118F;
+}
+
+/* H styling */
+
+.reveal h1,.reveal  h2,.reveal  h3,.reveal  h4,.reveal  h5,.reveal  h6,.reveal  h7,.reveal  h8,.reveal  h9 {
+  font-family: 'Miriam Libre';
+  color: #6A004F;
+  text-shadow: 2px 2px #848484;
+  padding-bottom: 1%;
+}
+
+.reveal h1 {
+  font-weight:bold;
+  font-size: 200%;
+}
+
+.reveal h2 {
+  font-weight:bold;
+  font-size: 180%;
+}
+
+.reveal h3 {
+  font-size: 150%;
+}
+
+.reveal h4 {
+  font-size: 130%;
+}
+
+.reveal h5 {
+  font-size: 120%;
+}
+
+.reveal h6 {
+  font-size: 110%;
+}
+
+.reveal h7 {
+  font-weight:bold;
+}
+
+.reveal section quote {
+  padding:5%;
+  border-radius:20px;
+  background-color:#00393F70;
+  font-size:120%;
+  font-family: 'Miriam Libre';
+  color: #AA007F;
+  font-weight:bold;
+  height: 75%;
+  width: 75%;
+  display:block;
+  margin:5%;
+  text-shadow: 2px 2px 0 #333;
+}
+
+.reveal section article {
+  padding:5%;
+  border-radius:20px;
+  background-color:#95FFB052;
+  font-size:120%;
+  font-family: 'Miriam Libre';
+  color: #6A004F; 
+  font-weight:bold;
+  height: 75%;
+  width: 75%;
+  display:block;
+  margin:5%;
+  text-shadow: 2px 2px 0 #333;
+}
+
+.reveal section p, .reveal section, .reveal section li {
+  color: #6A004F; 
+  font-weight: lighter;
+}
+
+/* OSGeo Front styling */
+
+section.front:before {
+  opacity : 1;
+}
+
+section section.present:before {
+  content:' ';
+  position:absolute;
+  top:calc(100vh - 350px);
+  left:calc(100vw - 400px);
+  height:100vh;
+  width:100vw;
+  background-image: url(Cat_silhouette.svg);
+  background-repeat:no-repeat;
+  opacity : 0.25;
+  z-index:-1;
+}
+/* OSGeo Footer and Header */
+
+footer {
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  z-index: 3;
+}
+
+footer img {
+  max-width:40%;
+  float:left;
+}
+
+header {
+  position:fixed;
+  top:10px;
+  right:10px;
+  z-index:3;
+  height: 5%;
+  width:100%;
+}
+
+header img {
+  max-height:100%;
+  float:right;
+}

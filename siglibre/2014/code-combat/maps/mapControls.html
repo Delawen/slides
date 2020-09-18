@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Leaflet framework -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+</head>
+	<body>
+		<div id="mapControls" class="map" style="height: 300px"></div>
+		<script type="text/javascript">
+			var map;
+
+			function initmap() {
+				// Creamos el mapa, el zoom (+/-) viene por defecto
+				map = new L.Map('mapControls');
+				// Modificamos el centro del mapa
+				map.setView(new L.LatLng(41.9793006, 2.8199439), 14);
+				// Create the tile layer url
+				var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+				// el control de atribución viene por defecto,
+				// pero lo podemos personalizar de la siguiente forma
+				var attrib = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors. Imagery &copy; 2011 CloudMade';
+				// Creamos la capa con el mapa de OSM
+				var osm = new L.TileLayer(osmUrl, {attribution: attrib});
+				// Añadimos la capa al mapa
+				map.addLayer(osm);
+				// Creamos una capa con un círculo al que se le puede hacer clic
+				var circle = L.circle([41.9793006, 2.8199439], 500, {
+					color: 'red',
+					fillColor: '#f03',
+					fillOpacity: 0.5
+				}).bindPopup("Clic").addTo(map);
+				var cmUrl = 'http://{s}.tile.cloudmade.com/36c9ef9aa99742b48650db1124bf483f/{styleId}@2x/256/{z}/{x}/{y}.png';
+				var midnight  = L.tileLayer(cmUrl, {styleId: 999, attribution: attrib}).addTo(map);
+				var baseLayers = {
+					"OpenStreetMap": osm,
+					"Night View": midnight
+				};
+				var overlays = {
+					"Circle": circle
+				};
+				// Añadimos el intercambiador de capas
+				L.control.layers(baseLayers, overlays).addTo(map);
+				// Añadimos la escala
+				L.control.scale().addTo(map);
+			}
+			window.document.onload = initmap();
+		</script>
+	</body>
+</html>
+
+

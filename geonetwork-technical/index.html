@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>	
+		<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch' rel='stylesheet' type='text/css'>
+		<meta charset="utf-8">
+
+		<title>geoNetwork technical</title>
+
+		<meta name="description" content="Technical introduction of geoNetwork to be used on presentations to customers.">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="stylesheets/geocat.css" id="theme">');
+		</script>
+        	
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">geoNetwork</header>
+			<div class="slides">
+<section>
+	<h1>Introduction to technical details</h1>
+	<img class="geonetwork"/>
+	<div><a href="http://twitter.com/delawen">María Arias de Reyna - GeoCat</a></div>
+	<img class="geocat"/>
+</section>
+<section>
+	<section>
+		<h2>Index</h2>
+		<ul>
+			<li>Search Engine</li>
+			<li>Web Map Viewer</li>
+			<li>Import/Export metadata</li>
+			<li>Medata edit based on templates</li>
+			<li>Harvesting</li>
+			<li>Roles and privileges</li>
+			<li>CSW</li>
+			<li>Configuration Basics</li>
+		</ul>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Search Engine</h2>
+		<p>As a (geo)data portal, geoNetwork's main feature</p>
+		<p> is search through metadata</p>
+		<p>All data is stored on the database, </p>
+		<p>but it is not used for searching</p>
+		<p>Search is based on <a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/schemaPlugins/index.html?highlight=lucene#creating-the-index-fields-xsl-to-index-content-from-the-metadata-record">Lucene 4.9.0</a></p>
+	</section>
+	<section>
+		<h2>Search Engine</h2>
+		<p>Lucene folder path configurable</p>
+		<p>Configure the fields used on search on <a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/schemaPlugins/index.html?highlight=lucene#creating-the-index-fields-xsl-to-index-content-from-the-metadata-record">index-fields.xsl</a></p>
+		<p>Configure the fields exposed on <a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/schemaPlugins/index.html?highlight=lucene#creating-the-index-fields-xsl-to-index-content-from-the-metadata-record">index-fields.xsl</a></p>
+		<p>Available through the q API service</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Web Map Viewer</h2>
+		<p>Part of the basic User Interface</p>
+		<p>Allows users to preview data layers</p>
+		<p>Read-only (view-only)</p>
+		<p>Geo-related services can be added (like geocoding)</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Import and Export metadata</h2>
+		<p>Standard way: CSW-t</p>
+		<p>Asynchronous way: Harvesting</p>
+		<p>geoNetwork services: 
+			<ul>
+				<li><a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/xml_services/metadata_xml_insert_update_delete.html#insert-metadata-xml-metadata-insert">insert</a></li>
+				<li><a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/xml_services/metadata_xml_insert_update_delete.html#update-metadata-xml-metadata-update">update</a></li>
+				<li><a href="http://geonetwork-opensource.org/manuals/2.10.3/eng/developer/xml_services/metadata_xml_insert_update_delete.html#delete-metadata-xml-metadata-delete">delete</a></p></li>
+			</ul>
+		</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Harvesting</h2>
+		<p>Periodical jobs that copy data from other catalogs</p>
+		<p>Periodicity can be defined on simple cron format</p>
+		<p>Multiple formats on origin</p>
+		<p>Users will not be able to modify this records, but can duplicate them</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Role and Privileges</h2>
+		<p>geoNetwork works with <a href="http://www.geonetwork-opensource.org/manuals/2.8.0/eng/users/managing_metadata/ownership/index.html">four types of users:</a></p>
+		<p>
+			<ul>
+				<li>Registered User</li>
+				<li>Editor</li>
+				<li>Reviewer</li>
+				<li>Administrator</li>
+			</ul>
+		</p>
+		<p>Roles can be defined by group</p>
+	</section>
+	<section>
+		<h2>Role and Privileges</h2>
+		<p>The group <strong>All</strong> is a generic group for public data</p>
+		<p><img src="images/privileges.png"/></p>
+	</section>
+	<section>
+		<h2>Role and Privileges</h2>
+		<p>Records can be batch moved to another user</p>
+		<p><img src="images/transfer-ownership.png"/>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>CSW</h2>
+		<p>GeoNetwork is compliant with the <a href="http://portal.opengeospatial.org/files/?artifact_id=20555">2.0.2 version of the specification</a></p>
+		<p>http(s)://___/srv/$language/csw</p>
+	</section>
+	<section>
+		<h2>CSW</h2>
+		<p>GetCapabilities: general description of the service</p>
+		<p>DescribeRecord: information model supported by the service</p>
+	</section>
+	<section>
+		<h2>CSW</h2>
+		<p>GetRecordById: data of the record by identifier. Authentication optional</p>
+		<p>GetRecords: query the service using CQL or OGC Filter. Authentication optional</p>
+	</section>
+	<section>
+		<h2>CSW</h2>
+		<p>Harvest: Force a CSW harvesting (sync or async). Authentication required</p>
+		<p>Transaction: interface for creating, modifying and deleting catalogue records. Authentication required</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Configuration Basics</h2>
+		<p>Based on database settings table and xml files (config*.xml)</p>
+		<p>Latest versions rely more on Spring library</p>
+		<p>
+			<ul>
+				<li>Authentication & Security (LDAP, Shibboleth, CAS)</li>
+				<li>Database connections</li>
+				<li>Definition of Privileges</li>
+			</ul>
+		</p>
+	</section>
+	<section>
+		<h2>Configuration Basics</h2>
+		<div style="text-align:justify">
+			<p>Big catalogs (+100.000 records)
+				<ul>
+					<li>Use PostGIS index instead of Shapefiles</li>
+					<li>Tweak postgreSQL with more memory (spatial queries)</li>
+				</ul>
+			</p>
+			<p>Large catalogs (+300.000 records)
+				<ul>
+					<li>Consider clustering</li>
+				</ul>
+			</p>
+			<p>Huge catalogs (+1.000.000 records)
+				<ul>
+					<li>Check inodes (number of files)</li>
+					<li>Consider use SOLR instead of Lucene</li>
+				</ul>
+			</p>
+		</div>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>The End</h2>
+		<p><img class="geocat"><p/>
+		<a href="http://twitter.com/geocat_bv">@geocat_bv</a>
+		<p><img class="lotsofcats"><p/>
+	</section>
+</section>
+
+</div>
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, 
+				transition: Reveal.getQueryHash().transition || 'default', 
+
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,6 @@
+[submodule "stylesheets"]
+	path = stylesheets
+	url = https://github.com/Delawen/stylesheets.git
+[submodule "reveal.js"]
+	path = reveal.js
+	url = https://github.com/hakimel/reveal.js.git

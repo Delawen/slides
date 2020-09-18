@@ -1,0 +1,77 @@
+<html>
+		    <head>
+		        <link rel="stylesheet"  
+			href="http://dev.openlayers.org/examples/style.css"  
+			type="text/css">
+		        <script   
+			src="http://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+		        <style>.olMap {width:512px;height:256px;}</style>
+		    </head>
+		    <body style="height:256px">
+			<button id="loadMapButton5" onclick="init()">Cargar</button>
+			<div>
+				<input type="radio" name="control" value="line" onclick="changeControl(controls[0])">Line</input>
+				<input type="radio" name="control" value="polygon" onclick="changeControl(controls[1])">Polygon</input>
+			</div>
+		        <div id="map-id"></div>
+			<p id="output"></p>
+		        <script>
+
+
+		        function handleMeasurements(event) {
+		            var geometry = event.geometry;
+		            var units = event.units;
+		            var order = event.order;
+		            var measure = event.measure;
+		            var element = document.getElementById('output');
+		            var out = "";
+		            if(order == 1) {
+		                out += "measure: " + measure.toFixed(3) + " " + units;
+		            } else {
+		                out += "measure: " + measure.toFixed(3) + " " + units + "<sup>2</" + "sup>";
+		            }
+		            element.innerHTML = out;
+        		}
+
+
+			var controls = [];
+
+			function changeControl(control) {
+			    for(var c in controls) {
+				controls[c].deactivate();
+			    }
+			    control.activate();
+			}
+			
+			function init() {
+
+		            var map=new OpenLayers.Map("map-id");
+		            map.addLayer(new OpenLayers.Layer.OSM());
+			    var bounds = new OpenLayers.Bounds();	
+			    bounds.extend(new OpenLayers.LonLat(-671944,4489904));	
+			    bounds.extend(new OpenLayers.LonLat(-658568,4497547));	
+			    map.zoomToExtent(bounds, true);
+			
+			    controls[0] = new OpenLayers.Control.Measure(
+	    			OpenLayers.Handler.Path, {
+				persist: true});
+			    controls[1] =  new OpenLayers.Control.Measure(
+	    			OpenLayers.Handler.Polygon, {
+				persist: true});  
+
+			    for(var key in controls) {
+		                control = controls[key];
+		                control.events.on({
+		                    "measure": handleMeasurements,
+		                    "measurepartial": handleMeasurements
+		                });
+		                map.addControl(control);
+		            }
+			    
+			    changeControl(controls[0]);
+			}
+
+			init();
+		        </script>
+		    </body>
+</html>

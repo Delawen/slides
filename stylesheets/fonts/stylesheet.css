@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Miriam Libre';
+    src: url('MiriamLibre-Regular.eot');
+    src: url('MiriamLibre-Regular.eot?#iefix') format('embedded-opentype'),
+        url('MiriamLibre-Regular.woff2') format('woff2'),
+        url('MiriamLibre-Regular.woff') format('woff'),
+        url('MiriamLibre-Regular.ttf') format('truetype'),
+        url('MiriamLibre-Regular.svg#MiriamLibre-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Miriam Libre';
+    src: url('MiriamLibre-Regular_1.eot');
+    src: url('MiriamLibre-Regular_1.eot?#iefix') format('embedded-opentype'),
+        url('MiriamLibre-Regular_1.woff2') format('woff2'),
+        url('MiriamLibre-Regular_1.woff') format('woff'),
+        url('MiriamLibre-Regular_1.ttf') format('truetype'),
+        url('MiriamLibre-Regular_1.svg#MiriamLibre-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sintony';
+    src: url('Sintony.eot');
+    src: url('Sintony.eot?#iefix') format('embedded-opentype'),
+        url('Sintony.woff2') format('woff2'),
+        url('Sintony.woff') format('woff'),
+        url('Sintony.ttf') format('truetype'),
+        url('Sintony.svg#Sintony') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sintony';
+    src: url('Sintony_1.eot');
+    src: url('Sintony_1.eot?#iefix') format('embedded-opentype'),
+        url('Sintony_1.woff2') format('woff2'),
+        url('Sintony_1.woff') format('woff'),
+        url('Sintony_1.ttf') format('truetype'),
+        url('Sintony_1.svg#Sintony') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

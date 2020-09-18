@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Panorama SIG Libre 2014</title>
+
+        <meta name="description" content="Una visión a 10mil pies del panorama de software libre para la geomática">
+        <meta name="author" content="OSGeo-ES">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal/css/reveal.min.css">
+        <link rel="stylesheet" href="stylesheets/sky_osgeo.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-autoslide="60000">
+                    <!-- PORTADA -->
+                    <section>
+                      <img style="background:none;box-shadow:none;"
+                        src="images/osgeo-logo.png" title="OSGeo Foundation">
+                      <h3>Panorama de SIG Libre 2014</h3>
+                      <p>
+                        <a href="http://es.osgeo.org">Capítulo Local para la Comunidad Hispanohablante de OSGeo</a><br/>
+
+                      </p>
+
+
+                    </section>
+
+                    <section class="quienes">
+                        <h2>Quiénes somos</h2>
+
+                        <table>
+                            <tr><td><img src="images/luisromangz.jpg" alt="luisromangz" class="twitter"></td>
+
+                                <td><img src="images/tolanss.jpg" alt="tolanss" class="twitter"></td>
+                                <td><img src="images/xurxosanz.jpg" alt="xurxosanz" class="twitter"></td>
+                                <td><img src="images/delawen.jpg" alt="delawen" class="twitter"></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://twitter.com/luisromangz">@luisromangz</a></td>
+                                <td><a href="http://twitter.com/tolanss"  >@Tolanss</a></td>
+                                <td><a href="http://twitter.com/xurxosanz">@xurxosanz</a></td>
+                                <td><a href="http://twitter.com/delawen"  >@delawen</a></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/alediaztorres.jpg" alt="alediaztorres" class="twitter"></td>
+                                <td><img src="images/josepsitjar.jpg" alt="josepsitjar" class="twitter"></td>
+                                <td><img src="images/santiagohiguera.jpg" alt="santiagohiguera" class="twitter"></td>
+                                <td><img src="images/moiarcsan.png" alt="moiarcsan" class="twitter"></td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://twitter.com/alediaztorres">@alediaztorres</a></td>
+                                <td><a href="http://twitter.com/josepsitjar">@josepsitjar</a></td>
+                                <td><a href="http://twitter.com/santiagohiguera">@santiagohiguera</a></td>
+                                <td><a href="http://twitter.com/moiarcsan">@moiarcsan</a></td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h2>Qué vamos a hacer</h2>
+                    </section>
+
+                    <!-- AGENDA -->
+                    <section>
+                      <h2>Agenda</h2>
+                      <ul>
+                        <li>Bibliotecas de componentes</li>
+                        <li>Servidores</li>
+                        <li>Bases de datos</li>
+                        <li><em>Web mapping</em></li>
+                        <li>Clientes de escritorio</li>
+                        <li>Dispositivos móviles</li>
+                        <li>Enlaces
+                            <ul>
+                            <li>Diapos: <a href="http://bit.ly/siglibre8-panorama">http://bit.ly/siglibre8-panorama</a></li>
+                            <li>Artículo: <a href="http://bit.ly/panorama-sig-libre">http://bit.ly/panorama-sig-libre</a></li>
+                            </ul>
+                      </ul>
+                    </section>
+                </section>
+
+                <!-- BIBLIOTECAS -->
+                <section data-autoslide="30000">
+                    <section data-autoslide="15000">
+                        <h2>Bibliotecas de componentes</h2>
+                        <div>
+                            <img src="https://raw.githubusercontent.com/OSGeo-ES/panorama-siglibre8/paper/source/librerias/imgs/tabla-principal.png"/>
+                        </div>
+                    </section>
+                    <section data-autoslide="15000">
+                        <h2>Bibliotecas de componentes</h2>
+                        <ul>
+                            <li>Geoprocesamiento: Manipulación de información geoespacial</li>
+                            <li>Routing:  Enrutamiento y análisis de redes</li>
+                            <li>LiDAR: Manipulación y procesado datos láser</li>
+                            <li>Varios: Los restos</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="45000">
+                        <h2>Geoprocesamiento</h2>
+                        <ul>
+                            <li>GDAL/OGR: Formatos y manipulación raster/vectorial</li>
+                            <li>JTS/GEOS: Geometrías y algoritmos espaciales 2D</li>
+                            <li>GeoTools: Procesamiento y visualización. OGC</li>
+                            <li>GeoScript: Capacidades espaciales en distintos lenguajes</li>
+                            <li>Shapely: Algoritmos para procesamiento espacial 2D</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="20000">
+                        <h2>Routing</h2>
+                        <ul>
+                            <li>OSRM: Utiliza OSM</li>
+                            <li>pgRouting: Extensión de PostgreSQL/PostGIS</li>
+                            <li>OpenTripPlanner: Distintos métodos de transporte</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="40000">
+                        <h2>LiDAR</h2>
+                        <div><i>"Tú has venido aquí a hablar de tu libro"</i> @xurxosanz parafraseando a F. Umbral</div>
+                        <br>
+                        <ul>
+                            <li>LASlib/LASzip: I/O LAS</li>
+                            <li>libLAS: I/O LAS</li>
+                            <li>SPDlib: I/O SPD</li>
+                            <li>PDAL: GDAL para puntos</li>
+                            <li>LASpy: I/O LAS en Python</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="15000">
+                        <h2>Varios</h2>
+                        <ul>
+                            <li>GeoBatch: Flujos de procesamiento</li>
+                            <li>Mapnik: Renderizado de mapas</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="20000">
+                        <h2>Puntos calientes</h2>
+                        <ul>
+                            <li>Geoprocesamiento: Facilitar su uso a desarrolladores</li>
+                            <li>
+                                Routing
+                                <ul>
+                                    <li>Datos <strong>procesados</strong>: Respuestas instantáneas</li>
+                                    <li>Datos <strong>sin procesar</strong>: Flexibilidad a la hora de incorporar datos en tiempo real</li>
+                                </ul>
+                            </li>
+                            <li>Cada vez hay más soporte para <strong>Python</strong></li>
+                            <li>LiDAR lo va a <strong>petar</strong>: GSoC 2014</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Curva de aprendizaje</h2>
+                        <ul>
+                        <li>
+                            Geoprocesamiento:
+                            <ul>
+                                <li>C++: GEOS</li>
+                                <li>Java: JTS y Geotools</li>
+                                <li>Python: GeoScript y Shapely</li>
+                            </ul>
+                        </li>
+                        <li>Cálculo de rutas: Teoría de grafos</li>
+                        <li>En LiDAR: C++ y línea de comando</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- SERVIDORES -->
+                <section  data-autoslide="37000">
+                    <section data-autoslide="5000">
+                        <h2>Servidores</h2>
+
+                        <img src="images/tech-support.jpg" alt="Tech support">
+                    </section>
+
+                    <section>
+                        <h2>Servicios geoespaciales</h2>
+                        <ul>
+                            <li>Sector <strong>maduro</strong></li>
+                            <li>Proyectos <strong>activos</strong></li>
+                            <li><strong>Adhesión</strong> a estándares</li>
+                            <li>A veces para <strong>innovar</strong> hay que <br/>
+                                <strong>salirse</strong> del estándar</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <table>
+                            <tr>
+                                <th style="border-bottom:1px solid black;">Mapas</th>
+                                <th style="border-bottom:1px solid black;">Teselas</th>
+                                <th style="border-bottom:1px solid black;">Procesamiento</th>
+                                <th style="border-bottom:1px solid black;">Metadatos</th>
+                            </tr>
+                            <tr>
+                                <td>MapServer<br/> deegree<br/> GeoServer<br/> MapGuide<br/> QGIS Server<br/> EOxServer</td>
+                                <td>GeoWebCache<br/> TileCache<br/> MapProxy<br/> TileStache<br/> TileStream<br/>MapCache</td>
+                                <td>PyWPS<br/> 52North WPS<br/> Zoo<br/> 52North SOS</td>
+                                <td>GeoNetwork<br/> PyCSW</td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>Servidores de mapas</h2>
+                        <ul>
+                            <li>Mejoras en el <strong>renderizado</strong></li>
+                            <li>Adopción de lenguajes de simbología tipo <strong>CSS</strong></li>
+                        </ul>
+
+                        <p class="productos">MapServer · deegree · GeoServer · MapGuide · QGIS Server · EOxServer</p>
+                    </section>
+                    <section>
+                        <h2>Servidores de teselas</h2>
+                        <ul>
+                            <li>¿<strong>Integrado</strong> en el servidor de mapas <br/>
+                                o <strong>independiente</strong>? </li>
+                            <li>TileCache en desuso</li>
+                            <li>TileStache y Tilestream: los <em>raritos</em></li>
+
+                        <p class="productos">GeoWebCache · TileCache · MapProxy · TileStache · TileStream · MapCache</p>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Servidores de geoprocesamiento</h2>
+                        <ul>
+                            <li>WPS va calando</li>
+                            <li>Lenguajes de <strong>scripting</strong><br/>
+                                para <strong>facilitar</strong> el desarrollo</li>
+                        </ul>
+
+                        <p class="productos">PyWPS · 52North WPS · Zoo · GeoServer · deegree<br/>52North SOS</p>
+                    </section>
+                    <section>
+                        <h2>Servidores de metadatos</h2>
+                        <ul>
+                            <li><strong>No todo</strong> va a ser GeoNetwork</li>
+                            <li>PyCSW se integra con otros productos</li>
+                        </ul>
+
+                        <p class="productos">GeoNetwork · PyCSW · GeoServer · deegree</p>
+                    </section>
+                    <section>
+                        <h2>Curva de aprendizaje</h2>
+                        <p>Si eres técnico <em>&laquo;geo&raquo;</em></p>
+                        <ul>
+                            <li>Conversión de formatos</li>
+                            <li>Dominio de proyecciones</li>
+                            <li>Estándares OGC</li>
+                            <li>Bases de datos (SQL)</li>
+                            <li><strong>Comprender</strong> a la gente de sistemas</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Curva de aprendizaje</h2>
+                        <p>Si eres técnico <em>&laquo;de sistemas&raquo;</em></p>
+                        <ul>
+                            <li>Instalación y configuración de<br/> servidores y bases de datos</li>
+                            <li>Gestión de recursos
+                                <ul>
+                                    <li><em>&laquo;ya viene el de los mapas...&raquo;</em></li>
+                                </ul>
+                            </li>
+                            <li><strong>Comprender</strong> a la gente de geo</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="5000">
+                        <img
+                            style="width:60%;"
+                            src="images/head-bar.gif" alt="Head bar">
+                    </section>
+                </section>
+
+                <!-- BASES DE DATOS -->
+                <section>
+		    <section>
+                        <h2>Bases de datos</h2>
+                        <ul>
+                                <li>PostGIS</li>
+                                <li>MySQL Spatial</li>
+                                <li>Spatialite</li>
+				<li>H2GIS</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Puntos calientes</h2>
+			<div>ISO 19125-1</div>
+			<ul>
+				<li>Binary Geometry (WKB)</li>
+				<li>Normalized Geometry (WKT)</li>
+			</ul>
+			<div>19125-2</div>
+			<ul>
+				<li>Types and Functions</li>
+			</ul>
+                    </section>
+                    <section>
+                        <h2>Compatibilidad OGC</h2>
+			<img src="https://raw.githubusercontent.com/OSGeo-ES/panorama-siglibre8/paper/source/bbdd/imgs/estandares.png"/>
+                    </section>
+                    <section>
+                        <h2>Detalle</h2>
+			<h3>PostGIS</h3>
+			<div>La más completa.</div>
+                        <h3>MySQL</h3>
+                        <div>La más extendida.</div>
+                        <h3>Spatialite</h3>
+                        <div>En un fichero. GeoPackage.</div>
+                        <h3>h2GIS</h3>
+                        <div>En un fichero con servidor. Multiplataforma portable.</div>
+                    </section>
+                    <section>
+			<h2>Bases de Datos</h2>
+			<div><img src="https://raw.githubusercontent.com/OSGeo-ES/panorama-siglibre8/paper/source/bbdd/imgs/tabla-principal.png"/></div>
+                    </section>
+                </section>
+
+                <!-- WEB MAPPING -->
+                <section data-autoslide="90000">
+                    <section data-autoslide="30000">
+                        <h2><em>Webmapping</em></h2>
+                        <ul>
+                                <li>Mapbender</li>
+                                <li>OpenLayers</li>
+                                <li>GeoExt/GXP</li>
+				<li>GeoMoose</li>
+				<li>Leaflet</li>
+				<li>Mapstore</li>
+				<li>Cartaro</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Teconologías Webmapping</h2>
+			<img src="http://panorama-sig-libre.readthedocs.org/es/latest/_images/tabla-principal3.png"/>
+                    </section>
+                    <section>
+                        <h2>Estándares OGC</h2>
+			<img src="http://panorama-sig-libre.readthedocs.org/es/latest/_images/estandares2.png"/>
+                    </section>
+                    <section>
+                        <h2>Puntos calientes</h2>
+                        <ul>
+                                <li>MapBox</li>
+                                <li>CartoDB</li>
+                                <li>WebGL Earth</li>
+				<li>F4 Map</li>
+				<li>Asistentes - Guías</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Detalle</h2>
+                        <h3>Mapbender</h3>
+			<div>Soporte de usuarios, grupos y servicios</div>
+                        <h3>OpenLayers</h3>
+                        <div>Robustez por excelencia</div>
+                        <h3>GeoExt/GXP</h3>
+                        <div>ExtJS + OpenLayers</div>
+                        <h3>GeoMoose</h3>
+                        <div>MapServer + OpenLayers</div>
+		  </section>
+		  <section>
+			<h2>Detalle</h2>
+                        <h3>Leaflet</h3>
+                        <div>Ligero y modular</div>
+                        <h3>Mapstore</h3>
+                        <div>Crear, guardar, buscar y compartir mashups</div>
+                        <h3>Cartaro</h3>
+                        <div>Drupal con PostGIS, GeoServer, GeoWebCache y OpenLayers</div>
+                    </section>
+                    <section>
+                        <h2>Curva de aprendizaje</h2>
+                        <ul>
+                                <li>HTML Básico</li>
+                                <li>Javascript</li>
+                                <li>PHP</li>
+                                <li>XML</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- CLIENTES DE ESCRITORIO -->
+                <section>
+                    <section>
+                        <h2>Clientes de escritorio</h2>
+                    </section>
+                    <section data-autoslide="30000">
+                        <h3>Panorama actual Clientes de Escritorio</h3>
+                        <img src="http://sigserver4.udg.edu/panorama_siglibre/iconos_clientes.png"/>
+                    </section>
+                    <section>
+                    	<h4>GRASS Gis</h4>
+                    	<br>
+                    	<div style="align:justify"><i>El más veterano. Destaca por su gran número de funcionalidades derivadas de muchos años de desarrollo y de una estructura modular del programa que favorece que los desarrolladores aporten al proyecto contribuciones individuales.</i></div>
+                    </section>
+                     <section>
+                    	<h4>uDIG</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Cliente de escritorio que nos ofrece el soporte para el mayor número de fuentes de datos, tanto locales como remotas, y especialmente las basadas en los protocolos OGC. </i></div>
+                    </section>
+                    <section>
+                    	<h4>OPTICKS</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Utilizado fundamentalmente en teledetección, para el análisis de imágenes provenientes de sensores remotos.</i></div>
+                    </section>
+                    <section>
+                    	<h4>OpenJump</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Uno de los primeros proyectos de cliente GIS de escritorio en lenguaje Java. Destaca por hace uso de la biblioteca JTS.</i></div>
+                    </section>
+                    <section>
+                    	<h4>GeoDa</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Diseñado para implementar técnicas para el análisis exploratorio de datos espaciales.</i></div>
+                    </section>
+                    <section>
+                    	<h4>QGis</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Entorno intuitivo y amigable, que va creciendo en funcionalidades y al que se integran diversos proyectos como GRASS, SEXTANTE...</i></div>
+                    </section>
+                    <section>
+                    	<h4>gvSIG</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Herramienta de escritorio completa y multiplataforma que permite leer una amplia variedad de formatos tanto ráster como vectoriales, con capacidades para el procesado de datos vectoriales. SEXTANTE dota a gvSIG de herramientas para el análisis de datos ráster.</i></div>
+                    </section>
+                    <section>
+                    	<h4>SAGA Gis</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Destaca fundamentalmente por su orientación a la realización de análisis de imágenes y modelos digitales del terreno.
+Clara separación entre su interfaz de programación y su interfaz de usuario.</i></div>
+                    </section>
+                    <section>
+                    	<h4>TileMill</h4>
+                    	<br>
+                    	<div style="align:justify"><i>Herramienta pensada para diseñar y crear mapas para su visualización via web de forma rápida y fácil. </i></div>
+                    </section>
+
+                    <section data-autoslide="60000">
+                       <h2>Puntos calientes</h2>
+                       <ul>
+                           <li>Limitaciones en la capacidad para gestionar y visualizar datos en 3D.</li>
+                           <li>Edición y visualización de datos.</li>
+                           <li>Incorporación de scripting entre las funcionalidades de los SIG de escritorio</li>
+		           <li>Interrelación de proyectos</li>
+			   <li>SIG de Escritorio vs Servidores SIG</li>
+                        </ul>
+                    </section>
+                    <section data-autoslide="60000">
+                        <h2>Curva de aprendizaje</h2>
+                        </br>
+                        <h4>Conocimientos en tecnologias geoespaciales:</h4>
+                        </br>
+                        <ul>
+                            <li>Conocer los distintos formatos de datos</li>
+                            <li>Conocer y entender los distintos algoritmos de análisis y gestión de datos geoespaciales</li>
+                            <li>Manejo de Bases de Datos</li>
+			    <li>Comprensión de proyecciones cartográficas y sistemas de referencia</li>
+		            <li>...</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- DISPOSITIVOS MÓVILES -->
+                <section data-autoslide="25000">
+                    <section>
+                        <h2>Dispositivos móviles</h2>
+                        <div><img src="images/smartphone_plegable.jpg"/></div>
+                    </section>
+                    <section>
+                        <h2>OpenLayers y Leaflet</h2>
+                        <div><img src="images/leafletmobile.png"/></div>
+                        <p>Librerías Javascript para ser consumidas en entornos de WebMapping</p>
+                        <p>Con pequeñas precauciones se pueden hacer páginas de WebMapping visualizables en dispositivos móviles</p>
+                    </section>
+                    <section>
+                        <h2>OSMDroid</h2>
+                        <div><img src="images/osmdroid.png" width='400'/></div>
+                        <p>Utiliza mapas de <em>tiles</em> de OpenStreetMap u otros</p>
+                        <p>Puede trabajar online y offline</p>
+                        <p>API para añadir capas overlay y marcadores.</p>
+                        <p>Estilos de visualización: con tiles personalizadas</p>
+                    </section>
+                    <section>
+                        <h2>Mapsforge</h2>
+                        <div><img src="images/mapsforge.png"/></div>
+                        <p>Utiliza mapas vectoriales de OpenStreetMap</p>
+                        <p>Puede trabajar online y offline</p>
+                        <p>API para añadir capas overlay y marcadores.</p>
+                        <p>Estilos de visualización: compilando los mapas con Osmosis</p>
+                    </section>
+                    <section>
+                        <h2>OsmAnd</h2>
+                        <div><img src="images/osmand.png"/></div>
+                        <p>Routing y navegación en dispositivos Android</p>
+                        <p>Modos offline y online</p>
+
+                    </section>
+                    <section>
+                        <h2>gvSIG Mini</h2>
+                        <div><img src="images/gvsigmini.png"/></div>
+                        <p>Multiples capas: WMS</p>
+                        <p>Routing online y offline</p>
+                        <p>POI's, navegación</p>
+                        <p>Comparte en redes sociales</p>
+                    </section>
+                    <section>
+                        <h2>Geopaparazzi</h2>
+                        <div><img src="images/geopaparazzi.png" width='200'/></div>
+                        <p>Fotografías y notas georreferenciadas</p>
+                        <p>Orientación de las fotografías</p>
+                        <p>Integración con OSM</p>
+                    </section>
+                    <section>
+                        <h2>Graphhopper</h2>
+                        <div><img src="images/graphhopper.png"/></div>
+                        <p>Routing en Android con cartografía OSM</p>
+                        <p>Permite trabajar desde HTML, Javascript</p>
+                        <p>Trabaja offline desde Java escritorio</p>
+                    </section>
+                    <section>
+                        <h2>OsmSharp</h2>
+                        <div><img src="images/osmsharp.png" width='400'/></div>
+                        <p>Componente para mapas de OpenStreetMap</p>
+                        <p>Routing y Mapas vectoriales offline</p>
+                        <p>Multiplataforma</p>
+                    </section>
+                    <section>
+                        <h2>Glob3 mobile</h2>
+                        <div><img src="images/glob3.png"/></div>
+                        <p>Componente de mapas, nativo y multiplataforma</p>
+                        <p>Android, iOS, HTML5</p>
+                        <p>Soporta visualización 2D, 2.5D y 3D</p>
+                        <p></p>
+                    </section>
+                    <section>
+                        <h2>Puntos calientes</h2>
+                        <div><img src="images/ubuntu.jpg"/></div>
+                        <p>Sistemas multiplataforma</p>
+                        <p>HTML5</p>
+                        <p>Visualización 3D</p>
+                    </section>
+                    <section>
+                        <h2>Curva aprendizaje</h2>
+                        <div><img src="images/learningcurve.jpg"/></div>
+                        <p>Conocer Java o C++</p>
+                        <p>Conocer Android</p>
+                        <p>Conocer la librería concreta</p>
+                        <p>Gestionar pantallas, resoluciones</p>
+                    </section>
+
+                </section>
+
+                <!-- CIERRE -->
+                <section data-autoslide="100000000">
+                    <section><!--aquí Luis respira--></section>
+                    <section>
+                        <h2>THE END</h2>
+                        <img src="images/bender.jpg" alt="Applause">
+                    </section>
+                    <section>
+                      <img style="background:none;box-shadow:none;"
+                        src="images/osgeo-logo.png" title="OSGeo Foundation">
+                      <p style="font-size:60px;">¿Conclusiones?</p>
+                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=http%3A%2F%2Fbit.ly%2Fsiglibre8-panorama" alt="QR">
+                    </section>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="reveal/lib/js/head.min.js"></script>
+        <script src="reveal/js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+            });
+
+            Reveal.initialize({
+
+                // Display controls in the bottom right corner
+                controls: true,
+                // Display a presentation progress bar
+                progress: true,
+                // Display the page number of the current slide
+                slideNumber: true,
+                // Push each slide change to the browser history
+                history: true,
+                // Enable keyboard shortcuts for navigation
+                keyboard: true,
+                // Enable the slide overview mode
+                overview: true,
+                // Vertical centering of slides
+                center: true,
+                // Enables touch navigation on devices with touch input
+                touch: true,
+                // Loop the presentation
+                loop: false,
+                // Change the presentation direction to be RTL
+                rtl: false,
+                // Turns fragments on and off globally
+                fragments: true,
+                // Flags if the presentation is running in an embedded mode,
+                // i.e. contained within a limited portion of the screen
+                embedded: false,
+                // Number of milliseconds between automatically proceeding to the
+                // next slide, disabled when set to 0, this value can be overwritten
+                // by using a data-autoslide attribute on your slides
+                autoSlide: 15000,
+                // Stop auto-sliding after user input
+                autoSlideStoppable: true,
+                // Enable slide navigation via mouse wheel
+                mouseWheel: false,
+                // Hides the address bar on mobile devices
+                hideAddressBar: true,
+                // Opens links in an iframe preview overlay
+                previewLinks: false,
+                // Transition style
+                transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+                // Transition speed
+                transitionSpeed: 'fast', // default/fast/slow
+                // Transition style for full page slide backgrounds
+                backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+                // Number of slides away from the current that are visible
+                viewDistance: 3,
+                // Parallax background image
+                parallaxBackgroundImage: '', //'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // Parallax background size
+                parallaxBackgroundSize: '', //'2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    //{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    //{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    //{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+
+            });
+
+        </script>
+
+    </body>
+</html>

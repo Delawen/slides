@@ -1,0 +1,78 @@
+
+.reveal h1 {
+  font-size: 200%;
+}
+
+.reveal h2 {
+  font-size: 130%;
+  color: rgb(10, 10, 111);
+}
+
+.reveal h3 {
+  font-size: 110%;
+}
+
+.reveal p, .reveal div, .reveal li {
+  font-family: 'Open Sans', cursive;
+}
+
+.reveal > header.universal {
+  font-family: sans-serif;
+  line-height: 0.9em;
+  letter-spacing: -0.08em;
+   color: #111;
+   position: absolute;
+   width: 100%;
+   top: 0px;
+   font-size: 14px;
+   min-height: 30px;
+   text-align: center;
+   padding: 6px;
+   padding-bottom: 12px;
+}
+
+.reveal > footer.universal {
+  color: white; 
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  min-height: 50px;
+}
+
+.reveal > footer.universal > div > img {
+  margin-bottom: 6px;
+  padding-left: 6px;
+  max-width:45%;
+  max-height: 42px;
+}
+
+.reveal > footer.universal > footer {
+   border-top: 1px solid white;
+   background-color: #1F1E71;
+   padding: 3px;
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
+}
+
+body {
+  background: #ffffff;
+  background: -moz-radial-gradient(center, circle cover, #ffffff 0%, #00B8FF 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #00B8FF), color-stop(100%, #ffffff));
+  background: -webkit-radial-gradient(center, circle cover, #ffffff 0%, #00B8FF 100%);
+  background: -o-radial-gradient(center, circle cover, #ffffff 0%, #00B8FF 100%);
+  background: -ms-radial-gradient(center, circle cover, #ffffff 0%, #00B8FF 100%);
+  background: radial-gradient(center, circle cover, #ffffff 0%, #00B8FF 100%);
+  background-color: white; }
+
+img.geocat  {
+    content:url(images/CG.png);
+}
+
+img.lotsofcats {
+    content:url(images/lotsofcats.png);
+}
+
+img.geonetwork {
+    content:url(images/geonetwork-logo.png);
+}

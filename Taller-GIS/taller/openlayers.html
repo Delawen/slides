@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Taller de OpenLayers | @delawen</title>
+    
+    <meta name="description" content="Taller de OpenLayers básico" />
+    <meta name="author" content="María Arias de Reyna" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://openlayers.org/dev/theme/default/style.css" type="text/css">
+       
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <script src="http://openlayers.org/api/2.12-rc1/OpenLayers.js"></script>
+
+        <script>
+            OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
+            function mapsReady(){
+              var map = new OpenLayers.Map("map-id");
+
+              var imagery = new OpenLayers.Layer.WMS(
+                "Global Imagery",
+                "http://maps.opengeo.org/geowebcache/service/wms",
+                {layers: "bluemarble"}
+              );
+
+              map.addLayers([imagery]);
+              map.zoomToMaxExtent();
+
+
+              var map = new OpenLayers.Map("map-osm");
+
+              var osm = new OpenLayers.Layer.OSM();
+              map.addLayer(osm);
+              map.zoomToMaxExtent();
+
+              var map = new OpenLayers.Map("map-vectorial");
+
+              var imagery = new OpenLayers.Layer.WMS(
+                "Global Imagery",
+                "http://maps.opengeo.org/geowebcache/service/wms",
+                {layers: "bluemarble"}
+              );
+
+              map.addLayer(imagery);
+
+
+              var earthquakes = new OpenLayers.Layer.Vector("Earthquakes", {
+                  strategies: [new OpenLayers.Strategy.Fixed()],
+                  protocol: new OpenLayers.Protocol.HTTP({
+                      url: "data/layers/7day-M2.5.xml",
+                      format: new OpenLayers.Format.GeoRSS()
+                  })
+              });
+              map.addLayer(earthquakes);
+              map.zoomToMaxExtent();
+
+
+              var map = new OpenLayers.Map("map-wfs");
+
+
+                var wms = new OpenLayers.Layer.WMS(
+                    "OpenLayers WMS", "http://vmap0.tiles.osgeo.org/wms/vmap0",
+                    {layers: 'basic'}
+                );
+              var imagery = new OpenLayers.Layer.Vector("WFS", {
+                      strategies: [new OpenLayers.Strategy.BBOX()],
+                      protocol: new OpenLayers.Protocol.WFS({
+                          url:  "http://localhost:8080/geoserver/wfs",
+                          featureType: "tasmania_roads",
+                          featureNS: "http://www.openplans.org/topp"
+                      })
+                  });
+              map.addControl(new OpenLayers.Control.LayerSwitcher());
+              map.addLayer(imagery);
+              map.addLayer(wms);
+              map.zoomToMaxExtent();
+            }
+        </script>
+</head>
+
+<body class="impress-not-supported" onload="mapsReady()">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div style="position: absolute; bottom:10px; right:20px">
+<a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"/></a>
+</div>
+
+<div style="position: absolute;
+    bottom: 10px;
+    left: 10px;">
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '#tallergis',
+  interval: 30000,
+  title: 'Taller GIS',
+  subject: '#tallergis' ,
+  width: 150,
+  height: 200,
+  theme: {
+    shell: {
+      background: '#E2E2CA',
+      color: '#000000'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+</div>
+
+<div id="impress">
+
+
+    <!--
+        
+        So to make a summary of all the possible attributes used to position presentation steps, we have:
+        
+        * `data-x`, `data-y`, `data-z` -- they define the position of **the center** of step element on
+            the canvas in pixels; their default value is 0;
+        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` -- they define the rotation of
+            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+            are exactly the same;
+        * `data-scale` -- defines the scale of step element; default value is 1
+        
+        These values are used by impress.js in CSS transformation functions, so for more information consult
+        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+        
+    -->
+
+    <div class="step slide" data-x="-800" data-y="-800" data-rotate="-250">
+      <h1>Taller de OpenLayers
+      <img style="height:20%" src="http://upload.wikimedia.org/wikipedia/commons/6/67/OpenLayers_logo.svg"/></h1>
+      <h2>María Arias de Reyna Domínguez - @delawen</h2>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>Qué es OpenLayers</li>
+          <li>Visualización Mapa Básico</li>
+          <li>Visualizar Capas</li>
+          <li>Controles</li>
+          <li>Creación de nuevos controles</li>
+        </ul>
+    </div>
+
+    <div class="step " data-x="2000" data-y="2000">
+        <h2>Qué es OpenLayers</h2>
+        <center><div id="map-id"></div></center>
+        <p>"OpenLayers makes it easy to put a dynamic map in any web page. 
+        It can display map tiles and markers loaded from any source. OpenLayers 
+        has been developed to further the use of geographic information of all kinds. 
+        OpenLayers is completely free, Open Source JavaScript, released under the 2-clause 
+        BSD License (also known as the FreeBSD)."</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>Visualización Mapa Básico</li>
+          <li>Visualizar Capas</li>
+          <li>Controles</li>
+          <li>Creación de nuevos controles</li>
+        </ul>
+    </div>
+
+    <div class="step " data-x="2000" data-y="4000">
+        <div><pre class="code"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>My Map<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span>
+        <span class="na">href=</span><span class="s">"http://openlayers.org/dev/theme/default/style.css"</span>
+        <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;style&gt;</span>
+            <span class="nf">#map-id</span> <span class="p">{</span>
+                <span class="k">width</span><span class="o">:</span> <span class="m">512px</span><span class="p">;</span>
+                <span class="k">height</span><span class="o">:</span> <span class="m">256px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="nt">&lt;/style&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://openlayers.org/api/2.12-rc1/OpenLayers.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>My Map<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"map-id"</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+            <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="s2">"map-id"</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">imagery</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">WMS</span><span class="p">(</span>
+                <span class="s2">"Global Imagery"</span><span class="p">,</span>
+                <span class="s2">"http://maps.opengeo.org/geowebcache/service/wms"</span><span class="p">,</span>
+                <span class="p">{</span><span class="nx">layers</span><span class="o">:</span> <span class="s2">"bluemarble"</span><span class="p">}</span>
+            <span class="p">);</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">imagery</span><span class="p">);</span>
+            <span class="nx">map</span><span class="p">.</span><span class="nx">zoomToMaxExtent</span><span class="p">();</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+    </div>
+
+    <div class="step" data-x="2000" data-y="6000" data-rotate-z="45">
+        <p>¿Y si quiero que inicialmente me centre en algo?</p>
+        <p>bounds = new OpenLayers.Bounds();</p>
+        <p>bounds.extend(new OpenLayers.LonLat(-5, 35));</p>
+        <p>bounds.extend(new OpenLayers.LonLat(-7, 40));</p>
+        <p>map.zoomToExtent(bounds, true);</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Visualizar Capas</li>
+          <li>Controles</li>
+          <li>Creación de nuevos controles</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-2000" data-y="-2000" data-rotate-z="45">
+        <h2>Capas</h2>
+        <p>WMS</p>
+        <p>Tiles</p>
+        <p>Vectorial</p>
+        <p>WFS</p>
+    </div>
+
+    <div class="step" data-x="-2000" data-y="-4000" data-rotate-z="45">
+        <h2>WMS</h2>
+        <div class="code">
+        <pre>
+        <span class="kd">var</span> <span class="nx">imagery</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">WMS</span><span class="p">(</span>
+                <span class="s2">"Global Imagery"</span><span class="p">,</span>
+                <span class="s2">"http://maps.opengeo.org/geowebcache/service/wms"</span><span class="p">,</span>
+                <span class="p">{</span><span class="nx">layers</span><span class="o">:</span> <span class="s2">"bluemarble"</span><span class="p">}</span>
+            <span class="p">);</span>
+        </pre>
+        </div>
+    </div>
+
+    <div class="step" data-x="-2000" data-y="2000" data-rotate-z="45">
+        <h2>Tiles</h2>
+        <p>Como WMS pero sólo visualización cacheada. Simplicidad.</p>
+        <p>Algunos tipos vienen preconfigurados en OpenLayers.</p>
+        <p>map.addControl(new OpenLayers.Control.LayerSwitcher()); </p>
+        <p> var osm = new OpenLayers.Layer.OSM();</p>
+        <p>map.addLayer(osm);</p>
+        <center><div id="map-osm"></div></center>
+    </div>
+
+    <div class="step" data-x="0" data-y="2000" data-rotate-z="45">
+        <h2>¡Mentira!</h2>
+        <center><image src="images/sad_cat_is_sad156.jpg"/></center>
+        <p>Cuidado con las proyecciones</p>
+        <p>map.getProjection();</p>
+        <p>osm.projection.projCode</p>
+    </div>
+
+    <div class="step" data-x="-2000" data-y="0" data-rotate-z="45">
+        <h2>Vectorial</h2>
+        <p>OpenLayers almacena en memoria diferentes geometrías.</p>
+        <p>Cada vez que se repinta el mapa, recalcula dónde se dibujan las geometrías.</p>
+        <p>A partir de cierto número de geometrías (depende del navegador), 
+        OpenLayers empieza a resultar pesado.</p>
+        <p>Los datos pueden estar en remoto o en local.</p>
+    </div>
+
+    <div class="step" data-x="-4000" data-y="0">
+       <center><div id="map-vectorial"></div></center>
+        <div class="code"><pre><span class="kd">var</span> <span class="nx">earthquakes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Layer</span><span class="p">.</span><span class="nx">Vector</span><span class="p">(</span><span class="s2">"Earthquakes"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">strategies</span><span class="o">:</span> <span class="p">[</span><span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Strategy</span><span class="p">.</span><span class="nx">Fixed</span><span class="p">()],</span>
+    <span class="nx">protocol</span><span class="o">:</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">HTTP</span><span class="p">({</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="s2"><a href="http://earthquake.usgs.gov/earthquakes/catalogs/7day-M2.5.xml">data/layers/7day-M2.5.xml</a>"</span><span class="p">,</span>
+        <span class="nx">format</span><span class="o">:</span> <span class="k">new</span> <span class="nx">OpenLayers</span><span class="p">.</span><span class="nx">Format</span><span class="p">.</span><span class="nx">GeoRSS</span><span class="p">()</span>
+    <span class="p">})</span>
+        <span class="p">});</span>
+        <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">earthquakes</span><span class="p">);</span>
+        </pre></div>
+    </div>
+
+    <div class="step" data-x="-2000" data-y="4000" data-rotate-z="45">
+        <h2>WFS</h2>
+        <p>Para OpenLayers, una capa WFS es una capa vectorial 
+        que saca los datos de un servidor remoto.</p>
+        <div id="map-wfs"></div>
+    </div>
+
+    <div class="step" data-x="-2000" data-y="6000">
+        <h2>WFS</h2>
+        <p>OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";</p>
+        <p>var imagery = new OpenLayers.Layer.Vector("WFS", {</p>
+        <p>strategies: [new OpenLayers.Strategy.BBOX()],</p>
+        <p> protocol: new OpenLayers.Protocol.WFS({</p>
+        <p>url:  "http://localhost:8080/geoserver/wfs",</p>
+        <p> featureType: "tasmania_roads",</p>
+        <p>featureNS: "http://www.openplans.org/topp"</p>
+        <p>})</p>
+        <p>});</p>
+        
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Controles</li>
+          <li>Creación de nuevos controles</li>
+        </ul>
+    </div>
+
+
+    <div class="step" data-x="4000" data-y="0">
+        <h2>Controles</h2>
+        <p>Los <a href="http://dev.openlayers.org/docs/files/OpenLayers/Control-js.html">controles</a>
+          son las herramientas para manejar el mapa.</p>
+        <p>map.addControl($control); </p>
+        <p>Controles por defecto:</p>
+        <p><a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/Navigation-js.html">Navigation</a></p>
+        <p><a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/PanZoom-js.html">PanZoom</a></p>
+        <p><a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/Attribution-js.html">Attribution</a></p>
+    </div>
+
+    <div class="step" data-x="4000" data-y="1500">
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/LayerSwitcher-js.html">
+        LayerSwitcher</a>());</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/PanZoomBar-js.html">
+        PanZoomBar</a>());</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/Permalink-js.html">
+        Permalink</a>());</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/ScaleLine-js.html">
+        ScaleLine</a>());</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/Scale-js.html">
+        Scale</a>());</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/OverviewMap-js.html">
+        OverviewMap()</a>);</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/PanPanel-js.html">
+        PanPanel()</a>);</p>
+    </div>
+
+    <div class="step" data-x="4000" data-y="4500">
+        <p>O un control más complejo:</p>
+        <p>nav = new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/NavigationHistory-js.html">NavigationHistory</a>();</p>
+        <p>// parent control must be added to the map</p>
+        <p>map.addControl(nav);</p>
+        <p>panel = new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/Panel-js.html">Panel</a>(</p>
+        <p>{div: document.getElementById("panel")}</p>
+        <p>);</p>
+        <p>panel.addControls([nav.next, nav.previous]);</p>
+        <p>map.addControl(panel);</p>
+    </div>
+
+
+    <div class="step" data-x="4000" data-y="3000">
+        <p>Los controles también permiten personalización mediante una serie de propiedades.</p>
+        <p>map.addControl(new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/MousePosition-js.html">
+        MousePosition</a>({</p>
+        <p>div:  document.getElementById("toolbar")}));</p>
+    </div>
+
+    <div class="step" data-x="5500" data-y="3000">
+        <p>Existen controles más complejos.</p>
+        <p>Por ejemplo los de edición de capas vectoriales.</p>
+        <p>vectors = new OpenLayers.Layer.Vector("Vector Layer");</p>
+        <p>map.addLayer(vectors);</p>
+        <p>control = new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/DrawFeature-js.html">
+        DrawFeature</a>(vectors, OpenLayers.Handler.Point);</p>
+        <p>map.addControl(control);</p>
+        <p>control.activate();</p>
+    </div>
+
+
+    <div class="step" data-x="7000" data-y="2000">
+        <p>control.deactivate();</p>
+        <p>control = new OpenLayers.Control.DrawFeature(vectors, OpenLayers.Handler.Path);</p>
+        <p>map.addControl(control);</p>
+        <p>control.activate();</p>
+        <p>&nbsp;</p>
+        <p>control.deactivate();</p>
+        <p>control = new OpenLayers.Control.DrawFeature(vectors, OpenLayers.Handler.Polygon);</p>
+        <p>map.addControl(control);</p>
+        <p>control.activate();</p>
+    </div>
+
+    <div class="step" data-x="7000" data-y="4000">
+        <p>Editing Toolbar lo trae todo a la vez:</p>
+        <p>control.deactivate();</p>
+        <p>control = new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/EditingToolbar-js.html">
+        EditingToolbar</a>(vectors);</p>
+        <p>map.addControl(control);</p>
+        <p>control.activate();</p>
+    </div>
+
+
+    <div class="step" data-x="5000" data-y="5000">
+        <p>También podemos querer mover las features.</p>
+        <p>control.deactivate();</p>
+        <p>control = new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/DragFeature-js.html">
+        DragFeature</a>(vectors);</p>
+        <p>map.addControl(control);</p>
+        <p>control.activate();</p>
+    </div>
+
+
+    <div class="step" data-x="3000" data-y="5000">
+        <p>O quizás editarlas:</p>
+        <p>control.deactivate();</p>
+        <p>control = new OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/ModifyFeature-js.html">
+        ModifyFeature</a>(vectors);</p>
+        <p>map.addControl(control);</p>
+        <p>control.activate();</p>
+    </div>
+
+    <div class="step" data-x="1000" data-y="5000">
+        <p>Mención especial para OpenLayers.Control.<a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/SelectFeature-js.html">
+        SelectFeature</a></p>
+        <p>Lanza eventos según las features son seleccionadas o señaladas.</p>
+        <p>Permite realizar controles más complejos.</p>
+        <p>Por ejemplo, podríamos hacer un control DeleteFeature.</p>
+    </div>
+
+
+    <div class="step" data-x="1000" data-y="7000">
+        <p>No vamos a ver <a href="http://docs.openlayers.org/library/feature_styling.html">estilos</a>.</p>
+        <p>vectors.features[3].style = {</p>
+        <p>'strokeWidth': 5,</p>
+        <p>'strokeColor': '#00ff00'</p>
+        <p>};</p>
+        <p>map.zoomIn();</p>
+    </div>
+
+
+    <div class="step" data-x="1000" data-y="10000">
+        <p>Ni <a href="http://dev.openlayers.org/apidocs/files/OpenLayers/Handler-js.html">handlers</a>.</p>
+        <p>// handler only responds if the Shift key is down</p>
+	<p>handler.keyMask = OpenLayers.Handler.MOD_SHIFT;</p>
+	<p>// handler only responds if Ctrl-Shift is down</p>
+	<p>handler.keyMask = OpenLayers.Handler.MOD_SHIFT |</p>
+        <p>OpenLayers.Handler.MOD_CTRL;</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="0">
+        <ul>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li>Creación de nuevos controles</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-5000" data-y="-3000" data-rotate-z="-25">
+        <p>Se puede empezar por ejemplo con un simple 
+          <a href="http://dev.openlayers.org/docs/files/OpenLayers/Control/Button-js.html">botón</a></p>
+        <p>var button = new OpenLayers.Control.Button({displayClass: "MyButton", trigger: myFunction});</p>
+        <p>Que se coloca dentro de un panel.</p>
+	<p><a href="./examples/button_example.html">Ejemplo sencillo</a></p>
+   </div>
+
+    <div class="step" data-x="-5000" data-y="-5000" data-rotate-z="0">
+        <p>Vamos con un ejemplo un poco más complejo.</p>
+        <p>Todos los controles heredan de la clase <a href="http://dev.openlayers.org/docs/files/OpenLayers/Control-js.html">Control</a>.</p>
+        <p><strong>type</strong>: Button/Toggle/Tool</p>
+        <p><strong>activate/deactivate</strong></p>
+        <p><strong>setMap</strong></p>
+        <p><strong>No</strong> suele desarrollarse directamente sobre esta clase.</p>
+   </div>
+
+    <div class="step" data-x="-5000" data-y="-10000" data-rotate-z="0">
+        <p>Un concepto importante es la <strong>capa en la que actua el control.</strong></p>
+   </div>
+
+    <div class="step" data-x="-5000" data-y="-10000" data-rotate-z="50">
+	<p>En el caso del control <strong>select feature</strong> existe la función 
+          <a href="http://dev.openlayers.org/apidocs/files/OpenLayers/Control/SelectFeature-js.html#OpenLayers.Control.SelectFeature.setLayer">setLayer</a>.</p> 
+   </div>
+
+    <div class="step" data-x="-5000" data-y="-10000" data-rotate-z="-50">
+	<p>Además necesita este parámetro para  inicializarlo:</p>
+   </div>
+
+    <div class="step" data-x="-5000" data-y="10000" data-rotate-z="0">
+        <p><strong>select1</strong> = new OpenLayers.Control.SelectFeature(</p>
+           <p>         <strong>vlayer</strong>,</p>
+           <p>         {</p>
+           <p>             clickout: false, toggle: false,</p>
+           <p>             multiple: false, hover: false,</p>
+           <p>             toggleKey: "ctrlKey", // ctrl key removes from selection</p>
+           <p>             multipleKey: "shiftKey", // shift key adds to selection</p>
+           <p>             box: true</p>
+           <p>         }</p>
+           <p>     );;</p>
+   </div>
+
+    <div class="step" data-x="-5000" data-y="10000" data-rotate-z="50">
+        <p><strong>select2</strong> = new OpenLayers.Control.SelectFeature(</p>
+           <p>         <strong>vlayer2</strong>,</p>
+           <p>         {</p>
+           <p>             clickout: false, toggle: false,</p>
+           <p>             multiple: false, hover: false,</p>
+           <p>             toggleKey: "ctrlKey", // ctrl key removes from selection</p>
+           <p>             multipleKey: "shiftKey", // shift key adds to selection</p>
+           <p>             box: true</p>
+           <p>         }</p>
+           <p>     );;</p>
+   </div>
+
+    <div class="step" data-x="-5000" data-y="10000" data-rotate-z="-50">
+        <p><strong>select3</strong> = new OpenLayers.Control.SelectFeature(</p>
+           <p>         <strong>[vlayer, vlayer2]</strong>,</p>
+           <p>         {</p>
+           <p>             clickout: false, toggle: false,</p>
+           <p>             multiple: false, hover: false,</p>
+           <p>             toggleKey: "ctrlKey", // ctrl key removes from selection</p>
+           <p>             multipleKey: "shiftKey", // shift key adds to selection</p>
+           <p>             box: true</p>
+           <p>         }</p>
+           <p>     );;</p>
+   </div>
+
+    <div class="step" data-x="5000" data-y="10000" data-rotate-z="-75">
+        <p><a href="./examples/select_features.html">Aquí</a> puedes ver el ejemplo completo.</p>
+   </div>
+
+    <div class="step" data-x="5000" data-y="-1500" data-rotate-z="50">
+        <h2>Para saber más</h2>
+        <p>Echarle un vistazo a los <a href="http://openlayers.org/dev/examples/">ejemplos</a>.</p>
+        <p><a href="http://workshops.opengeo.org/openlayers-intro">Workshop</a> de OpenGeo</p>
+        <p>Visitar <a href="http://openlayers.ingemoral.es/manualOpenLayers.html">este tutorial</a> en Español</p>
+        <p>Puedes jugar con <a href="http://mapquery.org/">Mapquery</a> o <a href="http://www.geoext.org/">GeoExt</a></p>
+    </div>
+
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+
+<!--
+
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>

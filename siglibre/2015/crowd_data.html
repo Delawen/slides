@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Crowd-data, open-data, linked-data y cómo seguir usando INSPIRE</title>
+
+		<meta name="description" content="Aunque INSPIRE lleva ya con nosotros ocho años, es poco conocido y usado fuera del ámbito geográfico. Esto ha hecho que se desarrollen paralelamente otros formatos para almacenar e intercambiar datos colaborativos y abiertos. ¿Es posible seguir usando INSPIRE mientras la gente demanda otro tipo de formatos? ¿Se puede tener un IDE que compagine INSPIRE y RDF y no morir en el intento?">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">Crowd-data, open-data, linked-data y cómo seguir usando INSPIRE</header>
+<div class="slides">
+<section data-background-size="contain">
+<h1>Crowd-data, open-data, linked-data</h1>
+<div>y cómo seguir usando INSPIRE</div>
+<div>
+    <img src="images/v-for-vendetta.jpeg" />
+    <br/>
+	<p><a href="https://twitter.com/delawen">María Arias de Reyna @delawen</a></p>
+	<p><a href="https://twitter.com/geocat_bv">@geocat_bv</a></p>
+</div>
+</section>
+<section>
+	<h2>Quienes somos</h2>
+	    <img class="quienessomos clean"/>
+
+</section>
+<section>
+	<section>
+		<ul class="index">
+			<li>Dos universos separados</li>
+			<li>Publicamundi</li>
+			<li>GeoNetwork</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Dos universos separados</h2>
+		<img class="clean" style="max-width:100%" src="images/dosuniversos.svg"/>
+	</section>
+	<section>
+		<h2>Dos universos separados</h2>
+		<div>
+			<p>Tesauro <-> Linked Data</p>
+			<p>Harvesting <-> Linking</p>
+			<p>Estricto <-> Blando</p>
+		</div>
+		<img class="clean" style="max-width:100%;max-height: 50%" src="http://delawen.github.io/slides/201503-GeoNetwork3/images/lod-datasets_2009-07-14_cropped.png"/>
+	</section>
+	<section>
+		<h2>Dos universos separados</h2>
+		<img class="clean" style="max-width:100%" src="images/dosuniversos2.svg"/>
+	</section>
+</section>
+<section>
+	<section>
+		<ul class="index">
+			<li class="disabled">Dos universos separados</li>
+			<li>Publicamundi</li>
+			<li>GeoNetwork</li>
+		</ul>
+	</section>
+	<section>
+		<h2><a href="http://www.publicamundi.eu/">Qué es Publicamundi</a></h2>
+		<ul style="text-align:left">
+			<li>Extensión geográfica CKAN</li>
+			<li>ZOO Project</li>
+			<li>OWSLib (librería python para servicios OGC)</li>
+			<li>pyCSW</li>
+			<li>geoServer</li>
+			<li>Rasdaman</li>
+			<li>... y todo en <a href="https://github.com/PublicaMundi">Github</a></li>
+		</ul>
+	</section>
+	<section>
+		<h2><a href="http://www.publicamundi.eu/">El catálogo de metadatos de Publicamundi</a></h2>
+		<p>Editor de metadatos</p>
+		<p>INSPIRE a través de pyCSW</p>
+		<p>Internamente: formato CKAN</p>
+		<p>Transformación entre esquemas</p>
+		<img class="clean fragment" src="images/fivestars.png"/>
+	</section>
+</section>
+<section>
+	<section>
+		<ul class="index">
+			<li class="disabled">Dos universos separados</li>
+			<li class="disabled">Publicamundi</li>
+			<li>GeoNetwork</li>
+		</ul>
+	</section>
+	<section>
+		<h2><a href="http://www.geonetwork-opensource.org/">GeoNetwork</a></h2>
+		<ul style="text-align:left">
+			<li>RDF basado en DCAT
+				<img class="clean fragment" style="float:right;max-height:6em" src="images/fivestars.png"/>
+				<ul style="margin-left:12%">
+					<li>ISO19139</li>
+					<li>ISO19110</li>
+					<li>Dublin Core</li>
+				</ul>
+			</li>
+			<li>Endpoints:
+				<ul style="margin-left:12%">
+					<li>Metadata service:<br/>http://.../rdf.metadata.get?uuid=$uuid</li>
+					<li>Search service:<br/>http://.../rdf.search?</li>
+				</ul>
+			</li>
+		</ul>
+		
+	</section>
+</section>
+<section>
+    <h2>Y eso es todo</h2>
+    <div>¿Dudas, preguntas, sugerencias, críticas destructivas?</div>
+    <div><a href="http://geocat.net"><img class="clean" src="https://s3.amazonaws.com/media-p.slid.es/uploads/mariaariasdereyna/images/298349/GeoCat.png"></a>
+    </div>
+    <div><a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <div>
+        <br>
+    </div>
+    <img class="clean" src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb clean" />
+					<img class="geocat clean" />
+					<img class="eu clean" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

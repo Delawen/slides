@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GeoNetwork: State of the Art</title>
+
+		<meta name="description" content="Current status of GeoNetwork and future developments">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+      <link rel="stylesheet" href="../../reveal/css/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">
+
+      <script>
+
+	      var url = new URL(window.location.href);
+	      if(url.searchParams.has("print-pdf")) {
+	        var link = document.createElement( 'link' );
+	        link.rel = 'stylesheet';
+	        link.type = 'text/css';
+	        link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+	        document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+      </script>
+  </head>
+
+	<body>
+
+<div class="reveal">
+<div class="slides">
+<section>
+  <section class="front" data-background="imagenes/background.png">
+    <div>
+      <h1>GeoNetwork: State of the Art</h1>
+      <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+      <h3><a href="https://twitter.com/delawen">@delawen</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h3>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/GeoCatHerd.png">
+    <div>
+      <img style="height:70%" title="GeoCats" src="../../stylesheets/images/quienesSomos.svg">
+    </div>
+  </section>
+  <section data-background="imagenes/background5.png">
+    <div>
+      <h2>GeoNetwork</h2>
+      <h4>Metadata Catalog</h4>
+      <h4>Open Data Portal</h4>
+      <h4>...focused on spatial data...</h4>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <img src="imagenes/background6.png"/>
+    <div>
+      <h4>Started in 2006</h4>
+      <h4>12,830 commits by 106 contributors (1,304,409 lines of code)</h4>
+      <h4>well established, mature codebase</h4>
+      <h4>very large development team</h4>
+      <h4>took an estimated 361 years of effort (COCOMO model)</h4>
+      <h5> (openhub.net)</h5>
+    </div>
+  </section>
+  <section>
+    <img src="imagenes/stats.png"/>
+    <div>
+      <h2>Quick Overview</h2>
+      <h4>Stable usage with slowly increase</h4>
+      <h4>no stats from docker</h4>
+    </div>
+  </section>
+  <section>
+    <img src="imagenes/punchcard.png">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4>Mostly developed by europeans</h4>
+      <h4>on their work time</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/bolsena.jpg">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4><a href="https://github.com/geonetwork/core-geonetwork/wiki/Bolsena-2018">Bolsena Codesprint</a></h4>
+      <h4>where we try to catch up</h4>
+    </div>
+  </section>
+  <section>
+    <img src="imagenes/statspr.png">
+    <div>
+      <h2>Quick Overview</h2>
+      <h4>From 2017 we started using PR much more</h4>
+      <h4>First half of 2018 almost as much as 2017</h4>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/background3.png">
+    <div>
+      <h2>Recent Developments</h2>
+      <h4>Improve on accesibility</h4>
+      <h4>Improve on usability</h4>
+      <h4 class="fragment">Less hardcoded elements (like gazetteer)</h4>
+      <h4 class="fragment">More audits and bug fixes</h4>
+      <h4 class="fragment">REST API</h4>
+    </div>
+  </section>
+  <section data-background="imagenes/background4.png">
+    <img src="imagenes/userfeedback.png" style="height:50vh"/>
+    <div>
+      <h4><a href="https://github.com/geonetwork/core-geonetwork/wiki/Userfeedback-proposal">User Feedback (using opendata)</a></h4>
+    </div>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/admin.png">
+    <div>
+      <h2>Incoming Developments</h2>
+      <h4>Elastic Search to replace Lucene!! (4.0.0)</h4>
+      <h4>Draft version</h4>
+      <h4>Better administration, statistics, logs</h4>
+    </div>      
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/background2.png">
+    <div>
+      <h2>New way of working</h2>
+      <h4>Focus on master</h4>
+      <h4>More speed on minor releases (3.x)</h4>
+      <h4>Path releases really only patches (3.x.y)</h4>
+    </div>
+  </section>
+  <section data-background="../EnterpriseVersionOfOS/imagenes/ygritte.jpg">
+    <div>
+      <h2>Come and ask about GeoNetwork Enterprise</h2>
+      <h4>Any questions?</h4>
+    </div>
+  </section>
+</section>
+</div>
+</div>
+
+<footer><img src="../../stylesheets/images/gc_geocat_logo_text.svg"/></footer>
+
+
+      <script src="../../reveal/lib/js/head.min.js"></script>
+      <script src="../../reveal/js/reveal.js"></script>
+
+      <script>
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+      </script>
+   </body>
+</html>

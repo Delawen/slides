@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Introducción GIS - Taller</title>
+
+    <meta name="description" content="Se trataran los conceptos básicos sobre mapas y localización para poder manejar datos geográficos y luego se hará un recorrido sobre el software básico para crear, almacenar, mostrar y modificar mapas.">
+    <meta name="author" content="María Arias de Reyna Domínguez">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../stylesheets/common.css">
+    <link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+
+   <link rel="stylesheet" href="leaflet/leaflet.css" />
+   <script src="leaflet/leaflet.js"></script>
+
+ <style>
+    .map {
+      width:600px;
+      height:400px;
+    }
+  </style>
+
+    <script>
+      if (window.location.search.indexOf('geocat') > 0)
+        document.write('<link rel="stylesheet" href="../stylesheets/geocat.css">');
+      else
+        document.write('<link rel="stylesheet" href="../stylesheets/delawen.css">');
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides">
+<section>
+  <section>
+<p style="font-size:80%;text-align:left">
+&lt;html>
+<br/>
+&nbsp;&nbsp;&lt;head>
+<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js">&lt;/script>
+<br/>
+ &lt;style>
+    #map {
+      width:600px;
+      height:400px;
+    }
+  &lt;/style>
+&nbsp;&nbsp;&lt;/head><br/>
+&nbsp;&nbsp;&lt;body><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="map">&lt;/div><br/>
+&lt;script><br/>
+var center = new L.LatLng(37.39247, -6.00629);
+      var map = new L.Map('map', {center: center, zoom: 11});
+
+      var wmsLayer = L.tileLayer.wms('http://www.ign.es/wms-inspire/pnoa-ma?', {
+    layers: 'OI.OrthoimageCoverage'
+}).addTo(map);
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script><br/>
+&nbsp;&nbsp;&lt;/body><br/>
+&lt;/html>
+</p>
+  </section>
+  <section>
+<p style="font-size:80%;text-align:left">
+&lt;html>
+<br/>
+&nbsp;&nbsp;&lt;head>
+<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js">&lt;/script>
+<br/>
+ &lt;style>
+    #map {
+      width:600px;
+      height:400px;
+    }
+  &lt;/style>
+&nbsp;&nbsp;&lt;/head><br/>
+&nbsp;&nbsp;&lt;body><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="map">&lt;/div><br/>
+&lt;script><br/>
+var center = new L.LatLng(37.39247, -6.00629);
+      var map = new L.Map('map', {center: center, zoom: 13});
+
+      var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+    }).addTo(map);
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script><br/>
+&nbsp;&nbsp;&lt;/body><br/>
+&lt;/html>
+</p>
+  </section>
+  <section>
+    <p>var marker = L.marker([37.3, -6]).addTo(map);</p><br/>
+    <p class="fragment">var circle = L.circle([37.39247, -6.11], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+}).addTo(map);</p><br/>
+    <p class="fragment">var polygon = L.polygon([
+    [37.29247, -6.2],
+    [37.39147, -6.1],
+    [37.49547, -5.9]
+]).addTo(map);</p>
+  </section>
+  <section>
+    <p>circle.bindPopup("Hello Leaflet.");</p><br/>
+    <p class="fragment">&lt;script src="https://unpkg.com/leaflet.icon.glyph"></script><br/>
+    var marker1 = new L.Marker(center, {icon: L.icon.glyph({
+      glyph: '🐱',
+      glyphSize: '20px',
+      glyphAnchor: [0, -3]
+    })});<br/>
+    map.addLayer(marker1);</p><br/>
+  </section>
+</section>
+<section>
+  <section>
+  L.TileLayer.Kitten = L.TileLayer.extend({
+    getTileUrl: function(coords) {
+        return "https://delawen.github.io/slides/introduccion-gis/images/gatocapa.jpg";
+    }
+  });
+<br/>
+  L.tileLayer.kitten = function() {
+    return new L.TileLayer.Kitten();
+  }
+<br/>
+  L.tileLayer.kitten().addTo(map);
+  </section>
+  <section>
+L.TileLayer.Kitten = L.TileLayer.extend({
+    getTileUrl: function(coords) {
+        var i = Math.ceil( Math.random() * 4 );
+        return "http://placekitten.com/256/256?image=" + i;
+    },
+    getAttribution: function() {
+        return "&lt;a href='http://placekitten.com/attribution.html'>PlaceKitten</a>"
+    }
+});
+<br/>
+L.tileLayer.kitten = function() {
+    return new L.TileLayer.Kitten();
+}
+<br/>
+L.tileLayer.kitten().addTo(map);
+  </section>
+</section>
+<section>
+  <section>
+    function onMapClick(e) {<br/>
+      alert("You clicked the map at " + e.latlng);<br/>
+    }
+<br/>
+    map.on('click', onMapClick);
+  </section>
+</section>
+</div>
+
+    </div>
+
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
