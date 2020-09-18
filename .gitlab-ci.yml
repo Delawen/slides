@@ -1,17 +1,25 @@
-# This file is a template, and might need editing before it works on your project.
----
-# All available Hugo versions are listed here:
-# https://gitlab.com/pages/hugo/container_registry
-image: registry.gitlab.com/pages/hugo:latest
+image: ruby:latest
 
 variables:
-  GIT_SUBMODULE_STRATEGY: recursive
+  JEKYLL_ENV: production
+  LC_ALL: C.UTF-8
 
-pages:
+before_script:
+  - gem install bundler
+  - bundle install
+
+test:
+  stage: test
   script:
-    - hugo -D
+  - bundle exec jekyll build -d test
   artifacts:
     paths:
-      - public
-  only:
-    - gh-pages
+    - test
+
+pages:
+  stage: deploy
+  script:
+  - bundle exec jekyll build -d public
+  artifacts:
+    paths:
+    - public

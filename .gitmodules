@@ -1,21 +1,21 @@
 [submodule "stylesheets"]
-	path = static/stylesheets
+	path = stylesheets
 	url = https://github.com/Delawen/stylesheets.git
 [submodule "siglibre"]
-	path = static/siglibre
+	path = siglibre
 	url = https://github.com/Delawen/siglibre.git
 [submodule "Taller-GIS"]
-	path = static/Taller-GIS
+	path = Taller-GIS
 	url = https://github.com/Delawen/Taller-GIS.git
 [submodule "geonetwork-technical"]
-	path = static/geonetwork-technical
+	path = geonetwork-technical
 	url = https://github.com/Delawen/geonetwork-technical.git
 [submodule "introduccion-gis"]
-	path = static/introduccion-gis
+	path = introduccion-gis
 	url = https://github.com/Delawen/introduccion-gis.git
 [submodule "geopackage-presentation"]
-	path = static/geopackage-presentation
+	path = geopackage-presentation
 	url = https://github.com/Delawen/geopackage-presentation.git
 [submodule "reveal"]
-	path = static/reveal
+	path = reveal
 	url = https://github.com/hakimel/reveal.js.git
