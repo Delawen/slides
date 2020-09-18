@@ -1,0 +1,19 @@
+name: Pages publication
+
+on:
+  push:
+    branches: [ jekyll ]
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+
+    - uses: helaili/jekyll-action@2.0.4
+      env:
+        JEKYLL_PAT: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      with:
+        target_branch: 'public'
