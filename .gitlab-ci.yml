@@ -3,6 +3,8 @@ image: ruby:latest
 variables:
   JEKYLL_ENV: production
   LC_ALL: C.UTF-8
+  GIT_SUBMODULE_STRATEGY: recursive
+
 
 before_script:
   - gem install bundler
@@ -12,6 +14,18 @@ pages:
   stage: deploy
   script:
   - bundle exec jekyll build -d public
+  - cd public/
+  - generateIndex() {
+      cd $1; 
+      if [ ! -f "index.html" ]; then 
+        echo "<html><body><h1>Directory listing:</h1>" > ./index.html; 
+        for dir in */; do
+          echo "<a href='$dir'>$dir</a><br/>"  >> ./index.html; 
+        done;
+        echo "</body></html>" >> ./index.html;
+      fi }
+  - export -f generateIndex
+  - find . -type d -exec bash -c "generateIndex '{}'" \; 
   artifacts:
     paths:
     - public
