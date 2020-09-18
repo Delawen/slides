@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'marcellusregular';
+    src: url('marcellus.woff2') format('woff2'),
+         url('marcellus.woff') format('woff');
+
+    font-weight: normal;
+    font-style: normal;
+}

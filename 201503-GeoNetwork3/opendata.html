@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>OpenData in geoNetwork</title>
+
+		<meta name="description" content="OpenData: DCAT, linked-data, RDF, Sparql, CKAN">
+		<meta name="author" content="María Arias de Reyna Domínguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.css">
+		<link rel="stylesheet" href="../stylesheets/common.css">
+
+		<script>
+		if (window.location.search.indexOf('cobweb') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/cobweb.css" id="theme">');
+		else if (window.location.search.indexOf('delawen') > 0)
+		    document.write('<link rel="stylesheet" href="../stylesheets/delawen.css" id="theme">');
+		else
+			document.write('<link rel="stylesheet" href="../stylesheets/geocat.css" id="theme">');
+		</script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<header class="universal">Geonetwork and open data best practices</header>
+<div class="slides">
+<section data-background-size="contain">
+<div style="height:100%">
+    <h2>Geonetwork and open data best practices</h2>
+    <img style="border:none;box-shadow:none;max-height:60%;" src="images/portada_opendata.svg">
+    <h3><a href="https://twitter.com/delawen">María Arias de Reyna</a></h3>
+</div>
+</section>
+<section>
+	<section>
+		<h2>Current OpenData Support</h2>
+		<div style="text-align:left">
+			<p>Endpoints:
+			<ul style="margin-left:12%">
+				<li>Metadata service:<br/>http://.../rdf.metadata.get?uuid=$uuid</li>
+				<li>Search service:<br/>http://.../rdf.search?</li>
+			</ul>
+			</p>
+			<p>Schemas supported:
+			<ul style="margin-left:12%">
+				<li>ISO19139</li>
+				<li>ISO19110</li>
+				<li>Dublin Core</li>
+			</ul>
+			</p>
+		</div>
+	</section>
+	<section>
+		<h2>Linked Data</h2>
+		<p><i>Linked Data is about using the Web to connect related data that wasn't previously linked, or using the Web to lower the barriers to linking data currently linked using other methods. More specifically, Wikipedia defines Linked Data as "a term used to describe a recommended best practice for exposing, sharing, and connecting pieces of data, information, and knowledge on the Semantic Web using URIs and RDF."</i></p>
+	</section>
+	<section>
+		<h2>Linked Data</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Similar to thesauri</li>
+			<li>Adds semantic</li>
+			<li>Navigates through links to get context</li>
+			<li>Do not duplicate definitions through different catalogs</li>
+                        <li>Persistent link for each object</li>
+		</ul>
+		<img style="float:right;max-width:50%" src="images/lod-datasets_2009-07-14_cropped.png"/>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>CKAN</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Very popular catalog alternative</li>
+			<li>Less restrictive formats</li>
+			<li>Not INSPIRE prepared</li>
+			<li>Easy to use for crowd</li>
+			<li>Open Knowledge Foundation</li>
+			<li class="fragment" data-fragment-index="1">PublicaMundi</li>
+		</ul>
+		<div style="float:right;max-width:50%" >
+		<img class="clean" src="images/ckan.png"/>
+		<img style="position:absolute;top:30%" class="clean fragment" data-fragment-index="1" src="images/publicamundi.png"/>
+		<img style="position:absolute;max-height:33%;top:33%;right:25%" class="clean fragment" data-fragment-index="1" src="images/inspire.png"/>
+		</div>
+	</section>
+	<section>
+		<h2>Where can we improve?</h2>
+		<ul style="float:left;text-align:left;max-width:50%">
+			<li>Harvest from Open-Data catalogs (CKAN?)</li>
+			<li>Native SPARQL queries</li>
+			<li>Allow linking to external opendata sources</li>
+			<li>Open data Encodings: json-ld</li>
+			<li>Open data Protocols: atom, ckan rest</li>
+			<li>Open data Mappings: ISO-rdf vs DCAT</li>
+		</ul>
+		<img class="clean" style="float:right;max-width:50%;max-height:80%" src="images/GeoNetwork.png"/>
+	</section>
+</section>
+<section>
+    <h2>That's it</h2>
+    <div>Questions, suggestions, comments, critics,...</div>
+    <div><a href="https://geocat.net">GeoCat bv</a></div>
+    <div><a href="https://twitter.com/geocat_bv">@geocat_bv</a></div>
+    <div>
+        <br>
+    </div>
+    <img class="clean" src="http://delawen.github.io/Taller-GIS/talleres/geonetwork/images/lotsofcats.png">
+</section>
+</div>
+
+
+			<footer class="universal">
+				<div> 
+					<img class="cobweb" />
+					<img class="geocat" />
+					<img class="eu" />
+				</div>
+				<footer/>
+			</footer>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

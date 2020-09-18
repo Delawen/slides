@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+   <head>
+      <meta charset="utf-8">
+
+      <title>La experiencia de apertura de código de GeoCat</title>
+
+      <meta name="author" content="María Arias de Reyna Domínguez">
+
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+      <link rel="stylesheet" href="../../reveal/css/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/geocat.css" id="theme">
+
+      <script>
+
+	var url = new URL(window.location.href);
+	if(url.searchParams.has("print-pdf")) {
+	  var link = document.createElement( 'link' );
+	  link.rel = 'stylesheet';
+	  link.type = 'text/css';
+	  link.href = window.location.search.match( /print-pdf/gi ) ? '../../reveal/css/print/pdf.css' : '../../reveal/css/print/paper.css';
+	  document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+      </script>
+
+    </head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+<section>
+  <section class="front">
+    <img style="height: 30vh" src="../../stylesheets/images/gc_geocat_logo_text.svg" />
+    <div>
+      <h1>Empresa, Software Libre y Comunidad</h1>
+      <h2>La experiencia de apertura de código de GeoCat</h2>
+      <h4><a href="https://twitter.com/delawen">María Arias de Reyna</a> at <a href="https://twitter.com/geocat_bv">@geocat_bv</a></h4>
+    </div>
+  </section>
+  <section>
+   <img src="imagenes/comunidad.svg">
+   <quote>
+     <h2>Comunidad orbitando alrededor de un proyecto</h2>
+   </quote>
+   <aside class="notes">
+       heterogéneo
+   </aside>
+  </section>
+  <section data-background="imagenes/itsfree.png">
+   <quote>
+     <h2>¡¡Puedo "coger prestada" la propiedad intelectual de otros!!</h2>
+   </quote>
+   <aside class="notes">
+       a ver, se puede, pero no funciona así.
+   </aside>
+  </section>
+  <section data-background="imagenes/hoygan.jpg">
+   <quote>
+    <h2>HOYGAN ARREGLAMELO!!ONEONE!</h2>
+    <h4>Tiene un problema</h4>
+    <h4>Quiere que se lo arreglen sin pagar</h4>
+   </quote>
+   <aside class="notes">
+       Manejar la comunidad: quién resuelve los bugs
+   </aside>
+  </section>
+  <section data-background="imagenes/cats_love.jpg">
+   <quote>
+     <h2>Comunidad significa compartir.</h2>
+     <h2>Comunidad significa avanzar juntos.</h2>
+   </quote>
+   <aside class="notes">
+      breve historia de GeoNetwork
+   </aside>
+  </section>
+</section>
+<section>
+  <section data-background-size="contain" data-background="imagenes/anarchy.jpg">
+   <quote>
+    <h2>¿Esto es una anarquía?</h2>
+    <h4>¿Puedo entrar y hacer lo que quiera?</h4>
+    <h4>¡Rompámoslo todo para adaptarlo a mi!</h4>
+   </quote>
+   <aside class="notes">
+       Manejar la comunidad: qué entra y qué no
+  </section>
+  <section data-background="imagenes/business.jpg">
+   <quote>
+    <h2>Necesito una release</h2>
+    <h4>-Yo la necesito para ayer</h4>
+    <h4>-Yo la necesito para mañana</h4>
+    <h4>-¿Podemos esperar a terminar esto?</h4>
+    <h4>-Esto no está lo suficientemente estable</h4>
+   </quote>
+   <aside class="notes">
+       Manejar la comunidad: cuándo hacer la release
+   </aside>
+  </section>
+  <section data-background="imagenes/social.jpg">
+   <quote>
+    <h2>Mantenimiento de base</h2>
+    <h4>¿Quién contesta a los usuarios?</h4>
+    <h4>¿Quién arregla los bugs?</h4>
+    <h4>¿Quién mantiene el orden?</h4>
+   </quote>
+   <aside class="notes">
+       Manejar la comunidad: quién contesta en las listas de correos
+       Sale del bolsillo de empresas
+   </aside>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/badass.jpg">
+   <quote>
+    <h2>Cuando se rompe una feature crítica</h2>
+    <h4>¿Quién es el responsable?</h4>
+    <h4>¿Por qué ese bug entró en core?</h4>
+   </quote>
+   <aside class="notes">
+       Cuando todo se rompe: quién es responsable
+  </section>
+  <section data-background="imagenes/angry_cat.jpg">
+   <quote>
+    <h2>Cuando los intereses se cruzan</h2>
+    <h4>¿Cómo nos ponemos de acuerdo?</h4>
+    <h4>Customer Driven Development (CDD)</h4>
+   </quote>
+   <aside class="notes">
+       Cuando no nos ponemos de acuerdo
+   </aside>
+  </section>
+</section>
+<section>
+  <section data-background="imagenes/whatdoyouwant.jpg">
+   <quote>
+    <h2>Quiero participar</h2>
+    <h4>¿Por dónde empiezo?</h4>
+   </quote>
+   <aside class="notes">
+       Cómo entrar a formar parte de la comunidad
+       Tranquilidad
+       Esto no es una carrera
+  </section>
+  <section data-background="../EnterpriseVersionOfOS/imagenes/ygritte.jpg">
+   <quote>
+    <h2>Soy una persona</h2>
+    <h4>Participa en las listas de correos/foros</h4>
+    <h4>Contesta a otros usuarios</h4>
+    <h4>Escribe manuales, corrige, traduce</h4>
+    <h4>¿Eres desarrollador? Envía con parches</h4>
+   </quote>
+   <aside class="notes">
+       Persona
+       Actualiza documentación
+       Capturas de pantalla, ejemplos
+   </aside>
+  </section>
+  <section data-background="imagenes/greedy.jpg">
+   <quote>
+    <h2>Soy una entidad</h2>
+    <h4>¿Personalizas mi software? Contribuye al core</h4>
+    <h4>¿Usas mi software? Dedica parte de tu presupuesto a mantenerlo</h4>
+    <h4>Contrata a otras empresas del entorno</h4>
+   </quote>
+   <aside class="notes">
+       Empresa
+   </aside>
+  </section>
+  <section data-background="imagenes/free_kitten.jpg">
+   <quote>
+    <h2>Es software LIBRE, no GRATUITO</h2>
+   </quote>
+   <aside class="notes">
+       Empresa
+   </aside>
+  </section>
+</section>
+
+</div>
+</div>
+
+
+<footer><img src="../../stylesheets/images/gc_geocat_logo_text.svg"/></footer>
+
+
+      <script src="../../reveal/lib/js/head.min.js"></script>
+      <script src="../../reveal/js/reveal.js"></script>
+
+      <script>
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+      </script>
+   </body>
+</html>
