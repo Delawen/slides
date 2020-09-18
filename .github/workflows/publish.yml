@@ -1,19 +1,32 @@
-name: Pages publication
+name: Jekyll
 
 on:
   push:
-    branches: [ jekyll ]
-
+    branches:
+      - jekyll
+      
 jobs:
   jekyll:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: 'recursive'
+      - name: 📂 setup
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          
+      - name: 💎 setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6 # can change this to 2.7 or whatever version you prefer
 
-    - uses: helaili/jekyll-action@2.0.4
-      env:
-        JEKYLL_PAT: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-      with:
-        target_branch: 'public'
+      - name: 🔨 install dependencies & build site
+        uses: limjh16/jekyll-action-ts@v2
+        with:
+          enable_cache: true
+          
+      - name: 🚀 deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: public
