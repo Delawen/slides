@@ -8,14 +8,6 @@ before_script:
   - gem install bundler
   - bundle install
 
-test:
-  stage: test
-  script:
-  - bundle exec jekyll build -d test
-  artifacts:
-    paths:
-    - test
-
 pages:
   stage: deploy
   script:
