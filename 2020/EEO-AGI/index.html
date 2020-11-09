@@ -9,6 +9,24 @@
       <link rel="stylesheet" href="../../stylesheets/common.css"/>
       <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      
+      <style type="text/css">
+        code.hljs {
+          font-size:30px;
+        }
+        
+        div.counter {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+          
+        div.counter span {
+          color: green;
+          font-size: 14px;
+        }
+      </style>
     </head>
 
 
@@ -114,7 +132,7 @@
             <p><a href="https://github.com/openshift-integration/camel-k-example-transformations">This Camel transformations example can be found online</a>.</p>
           </aside>
         </section>
-        <section data-background-size="contain"  data-background-image="imagenes/me.webp">
+        <section data-background-size="contain" data-background-image="imagenes/me.webp">
           <article>
             <h5>Apache Camel</h5>
             <img style="height:60%" src="imagenes/usecase5_c.svg"/>
@@ -130,12 +148,22 @@
         <section data-background-size="contain"  data-background-image="imagenes/me2.webp">
           <article>
             <h5>Let's see an example</h5>
+            <pre style="padding-left:20%"> 
+              <code class="hljs" data-line-numbers>
+                  //Run this workflow every second
+                  from("timer:java?period=1000")
+                    .setBody()
+                      .simple("Hello Camel!")
+                    .to("log:info");
+
+              </code>
+            </pre>
           </article>
           <aside class="notes">
             <a href="https://github.com/Delawen/camel-k-example-orchestration">This example can be found on Github</a>
           </aside>
         </section>
-        <section data-background-image="imagenes/me.webp">
+        <section data-background-size="contain"  data-background-image="imagenes/me2.webp">
           <article>
             <h1>Questions?</h1>
             <p>You can find more on</p>
@@ -147,6 +175,7 @@
         </section>
       </section>
     </div>
+    <p class="autofill-url" style="z-index:99999;position:absolute;bottom:1px;left:5%;padding:2px;font-size:40%;background-color:rgba(255, 255, 255, 0.5)"></p>
   </div>
   <script src="../../reveal/js/reveal.js"></script> 
   <script>
