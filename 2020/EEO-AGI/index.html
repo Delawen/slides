@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Integration Processes for Serverless Hybrid Cloud</title>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <link rel="stylesheet" href="../../reveal/css/reveal.css"/>
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/portada.webp">
+          <article>
+            <h1>Integration Processes</h1>
+            <h1>for Serverless Hybrid Cloud</h1>
+            </br>
+            <h4>María Arias de Reyna</h4>
+            <h6><a href="https://twitter.com/delawen">@delawen</a></h6>
+            <h6>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+          </article>
+        </section>
+        <section data-background-image="imagenes/about_me.webp">
+          <article>
+            <h5>About me</h5>
+              <ul class="fa-ul" style="text-align:left">
+                <li><i class="fa-li fa fa-beer"></i>19🐱🐱 Crazy Cat Lady</li>
+                <li><i class="fa-li fa fa-linux"></i>Free and Open Source Advocate</li>
+                <li><i class="fa-li fa fa-university"></i>2008 Computer Science Graduate (Software Engineer)</li>
+                <li><i class="fa-li fa fa-globe"></i>2009 Dijkstra A* Witch</li>
+                <li><i class="fa-li fa fa-globe"></i>2012 Metadata Wrangler</li>
+                <li><i class="fa-li fa fa-globe"></i>2013 OSGeo Charter Member</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2017-2019 OSGeo President</li>
+                <li><i class="fa-li fa fa-beer"></i>2016 Women in Tech</li>
+                <li><i class="fa-li fa fa-linux"></i>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></li>
+                <li><i class="fa-li fa fa-cubes"></i>2019 Integration Druid</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2020 Apache Software Foundation</li>
+              </ul>
+            <img style="height:20%;position:absolute;bottom:0px;left:4px" src="imagenes/catJam.gif"/>
+            <img style="height:60%;position:absolute;top:20%;right:11%" src="imagenes/ygritte.webp"/>
+          </article>
+        </section>
+        <section data-background-image="imagenes/hidethepainharold.webp">
+          <article>
+            <h1>Integration Processes</h1>
+            <h1>for Serverless </h1>
+            <h1>Hybrid Cloud</h1>
+          </article>
+          <aside class="notes">
+            <p>The topic today is "Integration Processes for Serverless Hybrid Cloud". You may have notice how software engineers love to use buzzwords to make it sound smart. Let's start by understanding what these words mean.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/what-is-docker.webp">
+          <article>
+            <h5>What do you mean by "Integration Processes"?</h5>
+            <p>When you need components to interact</p>
+            <img style="width:99%" src="imagenes/schema.svg"/>
+            <p>Create (work)flows and automations</p>
+          </article>
+          <aside class="notes">
+            <p>Complex software architectures are made of several components you have to interconnect, like a database, a user interface, an analysis tool,... The pieces of software that connects them (in purple) are the middleware, the "glue", the orchestration between those components. These interactions between different unit operations are what make your usecase work.</p>
+            <p>Usually you define a flow that defines how each component interact with the rest. This flow can be linear or circular, split into several threads, have conditional steps,... and that's what you have to implement to make your usecase work. These are what are called integrations.</p>
+            <p>They are usually run more than once and that's why you have more than one process.</p>
+          </aside>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/chemistry_cat.webp">
+          <article>
+            <h5>What do you mean by "Hybrid Cloud"?</h5>
+            <p style="padding-top:30%">When you have mixed components</p>
+            <p>different providers, different languages, different paradigms,...</p>
+          </article>
+          <aside class="notes">
+            <p>A cloud is an internet-based computing in which most of your computing capacity is remote. That cloud allows the sharing of data-processing tasks, centralized data storage, and online access to computer services or resources. It can be very useful for "as a Service" features like Software as a Service (SaaS), Platform as a Service (PaaS), Function as a Service (FaaS),... which provides of "on-demand" functionality that enables the supporting infrastructure to be powered down and not incurring charges when not in use.</p>
+            <p>An Hybrid Cloud is a cloud that has a variety of providers, services, paradigms,... Some of those components can be free and open source as opposed to others having a restricting license. Being able to make such different components interact with each other is usually a complex task, specially when each of them "speaks" a different language, protocol and/or format.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/aliens.webp">
+          <article>
+            <h5>What do you mean by "Serverless"</h5>
+          </article>
+          <aside class="notes">
+            <p>Serverless means literally a cloud with no server running behind. But that may be confusing.</p>
+            <p>Serverless means you use the cloud with only "as a Service" capabilities, powering up only the time needed. You will not have idle servers wasting resources (not only money but also electricity).</p>
+          </aside>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/IdontUsually.webp">
+          <article>
+            <h1 style="padding-top:30%">Integration Processes</h1>
+            <h1>for Serverless </h1>
+            <h1>Hybrid Cloud</h1>
+          </article>
+          <aside class="notes">
+            <p>So the point of this talk is to show you a way of create flows between components that need to interact using a mixed paradigm of components with "as a Service" features.</p>
+            <p>If it is still not clear: to create workflows of data between components trying to use a sustainable software. Where sustainable means easy to setup and maintain and using the fewest resources as possible.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/confused_cat.webp">
+          <article>
+            <h5>"Glue"/Middleware</h5>
+            <img style="height:90%" src="imagenes/flux_diagram.svg"/>
+          </article>
+          <aside class="notes">
+            <p>Integration Frameworks, can help us orchestrate and automate the interaction between different applications, APIs, third party services or any other software piece we may have to connect.</p>
+            <p>A proper integration tool should provide us with the following features: transformation, integration patterns and connectors to existing protocols and components.</p>
+            <p>Let's start with transformations. When we connect different components of an architecture, they rarely speak the same languages or, on this case, data formats. Some components will output an xml that has to be fed to the following component on a json form. Maybe we even need to add or remove some attributes on that json data. An integration framework allows us to define what is the mapping between the output of one component and the input of the following so we can forget about the explicit implementation. The less code we have to maintain, the better.</p>
+            <p>Now, being able to transform data on each step is not enough if we can’t connect to (and from) the specific component we need. Our ideal integration framework should offer support for common protocols like ftp, http, jdbc,… Also it should offer support to connect to common components like a mail server, messaging services, atom,… We could claim even that no integration tool would be good if it doesn’t also support specific well known services like being able to send a message through a Telegram bot or store information on Elastic Search. Being able to seamlessly connect from one component to the next without having to worry about the specifics of their interfaces is what distinguishes an average integration tool from a good integration tool.</p>
+            <p>And finally, not all flows will be lineal. Some of the steps will require broadcasting, some of them will require conditional flowing. Some will require waiting the output of different components to conflate the data. These action patterns are something that have been studied for a long time. And as with software development patterns, you can classify them and study them to create better integrations. You can find them as "Enterprise Integration Patterns".</p>
+            <p><a href="https://github.com/openshift-integration/camel-k-example-transformations">This Camel transformations example can be found online</a>.</p>
+          </aside>
+        </section>
+        <section data-background-size="contain"  data-background-image="imagenes/me.webp">
+          <article>
+            <h5>Apache Camel</h5>
+            <img style="height:60%" src="imagenes/usecase5_c.svg"/>
+            <p>Compared with Lego</p>
+          </article>
+          <aside class="notes">
+            <p>Apache Camel is not only one of the most active projects inside the Apache Software Foundation, it is also the lightest and most complete integration framework available. And on top of it, it is also Free and Open Source Software!</p>
+            <p>Camel is already an old actor on the integration world. It has support for hundreds of components, protocols and formats. Some of these protocols come very handy allowing the user, for example, to connect to any REST API that they need.</p>
+            <p>Camel uses its own DSL, a simplified language to define easily the workflows step by step.</p>
+            <p>Camel is also available in Knative. This means, we can use it on a serverless environment, making sure the orchestration between services runs and escalates properly.</p>
+          </aside>
+        </section>
+        <section data-background-size="contain"  data-background-image="imagenes/me2.webp">
+          <article>
+            <h5>Let's see an example</h5>
+          </article>
+          <aside class="notes">
+            <a href="https://github.com/Delawen/camel-k-example-orchestration">This example can be found on Github</a>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h1>Questions?</h1>
+            <p>You can find more on</p>
+            <p><a href="https://camel.apache.org/">https://camel.apache.org</a></p>
+            <p><a href="https://syndesis.io/">https://syndesis.io</a></p>
+            <p><a href="https://www.redhat.com/en/technologies/jboss-middleware/fuse">https://www.redhat.com/en/technologies/jboss-middleware/fuse</a></p>
+            <p>This presentation is on <span class="autofill-url"></span></p>
+          </article>
+        </section>
+      </section>
+    </div>
+  </div>
+  <script src="../../reveal/js/reveal.js"></script> 
+  <script>
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				      	{ src: '../../reveal/plugin/highlight/highlight.js', async: true },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http") ) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+
+</body>
+</HTML>
