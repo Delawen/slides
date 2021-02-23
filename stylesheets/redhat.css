@@ -51,6 +51,9 @@ body {
   color:var(--main-shadow);
 }
 
+.reveal section p, .reveal section, .reveal section li {
+  color: white;
+}
 /* H styling */
 
 .reveal h1,.reveal  h2,.reveal  h3,.reveal  h4,.reveal  h5,.reveal  h6,.reveal  h7,.reveal  h8,.reveal  h9 {
