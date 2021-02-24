@@ -4,7 +4,5 @@ _site
 .jekyll-metadata
 vendor
 how-dir-listing/
-index.html
 public/
-*/index.html
 .bundle
