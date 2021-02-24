@@ -163,6 +163,9 @@
             <img src="imagenes/usecase5.svg"/>
           </article>
           <aside class="notes">
+            <p>If we want to take a look at how Camel works on the inside, it has different pieces to connect to each type of component. These connectors can be connector that read something on an external components, which we will call consumers; or they can write something on an external component, which we will call producers. Between a reading from a component and a writing to another component we have the router.</p>
+            <p>The router is the piece of software that carries most of the logic and decides what is going to be the following step.</p>
+            <p>The data that flows from the consumer to the producer is encapsulated on a type of message called exchange. </p>
           </aside>
           <a class="photolink" href="https://en.wikipedia.org/wiki/Frances_Northcutt"></a>
         </section>
@@ -172,6 +175,8 @@
             <img src="imagenes/usecase6.svg"/>
           </article>
           <aside class="notes">
+            <p>We can link this pieces together forming a chain of commands that defines the flow. This way the exchange will move from one component to the following.</p>
+            <p>The join of the consumer and the producer for the same component is what we call an endpoint. </p>
           </aside>
           <a class="photolink" href="https://en.wikipedia.org/wiki/Kateryna_Yushchenko_(scientist)"></a>
         </section>
@@ -180,6 +185,8 @@
             <img style="width:90%;padding-top:20%" src="imagenes/camel_architecture.svg"/>
           </article>
           <aside class="notes">
+            <p>Remember that any good integration framework allows you to have conditional statments, parallel processing, and similar integration patterns. On our cat adoption case, we will have a conditional on the flow that will decide if a person adopts a cat or not.</p>
+            <p>Given a list of elements, we could also tell Apache Camel to iterate on each of those elements and run a separated thread of flow for each of them. We could also merge again all those threads of flow into one single thread of flow.</p>
           </aside>
           <a class="photolink" href="https://en.wikipedia.org/wiki/R%C3%B3zsa_P%C3%A9ter"></a>
         </section>
@@ -188,6 +195,8 @@
             <img style="margin-top:15%" src="imagenes/exchange.svg"/>
           </article>
           <aside class="notes">
+            <p>The exchange that carries the data has many elements. Obviously it carries the data itself, which we call the body of the message. But similarly as how the HTTP protocol works, you can add headers to that message that can give context to your flow. For example, you can store credentials on those headers or any other value that can be used on a later step but is not included explicitly on the data being carried forward.</p>
+            <p>If there's any error that throws an exception during the routing or the processing of the message, it will also be stored on the exchange, making it easier to recover from errors. For example, if some component returned an exception because the external system is unreachable, you may be prepared for it with some conditional step that checks that exception and sends an email to the administrator to warn.</p>
           </aside>
           <a class="photolink" href="https://en.wikipedia.org/wiki/Hu_Qiheng"></a>
         </section>
