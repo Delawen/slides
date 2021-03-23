@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Integrando Flujos de Datos</title>
+      <meta name="description" content="Todo lo que hacemos se basa en datos cuya fuente muchas veces combina diferentes componentes desacoplados (bases de datos, servicios web, streams, ...). Automatizar los flujos de datos, agregar pasos condicionales, manejar las credenciales de manera segura,... Suele ser una tarea tediosa y repetitiva que muchos desarrolladores hacen una y otra vez, generando código difícil de mantener a largo plazo. Con los frameworks de Integración de Procesos podemos simplificar y reutilizar la experiencia de otros desarrolladores. Incluso podemos llegar a crear automatizaciones y flujos de trabajo de datos completos sin escribir una sola línea de código. En esta charla veremos cómo usar Apache Camel y Syndesis para crear integraciones de forma sencilla."/>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <link rel="stylesheet" href="../../reveal/css/reveal.css"/>
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/>
+      <link rel="stylesheet" href="../../stylesheets/assets/font-awesome.min.css">
+      
+      
+      <style type="text/css">
+        code.hljs {
+          font-size:30px;
+        }
+        
+        div.counter {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+          
+        div.counter span {
+          color: green;
+          font-size: 14px;
+        }
+      </style>
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/portada.webp">
+          <article>
+            <h1>Integrando Flujos de Datos</h1>
+            </br>
+            <h4>María Arias de Reyna</h4>
+            <h6><a href="https://twitter.com/delawen">@delawen</a></h6>
+            <h6>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+          </article>
+        </section>
+        <section data-background-image="imagenes/about_me.webp">
+          <article>
+            <h5>Quién soy yo</h5>
+              <ul class="fa-ul" style="text-align:left">
+                <li><i class="fa-li fa fa-beer"></i>19🐱🐱 Crazy Cat Lady</li>
+                <li><i class="fa-li fa fa-linux"></i>Free and Open Source Advocate</li>
+                <li><i class="fa-li fa fa-university"></i>2008 Computer Science Graduate (Software Engineer)</li>
+                <li><i class="fa-li fa fa-globe"></i>2009 Dijkstra A* Witch</li>
+                <li><i class="fa-li fa fa-globe"></i>2012 Metadata Wrangler</li>
+                <li><i class="fa-li fa fa-globe"></i>2013 OSGeo Charter Member</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2017-2019 OSGeo President</li>
+                <li><i class="fa-li fa fa-beer"></i>2016 Women in Tech</li>
+                <li><i class="fa-li fa fa-linux"></i>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></li>
+                <li><i class="fa-li fa fa-cubes"></i>2019 Integration Druid</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2020 Apache Software Foundation</li>
+              </ul>
+            <img style="height:20%;position:absolute;bottom:0px;left:4px" src="imagenes/catJam.gif"/>
+            <img style="height:60%;position:absolute;top:20%;right:11%" src="imagenes/ygritte.webp"/>
+          </article>
+        </section>
+      </section>
+    </section> 
+    <section>  
+      <section data-background-size="contain" data-background-image="imagenes/Ada_Lovelace.webp">
+          <article>
+            <div style="width:70%;margin-left:auto;margin-right:auto">
+              <i><h7>"We may say most aptly that the Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves."</h7>
+              <h7></br>"The Analytical Engine might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science of operations, and which should be also susceptible of adaptations to the action of the operating notation and mechanism of the engine"</h7></i>
+              <h7></br> - Ada Lovelace</h7>
+              </br>
+              <h7 class="fragment" data-fragment-index="1"></br>"Software is a collection of instructions and data that tell the computer how to work."</h7>
+              <h7 class="fragment" data-fragment-index="1"></br> - Wikipedia</h7>
+            </div>
+          </article>
+          <aside class="notes">
+            <p>There are many definitions of what software is. For example, this flourish definition by Ada Lovelace, the mother of all computing. </p>
+            <p>A software engineer defines and designs the flow of the software they create. A classical program flow, usually described with UML diagrams, basically describes how based on some input data, you get some output data. And the software is what implements that flow.</p>
+            <p>On more complex situations, what we want to do is make some componentes interact with each other. But this interaction, in the end, is nothing more than exchanges of data bits.</p>
+            <p>Or, as wikipedia very well defines, Software is just a collection of instructions and data that tell the computer how to work.</p>
+            <p>On this case, we decided that we need a database to store the data of the cats waiting to be registered. We also decided that the input data is going to be in JSON format and that we will receive the inputs via kafka brokers.</p>
+            <p>Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications. Or put it simply: Kafka is a very light messaging service that allows clients to receive messages.</p>
+            <p>This means that we have two different components, the database and Kafka brokers, that we want to connect with some logic. We could do it by implementing all the workflow from scratch, adding connector libraries as dependencies and handling secrets and listeners. </p>
+            <p>On this talk I am going to show how to use one of those Integration Frameworks to connect different pieces of your software architecture with minimal effort.</p>
+          </aside>
+        </section>
+        <section data-background-size="cover" data-background-image="imagenes/dramatic_kitten.webp">
+          <article>
+            <h3>Adopt a cat</h3>
+            <img style="height:90%" src="imagenes/flux_diagram.svg"/>
+          </article>
+          <aside class="notes">
+            <p>For example: imagine we have to implement the software an animal shelter is going to use to run cat adoptions. We would have two kind of inputs: one being new cats waiting to be adopted and another being people coming to the shelter to adopt a cat.</p>
+            <p>The abstract flow for this software is pretty easy to understand: when a new cat enters, you register it as waiting for adoption. When a new person enters, you check if there is any cat available, and decide what to do: either adopt a cat or, if no cat is available, you tell that person they will have to try again at a later time.</p>
+            <p>Once you have the requirements clear, you move on to define the software architecture.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/cat_antipattern.webp">
+          <article>
+            <img src="imagenes/usecase1.svg"/>
+            <p class="fragment highlight-current-green" data-fragment-index="1">Connectors</p>
+            <p class="fragment highlight-current-green" data-fragment-index="2">Transformations</p>
+            <p class="fragment highlight-current-green" data-fragment-index="3">Integration Patterns</p>
+            <div style="position:relative">
+              <img class="fragment fade-in-then-out absolute-centered" data-fragment-index="1" src="imagenes/connectors.svg"/>
+              <img class="fragment fade-in-then-out absolute-centered" data-fragment-index="2" src="imagenes/usecase2.svg"/>
+              <img class="fragment fade-in-then-out absolute-centered" data-fragment-index="3" src="imagenes/usecase4.svg"/>
+            </div>
+          </article>
+          <aside class="notes">
+            <p>Complex software architectures are made of several components you have to interconnect, like a database, a user interface, an analysis tool,... The pieces of software that connects them are the middleware, the "glue", the orchestration between those components. These interactions between different unit operations are what make your usecase work.</p>
+            <p>Usually you design a flow that defines how each component interact with the rest. This flow can be linear or circular, split into several threads, have conditional steps,... and that's what you have to implement to make your software adapts to your usecase.</p>
+            <p>Integration Frameworks, can help us orchestrate and automate the interaction between different applications, APIs, third party services or any other software piece we may have to connect.</p> 
+            <p>A proper integration tool should provide us with the following features: transformation, integration patterns and connectors to existing protocols and components.</p>
+            <p>NEXT</p>
+            <p>When we connect different components of an architecture, they rarely speak the same languages or, on this case, data formats. Some components will output an xml that has to be fed to the following component on a json form. Maybe we even need to add or remove some attributes on that json data. An integration framework allows us to define what is the mapping between the output of one component and the input of the following so we can forget about the explicit implementation. The less code we have to maintain, the better.</p>
+            <p>NEXT</p>
+            <p>Being able to transform data on each step is not enough if we can’t connect to (and from) the specific component we need. Our ideal integration framework should offer support for common protocols like ftp, http, jdbc,… Also it should offer support to connect to common components like a mail server, messaging services, atom,… We could claim even that no integration tool would be good if it doesn’t also support specific well known services like being able to send a message through a Telegram bot or store information on Elastic Search. Being able to seamlessly connect from one component to the next without having to worry about the specifics of their interfaces is what distinguishes an average integration tool from a good integration framework.</p>
+            <p>NEXT</p>
+            <p>And finally, not all flows will be lineal (->). Some of the steps will require broadcasting, some of them will require conditional flowing. Some will require waiting the output of different components to conflate the data. These action patterns are something that have been studied for a long time. And as with software development patterns, you can classify them and study them to create better integrations. You can find them as "Enterprise Integration Patterns".</p>
+          </aside>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/logo_camel.webp">
+          <img style="width:90%;padding-top:20%" src="imagenes/camel_architecture.svg"/>
+          <aside class="notes">
+            <p>The framework we are going to use is Apache Camel. Camel is not only one of the most active projects inside the Apache Software Foundation, it is also the lightest and most complete integration framework available. And on top of it, it is also Free and Open Source Software! Which is always a warrantee of quality and good practices.</p>
+            <p>Camel is already an old actor on the integration world. It has support for hundreds of components, protocols and formats. Some of these protocols come very handy allowing the user, for example, to connect to any REST API that they need.</p>
+            <p>Camel uses its own DSL, a simplified language to define easily the workflows step by step.</p>
+            <p>Camel is available in Knative with the name CamelK. And Camel is also available over Quarkus, the supersonic subatomic Java.</p>
+            <p>Remember that any good integration framework allows you to have conditional statments, parallel processing, and similar integration patterns. On our cat adoption case, we will have a conditional on the flow that will decide if a person adopts a cat or not.</p>
+            <p>Given a list of elements, we could also tell Apache Camel to iterate on each of those elements and run a separated thread of flow for each of them. We could also merge again all those threads of flow into one single thread of flow.</p>
+          </aside>
+        </section>
+      </section>
+        <section data-background-size="contain" data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Code time!</h3>
+            <a target="_blank" href="https://github.com/Delawen/camel-k-example-orchestration"><img style="height:70%" src="imagenes/flux_diagram2.svg"/></a>
+          </article>
+          <aside class="notes">
+          </aside>
+        </section>
+      <section>
+        <section data-background-size="contain"  data-background-image="imagenes/me2.webp">
+          <article>
+            <h1>Questions?</h1>
+            <p>You can find more on</p>
+            <p><a href="https://camel.apache.org/">https://camel.apache.org</a></p>
+            <p><a href="https://www.redhat.com/en/technologies/jboss-middleware/fuse">https://www.redhat.com/en/technologies/jboss-middleware/fuse</a></p>
+            <p>This presentation is on <span class="autofill-url"></span></p>
+          </article>
+        </section>
+      </section>
+    </div>
+    <p class="autofill-url" style="z-index:99999;position:absolute;bottom:1px;left:5%;padding:2px;font-size:40%;background-color:rgba(255, 255, 255, 0.5)"></p>
+  </div>
+  <script src="../../reveal/js/reveal.js"></script> 
+  <script>
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            margin: 0,
+            minScale: 1,
+            maxScale: 1,
+            
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+               { src: '../../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				      	{ src: '../../reveal/plugin/highlight/highlight.js', async: true },
+               { src: '../../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+         });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http") ) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+
+</body>
+</html>
