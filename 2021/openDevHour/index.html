@@ -177,7 +177,7 @@ METADATA</a>" and "<a href="https://media.ccc.de/v/bucharest-476-osgeo-your-open
                         .setHeader("animal")
                           .constant("Cat")
                         .setBody()
-                          .simple("Hello ${header.example}!")
+                          .simple("Hello ${header.animal}!")
                         .to("log:info");
                       
                   }
