@@ -241,7 +241,7 @@ METADATA</a>" and "<a href="https://media.ccc.de/v/bucharest-476-osgeo-your-open
             showSlideNumber: 'print',
             defaultTiming: 120,
             showNotes: (getParams().includes("print-pdf")? "separate-page" : null),
-            plugins: [ RevealHighlight ]
+            plugins: [ RevealHighlight, RevealNotes, RevealSearch ]
          });
          Reveal.configure({ pdfMaxPagesPerSlide: 1 });
 
