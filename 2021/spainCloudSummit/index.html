@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+      <title>Data flowing the easy way</title>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta charset="utf-8">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="../../reveal/dist/reset.css">
+      <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/> 
+
+      <!-- Theme used for syntax highlighting of code -->
+      <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+
+    <style>
+      section div.twitter-tweet {    
+        flex-flow: row;
+        width: 32% !important;
+        padding-left: 1%;
+        padding-right:1%;
+        float: left;
+        padding-top: 5%;
+      }
+      
+      .reveal-viewport {
+        --main-background-color:#e0d32a;
+        --secondary-background-color:#e0d32aaa;
+        --main-article-color: black;
+      }
+    </style>
+
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/portada.webp">
+          <h1 style="color:black;margin-top:20%">Integrando Flujos de Datos</h1>
+          <h4 style="color:black">María Arias de Reyna</h4>
+          <h6><a href="https://twitter.com/delawen">@delawen</a></h6>
+          <h6 style="color:black">Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+        </section>
+    </section> 
+    <section>
+        <section>
+          <article style="padding-left:15%">
+            <blockquote class="twitter-tweet"><p lang="es" dir="ltr"><a href="https://twitter.com/hashtag/geocampes?src=hash&amp;ref_src=twsrc%5Etfw">#geocampes</a> se nos va de las manos <a href="https://twitter.com/delawen?ref_src=twsrc%5Etfw">@delawen</a> <a href="https://t.co/qzd1etVsqm">pic.twitter.com/qzd1etVsqm</a></p>&mdash; Micho Garcia (@michogar) <a href="https://twitter.com/michogar/status/789763446703288321?ref_src=twsrc%5Etfw">October 22, 2016</a></blockquote> 
+            <blockquote class="twitter-tweet"><p lang="es" dir="ltr"><a href="https://twitter.com/delawen?ref_src=twsrc%5Etfw">@delawen</a> hablando sobre zombis <a href="https://twitter.com/hashtag/geocampes?src=hash&amp;ref_src=twsrc%5Etfw">#geocampes</a> <a href="https://t.co/U285FR5hUW">pic.twitter.com/U285FR5hUW</a></p>&mdash; wladimir szczerban (@bolosig) <a href="https://twitter.com/bolosig/status/789762697856442368?ref_src=twsrc%5Etfw">October 22, 2016</a></blockquote> 
+          </article>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+          <aside class="notes">
+            Hola, soy María. Puede que me conozcáis de charlas anteriores como  "<a href="https://slides.delawen.com/2019/metadata">Matamos basándonos en los METADATOS</a>" y "<a href="https://media.ccc.de/v/bucharest-476-osgeo-your-open-source-compass">Cómo sobrevivir a un apocalipsis zombie de gatitos usando software libre</a>"
+          </aside>
+        </section>
+        <section data-background-image="imagenes/about_me.webp">
+          <article>
+            <h5>About me</h5>
+              <ul class="fa-ul" style="text-align:left">
+                <li><i class="fa-li fa fa-beer"></i>19🐱🐱 Crazy Cat Lady</li>
+                <li><i class="fa-li fa fa-linux"></i>Free and Open Source Advocate</li>
+                <li><i class="fa-li fa fa-university"></i>2008 Computer Science Graduate (Software Engineer)</li>
+                <li><i class="fa-li fa fa-globe"></i>2009 Dijkstra A* Witch</li>
+                <li><i class="fa-li fa fa-globe"></i>2012 Metadata Wrangler</li>
+                <li><i class="fa-li fa fa-globe"></i>2013 OSGeo Charter Member</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2017-2019 OSGeo President</li>
+                <li><i class="fa-li fa fa-beer"></i>2016 Women in Tech</li>
+                <li><i class="fa-li fa fa-linux"></i>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></li>
+                <li><i class="fa-li fa fa-cubes"></i>2019 Integration Druid</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2020 Apache Software Foundation</li>
+              </ul>
+            <img style="height:20%;position:absolute;bottom:0px;left:4px" src="imagenes/catJam.gif"/>
+            <img style="height:60%;position:absolute;top:20%;right:11%" src="imagenes/ygritte.webp"/>
+          </article>
+        </section>
+        <section data-background-image="imagenes/camel.jpg">
+          <article>
+            <img src="imagenes/usecase1.svg"/>
+            <img class="fragment" src="imagenes/usecase3.svg"/>
+            <img class="fragment" src="imagenes/usecase4.svg"/>
+          </article>
+          <aside class="notes">
+            <p>Supongamos que estamos diseñando un nuevo proyecto software. Normalmente el software se puede definir con los clásicos diagramas UML donde tienes una serie de eventos o triggers, que suelen traer una entrada de datos, y eso encadena una serie de instrucciones que van procesando estos datos iniciales hasta obtener una salida.</p>
+            <p>Es decir, tenemos un workflow en el que hay una serie de pasos.</p>
+            <p>Si la arquitectura es medianamente compleja, vamos a tener una serie de componentes externos (bases de datos, APIs, repositorios de ficheros, servicios web,...). Estos componentes interaccionan unos con otros a lo largo de este flujo de trabajo.</p>
+            <p>Si definimos este proyecto software de cero nos vamos a encontrar con que tenemos primero que leernos la documentación y entender cómo interactuar con cada componente. Luego seguramente definiremos un módulo o clase, dependiendo de cómo de complejo sea el componente, que realizará la comunicación con dicho componente. Podemos hacer uso de librerías externas, por ejemplo usar hibernate para contectarnos con una base de datos.</p>
+            <p>Una vez tenemos claro cómo interactuar con cada componente, tendremos que añadir la lógica y el enrutado de los datos de un componente a otro. Por ejemplo, imaginemos que estamos modelando una API REST sencilla. Al hacer una petición a dicha API REST, podríamos tener que traducir esa petición a una consulta en la base de datos, convertir el resultado de esa consulta al modelado de la respuesta de esta API REST y devolver dicho resultado como respuesta de la petición original.</p>
+            <p>También podría ser que estemos escuchando un canal de una mensajería como Kafka y que cuando llegue un mensaje a través de dicho canal, procesamos el mensaje y generamos una respuesta que se envíe como un correo electrónico.</p>
+            <p>→</p>
+            <p>Apache Camel es un framework de integración. Lo que significa que se puede usar para conectar diferentes componentes fácilmente. El bajo acoplamiento y el fácil mantenimiento son una de las mayores ventajas de utilizar estos frameworks.</p>
+            <p>Camel te permite abstraerte de casi todos los detalles de cómo interactuar con cada componente externo para que te centres en la lógica y el modelado de los datos específicos de tu caso de uso. Se suele comparar con los juegos de construcción por bloques porque la idea es que cada paso del workflow sea fácilmente intercambiable por otro paso diferente y todas las piezas seguirían encajando perfectamente.</p>
+            <p>Se podría implementar el ejemplo de la API REST de antes sólo con Camel sin saber cómo se conecta una base de datos o cómo se implementa un servicio REST.</p>
+            <p>→</p>
+            <p>Camel es el middleware, el pegamento que interconecta las piezas. Para implementar una integración en Camel se utiliza un lenguaje específico de dominio (DSL) que aunque no sea lenguaje natural, es muy sencillo de entender. Este lenguaje utiliza los patrones de integraciones para hacer pasos avanzados como podría ser un broadcast, un bucle, un condicional, una transformación de los datos,...</p>
+          <p>You can find all of these patterns prettily explained in the classic <a href="https://www.enterpriseintegrationpatterns.com/">Enterprise Integration Patterns book.</a></p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/lego.jpg">
+          <article>
+            <img src="imagenes/usecase5.svg"/>
+          </article>
+          <aside class="notes">
+            <p>Si miramos las entrañas de Camel, hay tres tipos de objetos básicos.</p>
+            <p>Por una parte tenemos los Endpoints. Este tipo de objetos están especializados en un tipo concreto de componente externo: base de datos, ftp, servidor de correo, bot de telegram, Twitter, ServiceNow, SalesForce,... Hay más de 300 tipos diferentes de componentes. Y además, no tenemos que preocuparnos de añadir ningún tipo de dependencias porque Camel ya tiene incluído todo lo necesario para conectarse a dichos servicios. Los Endpoints realizan toda la comunicación de entrada y salida con los componentes externos y generan lo que se denomina Exchange.</p>
+            <p>El Exchange es el objeto datagrama que contiene todos los datos que atraviesan el workflow. Este exchange es parecido a como sería una petición HTTP porque tiene su cuerpo del mensaje, sus cabeceras,... pero también tiene atributos y tiene un espacio para almacenar errores y excepciones que pueden ir ocurriendo a lo largo del workflow. Este mensaje Exchange que sale del Endpoint llega a lo que sería el enrutador.</p>
+            <p>El enrutador decide cual será el siguiente paso en el flujo del workflow. Es en el enrutador donde está la lógica del workflow y donde se aplican los patrones de integraciones. Por ejemplo, en la imagen vemos cómo el siguiente paso se divide en dos flujos, que van cada uno a un Endpoint diferente.</p>
+            <p>El Exchange de salida de un paso es siempre el mensaje de entrada del siguiente. A veces estos pasos no conectan con ningún componente externo, sino que se dedican a transformar el mensaje para prepararlo para el siguiente paso. Por ejemplo, podría ser que un paso trabaje con XML y el siguiente trabaje con JSON y hay que convertirlo de uno a otro. También podría ser algo más complejo como que hay que modificar el modelo de datos añadiendo o quitando atributos.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/camel_laugh.webp">
+          <article>
+            <h3>Hello World</h3>
+            
+           <pre style="float:left;width:30%;margin-top:1%"><code class="language-yaml" data-noescape>
+            # Write your routes here, for example:
+            - from:
+                uri: "timer:yaml"
+                parameters:
+                  period: "1000"
+                steps:
+                  - set-body:
+                      constant: "Hello Camel K from yaml"
+                  - to: "log:info"
+            </code></pre>
+            <pre style="float:right;width:35%;margin-top:1%"><code class="language-xml" data-noescape>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://camel.apache.org/schema/spring"
+        xsi:schemaLocation="
+            http://camel.apache.org/schema/spring
+            http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	&lt;!-- Write your routes here, for example: -->
+    &lt;route id="xml">
+        &lt;from uri="timer:xml?period=1000"/>
+        &lt;setBody>
+            &lt;simple>Hello Camel K from ${routeId}&lt;/simple>
+        &lt;/setBody>
+        &lt;to uri="log:info"/>
+    &lt;/route>
+&lt;/routes>
+            </code></pre>
+            <pre style="float:left;width:30%;margin-top:1%"><code class="language-java" data-noescape>
+          import java.util.Random;
+
+          import org.apache.camel.builder.RouteBuilder;
+
+          public class HelloWorld extends RouteBuilder {
+            @Override
+            public void configure() throws Exception {
+                from("timer:java?period=1000")
+                  .setBody()
+                    .simple("Hello World!")
+                  .to("log:info");
+            }
+          }
+            </code></pre>
+            <pre style="float:left;width:30%;margin-top:1%"><code class="language-js" data-noescape>
+                from("timer:java?period=1000")
+                  .setBody()
+                    .simple("Hello World!")
+                  .to("log:info");
+            </code></pre>
+            <pre class="fragment" style="float:left;width:30%;margin-top:1%"><code class="language-js" data-noescape>
+               
+from("timer:java")
+    .choice()
+        .when(someCondition)
+          .setBody().simple("Hello World!")
+        .when(anotherCondition)
+          .setBody().simple("¡Hola Mundo!")
+      .otherwise()
+        .setBody().simple("Salut Monde!")
+    .end()
+    .to("log:info");
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>Esto serían ejemplos de "Hello World". Como veis aunque se use el mismo DSL, se pueden utilizar varios tipos de lenguajes para definirlos.</p>
+            <p>Una ruta se compone de un primer paso llamado "from" seguido de un número indefinido de pasos "to" que serían los siguientes pasos.</p>
+        </section>
+        <section>
+          <img class="fragment fade-out" data-fragment-index="1" style="float:left;width:50%;height:50%" src="imagenes/muppet_camel_thinking.webp"/>
+          <img class="fragment fade-in-then-semi-out" data-fragment-index="1" style="float:left;width:50%;height:50%" src="imagenes/camelspatial.webp"/>
+          <img class="fragment fade-in-then-semi-out" data-fragment-index="2" style="float:left;width:50%;height:50%" src="imagenes/camel_jump.webp"/>
+          <img class="fragment fade-in-then-semi-out" data-fragment-index="3" style="float:left;width:50%;height:50%" src="imagenes/kamelet.jpg"/>
+          <p class="fragment fade-in-then-semi-out" data-fragment-index="1" style="position:absolute; right:15%; top:25%">Camel Quarkus</p>
+          <p class="fragment fade-in-then-semi-out" data-fragment-index="2" style="position:absolute; left:30%; bottom:30%">Camel K</p>
+          <p class="fragment fade-in-then-semi-out" data-fragment-index="3" style="position:absolute; right:5%; bottom:10%">Kamelets</p>
+          <aside class="notes">
+            <p>Camel es una librería sorprendentemente ligera y rápida que corre sobre una máquina virtual de Java. Pero aún así, sigue siendo Java, lo que puede que no sea apetecible para gente que quiera usar serverless.</p>
+            <p>→</p>
+            <p>Por eso desde hace un par de años tenemos disponible Camel Quarkus. Quarkus es un stack Java nativo de Kubernetes específicamente pensado para ejecutar GraalVM y OpenJDK La idea de Camel Quarkus es juntar el poder de Apache Camel y toda su librería de componentes y ejecutarlo sobre un runtime de <a href="https://quarkus.io/">Quarkus</a>. Esto permite que los usuarios se beneficien de las mejoras de optimización en la ejecución del código y al ser KNative, también hace que se pueda meter fácilmente en contenedores.</p>
+            <p>Camel Quarkus también se beneficia de muchas de las mejoras introducidas en Camel 3: menor footprint de memoria, menos reflexiones (que siempre hacen que el código sea más obtuso de ejecutar) y tiempos de inicialización ridículos. Pasando de un par de segundos a milisegundos.</p>
+            <p>→</p>
+            <p>Pero claro, al introducir knative y contenedores parece que la parte de devops se complica. Aquí es cuando aparece Camel K. Camel K es un toolbox que te permite desplegar fácilmente integraciones de Apache Camel (tanto las generadas para Java normal como para Camel Quarkus) de forma sencilla y rápida.</p>
+            <p>→</p>
+            <p>Por si todo esto no fuera suficiente para simplificarnos la vida, en este último año han aparecido el concepto de Kamelets. Los Kamelets son snippets de rutas que permiten a los usuarios conectarse a los sistemas externos usando una interfaz muy simplificada. Si antes Camel usaba bloques de construcción pequeños, un Kamelet podría ser un meta bloque compuesto de esos pequeños bloques. Los Kamelets esconden todos los detalles pequeños de implementación para que el diseñador del workflow pueda centrarse todavía más en lo que es el workflow en si mismo.</p>
+            <p>Un Kamelet puede actuar como un "source" de datos o como un "sink". Estos son conceptos que les sonarán a los que estén familiarizados con KNative: un source consume datos de un sistema externo mientras que un sink envía datos a un sistema externo o ejecuta una acción concreta y devuelve un resultado.</p>
+            <p><a href="https://camel.apache.org/camel-kamelets/latest/">Repository of Kamelets</a></p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:right;margin-top:8%"><code class="language-js" data-noescape>
+                from("timer:java?period=1000")
+                  //.setBody()
+                  //  .simple("Hello World!")
+                  // Generate random name
+                  .process(processor)
+                  .to("log:info");
+            </code></pre>
+            <pre style="float:right;margin-top:8%;margin-right:1%"><code class="language-java" data-noescape>
+                  Processor processor = new Processor() {
+
+                    String[] firstname = new String[] { "Aleja", "Almerinda", "Ambrosia", "Benilda",
+                    "Bercia", "Cayetana", "Ermisinda", "Escolástica", "Esmaragda", "Esmerencia"};
+                    String[] lastname = new String[] {"Zuzunaga", "Sorní", "Sandemetrio", "Bonachera",
+                    "Sazón", "Piesplanos", "Parraverde", "Alcoholado" };
+
+                    Random r = new Random();
+
+                    @Override
+                    public void process(Exchange exchange) throws Exception {
+                      StringBuilder name = new StringBuilder("Hello ");
+                      name.append(firstname[r.nextInt(firstname.length)]);
+                      name.append(" ");
+                      name.append(lastname[r.nextInt(lastname.length)]);
+                      name.append("!");
+                      exchange.getMessage().setBody(name.toString());
+                    }
+
+                  };
+
+            </code></pre>
+          </article>
+          
+          <aside class="notes">
+            <p>Aquí podemos ver un ejemplo de hola mundo pero usando un paso intermedio que transforma el datagrama. El ejemplo es muy sencillo porque lo que hace es generar una cadena aleatoria saludando a personas. Pero la idea es la misma: defines el paso en una sola línea y te llevas la implementación concreta específica para tu caso de uso a un lugar aparte.</p>
+            <p>Si en el futuro decides que quieres cambiar esa transformación, no tienes que tocar el workflow, está desacoplado. Si decides que ya no quieres transformar el dato, con quitar esa línea que llama a process, está hecho.</p>
+            <p>Apache Camel trae muchas transformaciones entre tipos de datos que pueden ayudar a simplificar este proceso todavía más, como veremos en los siguientes ejemplos.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:right;margin-right:1%"><code class="language-json" data-noescape>
+   Exchange[
+         ExchangePattern: InOnly, 
+         BodyType: String, 
+         Body: 
+            {"coord":
+              {"lon":-5.9761,"lat":37.3824},
+              "weather":[
+                {
+                  "id":804,
+                  "main":"Clouds",
+                  "description":"overcast clouds",
+                  "icon":"04d"
+                }],
+              "base":"stations",
+              "main":
+                {
+                  "temp":293.64,
+                  "feels_like":293.68,
+                  "temp_min":292.59,
+                  "temp_max":294.26,
+                  "pressure":1003,
+                  "humidity":74
+                },
+              "visibility":7150,
+              "wind":{"speed":3.13,"deg":225,"gust":8.49},
+              "clouds":{"all":100},
+              "dt":1619448268,
+              "sys":{
+                "type":3,"id":2011488,
+                "country":"ES","sunrise":1619415275,
+                "sunset":1619464109},
+              "timezone":7200,"id":2510911,"name":"Seville","cod":200}
+   ]
+
+            </code></pre>
+            <pre style="float:left"><code class="language-js" data-noescape>
+from("timer:weathertest")
+  .to("weather:foo?location=Sevilla,Spain&appid={{TOKEN}}&geolocationAccessKey={{TOKEN}}")
+  .to("log:info");
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>En este ejemplo vamos a llamar a un servicio externo que nos devolverá el tiempo que hace en Sevilla. El resultado es un JSON que podríamos utilizar en un paso posterior para extraer por ejemplo la temperatura. Al ser un JSON, Camel lo entiende y lo sabe parsear y podríamos usar directamente alguno de los atributos en los pasos sucesivos en vez de tener que escribir toda la función de procesado.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:right;margin-top:8%"><code class="language-java" data-noescape>
+                public class ChatBotLogic {
+                    public String chatBotProcess(String message) {
+                        if( "do-not-reply".equals(message) ) {
+                            return null; // no response in the chat
+                        }
+
+                        return "Received " + message;
+                    }
+                }
+            </code></pre>
+            <pre style="float:left;margin-top:8%;"><code class="language-js" data-noescape>
+from("telegram:bots?authorizationToken={{TELEGRAM_BOT_TOKEN}}")
+  .bean(ChatBotLogic.class)
+  .to("telegram:bots?authorizationToken={{TELEGRAM_BOT_TOKEN}}");
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>En este ejemplo hemos implementado un sencillo bot de telegram que responde con la misma cadena que le envías. Para poder implementar esto sólo necesitamos el token que telegram nos asigna al crear un bot. No necesitamos saber cómo funcionan los bots de telegram o qué tipo de llamadas hay que hacer a la API. Si en el futuro la API cambiara, sólo hay que actualizar Camel y seguiría funcionando de forma transparente.</p>
+            <p>Lo bonito de estar usando Camel en este caso es que podemos olvidarnos incluso de que es un bot específicamente de Telegram y centrarnos en lo que es específico de nuestro caso de uso, que es el qué contestar. Si el día de mañana en vez de un bot de telegram queremos que sea un bot en una web, sólo tendríamos que cambiar el from y el to, el resto quedaría igual. No podemos pedir que esté más desacoplado.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:left;margin-top:8%;margin-left:1%"><code class="language-js" data-noescape>
+from("paho-mqtt5://{{APP_ID}}/devices/{{DEVICE_ID}}/up?host=" + broker)
+  .unmarshal().json(JsonLibrary.Gson, Device.class)
+  .setBody().simple("The device ${body.name} is a ${body.description}.")
+  .setHeader("CamelTelegramChatId", constant("{{MY_CHAT_ID}}"))
+  .to("telegram:bots?authorizationToken={{TELEGRAM_BOT_TOKEN}}");
+            </code></pre>
+            <pre style="float:right;margin-right:1%"><code class="language-json" data-noescape>
+   {
+  "ids": {
+    "device_id": "my-device",
+    "dev_eui": "0102030405060708",
+    "join_eui": "0102030405060708"
+  },
+  "name": "My Device",
+  "description": "Living room temperature sensor",
+  "lorawan_version": "MAC_V1_0_2",
+  "lorawan_phy_version": "PHY_V1_0_2_REV_B",
+  "frequency_plan_id": "EU_863_870_TTN",
+  "supports_join": true,
+  "root_keys": {
+    "app_key": {
+      "key": "01020304050607080102030405060708"
+    }
+  }
+}
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>En este caso hemos creado una integración que está escuchando en una típica cola de mensajes de IoT como The Things Network. The Things Network (TTN) es una red global abierta LoRaWAN que si no la conocéis y os interesa todo este mundo de IoT es interesante echarle un vistazo. Además de ser una red colaborativa abierta donde se comparte la información de los dispositivos, se intenta que todo lo que se encanche a dicha red sea de código libre y con hardware libre.</p>
+            <p>Cuando llega un evento parsea esa respuesta y envía el nombre y la descripción del dispositivo que generó el evento a un chat de telegram concreto. Como veis, ni siquiera hemos necesitado implementar un proceso ya que lo que recibe Camel es un JSON que sabe parsearlo y puede generar el cuerpo del mensaje a enviar a Telegram usando atributos de dicho JSON.</p>
+            <p>Esto es un ejemplo de que Apache Camel se puede usar incluso si no sabes programar. Y si se quiere cambiar el bot de telegram por guardar el dato en una base de datos o enviar un correo o lo que se nos ocurra, simplemente con cambiar esa línea del workflow, todo seguiría funcionando igual de bien y desacoplado. Hemos montado con cinco líneas de código algo que sin Apache Camel serían mínimo 5 fichero de código entre conectores, parseadores y demás.</p>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/me2.webp">
+          <article>
+            <h1>¿Alguna pregunta?</h1>
+            <p>Puedes encontrar más información en</p>
+            <br/>
+            <p><a href="https://camel.apache.org/">https://camel.apache.org</a></p>
+            <br/>
+            <p>La presentación está publicada en</p>
+            <p><span class="autofill-url"></span></p>
+            <p>Si la abres y pulsas la tecla s verás las notas</p>
+          </article>
+          <aside class="notes">
+            <a href="https://delawen.com/2020/10/what-is-integration/">Más informacíon</a>
+          </aside>
+        </section>
+      </section>
+    </div>
+    <p class="autofill-url" style="z-index:99999;position:absolute;bottom:1px;left:5%;padding:2px;font-size:40%;background-color:rgba(255, 255, 255, 0.5)"></p>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+  
+         function getParams() {
+              var vars = [];
+              var parts = window.location.href.replace(/[?&]+([^&]+)/gi, 
+                function(m, key) {
+                  vars.push(key);
+              });
+              return vars;
+          };
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            slideNumber: 'c/t',
+            showSlideNumber: 'print',
+            defaultTiming: 200,
+            showNotes: (getParams().includes("print-pdf")? "separate-page" : null),
+            plugins: [ RevealHighlight, RevealNotes, RevealSearch ]
+         });
+         Reveal.configure({ pdfMaxPagesPerSlide: 1 });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http") ) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+
+</body>
+</html>
