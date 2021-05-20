@@ -367,7 +367,8 @@ from("paho-mqtt5://{{APP_ID}}/devices/{{DEVICE_ID}}/up?host=" + broker)
             <p>(you can see the notes by pushing 's')</p>
           </article>
           <aside class="notes">
-            <a href="https://delawen.com/2020/10/what-is-integration/">Más informacíon</a>
+            <p><a href="https://delawen.com/2020/10/what-is-integration/">More information about integration frameworks</a></p>
+            <p>As a FOSS project, Apache Camel has many forums, mailing lists and chats where you can ask for help. Remember <a href="http://www.catb.org/esr/faqs/smart-questions.html">how to ask questiosn the smart way</a> and <a href="https://www.chiark.greenend.org.uk/~sgtatham/bugs.html">how to report bugs effectively</a> when interacting with FOSS projects to ensure you get an answer.</p>
           </aside>
         </section>
       </section>
@@ -408,7 +409,7 @@ from("paho-mqtt5://{{APP_ID}}/devices/{{DEVICE_ID}}/up?host=" + broker)
             height: '100%',
             slideNumber: 'c/t',
             showSlideNumber: 'print',
-            defaultTiming: 200,
+            defaultTiming: 225,
             showNotes: (getParams().includes("print-pdf")? "separate-page" : null),
             plugins: [ RevealHighlight, RevealNotes, RevealSearch ]
          });
