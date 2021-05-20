@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+      <title>Data flowing the easy way</title>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta charset="utf-8">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="../../reveal/dist/reset.css">
+      <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/> 
+
+      <!-- Theme used for syntax highlighting of code -->
+      <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+
+    <style>
+      section div.twitter-tweet {    
+        flex-flow: row;
+        width: 32% !important;
+        padding-left: 1%;
+        padding-right:1%;
+        float: left;
+        padding-top: 5%;
+      }
+    </style>
+
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-size="contain" data-background-image="imagenes/portada.webp">
+          <article>
+            <h1> How camel breeding <br/> can help you in IoT</h1>
+            <h4>María Arias de Reyna</h4>
+            <h6><a href="https://twitter.com/delawen">@delawen</a></h6>
+            <h6>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+          </section>
+        </article>
+    </section> 
+    <section>
+        <section data-background-image="imagenes/about_me.webp">
+          <article>
+            <h5>About me</h5>
+              <ul class="fa-ul" style="text-align:left">
+                <li><i class="fa-li fa fa-beer"></i>19🐱🐱 Crazy Cat Lady</li>
+                <li><i class="fa-li fa fa-linux"></i>Free and Open Source Advocate</li>
+                <li><i class="fa-li fa fa-university"></i>2008 Computer Science Graduate (Software Engineer)</li>
+                <li><i class="fa-li fa fa-globe"></i>2009 Dijkstra A* Witch</li>
+                <li><i class="fa-li fa fa-globe"></i>2012 Metadata Wrangler</li>
+                <li><i class="fa-li fa fa-globe"></i>2013 OSGeo Charter Member</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2017-2019 OSGeo President</li>
+                <li><i class="fa-li fa fa-beer"></i>2016 Women in Tech</li>
+                <li><i class="fa-li fa fa-linux"></i>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></li>
+                <li><i class="fa-li fa fa-cubes"></i>2019 Integration Druid</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2020 Apache Software Foundation</li>
+              </ul>
+            <img style="height:20%;position:absolute;bottom:0px;left:4px" src="imagenes/catJam.gif"/>
+            <img style="height:60%;position:absolute;top:20%;right:11%" src="imagenes/ygritte.webp"/>
+          </article>
+          <aside class="notes">
+            Hola, soy María. Puede que me conozcáis de charlas anteriores como  "<a href="https://slides.delawen.com/2019/metadata">Matamos basándonos en los METADATOS</a>" y "<a href="https://media.ccc.de/v/bucharest-476-osgeo-your-open-source-compass">Cómo sobrevivir a un apocalipsis zombie de gatitos usando software libre</a>"
+          </aside>
+        </section>
+        <section data-background-image="imagenes/camel.jpg">
+          <article>
+            <img src="imagenes/usecase1.svg"/>
+            <img class="fragment" src="imagenes/usecase3.svg"/>
+            <img class="fragment" src="imagenes/usecase4.svg"/>
+          </article>
+          <aside class="notes">
+            <p>Suppose we are designing a new software project. Normally, the software can be defined with the classic UML diagrams where you have a series of events or triggers, which usually bring data input, and that chains a series of instructions that process this initial data until an output is obtained. </p>
+            <p>That is, we have a workflow in which there are a series of steps. </p>
+            <p>If the architecture is fairly complex, we will have a series of external components (databases, APIs, file repositories, web services, ...). These components interact with each other throughout this workflow. </p>
+            <p>If we define this software project from scratch, we will find that we first have to read the documentation and understand how to interact with each component. Then we will surely define a module or class, depending on how complex the component is, which will communicate with said component. We can make use of external libraries, for example use hibernate to connect with a database. </p>
+            <p>Once we are clear about how to interact with each component, we will have to add the logic and data routing from one component to another. For example, let's imagine that we are modeling a simple REST API. When making a request to said REST API, we could have to translate that request into a query in the database, convert the result of that query to modeling the response of this REST API and return said result as a response to the original request. </p>
+            <p>It could also be that we are listening to a messaging channel like Kafka and that when a message arrives through that channel, we process the message and generate a response that is sent as an email. </p>
+            <p>→</p>
+            <p>Apache Camel is an integration framework. Which means that it can be used to connect different components easily. Low coupling and easy maintenance are one of the biggest advantages of using these frameworks. </p>
+            <p>Camel allows you to abstract from almost all the details of how to interact with each external component so that you focus on the logic and modeling of the specific data of your use case. It is often compared to block construction games because the idea is that each step of the workflow is easily interchangeable for a different step and all the pieces would still fit together perfectly. </p>
+            <p>You could implement the REST API example from above with only Camel without knowing how to connect a database or how to implement a REST service. </p>
+            <p>Integration Frameworks are specially well-designed for dynamic and changing architectures. This is exactly what happens for example on IoT environments: you have usually a complex architecture with lots of sensors. Some of those sensors are active only during specific times of the year. Some others are temporary sensors during specific events (like a flooding). Some other types of sensors are quickly replaced every year because technology advances and we can get better hardware in short spans of time.</p>
+            <p>This means that you need to extend and modify your architecture and how your components interact with each other on a fast and easy to maintain way.</p>
+            <p>→</p>
+            <p>Integration Frameworks are the middleware, the glue that interconnects the different components. On this talk I am going to talk to you about Apache Camel, one of the (if not the) most used integration frameworks. It is Free and Open Source, which means there's not a single company maintaining it, but dozens of them. It is the most active project of the Apache Software Foundation.</p>
+            <p> To implement an integration in Apache Camel, a domain specific language (DSL) is used which, although it is not natural language, is very easy to understand. This language uses the integration patterns to carry out advanced steps such as a broadcast, a loop, a conditional, a data transformation, ... </p>
+          <p>You can find all of these patterns prettily explained in the classic <a href="https://www.enterpriseintegrationpatterns.com/">Enterprise Integration Patterns book.</a></p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/lego.jpg">
+          <article>
+            <img src="imagenes/usecase5.svg"/>
+          </article>
+          <aside class="notes">
+            <p>If we look at the entrails of Camel, there are three types of basic objects. </p>
+            <p>On the one hand we have the Endpoints. These types of objects are specialized in a specific type of external component: database, ftp, mail server, telegram bot, Twitter, ServiceNow, SalesForce, ... There are more than 300 different types of components. And also, we do not have to worry about adding any type of dependencies because Camel already has everything necessary to connect to these services included. Endpoints perform all inbound and outbound communication with external components and generate what is called Exchange. </p>
+            <p>The Exchange is the datagram object that contains all the data that goes through the workflow. This exchange is similar to how an HTTP request would be because it has its message body, its headers, ... but it also has attributes and has a space to store errors and exceptions that may occur throughout the workflow. This Exchange message that leaves the endpoint reaches what would be the router. </p>
+            <p>The router decides what will be the next step in the workflow. It is in the router where the workflow logic is and where the integration patterns are applied. For example, in the image we see how the next step is divided into two flows, each going to a different Endpoint.</p>
+            <p>The output Exchange of one step is always the input message of the next. Sometimes these steps do not connect with any external component, but are dedicated to transforming the message to prepare it for the next step. For example, it could be that one step works with XML and the next one works with JSON and you have to convert it from one to the other. It could also be something more complex such as that you have to modify the data model by adding or removing attributes.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/camel_laugh.webp">
+          <article>
+            <h3>Hello World</h3>
+            
+           <pre style="float:left;width:30%;margin-top:1%"><code class="language-yaml" data-noescape>
+            # Write your routes here, for example:
+            - from:
+                uri: "timer:yaml"
+                parameters:
+                  period: "1000"
+                steps:
+                  - set-body:
+                      constant: "Hello Camel K from yaml"
+                  - to: "log:info"
+            </code></pre>
+            <pre style="float:right;width:35%;margin-top:1%"><code class="language-xml" data-noescape>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://camel.apache.org/schema/spring"
+        xsi:schemaLocation="
+            http://camel.apache.org/schema/spring
+            http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	&lt;!-- Write your routes here, for example: -->
+    &lt;route id="xml">
+        &lt;from uri="timer:xml?period=1000"/>
+        &lt;setBody>
+            &lt;simple>Hello Camel K from ${routeId}&lt;/simple>
+        &lt;/setBody>
+        &lt;to uri="log:info"/>
+    &lt;/route>
+&lt;/routes>
+            </code></pre>
+            <pre style="float:left;width:30%;margin-top:1%"><code class="language-java" data-noescape>
+          import java.util.Random;
+
+          import org.apache.camel.builder.RouteBuilder;
+
+          public class HelloWorld extends RouteBuilder {
+            @Override
+            public void configure() throws Exception {
+                from("timer:java?period=1000")
+                  .setBody()
+                    .simple("Hello World!")
+                  .to("log:info");
+            }
+          }
+            </code></pre>
+            <pre style="float:left;width:30%;margin-top:1%"><code class="language-js" data-noescape>
+                from("timer:java?period=1000")
+                  .setBody()
+                    .simple("Hello World!")
+                  .to("log:info");
+            </code></pre>
+            <pre class="fragment" style="float:left;width:30%;margin-top:1%"><code class="language-js" data-noescape>
+               
+from("timer:java")
+    .choice()
+        .when(someCondition)
+          .setBody().simple("Hello World!")
+        .when(anotherCondition)
+          .setBody().simple("¡Hola Mundo!")
+      .otherwise()
+        .setBody().simple("Salut Monde!")
+    .end()
+    .to("log:info");
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>This would be "Hello World" examples. As you can see, even if the same DSL is used, several types of languages can be used to define them. </p>
+            <p>A route consists of a first step called "from" followed by an indefinite number of "to" steps, which would be the following steps.</p>
+        </section>
+        <section>
+          <img class="fragment fade-out" data-fragment-index="1" style="float:left;width:50%;height:50%" src="imagenes/muppet_camel_thinking.webp"/>
+          <img class="fragment fade-in-then-semi-out" data-fragment-index="1" style="float:left;width:50%;height:50%" src="imagenes/camelspatial.webp"/>
+          <img class="fragment fade-in-then-semi-out" data-fragment-index="2" style="float:left;width:50%;height:50%" src="imagenes/camel_jump.webp"/>
+          <img class="fragment fade-in-then-semi-out" data-fragment-index="3" style="float:left;width:50%;height:50%" src="imagenes/kamelet.jpg"/>
+          <p class="fragment fade-in-then-semi-out" data-fragment-index="1" style="position:absolute; right:15%; top:25%">Camel Quarkus</p>
+          <p class="fragment fade-in-then-semi-out" data-fragment-index="2" style="position:absolute; left:30%; bottom:30%">Camel K</p>
+          <p class="fragment fade-in-then-semi-out" data-fragment-index="3" style="position:absolute; right:5%; bottom:10%">Kamelets</p>
+          <aside class="notes">
+            <p>Camel is a surprisingly light and fast library that runs on a Java virtual machine. But still, it's still Java, which may not be palatable for people who want to use serverless. </p>
+            <p>→</p>
+            <p>That is why we have had Camel Quarkus available for a couple of years. Quarkus is a native Kubernetes Java stack specifically designed to run GraalVM and OpenJDK. The idea of Camel Quarkus is to bring together the power of Apache Camel and its entire library of components and run it on a 
+            <a href ="https://quarkus.io/ "> Quarkus </a> runtime. This allows users to benefit from optimization improvements in code execution and being KNative, it also makes it easy to containerize. </p>
+            <p>Camel Quarkus also benefits from many of the improvements introduced in Camel 3: lower memory footprint, fewer reflections (which always make code more obtuse to run), and ridiculous initialization times. Going from a couple of seconds to milliseconds. </p>
+            <p>→</p>
+            <p>But of course, when introducing knative and containers it seems that the devops part gets complicated. This is when Camel K appears. Camel K is a toolbox that allows you to easily deploy Apache Camel integrations (both those generated for normal Java and for Camel Quarkus) easily and quickly. </p>
+            <p>→</p>
+            <p>As if all this were not enough to simplify our lives, in the last year the concept of Kamelets has appeared. Kamelets are route snippets that allow users to connect to external systems using a very simplified interface. If Camel used small building blocks before, a Kamelet could be a meta block made up of those little blocks. Kamelets hide all the small implementation details so that the workflow designer can focus even more on what the workflow itself is. </p>
+            <p>A Kamelet can act as a "source" of data or as a "sink". These are concepts that will sound familiar to those familiar with KNative: a source consumes data from an external system while a sink sends data to an external system or executes a specific action and returns a result. </p>
+            <p><a href="https://camel.apache.org/camel-kamelets/latest/">Repository of Kamelets</a></p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:right;margin-top:8%"><code class="language-js" data-noescape>
+                from("timer:java?period=1000")
+                  //.setBody()
+                  //  .simple("Hello World!")
+                  // Generate random name
+                  .process(processor)
+                  .to("log:info");
+            </code></pre>
+            <pre style="float:right;margin-top:8%;margin-right:1%"><code class="language-java" data-noescape>
+                  Processor processor = new Processor() {
+
+                    String[] firstname = new String[] { "Aleja", "Almerinda", "Ambrosia", "Benilda",
+                    "Bercia", "Cayetana", "Ermisinda", "Escolástica", "Esmaragda", "Esmerencia"};
+                    String[] lastname = new String[] {"Zuzunaga", "Sorní", "Sandemetrio", "Bonachera",
+                    "Sazón", "Piesplanos", "Parraverde", "Alcoholado" };
+
+                    Random r = new Random();
+
+                    @Override
+                    public void process(Exchange exchange) throws Exception {
+                      StringBuilder name = new StringBuilder("Hello ");
+                      name.append(firstname[r.nextInt(firstname.length)]);
+                      name.append(" ");
+                      name.append(lastname[r.nextInt(lastname.length)]);
+                      name.append("!");
+                      exchange.getMessage().setBody(name.toString());
+                    }
+
+                  };
+
+            </code></pre>
+          </article>
+          
+          <aside class="notes">
+            <p>Here we can see an example of hello world but using an intermediate step that transforms the datagram. The example is very simple because what it does is generate a random string greeting people. But the idea is the same: you define the step in a single line and you take the concrete implementation specific for your use case to a separate place. </p>
+            <p>If in the future you decide that you want to change that transformation, you don't have to touch the workflow, it is decoupled. If you decide that you no longer want to transform the data, by removing that line that calls process, you are done. </p>
+            <p>Apache Camel brings many transformations between data types that can help simplify this process even more, as we will see in the following examples. </p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:right;margin-right:1%"><code class="language-json" data-noescape>
+   Exchange[
+         ExchangePattern: InOnly, 
+         BodyType: String, 
+         Body: 
+            {"coord":
+              {"lon":-5.9761,"lat":37.3824},
+              "weather":[
+                {
+                  "id":804,
+                  "main":"Clouds",
+                  "description":"overcast clouds",
+                  "icon":"04d"
+                }],
+              "base":"stations",
+              "main":
+                {
+                  "temp":293.64,
+                  "feels_like":293.68,
+                  "temp_min":292.59,
+                  "temp_max":294.26,
+                  "pressure":1003,
+                  "humidity":74
+                },
+              "visibility":7150,
+              "wind":{"speed":3.13,"deg":225,"gust":8.49},
+              "clouds":{"all":100},
+              "dt":1619448268,
+              "sys":{
+                "type":3,"id":2011488,
+                "country":"ES","sunrise":1619415275,
+                "sunset":1619464109},
+              "timezone":7200,"id":2510911,"name":"Seville","cod":200}
+   ]
+
+            </code></pre>
+            <pre style="float:left"><code class="language-js" data-noescape>
+from("timer:weathertest")
+  .to("weather:foo?location=Sevilla,Spain&appid={{TOKEN}}&geolocationAccessKey={{TOKEN}}")
+  .to("log:info");
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>In this example we are going to call an external service that will give us back the weather in Seville. The result is a JSON that we could use in a later step to extract for example the temperature. Being a JSON, Camel understands it and knows how to parse it and we could directly use some of the attributes in the successive steps instead of having to write the entire processing function. </p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:right;margin-top:8%"><code class="language-java" data-noescape>
+                public class ChatBotLogic {
+                    public String chatBotProcess(String message) {
+                        if( "do-not-reply".equals(message) ) {
+                            return null; // no response in the chat
+                        }
+
+                        return "Received " + message;
+                    }
+                }
+            </code></pre>
+            <pre style="float:left;margin-top:8%;"><code class="language-js" data-noescape>
+from("telegram:bots?authorizationToken={{TELEGRAM_BOT_TOKEN}}")
+  .bean(ChatBotLogic.class)
+  .to("telegram:bots?authorizationToken={{TELEGRAM_BOT_TOKEN}}");
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>In this example we have implemented a simple telegram bot that responds with the same string that you send it. In order to implement this, we only need the token that telegram assigns us when creating a bot. We don't need to know how telegram bots work or what kind of calls to make to the API. If the API changes in the future, just update Camel and it will continue to work transparently. </p>
+            <p>The nice thing about using Camel in this case is that we can even forget that it is a bot specifically from Telegram and focus on what is specific to our use case, which is what to answer. If tomorrow instead of a telegram bot we want it to be a bot on a website, we would only have to change the from and to, the rest would remain the same. We cannot ask for it to be more decoupled. </p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/me.webp">
+          <article>
+            <h3>Coding time</h3>
+            <pre style="float:left;margin-top:8%;margin-left:1%"><code class="language-js" data-noescape>
+from("paho-mqtt5://{{APP_ID}}/devices/{{DEVICE_ID}}/up?host=" + broker)
+  .unmarshal().json(JsonLibrary.Gson, Device.class)
+  .setBody().simple("The device ${body.name} is a ${body.description}.")
+  .setHeader("CamelTelegramChatId", constant("{{MY_CHAT_ID}}"))
+  .to("telegram:bots?authorizationToken={{TELEGRAM_BOT_TOKEN}}");
+            </code></pre>
+            <pre style="float:right;margin-right:1%"><code class="language-json" data-noescape>
+   {
+  "ids": {
+    "device_id": "my-device",
+    "dev_eui": "0102030405060708",
+    "join_eui": "0102030405060708"
+  },
+  "name": "My Device",
+  "description": "Living room temperature sensor",
+  "lorawan_version": "MAC_V1_0_2",
+  "lorawan_phy_version": "PHY_V1_0_2_REV_B",
+  "frequency_plan_id": "EU_863_870_TTN",
+  "supports_join": true,
+  "root_keys": {
+    "app_key": {
+      "key": "01020304050607080102030405060708"
+    }
+  }
+}
+            </code></pre>
+          </article>
+          <aside class="notes">
+            <p>In this case we have created an integration that is listening on a typical IoT message queue like The Things Network. The Things Network (TTN) is an open global LoRaWAN network that if you do not know it and are interested in this whole world of IoT, it is interesting to take a look. In addition to being an open collaborative network where the information of the devices is shared, it is intended that everything that connects to said network is open source and with free hardware. </p>
+            <p>When an event arrives, it parses that response and sends the name and description of the device that generated the event to a specific telegram chat. As you can see, we have not even needed to implement a process since what Camel receives is a JSON that knows how to parse it and can generate the body of the message to send to Telegram using attributes of said JSON. </p>
+            <p>This is an example that Apache Camel can be used even if you don't know how to program. And if you want to change the telegram bot by saving the data in a database or sending an email or whatever comes to mind, simply by changing that line of the workflow, everything would continue to work just as well and decoupled. We have assembled with five lines of code something that without Apache Camel there would be a minimum of 5 code files between connectors, parsers and others. </p>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/me2.webp">
+          <article>
+            <h1>Questions?</h1>
+            <p>You can find more information about Apache Camel at</p>
+            <br/>
+            <p><a href="https://camel.apache.org/">https://camel.apache.org</a></p>
+            <br/>
+            <p>This presentation is published on</p>
+            <br/>
+            <p><span class="autofill-url"></span></p>
+            <br/>
+            <p>(you can see the notes by pushing 's')</p>
+          </article>
+          <aside class="notes">
+            <a href="https://delawen.com/2020/10/what-is-integration/">Más informacíon</a>
+          </aside>
+        </section>
+      </section>
+    </div>
+    <p class="autofill-url" style="z-index:99999;position:absolute;bottom:1px;left:5%;padding:2px;font-size:40%;background-color:rgba(255, 255, 255, 0.5)"></p>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+  
+         function getParams() {
+              var vars = [];
+              var parts = window.location.href.replace(/[?&]+([^&]+)/gi, 
+                function(m, key) {
+                  vars.push(key);
+              });
+              return vars;
+          };
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            controlsBackArrows: 'faded',
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            slideNumber: 'c/t',
+            showSlideNumber: 'print',
+            defaultTiming: 200,
+            showNotes: (getParams().includes("print-pdf")? "separate-page" : null),
+            plugins: [ RevealHighlight, RevealNotes, RevealSearch ]
+         });
+         Reveal.configure({ pdfMaxPagesPerSlide: 1 });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http") ) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+
+</body>
+</html>
