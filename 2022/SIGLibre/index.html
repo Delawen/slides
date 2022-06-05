@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>En las trincheras del FOSS || SIGLibre</title>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta charset="utf-8">
+      <meta name="title" property="og:title" content="En las trincheras del FOSS || SIGLibre"/>
+      <meta name="type" property="og:type" content="Presentation"/>
+      <meta name="image" property="og:image" content="https://delawen.com/wp-content/uploads/2020/02/photo5933938666424610391.png"/>
+      <meta name="description" property="og:description" content="What is the future of FOSS? Is it already the year of Linux on the desktop? What about the cloud?"/>
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/> 
+
+      <!-- Theme used for syntax highlighting of code -->
+      <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+      
+      <style>
+      .reveal section article {
+        background-color:#08188654;
+      }
+      </style>
+
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-image="imagenes/portada.webp">
+          <article>
+            <h1>En las trincheras del FOSS</h1>
+            <img src="imagenes/conference.webp"/>
+            <h4>María Arias de Reyna</h4>
+            <h6><a href="https://twitter.com/delawen">@delawen</a></h6>
+            <h6>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+          </article>
+        </section>
+    </section> 
+    <section>
+        <section data-background-image="imagenes/kittens.webp">
+          <article>
+            <h5>¿Quién soy?</h5>
+              <ul class="fa-ul" style="text-align:left;font-size:70%">
+                <li><i class="fa-li fa fa-beer"></i>19🐱🐱 Crazy Cat Lady</li>
+                <li style="font-size:150%"><i class="fa-li fa fa-linux"></i>Free and Open Source Advocate</li>
+                <li><i class="fa-li fa fa-university"></i>2008 Software Engineer</li>
+                <li><i class="fa-li fa fa-globe"></i>GeoSpatial world</li>
+                <li><i class="fa-li fa fa-globe"></i>2009 Dijkstra A* Witch</li>
+                <li><i class="fa-li fa fa-globe"></i>2012 Metadata Wrangler</li>
+                <li><i class="fa-li fa fa-globe"></i>2013 OSGeo Charter Member</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2017-2019 OSGeo President</li>
+                <li><i class="fa-li fa fa-beer"></i>2016 Women in Tech</li>
+                <li style="font-size:150%"><i class="fa-li fa fa-linux"></i>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></li>
+                <li><i class="fa-li fa fa-cubes"></i>2019 Integration Druid</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2019 Apache Camel contributor</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2020 Apache Software Foundation</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2021 Lead Kaoto Development</li>                
+                <li style="font-size:150%"><i class="fa-li fa fa-linux"></i>Java Champion</li>
+              </ul>
+            <img style="height:60%;position:absolute;top:20%;right:11%" src="imagenes/ygritte.webp"/>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/keyboard.webp" >
+          <img src="imagenes/negocio.svg"/>
+          <aside class="notes">
+            Hay varios modelos de negocio.
+          </aside>
+        </section>
+        <section data-background-image="imagenes/unikitty.webp" >
+          <img class="fragment" src="imagenes/negocio2.svg"/>
+          <aside class="notes">
+            <p>En el principio todo parecía muy bonito. El software libre estaba basado en idealismo utópico, en la libertad. El software libre promete una serie de libertades, y las cumple.</p>
+            <p>Pero esto cambia radicalmente la forma en la que trabajan las empresas. Ya el modelo de desarrollar una vez y vender una única vez cada vez tiene menos sentido. Y lo que se hace es compartir costes. </p>
+            <p>Pero es en esa última línea donde está el problema.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/fellowFOSSdevelopers.webp" >
+          <div class="fragment fade-in-then-out">
+            <p>https://theoatmeal.com/comics/exposure</p>
+            <img src="imagenes/exposure.webp"/>
+          </div>
+          <div class="fragment">
+          </div>
+          <aside class="notes">
+            <p>Lo que Víctor Olaya llamó las sanguijuelas del software.</p>
+            <p>Que si tienes tu empresa montada en, por ejemplo, Europa y te va bien y tienes más demanda que capacidad para atenderla y surge otra empresa en, yo que sé, Australia, que compite directamente contigo, tampoco es algo que te afecte directamente. Es más, mucha gente considera que es incluso bueno que haya empresas ofreciendo servicios alrededor de tu software aunque no contribuyan directamente, porque eventualmente eso genera una comunidad que acabará contribuyendo. Así que estas empresas que sólo venden servicios están promocionando tu software.</p>
+            <p>Pero claro, cuando la empresa que hace esto es una empresa grande, llamémosla, no sé como un bosque brasileño. Que tiene el músculo para sacarte del mercado y podría tener el músculo para contribuir y no quiere contribuir, eso te daña directamente. No te aporta nada y está ahogando a la comunidad que soporta este software.</p>
+            <p>Y podríamos empezar a hablar de licencias más o menos restrictivas que nos ayudarán a combatir estas sanguijuelas. Pero seamos realistas: el problema no está en el lado legal porque hacer licencias más restrictivas al final no es más que una carrera armamentística-legal contra estos elefantes.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/trash.webp" >
+          <div style="margin:auto;width:30%">
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">If u saw Lex Luthor do this in a Superman comic u would be like &quot;pshh way too over the top like not even a super villain would be this obvious&quot; <a href="https://t.co/tnqFH40qPX">https://t.co/tnqFH40qPX</a></p>&mdash; Elle Has Cats (@ellle_em) <a href="https://twitter.com/ellle_em/status/1403255346563584001?ref_src=twsrc%5Etfw">June 11, 2021</a></blockquote> 
+          </div>
+          <aside class="notes">
+            <p>El problema, al final, es el capitalismo. Pero no sólo para el software, sino para todas las industrias. Lo que pasa es que nosotros, como aristocracia obrera, podemos permitirnos el lujo de replantear la situación. Cuando la principal y casi única motivación para innovar, para generar empleo, para construir una empresa, es el capital, el dinero, siempre vamos a tener a alguien que se escurrirá por las rendijas de lo legal para aprovecharse de aquel que contribuye al bien común.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/unicorn.webp" >
+          <div class="fragment" style="background-color:#44444444;width:45%;height:30%;float:left;margin:1px;padding:1%">
+            <h3>Post Open Source Software</h3>
+            <img style="height:60%" src="imagenes/wtf.webp"/>
+          </div>
+          <div class="fragment" style="background-color:#44444444;width:45%;height:30%;float:left;margin:1px;padding:1%">
+            <h3>Ethical Software</h3>
+            <p>¿Cómo lo redacto?</p>
+          </div>
+          <div class="fragment" style="background-color:#44444444;width:45%;height:30%;float:left;margin:1px;padding:1%">
+            <h3>Open Core</h3>
+            <p>¿Qué impide a otra empresa hacer lo mismo con tu core?</p>
+          </div>
+          <div class="fragment" style="background-color:#44444444;width:45%;height:30%;float:left;margin:1px;padding:1%">
+            <h3>Licencias más estrictas</h3>
+            <p>GPLv3</p>
+            <p>AGPL</p>
+          </div>
+          <div class="fragment" style="background-color:#44444444;width:45%;height:30%;float:left;margin:1px;padding:1%">
+            <h3>Commons Clause</h3>
+            <p>No puedes venderlo si no añades algo</p>
+            <p>Openwashing</p>
+          </div>
+          <div class="fragment" style="background-color:#44444444;width:45%;height:30%;float:left;margin:1px;padding:1%">
+            <h3>Licencias personalizadas</h3>
+            <p>Sólo mi fundación/empresa puede usarlo</p>
+            <p>Libero con retardo</p>
+          </div>
+          <aside class="notes">
+          <p>Pero es que al final el problema sigue siendo que nuestro sistema económico premia a quien se aprovecha de los agujeros de las licencias para sacar enriquecerse .</p>
+          </aside>
+        </section>
+        <section data-background-size="contain" data-background-image="imagenes/parcheLicencia.webp" >          
+          <aside class="notes">
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/voynich.webp" >
+          <article>
+            <h2>Technology and the Virtues</h2>
+            <p>Shannon Vallor</p>
+            <ul style="text-align:left">
+              <li class="fragment highlight-current-blue" data-fragment-index="1">Honesty</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="2">Self-Control</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="3">Humility</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="4">Justice</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="5">Courage</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="6">Empathy</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="7">Care</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="8">Civility</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="9">Flexibility</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="10">Perspective</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="11">Magnanimity</li>
+              <li class="fragment highlight-current-blue" data-fragment-index="12">Technomoral Wisdom</li>
+            </ul>
+            <p class="fragment fade-out" data-fragment-index="1" style="position:absolute;right:12%;bottom:5%;width:40%;height:50%">
+               <img src="imagenes/technologyAndTheVirtues.webp"/>
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="1" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Respeto a la verdad. Integridad. Evitar infoxicación, la información falsa. Ser transparente. Respeto a la privacidad. Decir la verdad por las razones adecuadas.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="2" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Centrarnos en lo realmente importante y evitar las distracciones (juegos, apuestas,...). No consumir a lo loco. Hacer un esfuerzo explícito por la diversidad para incluír a todo el mundo.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="3" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Saber que no lo sabemos todo. Efecto mariposa. Ni seamos pesimistas y frenemos la innovación ni nos acomodemos pensando que la tecnología nos salvará de nuestros errores.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="4" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               La misma tecnología puede usarse para el bien y para el mal. 
+               <img src="imagenes/jurassicpark.webp"/>
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="5" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               El bien común va por delante de todo. En caso de duda, escoge el mal menor.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="6" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Compartir sentimientos (propios y ajenos). Ponernos en zapatos ajenos. ¿Salimos más empáticos tras el COVID?
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="7" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Ser emocionalmente vulnerable para responder a las necesidades propias y de los demás. Origen en el feminismo. Somos co-dependientes de nuestro entorno.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="8" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Construir el bien común. Contribuir a la sociedad para bien. Parar al que hace daño. Trabajo de cuidados.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="9" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Ser bueno con los buenos y malo con los malos. Jakuna Matata quedó desfasado. Estamos todos juntos en esto. 
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="10" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               No somos homogéneos, hay diferentes culturas y sociedades. Tenemos que tener en cuenta a todas ellas para escoger la opción correcta.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="11" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Nobleza de espíritu. Liderazgo humano, cercano, empático. Aspiración utópica, pero cuidado con el narcisismo y el complejo de Mesías.
+            </p>
+            <p class="fragment fade-in-then-out" data-fragment-index="12" style="position:absolute;right:12%;bottom:1%;width:40%;height:40%">
+               Hay que practicar la moralidad para tener la experiencia y la soltura para poder aplicarla. La teoría sin práctica no sirve.
+            </p>
+          </article>
+          
+          <aside class="notes">
+            <p>Cambio de paradigma, no de licencia</p>
+            <p>https://facctconference.org/</p>
+            <p>https://www.darkpattern.games/</p>
+            <p>Economía basada en recursos</p>
+            <p>Fully Automated Luxury Communism</p>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="../GuillenaDigital/imagenes/kittyhasaquestion.webp">
+          <article>
+            <h1>Invito a abrir el debate</h1>
+            <br/>
+            <br/>
+            <br/>
+            <p>Me podéis encontrar como @delawen en varias redes sociales.</p>
+            <p>Y en persona en esta misma conferencia.</p>
+            <br/>
+            <br/>
+            <p>Este contenido está publicado en</p>
+            <p><span class="autofill-url">Porque yo tampoco tengo todas las respuestas.</span></p>
+          </article>
+        </section>
+      </section>
+    </div>
+    <p class="autofill-url" style="z-index:99999;position:absolute;bottom:1px;left:5%;padding:2px;font-size:40%;background-color:rgba(255, 255, 255, 0.5)"></p>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+  
+         function getParams() {
+              var vars = [];
+              var parts = window.location.href.replace(/[?&]+([^&]+)/gi, 
+                function(m, key) {
+                  vars.push(key);
+              });
+              return vars;
+          };
+          
+
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            slideNumber: 'c/t',
+            showSlideNumber: 'print',
+            pdfMaxPagesPerSlide: 1,
+            showNotes: (getParams().includes("print-pdf")? "separate-page" : null),
+            plugins: [ RevealHighlight, RevealNotes, RevealSearch ]
+         });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http") ) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+  <script>
+        function setSlideTimer() {
+          time = 25 * 60;
+          nslides = Reveal.getSlides().length;
+          timeperslide = time / nslides;
+          Reveal.configure({ defaultTiming: timeperslide });
+        } 
+        setTimeout(setSlideTimer, 1000);
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>           
+</body>
+</html>
