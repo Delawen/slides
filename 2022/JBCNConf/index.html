@@ -77,6 +77,36 @@ This is a good talk if you want to see Quarkus in a real use case."/>
             </div>
             <img style="width:30vw;float:right;padding-right:10vw" src="imagenes/ygritte.webp"/>
         </section>
+        <section>
+          <article>
+              <h3>How did I get here?</h3>
+              <h4>Low code and No code integration editor</h4>
+              <img style="height:65vh;width:65vw" src="imagenes/kaoto.webp"/>
+          </article>
+        </section>
+        <section>
+          <article>
+              <h3>How did I get here?</h3>
+              <div style="width:50vw;display:inline">
+                <div style="width:15vw;float:left;margin-left:35vw">
+                  <ul>
+                    <li>JDK 8~9</li>
+                    <li>Regular Java</li>
+                    <li>Imperative</li>
+                    <li>War deployed on Tomcat</li>
+                  </ul>
+                </div>
+                <div style="width:15vw;float:left">
+                  <ul>
+                    <li>JDK 17</li>
+                    <li>Quarkus</li>
+                    <li>Reactive</li>
+                    <li>Knative deployment</li>
+                  </ul>
+                </div>
+              </div>
+          </article>
+        </section>
       </section>
       <section>
         <header>Quarkus in a Nutshell</header>
@@ -128,7 +158,7 @@ This is a good talk if you want to see Quarkus in a real use case."/>
                 </li>
                 <li class="fragment">Debug in native mode</li>
               </ul>
-              <video class="fragment" style="width:30vw" loop="true" autoplay="true">
+              <video style="width:30vw" loop="true" autoplay="true">
                 <source src="imagenes/noidea.webm" type="video/webm"/>
               </video>
             </div>
@@ -144,9 +174,360 @@ This is a good talk if you want to see Quarkus in a real use case."/>
         </section>
         <section>
           <article>
-            <div style="width:50%;padding-left: 25%;text-align:left">
-              <h3>Maven MultiProject</h3>
-              
+            <h3>Maven MultiProject</h3>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Compilation in native mode didn't work... at first</li>
+                <li>Why? They work independently!</a>
+              </ul>
+              <pre style="width:30vw">
+Error: Substitution target for io.quarkus.runtime.generated.Target_org_jboss_logmanager_Logger is not loaded.
+Use field `onlyWith` in the `TargetClass` annotation to make substitution only active when needed.
+              </pre>
+              <pre style="width:30vw">
+com.oracle.svm.core.util.UserError$UserException: Substitution target for io.quarkus.runtime.generated.
+Target_org_jboss_logmanager_Logger is not loaded. Use field `onlyWith` in the `TargetClass` annotation 
+to make substitution only active when needed.
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Maven MultiProject</h3>
+            <h4>Don't do native compilation on all of the projects.</h4>
+            <p>Don't be me.</p>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Remove the native profile in all the pom.xml</li>
+                <li>Except from the last one</a>
+              </ul>
+              <pre style="width:30vw">
+                <code>
+                  <profiles>
+                    <profile>
+                        <id>native</id>
+                        <activation>
+                            <property>
+                                <name>native</name>
+                            </property>
+                        </activation>
+                        <properties>
+                            <quarkus.package.type>native</quarkus.package.type>
+                        </properties>
+                    </profile>
+                  </profiles>
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Maven MultiProject</h3>
+            <h4>Missing Beans in native mode</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Errors that only happen in native mode... again</li>
+              </ul>
+              <pre style="width:30vw">
+feb 02, 2022 11:22:19 A. M. io.quarkus.runtime.ApplicationLifecycleManager run
+ERROR: Failed to start application (with profile prod)
+java.lang.ClassNotFoundException: org.objectweb.asm.ClassVisitor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at io.smallrye.config.ConfigMappingInterface.getClassBytes(ConfigMappingInterface.java:152)
+	at io.smallrye.config.ConfigMappingLoader.loadClass(ConfigMappingLoader.java:98)
+	at io.smallrye.config.ConfigMappingLoader.getImplementationClass(ConfigMappingLoader.java:81)
+	at io.smallrye.config.ConfigMappingLoader$1.computeValue(ConfigMappingLoader.java:20)
+	at io.smallrye.config.ConfigMappingLoader$1.computeValue(ConfigMappingLoader.java:17)
+	at java.base/java.lang.ClassValue.getFromHashMap(ClassValue.java:228)
+	at java.base/java.lang.ClassValue.getFromBackup(ClassValue.java:210)
+	at java.base/java.lang.ClassValue.get(ClassValue.java:116)
+	at io.smallrye.config.ConfigMappingLoader.configMappingObject(ConfigMappingLoader.java:57)
+	at io.smallrye.config.ConfigMappingContext.constructGroup(ConfigMappingContext.java:80)
+	at io.kaoto.backend.api.metadata.catalog.ViewDefinitionRepository1270545574Impl.&lt;init>(Unknown Source)
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Maven MultiProject</h3>
+            <h4>Missing Beans in native mode</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Don't forget your <a href="https://quarkus.io/guides/cdi-reference#how-to-generate-a-jandex-index">Jandex index</a></li>
+                <li><a href="https://stackoverflow.com/questions/55513502/how-to-create-a-jandex-index-in-quarkus-for-classes-in-a-external-module">StackOverflow with more information</a></li>
+              </ul>
+              <pre style="width:30vw">
+                <code>
+                  <plugin>
+                    <groupId>org.jboss.jandex</groupId>
+                    <artifactId>jandex-maven-plugin</artifactId>
+                    <version>1.2.1</version>
+                    <executions>
+                          <execution>
+                              <id>make-index</id>
+                              <goals>
+                                  <goal>jandex</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Context and Dependency Injections and Bean discovery</h3>
+            <h4>Autowired injected beans</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Built in <a href="https://quarkus.io/guides/cdi">CDI</a></li>
+                <li>Based on <a href="https://jakarta.ee/specifications/cdi/2.0/cdi-spec-2.0.html">Jakarta Contexts and Dependency Injection 2.0</a> standard</li>
+                <li>ApplicationScoped, Singleton, RequestScoped, Dependent, SessionScoped</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>
+@ApplicationScoped
+public class ClusterService {
+
+   @Inject
+    MyOtherBean beanybeany; 
+
+    @Counted  
+    String translate(String sentence) {
+      System.out.println("Interceptor binding annotation from MicroProfile");
+    }
+    
+    @PostConstruct
+    void init() {
+      System.out.println("Hello there!");
+    }
+    
+    @PreDestroy
+    void init() {
+      System.out.println("My revenge will be terrible.");
+    }
+
+}
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Context and Dependency Injections and Bean discovery</h3>
+            <h4>Injection of lists of beans</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li class="fragment">Note the @Startup</li>
+                <li>Exactly one bean must be assignable to an injection point, otherwise the build fails.</li>
+                <li>This is resolved on build time, you should know better.</li>
+                <li>But you can always inject a list of beans of the same type</li>
+                <li>javax.enterprise.inject.Instance extends Iterable</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>
+@Startup
+@ApplicationScoped
+public class StepCatalog extends AbstractCatalog {
+
+    private Instance&lt;StepCatalogParser> stepCatalogParsers;
+    
+    
+    @Inject
+    public void setStepCatalogParsers(
+            final Instance&lt;StepCatalogParser> stepCatalogParsers) {
+        this.stepCatalogParsers = stepCatalogParsers;
+    }
+    
+     @Inject 
+    void multipleBeans(OneBean one, AnotherBean another) { 
+         this.one = one;
+         this.another = another;
+    }
+}
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Marshall and Unmarshall</h3>
+            <h4>Because I like magic</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li class="fragment">Note the <span style="font-weight:bolder">@RegisterForReflection</span></li>
+                <li>Polymorphic unmarshalling</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>             
+@RegisterForReflection
+public class MyObjectDeserializer implements JsonbDeserializer {
+
+    private static final Jsonb JSONB = JsonbBuilder.create();
+
+    @Override
+    public MyObject deserialize(final JsonParser parser,
+                                 final DeserializationContext context,
+                                 final Type rtType) {
+
+        String type = parser.getObject().toString().getString("type");
+
+        switch (type) {
+            case "patata":
+            ...
+            }
+}
+                </code>
+              </pre>
+              <pre style="width:30vw">
+                <code>             
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Patata.class, name = "patata"),
+        @JsonSubTypes.Type(value = Poteito.class, name = "potato")})
+//This is a workaround utility class until Quarkus supports fully polymorphism
+@JsonbTypeDeserializer(MyObjectDeserializer.class)
+public abstract class MyObject implements Cloneable {
+...
+}
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Reactive</h3>
+            <img style="border: 1px solid #888" src="imagenes/cryingInReactive.webp"/>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Do nothing on the main thread</li>
+                <li>Always promise the future in return</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>
+
+    public CompletableFuture&lt;List&lt;T>> doIt() {
+        CompletableFuture&lt;List&lt;T>> res = new CompletableFuture<>();
+        res.completeAsync(() -> doItSlowly());
+        return res;
+    }
+    
+    public void doItAndwait() {
+        doIt().join();
+    }
+
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Reactive</h3>
+            <h4>What if my endpoint returns a slow response?</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Or a stream?!!</li>
+              </ul>
+              <pre style="width:30vw">
+WARNING [io.ver.cor.imp.BlockedThreadChecker] (vertx-blocked-thread-checker) 
+Thread Thread[vert.x-eventloop-thread-10,5,main]=Thread[vert.x-eventloop-thread-10,5,main] has been blocked for 4827 ms,
+time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
+              </pre>
+              <pre style="width:30vw" class="fragment">
+                <code>
+    @NoCache
+    @Path("/{name}/logs")
+    @Produces(MediaType.TEXT_PLAIN)
+    @GET
+    @Operation(summary = "Get logs",
+            description = "Get the resource's log.")
+    @Blocking
+    public Multi&lt;String> logs(
+            final @Parameter(description = "Name of the resource "
+                    + "of which logs should be retrieved.")
+            @PathParam("name") String name,
+            final @Parameter(description = "Namespace of the cluster "
+                    + "where the resource is running.")
+            @QueryParam("namespace") String namespace,
+            final @Parameter(description = "Number of last N lines to be "
+                    + "retrieved.")
+            @QueryParam("lines") int lines) {
+
+        return clusterService.streamlogs(namespace, name, lines);
+
+    }
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Tests</h3>
+            <h4>Always run them in native mode too</h4>
+            
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Don't forget the @QuarkusTest annotation</li>
+                <li>@TestHTTPEndpoint is your friend</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>
+@QuarkusTest
+@TestHTTPEndpoint(IntegrationResource.class)
+class IntegrationResourceTest {
+
+    @Test
+    void thereAndBackAgain() throws URISyntaxException, IOException {
+
+
+        var res = given()
+                .when()
+                .contentType("application/json")
+                .body(Collections.emptyList())
+                .post("/dsls")
+                .then()
+                .statusCode(Response.Status.OK.getStatusCode());
+        List&lt;String> dsls =
+                mapper.readValue(res.extract().body().asString(), List.class);
+        assertFalse(dsls.isEmpty());
+    }
+
+}
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Keep Quarkus upgraded</h3>
+            <h4>Always keep the state of the art far from your code</h4>
+            
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Quarkus is moving fast, don't be left behind</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>             
+        <!-- Quarkus version -->
+        <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+        <quarkus.platform.version>2.10.2.Final</quarkus.platform.version>
+        <quarkus-plugin.version>${quarkus.platform.version}</quarkus-plugin.version>
+                </code>
+              </pre>
+            </div>
           </article>
         </section>
       </section>
