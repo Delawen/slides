@@ -119,7 +119,7 @@ This is a good talk if you want to see Quarkus in a real use case."/>
           <article style="text-align:left;font-size:120%">
             <div style="width:25vw;padding-left:20vw;float:left">
               <h3>Pros</h3>
-              <ul>
+              <ul style="font-size:180%">
                 <li class="fragment">Incredibly fast</li>
                 <li class="fragment">Easy dependency management
                   <ul>
@@ -137,12 +137,17 @@ This is a good talk if you want to see Quarkus in a real use case."/>
                     <li>Developing and seeing changes in real time</li>
                   </ul>
                 </li>
+                <li class="fragment">Great Design Patterns
+                  <ul>
+                    <li>They are not enforced, but use them, for your own sanity</li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <div style="width:25vw;padding-right:20vw;float:right">
               <h3>Cons</h3>
-              <ul>
-                <li class="fragment">Fancy State of the Art
+              <ul class="fragment" style="font-size:140%">
+                <li>Fancy State of the Art
                   <ul>
                     <li>Good until you do something not implemented yet</li>
                     <ul>
@@ -150,7 +155,7 @@ This is a good talk if you want to see Quarkus in a real use case."/>
                     </ul>
                   </ul>
                 </li>
-                <li class="fragment">No Reflection
+                <li>No Reflection
                   <ul>
                     <li>Arc allows you to inject at build time</li>
                   </ul>
@@ -174,16 +179,17 @@ This is a good talk if you want to see Quarkus in a real use case."/>
         <section>
           <article>
             <h3>Maven MultiProject</h3>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Compilation in native mode didn't work... at first</li>
                 <li>Why? They work independently!</a>
+                <li>I followed the quickstart in quarkus.io, you must work!</a>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:30vw;padding-top:3vh">
 Error: Substitution target for io.quarkus.runtime.generated.Target_org_jboss_logmanager_Logger is not loaded.
 Use field `onlyWith` in the `TargetClass` annotation to make substitution only active when needed.
               </pre>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
 com.oracle.svm.core.util.UserError$UserException: Substitution target for io.quarkus.runtime.generated.
 Target_org_jboss_logmanager_Logger is not loaded. Use field `onlyWith` in the `TargetClass` annotation 
 to make substitution only active when needed.
@@ -196,12 +202,12 @@ to make substitution only active when needed.
             <h3>Maven MultiProject</h3>
             <h4>Don't do native compilation on all of the projects.</h4>
             <p>Don't be me.</p>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Remove the native profile in all the pom.xml</li>
                 <li>Except from the last one</a>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>
                   <profiles>
                     <profile>
@@ -225,11 +231,11 @@ to make substitution only active when needed.
           <article>
             <h3>Maven MultiProject</h3>
             <h4>Missing Beans in native mode</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Errors that only happen in native mode... again</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
 feb 02, 2022 11:22:19 A. M. io.quarkus.runtime.ApplicationLifecycleManager run
 ERROR: Failed to start application (with profile prod)
 java.lang.ClassNotFoundException: org.objectweb.asm.ClassVisitor
@@ -255,12 +261,12 @@ java.lang.ClassNotFoundException: org.objectweb.asm.ClassVisitor
           <article>
             <h3>Maven MultiProject</h3>
             <h4>Missing Beans in native mode</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Don't forget your <a href="https://quarkus.io/guides/cdi-reference#how-to-generate-a-jandex-index">Jandex index</a></li>
                 <li><a href="https://stackoverflow.com/questions/55513502/how-to-create-a-jandex-index-in-quarkus-for-classes-in-a-external-module">StackOverflow with more information</a></li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>
                   <plugin>
                     <groupId>org.jboss.jandex</groupId>
@@ -284,13 +290,13 @@ java.lang.ClassNotFoundException: org.objectweb.asm.ClassVisitor
           <article>
             <h3>Context and Dependency Injections and Bean discovery</h3>
             <h4>Autowired injected beans</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Built in <a href="https://quarkus.io/guides/cdi">CDI</a></li>
                 <li>Based on <a href="https://jakarta.ee/specifications/cdi/2.0/cdi-spec-2.0.html">Jakarta Contexts and Dependency Injection 2.0</a> standard</li>
                 <li>ApplicationScoped, Singleton, RequestScoped, Dependent, SessionScoped</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>
 @ApplicationScoped
 public class ClusterService {
@@ -323,7 +329,7 @@ public class ClusterService {
           <article>
             <h3>Context and Dependency Injections and Bean discovery</h3>
             <h4>Injection of lists of beans</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li class="fragment">Note the @Startup</li>
                 <li>Exactly one bean must be assignable to an injection point, otherwise the build fails.</li>
@@ -331,7 +337,7 @@ public class ClusterService {
                 <li>But you can always inject a list of beans of the same type</li>
                 <li>javax.enterprise.inject.Instance extends Iterable</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>
 @Startup
 @ApplicationScoped
@@ -361,12 +367,12 @@ public class StepCatalog extends AbstractCatalog {
           <article>
             <h3>Marshall and Unmarshall</h3>
             <h4>Because I like magic</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li class="fragment">Note the <span style="font-weight:bolder">@RegisterForReflection</span></li>
                 <li>Polymorphic unmarshalling</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>             
 @RegisterForReflection
 public class MyObjectDeserializer implements JsonbDeserializer {
@@ -387,7 +393,7 @@ public class MyObjectDeserializer implements JsonbDeserializer {
 }
                 </code>
               </pre>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>             
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Patata.class, name = "patata"),
@@ -406,12 +412,12 @@ public abstract class MyObject implements Cloneable {
           <article>
             <h3>Reactive</h3>
             <img style="border: 1px solid #888" src="imagenes/cryingInReactive.webp"/>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Do nothing on the main thread</li>
                 <li>Always promise the future in return</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>
 
     public CompletableFuture&lt;List&lt;T>> doIt() {
@@ -433,16 +439,16 @@ public abstract class MyObject implements Cloneable {
           <article>
             <h3>Reactive</h3>
             <h4>What if my endpoint returns a slow response?</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Or a stream?!!</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
 WARNING [io.ver.cor.imp.BlockedThreadChecker] (vertx-blocked-thread-checker) 
 Thread Thread[vert.x-eventloop-thread-10,5,main]=Thread[vert.x-eventloop-thread-10,5,main] has been blocked for 4827 ms,
 time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
               </pre>
-              <pre style="width:30vw" class="fragment">
+              <pre style="width:60vw" class="fragment">
                 <code>
     @NoCache
     @Path("/{name}/logs")
@@ -472,15 +478,20 @@ time limit is 2000 ms: io.vertx.core.VertxException: Thread blocked
         </section>
         <section>
           <article>
+            <h3>Dev console dashboard by default</h3>
+            <img src="imagenes/dev-ui-overview.webp"/>
+          </article>
+        </section>
+        <section>
+          <article>
             <h3>Tests</h3>
             <h4>Always run them in native mode too</h4>
-            
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Don't forget the @QuarkusTest annotation</li>
                 <li>@TestHTTPEndpoint is your friend</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>
 @QuarkusTest
 @TestHTTPEndpoint(IntegrationResource.class)
@@ -512,7 +523,7 @@ class IntegrationResourceTest {
           <article>
             <h3>Tests</h3>
             <h4>Smart TestContainers</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Automatic provisioning of unconfigured services</li>
                 <li>Databases, Kubernetes, Messaging,...</li>
@@ -525,11 +536,11 @@ class IntegrationResourceTest {
           <article>
             <h3>Tests</h3>
             <h4>Kubernetes too</h4>
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Via fabric8</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>             
 @WithKubernetesTestServer
 @QuarkusTest
@@ -551,7 +562,7 @@ class ClusterServiceTest {
         <section>
           <article>
             <h3>Keep Quarkus upgraded</h3>            
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Because in the frontier of Development, you sometimes forget you already fixed something</li>
               </ul>
@@ -564,11 +575,11 @@ class ClusterServiceTest {
           <article>
             <h3>Keep Quarkus upgraded</h3>
             <h4>Add a buffer between the State of the Art and your code</h4>            
-            <div style="width: 40vw;margin-left:30vw">
+            <div style="width:50vw;margin-left:20vw">
               <ul>
                 <li>Quarkus is moving fast, don't be left behind</li>
               </ul>
-              <pre style="width:30vw">
+              <pre style="width:60vw">
                 <code>             
         <!-- Quarkus version -->
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
