@@ -48,7 +48,6 @@ This is a good talk if you want to see Quarkus in a real use case."/>
         <section>
           <article>
             <div  style="font-size:150%;width:40vw;float:left;padding-left:10vw">
-              <h3>How did I get here?</h3>
               <ul>
                 <li>19🐱🐱 Crazy Cat Lady</li>
                 <li style="font-weight:bold">Free and Open Source Advocate</li>
@@ -79,16 +78,16 @@ This is a good talk if you want to see Quarkus in a real use case."/>
         </section>
         <section>
           <article>
-              <h3>How did I get here?</h3>
+              <h3>Kaoto.io</h3>
               <h4>Low code and No code integration editor</h4>
               <img style="height:65vh;width:65vw" src="imagenes/kaoto.webp"/>
           </article>
         </section>
         <section>
           <article>
-              <h3>How did I get here?</h3>
-              <div style="width:50vw;display:inline">
-                <div style="width:15vw;float:left;margin-left:35vw">
+              <h3>Before and After</h3>
+              <div style="display:inline;font-size:200%">
+                <div style="width:25vw;float:left;margin-left:30vw">
                   <ul>
                     <li>JDK 8~9</li>
                     <li>Regular Java</li>
@@ -96,7 +95,7 @@ This is a good talk if you want to see Quarkus in a real use case."/>
                     <li>War deployed on Tomcat</li>
                   </ul>
                 </div>
-                <div style="width:15vw;float:left">
+                <div style="width:25vw;float:left">
                   <ul>
                     <li>JDK 17</li>
                     <li>Quarkus</li>
@@ -511,9 +510,60 @@ class IntegrationResourceTest {
         </section>
         <section>
           <article>
-            <h3>Keep Quarkus upgraded</h3>
-            <h4>Always keep the state of the art far from your code</h4>
+            <h3>Tests</h3>
+            <h4>Smart TestContainers</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Automatic provisioning of unconfigured services</li>
+                <li>Databases, Kubernetes, Messaging,...</li>
+                <li>Configuration (port, host, version?) in properties</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Tests</h3>
+            <h4>Kubernetes too</h4>
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Via fabric8</li>
+              </ul>
+              <pre style="width:30vw">
+                <code>             
+@WithKubernetesTestServer
+@QuarkusTest
+class ClusterServiceTest {
             
+    @Inject
+    public void setKubernetesClient(final KubernetesClient kubernetesClient) {
+        this.kubernetesClient = kubernetesClient;
+    }
+    
+    private KubernetesClient kubernetesClient;
+    
+}
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Keep Quarkus upgraded</h3>            
+            <div style="width: 40vw;margin-left:30vw">
+              <ul>
+                <li>Because in the frontier of Development, you sometimes forget you already fixed something</li>
+              </ul>
+            </div>
+            <img style="border: 1px solid #888;height:70vh" src="imagenes/rcortez.webp"/>
+            <img class="fragment" style="border: 1px solid #888;margin-bottom:40vh" src="imagenes/dearPastMe.webp"/>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Keep Quarkus upgraded</h3>
+            <h4>Add a buffer between the State of the Art and your code</h4>            
             <div style="width: 40vw;margin-left:30vw">
               <ul>
                 <li>Quarkus is moving fast, don't be left behind</li>
@@ -607,7 +657,7 @@ class IntegrationResourceTest {
   </script>
   <script>
         function setSlideTimer() {
-          time = 25 * 60;
+          time = 50 * 60;
           nslides = Reveal.getSlides().length;
           timeperslide = time / nslides;
           Reveal.configure({ defaultTiming: timeperslide });
