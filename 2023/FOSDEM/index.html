@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Data flowing the right way || FOSDEM</title>
+      <meta name="author" content="María Arias de Reyna Domínguez"/>
+      <meta charset="utf-8">
+      <meta name="title" property="og:title" content="Data flowing the right way || Implementing data workflows in low code/no code"/>
+      <meta name="type" property="og:type" content="Presentation"/>
+      <meta name="image" property="og:image" content="https://delawen.com/wp-content/uploads/2020/02/photo5933938666424610391.png"/>
+      <meta name="description" property="og:description" content="Our software is fueled by data; we need to move data from one place to another, transform it, process it, analyze it. When we have to interconnect different decoupled components (databases, web services, streams,...), we usually write scriptish code as middleware to implement the flow of data. On this custom code, we are coupling something that should be decoupled. Could it be possible to decouple the systems while they are connected? Is there a set of good practices to implement orchestrations without reinventing the wheel?
+
+Integration Processes are the glue between these software components. Automating workflows, adding conditional steps, transforming the data, calling APIs,... That's usually a tedious and repetitive task lots of developers do again and again. With Kaoto as a visual editor and Apache Camel as the underlying integration framework, we can make it simpler and reuse expertise from other developers. We could even build entire workflows without throwing a single line of code."/>
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+      <link rel="stylesheet" href="../../stylesheets/common.css"/>
+      <link rel="stylesheet" href="../../stylesheets/redhat.css" id="theme"/> 
+
+      <!-- Theme used for syntax highlighting of code -->
+      <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+    </head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-image="imagenes/portada.webp">
+          <article>
+            <h1>Data flowing the right way</h1>
+            <h4>María Arias de Reyna</h4>
+            <h6><a href="https://floss.social/@delawen">@delawen@floss.social</a></h6>
+            <h6>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></h6>
+          </article>
+        </section>
+    </section> 
+    <section>
+        <section data-background-image="imagenes/kittens.webp">
+          <article>
+            <h5>Who am I?</h5>
+              <ul class="fa-ul" style="text-align:left;font-size:70%">
+                <li><i class="fa-li fa fa-beer"></i>19🐱🐱 Crazy Cat Lady</li>
+                <li style="font-size:150%"><i class="fa-li fa fa-linux"></i>Free Libre and Open Source Enthusiast</li>
+                <li><i class="fa-li fa fa-university"></i>2008 Software Engineer</li>
+                <li><i class="fa-li fa fa-globe"></i>GeoSpatial world</li>
+                <li><i class="fa-li fa fa-globe"></i>2009 Dijkstra A* Witch</li>
+                <li><i class="fa-li fa fa-globe"></i>2012 Metadata Wrangler</li>
+                <li><i class="fa-li fa fa-globe"></i>2013 OSGeo Charter Member</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2017-2019 OSGeo President</li>
+                <li><i class="fa-li fa fa-beer"></i>2016 Women in Tech</li>
+                <li style="font-size:150%"><i class="fa-li fa fa-linux"></i>Senior Software Engineer at <a href="https://www.redhat.com"><svg style="height:40px"  title="RedHat" id="bff6975a-7895-41ba-961f-0551f01536a3" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 611.84 144"><defs><style>.b185c6fe-daea-408b-9fe9-61f9c6069fbe{fill:#e00;}</style></defs><title>RedHat</title><path class="b185c6fe-daea-408b-9fe9-61f9c6069fbe" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8,76.38,8,71.42,2.4,65.17,2.4c-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.36,6.36,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" transform="translate(-0.5 -0.5)"></path><path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.46,18.46,0,0,1,1.51-7.33l3.66-9.06a6.42,6.42,0,0,0-.22,1.9c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z" transform="translate(-0.5 -0.5)"></path></svg></a></li>
+                <li><i class="fa-li fa fa-cubes"></i>2019 Integration Druid with Apache Camel</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2020 Apache Software Foundation</li>
+                <li style="margin-left:20px"><i class="fa-li fa fa-linux"></i>2021 Lead Kaoto.io</li>                
+                <li style="font-size:150%"><i class="fa-li fa fa-linux"></i>Java Champion</li>
+              </ul>
+            <img style="height:60%;position:absolute;top:20%;right:11%" src="imagenes/ygritte.webp"/>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/cencia.webp" >
+          <article>
+            <h2>What do we want?</h2>
+            <ul style="text-align:left">
+              <li>FAIR Data (Findable, Accessible, Interoperable and Reusable) </li>
+              <li>Reproducible science</li>
+            </ul>
+            <br/>
+            <p>How can we (developers) help?</p>
+          </article>
+          <aside class="notes">
+            <p>FAIR Data (Findable, Accessible, Interoperable and Reusable) </p>
+            <p>Reproducible Science</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/puzzle2.webp" >
+          <article>
+            <div style="text-align:left">
+              <h2>FAIR</h2>
+              <p style="padding-left:1%">Use standard formats</p>
+              <p style="padding-left:1%">Use standard protocols</p>
+              <p style="padding-left:5%;font-size:80%">Like INSPIRE</p>
+            </div>
+          </article>
+          <aside class="notes">
+            <p></p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/puzzle1.webp" >  
+          <article>
+            <div style="text-align: left">
+              <h2>Reproducible Science</h2>
+              <p style="padding-left:1%">Hand by hand with FOSS</p>
+              <p style="padding-left:5%;font-size:80%">Need to see and run the code</p>
+              <p class="fragment" style="padding-left:1%">Not all scientists are developers</p>
+              <p class="fragment" style="padding-left:5%;font-size:80%">The less code, the better</p>
+             </div>
+          </article>
+          <aside class="notes">
+            <p></p>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/lego.webp" >
+          <div style="position:relative;width:100%;height:100%">
+            <div style="position: absolute;top:0;left:0;width:100%;height:100%">
+              <img style="position:fixed;top:20%;left:40%" src="imagenes/apache-camel.webp" />
+            </div>
+            <div class="fragment fade-in-then-out" style="position:absolute;top:0;left:0;width:100%;height:100%">
+              <img style="position:fixed;top:50%;left:10%;width:80%" src="imagenes/schema.svg" />
+            </div>
+            <div class="fragment fade-in-then-out" style="position: absolute;top:0;left:0;width:100%;height:100%">
+              <img style="position:fixed;top:0%;left:10%;width:90%" src="imagenes/eip.webp" />
+            </div>
+            <div class="fragment fade-in-then-out" style="position: absolute;top:0;left:0;width:100%;height:100%">
+              <img style="position:fixed;top:50%;left:10%;width:80%" src="imagenes/schema2.svg" />
+            </div>
+            <div class="fragment fade-in-then-out" style="position: absolute;top:0;left:0;width:100%;height:100%">
+              <img style="position:fixed;top:40%;left:20%;width:60%" src="imagenes/bowels.svg" />
+            </div>
+          </div>
+          <aside class="notes">
+            <p>Apache Camel fits all the previous criteria. It supports more than 350 different components that covers most of the potential use cases you will ever need. But even if you need something very specific, you will find that implementing a component for that customized service or data format is also done in a decoupled way; allowing developers to still keep a clean architecture.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/puzzle.webp" >
+          <div style="position:relative;width:100%;height:100%">
+            <div style="position: absolute;top:0;left:0;width:80%;height:80%" class="fragment fade-out">
+              <img style="position:fixed;top:10%;left:10%;width:80%" src="imagenes/flux_diagram.svg" />
+            </div>
+            <article class="fragment">
+              <img style="width:40%;float:left" src="imagenes/flux_diagram.svg" />
+              <pre style="width:30%;float:left"> 
+                <code class="hljs" data-line-numbers="">//Start with a timer that executes the operation every 10 seconds
+from("timer:java?period=10000")
+      //Access the CSV file which can be on an api or storage device
+      .to("{{source.csv}}")
+      //unmarshal and split the workflow per row 
+      .unmarshal().split(body()).streaming()
+      //process each row through the following API
+      .to("https://nominatim.openstreetmap.org/reverse")
+      //the returned XML is also processed
+      .unmarshal().jacksonxml()
+      //Prepare an SQL query based on the result of the process
+      .setBody().simple("SELECT info FROM descriptions WHERE id like '${exchangeProperty.pollutant}'")
+      //send the SQL query to the database
+      .to("jdbc:postgresBean?readSize=1")
+      //reunite the parallel streams that started on the csv processing
+      .aggregate(constant(true), aggregationStrategy)
+      .completionSize(5)
+      //store the result in another database
+      .to("mongodb:mongoBean?database=example&collection=mySpatialObjects&operation=insert")
+                 </code>
+               </pre>
+            </article>
+          </div>
+          <aside class="notes">
+            <p>Apache Camel has a Domain Specific Language to define the relationships and workflows that run between components. This DSL simplifies the details of the middleware implementation in such a way that the developer can easily add and remove pieces of the orchestration without having to rebuild big parts of the code.  </p>
+            <p>This DSL is based on Javascript, but you can also use the same piece of code inside Java. Or you can rewrite it using YAML, XML, Groovy, or Kotlin.</p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/aliens.webp" >
+          <p style="font-size:200%">Low Code / No Code Integration Development</p>
+          <aside class="notes">
+            <p>kaoto.io </p>
+          </aside>
+        </section>
+        <section data-background-image="imagenes/kaoto.webp">
+          <article class="fragment">
+            <h2>Full no code, just drag and drop</h2>
+            <video loop="true" autoplay="true">
+              <source src="imagenes/kaoto.webm" type="video/webm"/>
+            </video>
+          </article>
+        </section>
+      </section>
+      <section>
+        <section data-background-image="imagenes/questions.webp">
+          <article>
+            <h1>Any Questions?</h1>
+            <br/>
+            <br/>
+            <br/>
+            <p>You can find me as @delawen on many platforms.</p>
+            <h6><a href="https://floss.social/@delawen">@delawen@floss.social</a></h6>
+            <br/>
+            <br/>
+            <p>The slides are on</p>
+            <p><span class="autofill-url"></span></p>
+          </article>
+        </section>
+      </section>
+    </div>
+    <p class="autofill-url" style="z-index:99999;position:absolute;bottom:1px;left:5%;padding:2px;font-size:40%;background-color:rgba(255, 255, 255, 0.5)"></p>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+  
+         function getParams() {
+              var vars = [];
+              var parts = window.location.href.replace(/[?&]+([^&]+)/gi, 
+                function(m, key) {
+                  vars.push(key);
+              });
+              return vars;
+          };
+          
+
+
+         // Full list of configuration options available here:
+         // https://github.com/hakimel/reveal.js#configuration
+         Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            touch: true,
+            hideAddressBar: true,
+            transition: 'slide',
+            width: '100%',
+            height: '100%',
+            slideNumber: 'c/t',
+            showSlideNumber: 'print',
+            pdfMaxPagesPerSlide: 1,
+            showNotes: (getParams().includes("print-pdf")? "separate-page" : null),
+            plugins: [ RevealHighlight, RevealNotes, RevealSearch ]
+         });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http") ) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+    
+    fillUrl(); 
+  </script>
+  <script>
+        function setSlideTimer() {
+          time = 40 * 60;
+          nslides = Reveal.getSlides().length;
+          timeperslide = time / nslides;
+          Reveal.configure({ defaultTiming: 300 });
+        }
+        setTimeout(setSlideTimer, 1000);
+  </script>
+
+</body>
+</html>
