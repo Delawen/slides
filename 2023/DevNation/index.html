@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kaoto: the low code and no code Apache Camel editor || DevNation</title>
+  <meta name="author" content="María Arias de Reyna Domínguez" />
+  <meta charset="utf-8">
+  <meta name="title" property="og:title" content="En las trincheras del FOSS || SIGLibre" />
+  <meta name="type" property="og:type" content="Presentation" />
+  <meta name="image" property="og:image"
+    content="https://delawen.com/wp-content/uploads/2020/02/photo5933938666424610391.png" />
+  <meta name="description" property="og:description"
+    content="On this talk we will showcase Kaoto: a visual low code and no code editor to create and deploy integration and orchestration workflows. It combines a graphic canvas and a source code editor which users can use indistinctly.
+
+Kaoto augments user productivity via Zero-ETL. It accelerates new users and helps experienced developers to quickly create, edit, and deploy their workflows while, at the same time, they can learn about the framework (Apache Camel) being used.
+
+Apache Camel is an open source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data. Based on Enterprise Integration Patterns to help you solve your integration problem by applying best practices out of the box. Camel is one of the the most active project in the Apache Foundation and is the base of many other FLOSS projects." />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../stylesheets/redhat2022.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-background-image="imagenes/conference.webp">
+          <article style="background-color:transparent" class="portada">
+            <h1 style="text-align:left; padding: 2%; padding-top: 20%">Kaoto</h1>
+            <h2 style="text-align:left; padding: 2%">The Low Code and No Code Apache Camel Editor</h2>
+            <div style="text-align:left; padding: 2%">
+              <p>María Arias de Reyna Domínguez</p>
+              <p style="text-align:left">@delawen@floss.social - @delawen</p>
+              <p style="text-align:left">Senior Software Engineer</p>
+              <p style="text-align:left">@kaoto@fosstodon.org - @KaotoIO</p>
+            </div>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Who am I?</header>
+        <section>
+          <article>
+            <div style="font-size:150%;width:40vw;float:left;padding-left:10vw">
+              <ul>
+                <li>19🐱🐱 Crazy Cat Lady</li>
+                <li style="font-weight:bold">Free and Open Source Advocate</li>
+                <li>2008 Software Engineer</li>
+                <li>GeoSpatial world</li>
+                <ul>
+                  <li>2009 Dijkstra A* Witch</li>
+                  <li>2012 Metadata Wrangler</li>
+                  <li>2013 OSGeo Charter Member</li>
+                  <ul>
+                    <li style="font-weight:bold">2017-2019 OSGeo President</li>
+                  </ul>
+                </ul>
+                <li>2016 Women in Tech</li>
+                <li style="font-weight:bold">Senior Software Engineer at Red Hat</li>
+                <ul>
+                  <li>2019 Integration Druid</li>
+                  <ul>
+                    <li>2019 Apache Camel contributor</li>
+                    <li>2020 Apache Software Foundation</li>
+                    <li style="font-weight:bold">2021 Lead Kaoto Development</li>
+                  </ul>
+                </ul>
+                <li style="font-weight:bold">Java Champion</li>
+              </ul>
+            </div>
+            <img style="width:30vw;float:right;padding-right:10vw" src="imagenes/ygritte.webp" />
+            <aside class="notes">
+              <p>I have been working with FOSS since the university. I started in the geospatial world but then moved
+                into the Integration space. </p>
+              <p>Since 2021 I am leading the development of Kaoto, a multi-DSL no code and low code flow editor, which
+                is what I'm going to present today.</p>
+            </aside>
+        </section>
+      </section>
+      <section>
+        <section>
+          <article>
+            <p style="font-weight:800;font-size:200%">Kaoto: the low code and no code editor for Apache Camel</p>
+            <p class="fragment" style="font-size:200%">Something: the blah and bleh for <span
+                style="font-weight:800;">Apache Camel</span></p>
+          </article>
+          <aside class="notes">
+            <p>Let's start by analyzing the title of this talk. It is full of words maybe some of you may not familiar
+              with, so I am going to explain bit by bit what they mean. </p>
+          </aside>
+        </section>
+        <section data-background-image="../../2022/FemTechConf/imagenes/puzzle2.webp">
+          <article style="background-color:transparent">
+            <div style="position:relative;width:100%;height:100%">
+              <div>
+                <img class="fragment fade-out" style="background-color:white;max-width:100%;height:100%"
+                  src="../../2022/FemTechConf/imagenes/Micro-Services.svg" />
+              </div>
+              <div class="fragment fade-in" style="position: absolute;top:0;left:0;width:100%;height:100%">
+                <img style="position:fixed;top:20%;left:40%" src="../../2022/FemTechConf/imagenes/apache-camel.webp" />
+              </div>
+              <div class="fragment fade-in-then-out" style="position: absolute;top:0;left:0;width:100%;height:100%">
+                <img style="position:fixed;top:50%;left:20%" src="../../2022/FemTechConf/imagenes/schema.svg" />
+              </div>
+              <div class="fragment fade-in-then-out">
+                <img style="position:fixed;top:5%;left:15%;height:80%" src="../../2022/FemTechConf/imagenes/eip.webp" />
+              </div>
+              <div class="fragment fade-in-then-out" style="position: absolute;top:0;left:0;width:100%;height:100%">
+                <img style="position:fixed;top:50%;left:20%" src="../../2022/FemTechConf/imagenes/schema2.svg" />
+              </div>
+              <div class="fragment fade-in-then-out" style="position: absolute;top:0;left:0;width:100%;height:100%">
+                <img style="position:fixed;top:40%;left:20%;width:60%"
+                  src="../../2022/FemTechConf/imagenes/bowels.svg" />
+              </div>
+            </div>
+          </article>
+          <aside class="notes">
+            <p>Most software architecture nowadays look like this. You have different services, or micro-services, maybe
+              you have some frontend, maybe some database or datastore, and you need to connect all of them to work
+              together.</p>
+            <p> But how can we compose services right? A software architecture can have multiple formats and protocols
+              and they are not necessarily interoperable with each other. Everytime we add a new component to our
+              architecture, we need a piece of software in between to translate the data and integrate this new service
+              with the rest of the components. This is what we call Middleware.
+            </p>
+            <p>NEXT</p>
+            <p>
+              If we are not careful generating this Middleware, we will be generating dependencies and coupling among
+              the different services. If in the future we need to replace one of those services, the interacting
+              interface changes, or introduce a new service to the composition, we may find we have to rewrite pieces of
+              code again and again.
+            </p>
+            <p>
+              Fortunately for us, this is exactly what Integration Frameworks do. Integration frameworks allow us to
+              compose different pieces of software with minimal development and low coupling.
+            </p>
+            <p>NEXT</p>
+            <p>When we are integrating different components and services in our software architecture, the first step is
+              to select a good orchestration framework. We are going to use Apache Camel for that.</p>
+            <p>NEXT</p>
+            <p>This is how Camel works: there are different services (A, B, C) and Camel knows how to interact with each
+              of them (dark orange boxes). These connectors that know how to interact with each service are able to then
+              interact with the message routing system of Camel (the lighter orange arrows) so we can make connectors
+              interact with each other. And those connectors are the ones that will make sure the services talk to each
+              other in a way the understand.</p>
+            <p> Apache Camel supports more than 350 different components that covers most of the potential use cases you
+              will ever need. But even if you need something very specific, you will find that implementing a component
+              for that customized service or data format is also done in a decoupled way; allowing developers to still
+              keep a clean architecture.</p>
+            <p>NEXT</p>
+            <p>Apache Camel also implements all the Enterprise Integration Patterns. Some of them are quite simple like:
+              loop over a list of elements; or make flow decisions base on a conditional. What an if/else is. But there
+              are other more complex patterns that allows you to round robin between different services or reorder
+              messages.</p>
+            <p>NEXT</p>
+            <p>This would be an example of a simple if/else that redirects the flow to service B or service D depending
+              on some conditional.</p>
+            <p>NEXT</p>
+            <p>As a curiosity, Apache Camel internals have a lot of complex features, like translating data from one
+              format to another. Or, obvisouly, do some ETL. But we are not going to focus on how Camel does all this
+              because what we want to talk about today is the no code/low code version of Apache Camel.</p>
+          </aside>
+        </section>
+        <section>
+          <article>
+            <img style="width:40%;float:left" src="../../2022/FemTechConf/imagenes/flux_diagram.svg" />
+            <pre class="fragment" style="width:60%;float:left">
+                <code class="hljs" data-line-numbers="">//Start with a timer that executes the operation every 10 seconds
+                from("timer:java?period=10000")
+                      //Access the CSV file which can be on an api or storage device
+                      .to("{{source.csv}}")
+                      //unmarshal and split the workflow per row 
+                      .unmarshal().split(body()).streaming()
+                      //process each row
+                      //the process is defined in a separated file
+                      .process(processCsv)
+                      //push the results to the following API
+                      .to("https://nominatim.openstreetmap.org/reverse")
+                      //the returned XML is also processed
+                      .unmarshal().jacksonxml()
+                      //again, the processor is defined in a separated file
+                      .process(processXML)
+                      //Prepare an SQL query based on the result of the process
+                      .setBody().simple("SELECT info FROM table WHERE id like '${exchangeProperty.pollutant}'")
+                      //send the SQL query to the database
+                      .to("jdbc:postgresBean?readSize=1")
+                      //collect the result and process it
+                      .process(processDB)
+                      //reunite the parallel streams that started on the csv processing
+                      .aggregate(constant(true), aggregationStrategy)
+                      .completionSize(5)
+                      //given the list of outputs per row in csv, process it
+                      .process(buildGeoJSON)
+                      //store the result in another database
+                      .to("mongodb:mongoBean?database=example&collection=mySpatialObjects&operation=insert")
+                 </code>
+               </pre>
+          </article>
+          <aside class="notes">
+            <p>Apache Camel has a Domain Specific Language to define the relationships and workflows that run between
+              components. This DSL simplifies the details of the middleware implementation in such a way that the
+              developer can easily add and remove pieces of the orchestration without having to rebuild big parts of the
+              code. </p>
+            <p>This DSL is based on Javascript, but you can also use the same piece of code inside Java. Or you can
+              rewrite it using YAML, XML, Groovy, or Kotlin.</p>
+            <p>If we are into the Reproducible Science world, we want to follow certain good practices. First: we want
+              our software to be FOSS.</p>
+            <p>
+              For Example, we will want our data to be FAIR (Findable, Accessible, Interoperable and Reusable). This
+              means, our data should be easily integrable with Apache Camel. And the output generated should also be
+              FAIR. </p>
+          </aside>
+        </section>
+        <section>
+          <article>
+            <p style="font-weight:800;font-size:200%">Kaoto: the low code and no code editor for Apache Camel</p>
+            <p class="fragment" style="font-size:200%">Something: <span style="font-weight:800;">the low code and no
+                code editor</span> for Apache Camel</p>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Low code and No code Editor</h3>
+            <div style="padding-bottom:20%;padding-top:5%;text-align:left;">
+              <div style="padding-left:20%;width:20%;color:red;float:left">
+                <p>Might have no idea what Apache Camel is</p>
+                <p>Focus on User Experience</p>
+                <ul>
+                  <li>Visual Design
+                    <ul>
+                      <li>Diagram flows</li>
+                      <li>Catalog of Steps</li>
+                      <li>Visual Data Mapping</li>
+                    </ul>
+                  </li>
+                  <li>Cover Common Use Cases
+                    <ul>
+                      <li>Restricted Solution Space</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div style="width:20%;color:red;float:left">
+                <p>Might be climbing the learning curve of Apache Camel</p>
+                <p>Focus on adding more features with no fuss</p>
+                <ul>
+                  <li>Simple Code Editor</li>
+                  <li>Code Validation</li>
+                  <li>Extended Solution Space, but not complete</li>
+                </ul>
+              </div>
+              <div style="width:20%;float:left">
+                <ul>
+                  <li>Complex Debug with an IDE
+                    <ul>
+                      <li>Step by step inside libraries</li>
+                      <li>Breakpoints</li>
+                    </ul>
+                  </li>
+                  <li>Mix with source code in other languages</li>
+                  <li>Custom Connectors</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <p style="font-size:200%"><span style="font-weight:800;">Kaoto</span>: the low code and no code editor for
+              Apache Camel</p>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Kaoto</h3>
+            <div style="width:30%;float:left;text-align:left;margin-left:5%">
+              <h4>Flow Editor</h4>
+              <ul>
+                <li>Multi-DSL</li>
+                <li>No need to know the DSL</li>
+                <li>No need to even know what framework you are using</li>
+              </ul>
+            </div>
+            <div class="fragment" style="width:30%;float:left;text-align:left;">
+              <h4>Everything Everywhere All At Once</h4>
+              <ul>
+                <li>Standalone (jar or native): your local</li>
+                <li>As a Service: integrated in your cloud</li>
+                <li>VSCode Extension - Now with full IDE companion!</li>
+              </ul>
+            </div>
+            <div class="fragment" style="width:30%;float:left;text-align:left;">
+              <h4>Current implementations</h4>
+              <ul>
+                <li>Camel Route</li>
+                <li>Camel REST</li>
+                <li>Kamelet</li>
+                <li>Kamelet Binding</li>
+              </ul>
+            </div>
+            <img src="imagenes/kaoto.webp"/>
+          </article>
+        </section>
+        <section>
+          <header>Questions?</header>
+          <section>
+            <img src="imagenes/questions.webp" />
+          </section>
+        </section>
+    </div>
+    <footer>
+      <span class="autofill-url"></span>
+      <div class="logo">
+        <img src="../../stylesheets/images/redhat.svg" />
+        <span>Red Hat</span>
+      </div>
+    </footer>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+    function getParams() {
+      var vars = [];
+      var parts = window.location.href.replace(/[?&]+([^&]+)/gi,
+        function (m, key) {
+          vars.push(key);
+        });
+      return vars;
+    };
+
+
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      center: true,
+      touch: true,
+      hideAddressBar: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0,
+      slideNumber: true,
+      showSlideNumber: 'all',
+      pdfMaxPagesPerSlide: 1,
+      showNotes: (getParams().includes("print-pdf") ? "separate-page" : null),
+      plugins: [RevealHighlight, RevealNotes, RevealSearch]
+    });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http")) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+
+    fillUrl(); 
+  </script>
+  <script>
+    function setSlideTimer() {
+      time = 15 * 60;
+      nslides = Reveal.getSlides().length;
+      timeperslide = time / nslides;
+      Reveal.configure({ defaultTiming: timeperslide });
+    }
+    setTimeout(setSlideTimer, 1000);
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+
+</html>
