@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Future of the Developer Tooling for Geospatial || GeoMundus</title>
+  <meta name="author" content="María Arias de Reyna Domínguez" />
+  <meta charset="utf-8">
+  <meta name="title" property="og:title" content="The Future of the Developer Tooling for Geospatial || GeoMundus" />
+  <meta name="type" property="og:type" content="Presentation" />
+  <meta name="image" property="og:image"
+    content="https://delawen.com/wp-content/uploads/2020/02/photo5933938666424610391.png" />
+  <meta name="description" property="og:description"
+    content="There's a lot of uncertainty on what is going to be the future for developers and developer tooling. Are low code or even no code frameworks going to replace full developers? Is AI going to take our jobs? How do we know which trend is the right one that we should jump in? Are we reinventing the wheel? In this talk, we will try to summarize the current state of the art on developer tooling and make an educated guess on what would be our best bet. Should we be worried or is this the advent of a bright new future?" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../stylesheets/redhat2022.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+  <style>
+    body,
+    .reveal-viewport {
+      --main-decoration-color: #0d3628;
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section>
+          <article class="portada">
+            <h1 style="text-align:left; padding: 2%; padding-top: 20%">The future of (Developer) Tooling for Geospatial
+            </h1>
+            <img style="max-height:10%" src="imagenes/conference.webp" />
+            <div style="text-align:left; padding: 2%">
+              <p>María Arias de Reyna Domínguez</p>
+              <p style="text-align:left">@delawen@floss.social - @delawen@twitter.com</p>
+              <p style="text-align:left">Senior Software Engineer</p>
+            </div>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Who am I?</header>
+        <section>
+          <article>
+            <div style="font-size:150%;width:40vw;float:left;padding-left:10vw">
+              <ul>
+                <li>2008 <strong>Software Engineer</strong></li>
+                <li><strong>Free and Open Source Advocate</strong></li>
+                <li>GeoSpatial Ranger</li>
+                <ul>
+                  <li>2007 Web Mapping Artificer</li>
+                  <li>2009 Dijkstra A* Warlock</li>
+                  <li>2012 Metadata Paladin</li>
+                  <li>2013 OSGeo Charter Member</li>
+                  <ul>
+                    <li>2017-2019 <strong>OSGeo President</strong></li>
+                  </ul>
+                </ul>
+                <li>Integration Druid</li>
+                <ul>
+                  <li>2019 Apache Camel contributor</li>
+                  <li>2020 Apache Software Foundation Committer</li>
+                  <li>2021 Create Low Code/No Code Integrator</li>
+                </ul>
+                <li><strong>Java Champion</strong></li>
+              </ul>
+            </div>
+            <img style="width:30vw;float:right;padding-right:10vw" src="imagenes/ygritte.webp" />
+            <aside class="notes">
+              <p>I have been working with FOSS since the university. I started in the geospatial world but then moved
+                into the Integration space. </p>
+              <p>Since 2021 I am leading the development of Kaoto, a multi-DSL no code and low code flow editor, which
+                is what I'm going to present today.</p>
+            </aside>
+        </section>
+      </section>
+      <section>
+        <header>What we are going to talk about</header>
+        <section>
+          <article style="font-size:150%;width:50vw;float:left;padding-left:30vw">
+            <h2>(Developer) Tooling for GeoSpatial</h2>
+            <ul>
+              <li>What do we mean by (Developer) Tooling?</li>
+              <li>Guess the future to prepare best</li>
+            </ul>
+            <video autoplay="true" width="40%" muted="true" loop="true" >
+              <source src="imagenes/blackcatzoningout_meme.webm" type="video/webm" />
+            </video>
+          </article>
+          <aside class="notes">
+          </aside>
+        </section>
+      </section>
+      <section>
+        <header>The evolution of tooling</header>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>How Software Evolves</h2>
+            <img src="imagenes/cycle.webp">
+          </article>
+          <aside class="notes">
+            <p></p>
+          </aside>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Does this also apply in GeoSpatial?</h2>
+            <img src="imagenes/loading-cat.webp">
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>GeoSpatial Science</h2>
+            <img src="imagenes/chemistry-cat.webp" />
+            <p>What drives innovation and defines future tooling</p>
+          </article>
+          <aside class="notes">
+          </aside>
+        </section>
+      </section>
+      <section>
+        <header>The Evolution of Geospatial</header>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Evolution of Geospatial</h2>
+            <p>The best way to infer our future is to study our evolution.</p>
+            <ul>
+              <li>Analogic</li>
+              <li>Digitalization</li>
+              <li>Location Intelligence</li>
+              <li>Smart Geospatial</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Analogic Era</header>
+        <section>
+          <article>
+            <h2>Analogic Era</h2>
+            <img style="height:50vh" src="imagenes/Mappa_di_Eratostene.webp" />
+            <p>Mappa di Eratostene</p>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h2>Analogic Tooling</h2>
+            <img style="height:50vh" src="imagenes/sextant.webp" />
+          </article>
+        </section>
+        <section>
+          <article>
+            <h2>Early Technology</h2>
+            <img style="height:50vh" src="imagenes/Census_Bureau_Geographers_Cartographers_sm.webp" />
+            <p>Census Bureau cartographers prepare maps for the 1960 census.</p>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Digitalization</header>
+        <section>
+          <article style="font-size:150%;width:25vw;float:left;padding-left:30vw">
+            <h2>Digitalization</h2>
+            <ul>
+              <li>Better Editing Tools</li>
+              <li>Better Storage Formats</li>
+              <li>More Detail and Complex DataSets</li>
+              <ul>
+                <li>Ontology and Semantics</li>
+              </ul>
+              <li>Satellite and Aerial Data</li>
+              <ul>
+                <li>Raster!!</li>
+              </ul>
+            </ul>
+          </article>
+          <video autoplay="true" width="18%" muted="true" loop="true" >
+            <source src="imagenes/driving.webm" type="video/webm" />
+          </video>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Explosion of Tooling</h2>
+            <ul>
+              <li>Python</li>
+              <li>R</li>
+            </ul>
+            <ul>
+              <li><a href="https://gdal.org/">GDAL/OGR</a></li>
+              <li><a href="https://qgis.org">QGIS</a>(2002!)</li>
+              <li><a href="https://grass.osgeo.org/">GRASS GIS</a>(1982!)</li>
+              <li><a href="https://geotools.org/">GeoTools</a></li>
+              <li><a href="https://www.orfeo-toolbox.org/">Orfeo Toolbox</a></li>
+            </ul>
+            <p>Which leads to high quality <strong>Big Data</strong></p>
+          </article>
+          <img style="width:30vh" src="imagenes/milky.webp" />
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>What do we do with the Big Data?</h2>
+            <img src="imagenes/persian-cat-room-guardian.webp">
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Feed it with Big Data!</h2>
+            <ul>
+              <li>Artificial Neural Networks (ANN)</li>
+              <li>Heuristic Algorithms</li>
+              <li>Fuzzy Logics</li>
+              <li>Deep Learning</li>
+            </ul>
+          </article>
+          <video autoplay="true" width="18%" muted="true" loop="true" >
+            <source src="imagenes/crunchy.webm" type="video/webm" />
+          </video>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>The power of Big Data</h2>
+            <ul>
+              <li>Identifying Spatial Patterns</li>
+              <ul>
+                <li>Singularities and Anomalies</li>
+                <ul>
+                  <li>Land Use</li>
+                  <li>Detect illegal buildings</li>
+                </ul>
+                <li>Spatial Interpolation and Prediction</li>
+                <ul>
+                  <li>Flooding Prevention and Mitigation</li>
+                  <li>Coastline evolution</li>
+                </ul>
+              </ul>
+              <li>Exploring Spatial Factors</li>
+              <li>Spatial Simulation</li>
+              <li>Decision Making</li>
+              <ul>
+                <li>Better urban planning (roads, facilities,... )</li>
+              </ul>
+            </ul>
+          </article>
+          <img style="width:50vh" src="imagenes/vegetables.webp" />
+        </section>
+      </section>
+      <section>
+        <header>Location Intelligence</header>
+        <section>
+          <article>
+            <h2>Location Intelligence</h2>
+            <p>Business Intelligence for GeoSpatial</p>
+            <img src="imagenes/business-cat.webp"/>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h2>Frameworks to simplify the work</h2>
+            <img style="width:40%;float:left" src="../../2022/FemTechConf/imagenes/flux_diagram.svg" />
+            <pre style="width:60%;float:left">
+                <code class="hljs" data-line-numbers="">//Start with a timer that executes the operation every 10 seconds
+                from("timer:java?period=10000")
+                      //Access the CSV file which can be on an api or storage device
+                      .to("{{source.csv}}")
+                      //unmarshal and split the workflow per row 
+                      .unmarshal().split(body()).streaming()
+                      //process each row
+                      //the process is defined in a separated file
+                      .process(processCsv)
+                      //push the results to the following API
+                      .to("https://nominatim.example.com/reverse")
+                      //the returned XML is also processed
+                      .unmarshal().jacksonxml()
+                      //again, the processor is defined in a separated file
+                      .process(processXML)
+                      //Prepare an SQL query based on the result of the process
+                      .setBody().simple("SELECT info FROM table WHERE id like '${exchangeProperty.pollutant}'")
+                      //send the SQL query to the database
+                      .to("jdbc:postgresBean?readSize=1")
+                      //collect the result and process it
+                      .process(processDB)
+                      //reunite the parallel streams that started on the csv processing
+                      .aggregate(constant(true), aggregationStrategy)
+                      .completionSize(5)
+                      //given the list of outputs per row in csv, process it
+                      .process(buildGeoJSON)
+                      //store the result in another database
+                      .to("mongodb:mongoBean?database=example&collection=mySpatialObjects&operation=insert")
+                 </code>
+               </pre>
+          </article>
+          <aside class="notes">
+            <p>Apache Camel has a Domain Specific Language to define the relationships and workflows that run between
+              components. This DSL simplifies the details of the middleware implementation in such a way that the
+              developer can easily add and remove pieces of the orchestration without having to rebuild big parts of the
+              code. </p>
+            <p>This DSL is based on Javascript, but you can also use the same piece of code inside Java. Or you can
+              rewrite it using YAML, XML, Groovy, or Kotlin.</p>
+            <p>If we are into the Reproducible Science world, we want to follow certain good practices. First: we want
+              our software to be FOSS.</p>
+            <p>
+              For Example, we will want our data to be FAIR (Findable, Accessible, Interoperable and Reusable). This
+              means, our data should be easily integrable with Apache Camel. And the output generated should also be
+              FAIR. </p>
+          </aside>
+        </section>
+      </section>
+      <section>
+        <header>Smart Geospatial</header>
+        <section>
+          <article>
+            <h2>Smart Geospatial</h2>
+            <video autoplay="true" width="18%" muted="true" loop="true" >
+              <source src="imagenes/partycat.webm" type="video/webm" />
+            </video>
+            <p>When we met "Artificial Intelligence"</p>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h2>What we won't discuss</h2>
+            <img src="imagenes/wf-boxes-malcolm-2532103849.webp" />
+            <p>Let's focus on what we can, not what we should.</p>
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Artificial Intelligence</h2>
+            <h4>Natural Language => Structured Format</h4>
+            <ul>
+              <li>Natural Language -> Query</li>
+              <ul>
+                <li>Specific LLM models</li>
+              </ul>
+              <li>Natural Language -> Spatial Data</li>
+              <ul>
+                <li>Semantic models</li>
+              </ul>
+            </ul>
+            <h4>Raster => Structured Data</h4>
+            <ul>
+              <li>Imagine Processing</li>
+              <li>Blind descriptions</li>
+            </ul>
+            <h4>Structured Format => Natural Language</h4>
+            <ul>
+              <li>Generate map descriptions</li>
+              <li>Generate labels automatically</li>
+              <li>Choose the best style</li>
+            </ul>
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Example Case 1</h2>
+            <p><a href="https://www.proximo.world/">Próximo</a></p>
+            <p>Generate a map based on locations described in a text.</p>
+            <img src="imagenes/proxima.webp" />
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Example Case 2</h2>
+            <p><a href="https://www.textomap.com/">Text to Map</a></p>
+            <p>Instantly turn text sources and ChatGPT prompts into insightful interactive geo maps.</p>
+            <img src="imagenes/textToMap.webp" />
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Example Case 3</h2>
+            <img src="imagenes/mapsGPT.webp" />
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Are we there yet?</h2>
+          </article>
+          <a href="https://twitter.com/colin_fraser/status/1636755134679224320"><img style="width:40vw;float: left;padding: 5vw;" src="imagenes/random.webp" /></a>
+          <a href="https://icosahedron.website/@halcy/111228092109166980"><img style="width:30vw;float: left;padding: 1vw;" src="imagenes/chatGPTRandom.webp" /></a>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Generative AI vs Derivative AI</h2>
+            <ul>
+              <li><strike>Ethical concerns</strike></li>
+              <li>Security concerns</li>
+              <ul>
+                <li>Where does my data go?</li>
+                <li>Am I training my competitors?</li>
+                <li>Whose data I'm using?</li>
+              </ul>
+              <li>Mix different types of AI</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Food for Thought</header>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>There's a long road ahead</h2>
+            <ul>
+              <li>AI Helpers</li>
+              <li>Higher programming languages</li>
+              <ul>
+                <li>Low Code</li>
+                <li>No Code</li>
+                <li>Better Frameworks and Libraries</li>
+              </ul>
+              <li>Reuse as much code as you can</li>
+              <li>Validate your Data Sources</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Questions?</header>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Questions?</h2>
+            <img style="padding:5%;height:70vh" src="imagenes/work_done.webp" />
+          </article>
+        </section>
+      </section>
+    </div>
+    <footer>
+      <span class="autofill-url"></span>
+    </footer>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+    function getParams() {
+      var vars = [];
+      var parts = window.location.href.replace(/[?&]+([^&]+)/gi,
+        function (m, key) {
+          vars.push(key);
+        });
+      return vars;
+    };
+
+
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      center: true,
+      touch: true,
+      hideAddressBar: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0,
+      slideNumber: true,
+      showSlideNumber: 'all',
+      pdfMaxPagesPerSlide: 1,
+      showNotes: (getParams().includes("print-pdf") ? "separate-page" : null),
+      plugins: [RevealHighlight, RevealNotes, RevealSearch]
+    });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http")) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+
+    fillUrl(); 
+  </script>
+  <script>
+    function setSlideTimer() {
+      time = 15 * 60;
+      nslides = Reveal.getSlides().length;
+      timeperslide = time / nslides;
+      Reveal.configure({ defaultTiming: timeperslide });
+    }
+    setTimeout(setSlideTimer, 1000);
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+
+</html>
