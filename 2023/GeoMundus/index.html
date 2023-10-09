@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Future of the Developer Tooling for Geospatial || GeoMundus</title>
+  <meta name="author" content="María Arias de Reyna Domínguez" />
+  <meta charset="utf-8">
+  <meta name="title" property="og:title" content="The Future of the Developer Tooling for Geospatial || GeoMundus" />
+  <meta name="type" property="og:type" content="Presentation" />
+  <meta name="image" property="og:image" content="https://delawen.com/wp-content/uploads/2020/02/photo5933938666424610391.png" />
+  <meta name="description" property="og:description"
+    content="There's a lot of uncertainty on what is going to be the future for developers and developer tooling. Are low code or even no code frameworks going to replace full developers? Is AI going to take our jobs? How do we know which trend is the right one that we should jump in? Are we reinventing the wheel? In this talk, we will try to summarize the current state of the art on developer tooling and make an educated guess on what would be our best bet. Should we be worried or is this the advent of a bright new future?" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../stylesheets/redhat2022.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+  <style>
+    body, .reveal-viewport {
+      --main-decoration-color:#0d3628;
+    }
+  </style>
+  
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section>
+          <article class="portada">
+            <h1 style="text-align:left; padding: 2%; padding-top: 20%">The future of (Developer) Tooling for Geospatial</h1>
+              <img style="max-height:10%" src="imagenes/conference.webp"/>
+            <div style="text-align:left; padding: 2%">
+              <p>María Arias de Reyna Domínguez</p>
+              <p style="text-align:left">@delawen@floss.social - @delawen</p>
+              <p style="text-align:left">Senior Software Engineer</p>
+            </div>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Who am I?</header>
+        <section>
+          <article>
+            <div style="font-size:150%;width:40vw;float:left;padding-left:10vw">
+              <ul>
+                <li>19🐱🐱 Crazy Cat Lady</li>
+                <li style="font-weight:bold">Free and Open Source Advocate</li>
+                <li>2008 Software Engineer</li>
+                <li>GeoSpatial world</li>
+                <ul>
+                  <li>2009 Dijkstra A* Witch</li>
+                  <li>2012 Metadata Wrangler</li>
+                  <li>2013 OSGeo Charter Member</li>
+                  <ul>
+                    <li style="font-weight:bold">2017-2019 OSGeo President</li>
+                  </ul>
+                </ul>
+                <li>2016 Women in Tech</li>
+                <li style="font-weight:bold">Senior Software Engineer at Red Hat</li>
+                <ul>
+                  <li>2019 Integration Druid</li>
+                  <ul>
+                    <li>2019 Apache Camel contributor</li>
+                    <li>2020 Apache Software Foundation</li>
+                    <li>2021 Lead Kaoto Development</li>
+                  </ul>
+                </ul>
+                <li style="font-weight:bold">2020 Java Champion</li>
+              </ul>
+            </div>
+            <img style="width:30vw;float:right;padding-right:10vw" src="imagenes/ygritte.webp" />
+            <aside class="notes">
+              <p>I have been working with FOSS since the university. I started in the geospatial world but then moved
+                into the Integration space. </p>
+              <p>Since 2021 I am leading the development of Kaoto, a multi-DSL no code and low code flow editor, which
+                is what I'm going to present today.</p>
+            </aside>
+        </section>
+      </section>
+      <section>
+        <header>The Evolution of Geospatial</header>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Evolution of Geospatial</h2>
+            <ul>
+              <li>Analogic</li>
+              <li>Digitalization</li>
+              <li>Location Intelligence</li>
+              <li>Smart Geospatial</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Analogic Era</header>
+        <section>
+          <article>
+            <h2>Analogic Era</h2>
+            <img style="height:50vh" src="imagenes/Census_Bureau_Geographers_Cartographers_sm.webp"/>
+            <p>Census Bureau cartographers prepare maps for the 1960 census.</p>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Digitalization</header>
+        <section>
+          <article>
+            <h2>Digitalization</h2>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Location Intelligence</header>
+        <section>
+          <article>
+            <h2>Location Intelligence</h2>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Smart Geospatial</header>
+        <section>
+          <article>
+            <h2>Smart Geospatial</h2>
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Artificial Intelligence</h2>
+            <h4>Natural Language => Structured Format</h4>
+            <ul>
+              <li>Natural Language -> Query</li>
+              <ul>
+                <li>Specific LLM models</li>
+              </ul>
+              <li>Natural Language -> Spatial Data</li>
+              <ul>
+                <li>Semantic models</li>
+              </ul>
+            </ul>
+            <h4>Raster => Structured Data</h4>
+            <ul>
+              <li>Imagine Processing</li>
+            </ul>
+            <h4>Structured Format => Natural Language</h4>
+            <ul>
+              <li>Generate map descriptions</li>
+              <li>Generate labels automatically</li>
+              <li>Choose the best style</li>
+            </ul>
+          </article>
+        </section>
+        <section>
+          <article style="font-size:150%;width:40vw;float:left;padding-left:30vw">
+            <h2>Generative AI vs Derivative AI</h2>
+            <ul>
+              <li>Ethical concerns</li>
+              <li>Security concerns</li>
+              <ul>
+                <li>Where does my data go?</li>
+                <li>Am I training my competitors?</li>
+                <li>Whose data I'm using?</li>
+              </ul>
+              <li>Mix different types of AI</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+      <section>
+        <section>
+          <header>Questions?</header>
+          <section>
+            <img style="padding:5%;height:70vh" src="imagenes/work_done.webp" />
+          </section>
+        </section>
+      </section>
+    </div>
+    <footer>
+      <span class="autofill-url"></span>
+    </footer>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+    function getParams() {
+      var vars = [];
+      var parts = window.location.href.replace(/[?&]+([^&]+)/gi,
+        function (m, key) {
+          vars.push(key);
+        });
+      return vars;
+    };
+
+
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      center: true,
+      touch: true,
+      hideAddressBar: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0,
+      slideNumber: true,
+      showSlideNumber: 'all',
+      pdfMaxPagesPerSlide: 1,
+      showNotes: (getParams().includes("print-pdf") ? "separate-page" : null),
+      plugins: [RevealHighlight, RevealNotes, RevealSearch]
+    });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http")) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+
+    fillUrl(); 
+  </script>
+  <script>
+    function setSlideTimer() {
+      time = 15 * 60;
+      nslides = Reveal.getSlides().length;
+      timeperslide = time / nslides;
+      Reveal.configure({ defaultTiming: timeperslide });
+    }
+    setTimeout(setSlideTimer, 1000);
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+
+</html>
