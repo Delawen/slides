@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Chaos Incarnated || JChampionsConf</title>
+  <meta name="author" content="María Arias de Reyna Domínguez" />
+  <meta charset="utf-8">
+  <meta name="title" property="og:title" content="The Chaos Incarnated: Micro-Quarkus Boot! || JChampionsConf" />
+  <meta name="type" property="og:type" content="Presentation" />
+  <meta name="image" property="og:image"
+    content="https://delawen.com/wp-content/uploads/2020/02/photo5933938666424610391.png" />
+  <meta name="description" property="og:description"
+    content="
+      Here we are, creating a whole new project from scratch and no legacy hindering us. But wait, should I use Spring Boot, Quarkus, Micronaut,... What is happening in the Java ecosystem? What do I do?
+      
+      On this talk we are going to create a (simple) app on those frameworks and compare pros and cons. We will build the native version, compare the source code and dependencies, and, probably, find out that the real treasure is the code we made along the way. " />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="../../stylesheets/redhat2022.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css" id="highlight-theme">
+
+  <style>
+    .reveal section section article {
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 1%;
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section>
+          <article class="portada">
+            <h1 style="text-align:left; padding: 2%; padding-top: 10%">The Chaos Incarnated: Micro-Quarkus Boot!</h2>
+              <img src="imagenes/conference.webp" />
+              <div style="text-align:left; padding: 2%">
+                <p>María Arias de Reyna Domínguez</p>
+                <p style="text-align:left">@delawen@floss.social</p>
+                <p style="text-align:left">Senior Software Engineer</p>
+              </div>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Who am I?</header>
+        <section>
+          <article>
+            <div style="font-size:150%;width:40vw;float:left;padding-left:10vw">
+              <ul>
+                <li>Millenial Crazy Cat Lady</li>
+                <li>Free and Open Source Barbarian</li>
+                <li>Women in Tech Sorceress Coven</li>
+                <li>Software Engineer Wizard</li>
+                <li>GeoSpatial Paladin</li>
+                <ul>
+                  <li>2009 Dijkstra A* Rogue</li>
+                  <li>2012 Metadata Ranger</li>
+                  <li>2013 <a href="https://osgeo.org">OSGeo</a> Charter Member</li>
+                  <ul>
+                    <li>2017-2019 <a href="https://osgeo.org">OSGeo</a> President</li>
+                  </ul>
+                </ul>
+                <li>2019 Integration Druid</li>
+                <li>2020 Java Champion</li>
+                <li style="font-weight:bold">2024 OpenJDK Bard</li>
+            </div>
+            <img style="width:30vw;float:right;padding-right:10vw" src="imagenes/ygritte.webp" />
+        </section>
+      </section>
+      <section>
+        <header>The Java Ecosystem</header>
+        <section>
+          <article>
+            <h3>The Foundations</h3>
+            <img style="width:50%;float:right" class="fragment" data-fragment-index="1"
+              src="imagenes/leo-gripsholms-slott.webp" />
+            <ul class="centered">
+              <li>Java</li>
+              <li class="fragment" data-fragment-index="1">Frameworks and Libraries
+                <ul>
+                  <li>Spring</li>
+                  <li>Micronaut</li>
+                  <li>Quarkus</li>
+                  <li>Open Liberty</li>
+                  <li>WildFly</li>
+                  <li>Apache TomEE</li>
+                  <li>Helidon</li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Why can't we be friends?</h3>
+            <img src="imagenes/tiger.webp" />
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>MicroProfile</h3>
+            <img style="width:30%" src="imagenes/almighty.webp" />
+
+            <aside class="notes">
+              <p>1997: Enterprise Java Beans (EJB) (top at Java 6!)</p>
+              <p>2004: Spring!</p>
+              <p>2014: Java 8 </p>
+              <p>2016: MicroProfile announced "We aim to merge innovation and standardization into Enterprise Java with
+                Microservices focus."
+                Goals of performance, metrics, and security. JAX-RS, JSONP, CDI.</p>
+              <p>2017: Java 9</p>
+              <p>2018: JavaEE renamed to JakartaEE</p>
+              <p>2018: Java 11</p>
+              <p>2021: Java 17</p>
+              <p>2023: Java 21</p>
+              <p>Microprofile: vendor-neutral APIs to implement in the cloud</p>
+            </aside>
+        </section>
+        <section>
+          <article>
+            <img src="imagenes/xkcd-standards.webp" />
+
+            <aside class="notes">
+              <p>1997: Enterprise Java Beans (EJB) (top at Java 6!)</p>
+              <p>2004: Spring!</p>
+              <p>2014: Java 8 </p>
+              <p>2016: MicroProfile announced "We aim to merge innovation and standardization into Enterprise Java with
+                Microservices focus."
+                Goals of performance, metrics, and security. JAX-RS, JSONP, CDI.</p>
+              <p>2017: Java 9</p>
+              <p>2018: JavaEE renamed to JakartaEE</p>
+              <p>2018: Java 11</p>
+              <p>2021: Java 17</p>
+              <p>2023: Java 21</p>
+              <p>Microprofile: vendor-neutral APIs to implement in the cloud</p>
+            </aside>
+        </section>
+        <section>
+          <article>
+            <img src="imagenes/microprofile.webp" />
+
+            <aside class="notes">
+              <p>1997: Enterprise Java Beans (EJB) (top at Java 6!)</p>
+              <p>2004: Spring!</p>
+              <p>2014: Java 8 </p>
+              <p>2016: MicroProfile announced "We aim to merge innovation and standardization into Enterprise Java with
+                Microservices focus."
+                Goals of performance, metrics, and security. JAX-RS, JSONP, CDI.</p>
+              <p>2017: Java 9</p>
+              <p>2018: JavaEE renamed to JakartaEE</p>
+              <p>2018: Java 11</p>
+              <p>2021: Java 17</p>
+              <p>2023: Java 21</p>
+              <p>Microprofile: vendor-neutral APIs to implement in the cloud</p>
+            </aside>
+        </section>
+      </section>
+      <section>
+        <header>Our Three Champions</header>
+        <section data-background-image="imagenes/pexels-photo-1643456.webp">
+          <article>
+            <h3>We are going to explore</h3>
+
+            <h2>MicroProfile over</h2>
+
+            <ul class="centered" style="padding-left:45%">
+              <li>Spring Boot</li>
+              <li>Micronaut</li>
+              <li>Quarkus</li>
+            </ul>
+
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Disclaimer</h3>
+            <video autoplay loop src="imagenes/noidea.webm"></video>
+            <div class="fragment">
+              <img style="height:20vw" src="imagenes/agustin.webp" />
+              <p style="  margin-top: -10vw;
+              color: red;
+              transform: rotate(18deg);
+              background-color: rgba(255, 255, 255, 0.5);font-size: 60%;
+margin-top: -79px;">Agustín Ventura - VMWare</p>
+            </div>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Spring Boot</h3>
+            <img src="imagenes/Spring_Framework_Logo_2018.svg" />
+            <ul class="centered">
+              <li>"Standard" in the industry since forever (~2003)</li>
+              <li>Strong foundations, documentation, examples, use cases</li>
+              <li>Lots of experts</li>
+              <li>MicroProfile arrives late to Spring party</li>
+            </ul>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Micronaut</h3>
+            <img style="background-color: black;width:20%; padding:1%" src="imagenes/MIcronautLogo_Horizontal.svg" />
+            <ul class="centered">
+              <li>Close relationship with GraalVM (Oracle)</li>
+              <li>Has been up and about for a few years (2018)</li>
+              <li>Focus on Cloud Native and Microservices</li>
+              <li>MicroProfile is an important guest at Micronaut party</li>
+            </ul>
+          </article>
+        </section>
+        <section>
+          <article>
+            <h3>Quarkus</h3>
+            <img style="background-color: black;padding:1%;width:20%"
+              src="imagenes/quarkus_logo_horizontal_rgb_600px_reverse.webp" />
+            <ul class="centered">
+              <li>Optimization over Mandrel (Red Hat) and GraalVM</li>
+              <li>Has been up and about for a few years (2019)</li>
+              <li>Focus on Kubernetes and Optimization for the Cloud</li>
+              <li>MicroProfile is the basis of Quarkus party</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Let's Get Dirty!</header>
+        <section>
+          <h3>Let's Get Dirty!</h3>
+          <article>
+            <ul class="centered">
+              <li>Can we have an agnostic source code?</li>
+              <li>Can we seamlessly switch the framework and really keep working?</li>
+              <li>Is this a good idea at all?</li>
+            </ul>
+          </article>
+        </section>
+        <section data-background-image="imagenes/darthcat.webp" style="height:70%">
+          <article class="fragment">
+            <h3>Who is your Daddy?</h3>
+            <p>Dependency management</p>
+            <table class="comparison">
+              <tr>
+                <td>Quarkus</td>
+                <td>Spring Boot</td>
+                <td>Micronaut</td>
+              </tr>
+              <tr>
+                <td class="fragment">😊</td>
+                <td class="fragment">🤠</td>
+                <td class="fragment">😵</td>
+              </tr>
+            </table>
+          </article>
+        </section>
+        <section data-background-image="imagenes/ritual.webp" style="height:70%">
+          <article class="fragment">
+            <h3>Hello REST API</h3>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+                <code>
+                  package com.example;
+
+                  import jakarta.ws.rs.GET;
+                  import jakarta.ws.rs.Path;
+                  import jakarta.ws.rs.Produces;
+                  import jakarta.ws.rs.core.MediaType;
+                  
+                  
+                  @Path("/hello")
+                  public class HelloService {
+                
+                    @GET
+                    @Produces(MediaType.TEXT_PLAIN)
+                    public String hello() {
+                      return "Hello from MicroProfile!";
+                    }
+                  
+                  }
+                  
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section data-background-image="imagenes/ritual.webp" style="height:70%">
+          <article>
+            <h3>Hello REST API</h3>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+                <code class="language-bash">
+                  $ mvn clean quarkus:dev -Pquarkus
+                  $ mvn clean spring-boot:run -Pspring
+                  $ mvn clean mn:run -Pmicronaut
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-1693443.webp" style="height:70%">
+          <article class="fragment">
+            <h3>How picky are you?</h3>
+            <p>Can I really have an agnostic source code?</p>
+            <table class="comparison">
+              <tr>
+                <td>Quarkus</td>
+                <td>Spring Boot</td>
+                <td>Micronaut</td>
+              </tr>
+              <tr>
+                <td class="fragment">😊</td>
+                <td class="fragment">😵</td>
+                <td class="fragment">😵</td>
+              </tr>
+            </table>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-979247.webp" style="height:70%">
+          <article class="fragment">
+            <h3>And now for our next trick</h3>
+            <p>I will need a database</p>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+                <code>
+                  <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <scope>runtime</scope>
+                    </dependency>
+                  </dependencies>
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-979247.webp" style="height:70%">
+          <article class="fragment">
+            <h3>And now for our next trick</h3>
+            <p>and a volunteer cat</p>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+                <code>
+                  @Entity
+                  public class Cat implements Serializable {
+
+                    @NotNull
+                    @Column(name = "name", nullable = false)
+                    private String name;
+
+                    @Id
+                    @GeneratedValue
+                    private Long id;
+
+                    public Long getId() {
+                      return id;
+                    }
+
+                    public void setId(Long id) {
+                      this.id = id;
+                    }
+
+                    public String getName() {
+                      return name;
+                    }
+
+                    public void setName(String name) {
+                      this.name = name;
+                    }
+                  }
+
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-979247.webp" style="height:70%">
+          <article>
+            <h3>And now for our next trick</h3>
+            <p>that can be safely placed in a box</p>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+                <code class="language-java">
+                  @Singleton
+                  public class DatabaseResource {
+                    @PersistenceContext
+                    EntityManager entityManager;
+                  
+                    @Transactional
+                    public void addCat(String name) {
+                      Cat cat = new Cat();
+                      cat.setName(name);
+                      entityManager.persist(cat);
+                    }
+                    @Transactional
+                    public List&lt;Cat> getAllCats() {
+                      CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+                      CriteriaQuery&lt;Cat> cq = cb.createQuery(Cat.class);
+                      Root&lt;Cat> rootEntry = cq.from(Cat.class);
+                      CriteriaQuery&lt;Cat> all = cq.select(rootEntry);
+                  
+                      TypedQuery&lt;Cat> allQuery = entityManager.createQuery(all);
+                      return allQuery.getResultList();
+                    }
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-979247.webp" style="height:70%">
+          <article>
+            <h3>And now for our next trick</h3>
+            <p>and a service to accomodate them</p>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+                <code class="language-java">
+                  @Path("/db")
+                  public class PersistenceService {
+                    @Inject
+                    DatabaseResource databaseResource;
+
+                    @GET  //For testing purposes
+                    @Path("/cat/{name}")
+                    @Produces(MediaType.TEXT_PLAIN)
+                    @Transactional
+                    public String addCat(@PathParam("name") String name) {
+                      databaseResource.addCat(name);
+                      return "Cat added with name " + name + " via GET.";
+                    }
+
+                    @POST
+                    @Path("/cat/{name}")
+                    @Produces(MediaType.TEXT_PLAIN)
+                    @Transactional
+                    public String addCatPost(@PathParam("name") String name) {
+                      databaseResource.addCat(name);
+                      return "Cat added with name " + name;
+                    }
+
+                    @GET
+                    @Path("/cats")
+                    @Produces(MediaType.APPLICATION_JSON)
+                    @Transactional
+                    public List&lt;Cat> getCats() {
+                      return databaseResource.getAllCats();
+                    }
+                  }
+
+                </code>
+              </pre>
+            </div>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-4588069.webp" style="height:70%">
+          <article class="fragment">
+            <h3>Are my properties clean?</h3>
+            <p>Are they going to be mixed up?</p>
+            <p><strong>Beware: This could be seen as a bug, not a feature!!</strong></p>
+            <table class="comparison">
+              <tr>
+                <td>Quarkus</td>
+                <td>Spring Boot</td>
+                <td>Micronaut</td>
+              </tr>
+              <tr>
+                <td class="fragment">😊</td>
+                <td class="fragment">😊</td>
+                <td class="fragment">😵</td>
+              </tr>
+            </table>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-1693443.webp" style="height:70%">
+          <article class="fragment">
+            <h3>How picky are you?</h3>
+            <p>Can I really have an agnostic source code?</p>
+            <table class="comparison">
+              <tr>
+                <td>Quarkus</td>
+                <td>Spring Boot</td>
+                <td>Micronaut</td>
+              </tr>
+              <tr>
+                <td class="fragment">😊</td>
+                <td class="fragment">😵</td>
+                <td class="fragment">😊</td>
+              </tr>
+            </table>
+          </article>
+        </section>
+        <section data-background-image="imagenes/pexels-photo-1693443.webp" style="height:70%">
+          <article class="fragment">
+            <h3>Summary</h3>
+            <table class="comparison">
+              <tr>
+                <td></td>
+                <td>Quarkus</td>
+                <td>Spring Boot</td>
+                <td>Micronaut</td>
+              </tr>
+              <tr>
+                <td style="font-size:22pt">Who is your Daddy?</td>
+                <td>😊</td>
+                <td>🤠</td>
+                <td>😵</td>
+              </tr>
+              <tr>
+                <td style="font-size:22pt">How picky are you (REST)?</td>
+                <td>😊</td>
+                <td>😵</td>
+                <td>😵</td>
+              </tr>
+              <tr>
+                <td style="font-size:22pt">Are my properties clean?*</td>
+                <td>😊/😵</td>
+                <td>😊/😵</td>
+                <td>😵/😊</td>
+              </tr>
+              <tr>
+                <td style="font-size:22pt">How picky are you (Persistence)?</td>
+                <td>😊</td>
+                <td>😵</td>
+                <td>😊</td>
+              </tr>
+            </table>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Native</header>
+        <section data-background-image="imagenes/pexels-photo-3155894.webp" style="height:70%">
+          <article class="fragment">
+            <h3>Let's go native!</h3>
+            <p>I will need a database</p>
+            <div style="width:50vw;margin-left:20vw">
+              <pre style="width:60vw">
+              <code class="language-bash">
+                $ mvn clean install -Dquarkus.package.type=native -Pquarkus
+                $ mvn clean package -Dpackaging=native-image -Pmicronaut
+                $ mvn clean -Pnative spring-boot:build-image -Pspring
+              </code>
+            </pre>
+            </div>
+          </article>
+        </section>
+      </section>
+      <section>
+        <header>Questions?</header>
+        <section>
+          <img src="imagenes/questions.webp" />
+        </section>
+      </section>
+    </div>
+    <footer>
+      <span class="autofill-url"></span>
+      <div class="logo">
+        <img src="../../stylesheets/images/redhat.svg" />
+        <span>Red Hat</span>
+      </div>
+    </footer>
+  </div>
+  <script src="../../reveal/dist/reveal.js"></script>
+  <!--<script src="../../reveal/plugin/zoom/zoom.js"></script>-->
+  <script src="../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../reveal/plugin/search/search.js"></script>
+  <!--<script src="../../reveal/plugin/markdown/markdown.js"></script>-->
+  <script src="../../reveal/plugin/highlight/highlight.js"></script>
+
+  <script>
+
+    function getParams() {
+      var vars = [];
+      var parts = window.location.href.replace(/[?&]+([^&]+)/gi,
+        function (m, key) {
+          vars.push(key);
+        });
+      return vars;
+    };
+
+
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      keyboard: true,
+      center: true,
+      touch: true,
+      hideAddressBar: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0,
+      slideNumber: true,
+      showSlideNumber: 'all',
+      pdfMaxPagesPerSlide: 1,
+      showNotes: (getParams().includes("print-pdf") ? "separate-page" : null),
+      plugins: [RevealHighlight, RevealNotes, RevealSearch]
+    });
+
+  </script>
+  <script>
+    function fillUrl() {
+      var i;
+      var urls = document.getElementsByClassName("autofill-url");
+      for (i = 0; i < urls.length; i++) {
+        var url = "https://slides.delawen.com";
+        if (window.location.protocol.startsWith("http")) {
+          url = window.location.origin + window.location.pathname;
+        } else {
+          url = "https://slides.delawen.com/" + window.location.pathname.substring(window.location.pathname.indexOf("slides/") + 7);
+        }
+        urls[i].innerHTML = "<a href=\"" + url + "\">" + url + "</a>";
+      }
+    }
+
+    fillUrl(); 
+  </script>
+  <script>
+    function setSlideTimer() {
+      time = 50 * 60;
+      nslides = Reveal.getSlides().length;
+      timeperslide = time / nslides;
+      Reveal.configure({ defaultTiming: timeperslide });
+    }
+    setTimeout(setSlideTimer, 1000);
+  </script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+
+</html>
